@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap');
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@theme {
+  /* Exact Vercel Design Language Tokens (Scraped from vercel.com) */
+  
+  /* Core Colors */
+  --color-background-primary: #FAFAFA;
+  --color-background-elevated: #FFFFFF;
+  --color-background-recessed: #F2F2F2;
+  
+  --color-text-primary: #171717;
+  --color-text-secondary: #4D4D4D;
+  --color-text-muted: #8F8F8F;
+  
+  --color-accent-blue: #0072F5;
+  --color-accent-focus: #005FCC;
+  
+  --color-border-subtle: rgba(0, 0, 0, 0.08); /* #00000014 */
+  --color-border-heavy: #EAEAEA;
+
+  /* Font: Vercel uses Geist Sans */
+  --font-sans: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  
+  /* Vercel Shadows */
+  --shadow-sm: 0 0 0 1px rgba(0, 0, 0, 0.08);
+  --shadow-DEFAULT: 0 2px 4px rgba(0,0,0,.04), 0 0 0 1px rgba(0,0,0,.08);
+  --shadow-md: 0 4px 8px rgba(0,0,0,.04), 0 0 0 1px rgba(0,0,0,.08);
+  --shadow-lg: 0 8px 16px rgba(0,0,0,.04), 0 0 0 1px rgba(0,0,0,.08);
+  
+  /* Tailwind Utility Overrides to match Vercel */
+  --color-gray-50: #FAFAFA;
+  --color-gray-100: #F2F2F2;
+  --color-gray-200: #EBEBEB;
+  --color-gray-300: #8F8F8F;
+  --color-gray-500: #4D4D4D;
+  --color-gray-800: #171717;
+  --color-gray-900: #000000;
+  
+  --color-blue-600: #000000; /* Vercel standard action buttons are black */
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background-primary);
+    color: var(--color-text-primary);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Vercel Aggressive Negative Letter-Spacing */
+  h1 {
+    font-size: 48px !important;
+    font-weight: 600 !important;
+    line-height: 1 !important;
+    letter-spacing: -2.28px !important;
+  }
+  
+  h2 {
+    font-size: 32px !important;
+    font-weight: 600 !important;
+    line-height: 1.25 !important;
+    letter-spacing: -1.28px !important;
+  }
+  
+  h3 {
+    font-size: 24px !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.8px !important;
+  }
+
+  h4, .text-lg, .text-xl {
+    font-weight: 500 !important;
+    letter-spacing: -0.28px !important;
+  }
+
+  /* Vercel Form Elements */
+  input, select, textarea {
+    background-color: var(--color-background-elevated) !important;
+    border: 1px solid var(--color-border-heavy) !important;
+    border-radius: 6px !important;
+    color: var(--color-text-primary) !important;
+    font-size: 14px !important;
+    padding: 8px 12px !important;
+    transition: border 0.15s ease, box-shadow 0.15s ease !important;
+  }
+  
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--color-accent-blue) !important;
+    box-shadow: 0 0 0 1px var(--color-background-elevated), 0 0 0 3px var(--color-accent-blue) !important;
+    outline: none !important;
+  }
+
+  /* Layout refinements */
+  nav {
+    background-color: var(--color-background-primary) !important;
+    border-right: 1px solid var(--color-border-subtle) !important;
+  }
+  
+  .bg-white {
+    background-color: var(--color-background-elevated) !important;
+    border: 1px solid var(--color-border-subtle) !important;
+    border-radius: 8px !important;
+    box-shadow: var(--shadow-sm) !important;
+    padding: 24px !important; /* Vercel breathes with generous padding */
+  }
+  
+  /* Primary Button Override */
+  .bg-blue-600 {
+    background-color: var(--color-gray-900) !important;
+    color: var(--color-background-elevated) !important;
+    border-radius: 6px !important;
+    font-weight: 500 !important;
+    font-size: 14px !important;
+    padding: 0 12px !important;
+    height: 40px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: background 0.15s ease, color 0.15s ease !important;
+    box-shadow: none !important;
+  }
+  
+  .bg-blue-600:hover {
+    background-color: #383838 !important; /* Subtle gray on hover */
+  }
+
+  /* Secondary Button / Sub-navigation */
+  button.bg-transparent:hover, button.bg-white:hover {
+    background-color: var(--color-gray-200) !important;
+    color: var(--color-text-primary) !important;
+  }
+
+  /* Muted elements */
+  .text-gray-500 {
+    color: var(--color-text-secondary) !important;
+  }
+  
+  /* Table styling */
+  table th {
+    color: var(--color-text-secondary) !important;
+    font-weight: 400 !important;
+    text-transform: capitalize !important;
+    font-size: 14px !important;
+    border-bottom: 1px solid var(--color-border-subtle) !important;
+  }
+  table td {
+    font-size: 14px !important;
+    color: var(--color-text-primary) !important;
+  }
+}

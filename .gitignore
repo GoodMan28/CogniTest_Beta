@@ -135,3 +135,6 @@ dist
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Ignore large sample materials
+Sample_material/

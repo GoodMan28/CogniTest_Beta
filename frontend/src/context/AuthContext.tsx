@@ -1,53 +1,101 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
+import type { ReactNode } from 'react';
 import axios from 'axios';
+
+interface Student {
+  _id: string;
+  instituteId: string;
+  name: string;
+  enrollmentNo: string;
+  batch: string;
+  email?: string;
+  profilePictureUrl?: string;
+}
 
 interface AuthContextType {
   studentId: string | null;
   instituteId: string | null;
+  student: Student | null;
   loading: boolean;
+  login: (enrollmentNo: string, password: string) => Promise<void>;
+  signup: (data: any) => Promise<void>;
+  logout: () => void;
+  isAuthenticated: boolean;
 }
 
 const AuthContext = createContext<AuthContextType>({
   studentId: null,
   instituteId: null,
-  loading: true
+  student: null,
+  loading: true,
+  login: async () => {},
+  signup: async () => {},
+  logout: () => {},
+  isAuthenticated: false
 });
 
 export const useAuth = () => useContext(AuthContext);
 
-export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [studentId, setStudentId] = useState<string | null>(null);
-  const [instituteId, setInstituteId] = useState<string | null>(null);
+export const AuthProvider = ({ children }: { children: ReactNode }) => {
+  const [student, setStudent] = useState<Student | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // For MVP, we mock authentication by fetching the first available student and institute.
-    // In a real app, this would be a JWT decode or /api/me endpoint.
-    const fetchMockSession = async () => {
-      try {
-        const [studentRes, instituteRes] = await Promise.all([
-          axios.get('/api/v1/students'),
-          axios.get('/api/v1/institute')
-        ]);
-
-        if (studentRes.data && studentRes.data.length > 0) {
-          setStudentId(studentRes.data[0]._id);
+    const checkAuth = async () => {
+      const token = localStorage.getItem('token');
+      if (token) {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        try {
+          const res = await axios.get('http://localhost:5000/api/v1/auth/student/me');
+          setStudent(res.data);
+        } catch (error) {
+          console.error('Session expired or invalid', error);
+          localStorage.removeItem('token');
+          delete axios.defaults.headers.common['Authorization'];
+          setStudent(null);
         }
-        if (instituteRes.data && instituteRes.data._id) {
-          setInstituteId(instituteRes.data._id);
-        }
-      } catch (error) {
-        console.error('Failed to mock session:', error);
-      } finally {
-        setLoading(false);
       }
+      setLoading(false);
     };
-    
-    fetchMockSession();
+
+    checkAuth();
   }, []);
 
+  const login = async (enrollmentNo: string, password: string) => {
+    const res = await axios.post('http://localhost:5000/api/v1/auth/student/login', { enrollmentNo, password });
+    const { token, student: user } = res.data;
+    
+    localStorage.setItem('token', token);
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    setStudent(user);
+  };
+
+  const signup = async (data: any) => {
+    const res = await axios.post('http://localhost:5000/api/v1/auth/student/signup', data);
+    const { token, student: user } = res.data;
+    
+    localStorage.setItem('token', token);
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    setStudent(user);
+  };
+
+  const logout = () => {
+    localStorage.removeItem('token');
+    delete axios.defaults.headers.common['Authorization'];
+    setStudent(null);
+  };
+
   return (
-    <AuthContext.Provider value={{ studentId, instituteId, loading }}>
+    <AuthContext.Provider value={{ 
+      studentId: student?._id || null, 
+      instituteId: student?.instituteId || null,
+      student, 
+      loading, 
+      login, 
+      signup, 
+      logout,
+      isAuthenticated: !!student
+    }}>
       {children}
     </AuthContext.Provider>
   );

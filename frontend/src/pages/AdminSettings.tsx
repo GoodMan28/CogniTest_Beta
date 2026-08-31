@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 
 const AdminSettings = () => {
@@ -11,6 +11,33 @@ const AdminSettings = () => {
   const [qFile, setQFile] = useState<File | null>(null);
   const [sFile, setSFile] = useState<File | null>(null);
   const [isUploading, setIsUploading] = useState(false);
+
+  // Branding State
+  const [themeColor, setThemeColor] = useState('#2563EB');
+  const [logoUrl, setLogoUrl] = useState('');
+  const [logoFile, setLogoFile] = useState<File | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // Profile State
+  const [instituteName, setInstituteName] = useState('Allen Career Institute');
+  const [supportEmail, setSupportEmail] = useState('support@allen.ac.in');
+  const [supportPhone, setSupportPhone] = useState('+91 9876543210');
+
+  useEffect(() => {
+    const fetchInstitute = async () => {
+      try {
+        const res = await axios.get('http://localhost:5000/api/v1/institute');
+        if (res.data.themeColor) setThemeColor(res.data.themeColor);
+        if (res.data.logoUrl) setLogoUrl(res.data.logoUrl);
+        if (res.data.name) setInstituteName(res.data.name);
+        if (res.data.supportEmail) setSupportEmail(res.data.supportEmail);
+        if (res.data.supportPhone) setSupportPhone(res.data.supportPhone);
+      } catch (e) {
+        console.error('Failed to fetch institute', e);
+      }
+    };
+    fetchInstitute();
+  }, []);
 
   useEffect(() => {
     let interval: any;
@@ -85,6 +112,42 @@ const AdminSettings = () => {
     }
   };
 
+  const handleGlobalSave = async () => {
+    if (activeTab === 'profile') {
+      try {
+        await axios.put('http://localhost:5000/api/v1/institute/settings', {
+          name: instituteName,
+          supportEmail,
+          supportPhone
+        });
+        alert('Profile settings saved successfully!');
+      } catch (e) {
+        alert('Failed to save profile settings');
+        console.error(e);
+      }
+    } else if (activeTab === 'branding') {
+      try {
+        const formData = new FormData();
+        formData.append('themeColor', themeColor);
+        if (logoFile) {
+          formData.append('logoFile', logoFile);
+        }
+        await axios.put('http://localhost:5000/api/v1/institute/branding', formData, {
+          headers: { 'Content-Type': 'multipart/form-data' }
+        });
+        alert('Branding settings saved successfully!');
+        // Re-fetch to get updated URL
+        const res = await axios.get('http://localhost:5000/api/v1/institute');
+        if (res.data.logoUrl) setLogoUrl(res.data.logoUrl);
+      } catch (e) {
+        alert('Failed to save branding settings');
+        console.error(e);
+      }
+    } else {
+      alert('Save for this tab is not implemented yet.');
+    }
+  };
+
   return (
     <div className="flex flex-col min-w-0 w-full p-8">
       <div className="flex justify-between items-end mb-6">
@@ -92,7 +155,10 @@ const AdminSettings = () => {
           <h2 className="text-3xl font-bold text-gray-800 tracking-tight">Institute Settings</h2>
           <p className="text-gray-500 mt-1">Configure your coaching portal, branding, batches, and subscription.</p>
         </div>
-        <button className="px-6 py-2 bg-blue-600 text-white rounded font-medium hover:bg-blue-700 transition-colors shadow-sm">
+        <button 
+          onClick={handleGlobalSave}
+          className="px-6 py-2 bg-blue-600 text-white rounded font-medium hover:bg-blue-700 transition-colors shadow-sm"
+        >
           Save Changes
         </button>
       </div>
@@ -148,15 +214,15 @@ const AdminSettings = () => {
               <div className="space-y-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Institute Name</label>
-                  <input type="text" defaultValue="Allen Career Institute" className="w-full px-4 py-2 border border-gray-300 rounded focus:ring-blue-500 focus:border-blue-500" />
+                  <input type="text" value={instituteName} onChange={(e) => setInstituteName(e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded focus:ring-blue-500 focus:border-blue-500" />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Support Email</label>
-                  <input type="email" defaultValue="support@allen.ac.in" className="w-full px-4 py-2 border border-gray-300 rounded focus:ring-blue-500 focus:border-blue-500" />
+                  <input type="email" value={supportEmail} onChange={(e) => setSupportEmail(e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded focus:ring-blue-500 focus:border-blue-500" />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Support Phone</label>
-                  <input type="tel" defaultValue="+91 9876543210" className="w-full px-4 py-2 border border-gray-300 rounded focus:ring-blue-500 focus:border-blue-500" />
+                  <input type="tel" value={supportPhone} onChange={(e) => setSupportPhone(e.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded focus:ring-blue-500 focus:border-blue-500" />
                 </div>
               </div>
             </div>
@@ -171,18 +237,50 @@ const AdminSettings = () => {
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Institute Logo</label>
                   <div className="flex items-center gap-4">
-                    <div className="w-16 h-16 bg-gray-100 border border-gray-300 rounded flex items-center justify-center text-gray-400">
-                      <span className="material-symbols-outlined text-3xl">image</span>
+                    <div className="w-16 h-16 bg-gray-100 border border-gray-300 rounded flex items-center justify-center text-gray-400 overflow-hidden">
+                      {logoFile ? (
+                        <img src={URL.createObjectURL(logoFile)} alt="Logo Preview" className="w-full h-full object-cover" />
+                      ) : logoUrl ? (
+                        <img src={`http://localhost:5000${logoUrl}`} alt="Institute Logo" className="w-full h-full object-contain" />
+                      ) : (
+                        <span className="material-symbols-outlined text-3xl">image</span>
+                      )}
                     </div>
-                    <button className="px-4 py-2 border border-gray-300 rounded text-sm font-medium text-gray-700 hover:bg-gray-50">Upload New Logo</button>
+                    <input 
+                      type="file" 
+                      accept="image/*" 
+                      className="hidden" 
+                      ref={fileInputRef} 
+                      onChange={(e) => {
+                        if (e.target.files && e.target.files[0]) {
+                          setLogoFile(e.target.files[0]);
+                        }
+                      }} 
+                    />
+                    <button 
+                      onClick={() => fileInputRef.current?.click()} 
+                      className="px-4 py-2 border border-gray-300 rounded text-sm font-medium text-gray-700 hover:bg-gray-50"
+                    >
+                      Upload New Logo
+                    </button>
                   </div>
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Primary Brand Color</label>
                   <div className="flex items-center gap-3">
-                    <input type="color" defaultValue="#2563EB" className="w-10 h-10 rounded cursor-pointer border-0 p-0" />
-                    <input type="text" defaultValue="#2563EB" className="w-24 px-3 py-1.5 border border-gray-300 rounded text-sm uppercase" />
+                    <input 
+                      type="color" 
+                      value={themeColor} 
+                      onChange={(e) => setThemeColor(e.target.value)}
+                      className="w-10 h-10 rounded cursor-pointer border-0 p-0" 
+                    />
+                    <input 
+                      type="text" 
+                      value={themeColor.toUpperCase()} 
+                      onChange={(e) => setThemeColor(e.target.value)}
+                      className="w-24 px-3 py-1.5 border border-gray-300 rounded text-sm uppercase" 
+                    />
                   </div>
                 </div>
 

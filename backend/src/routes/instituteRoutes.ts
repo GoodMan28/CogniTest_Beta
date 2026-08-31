@@ -1,9 +1,28 @@
 import { Router } from 'express';
-import { getInstitute, updateInstituteSettings } from '../controllers/instituteController';
+import multer from 'multer';
+import path from 'path';
+import fs from 'fs';
+import { getInstitute, updateInstituteSettings, updateBranding } from '../controllers/instituteController';
 
 const router = Router();
 
+// Configure Multer for logo uploads
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    const dir = path.join(__dirname, '../../uploads/logos');
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+    cb(null, dir);
+  },
+  filename: (req, file, cb) => {
+    cb(null, `logo-${Date.now()}${path.extname(file.originalname)}`);
+  }
+});
+const upload = multer({ storage });
+
 router.get('/', getInstitute);
 router.put('/settings', updateInstituteSettings);
+router.put('/branding', upload.single('logoFile'), updateBranding);
 
 export default router;

@@ -83,7 +83,7 @@
     border-radius: 6px !important;
     color: var(--color-text-primary) !important;
     font-size: 14px !important;
-    padding: 8px 12px !important;
+    padding: 8px 12px;
     transition: border 0.15s ease, box-shadow 0.15s ease !important;
   }
   
@@ -149,5 +149,91 @@
   table td {
     font-size: 14px !important;
     color: var(--color-text-primary) !important;
+  }
+
+  /* ===== FIX: Reset global table overrides inside KaTeX math =====
+     KaTeX uses <table> internally for matrices, arrays, align environments.
+     The global table styles break LaTeX rendering. */
+  .katex table th,
+  .katex-html table th {
+    color: inherit !important;
+    font-weight: inherit !important;
+    text-transform: none !important;
+    font-size: inherit !important;
+    border-bottom: none !important;
+    background: none !important;
+  }
+  .katex table td,
+  .katex-html table td {
+    font-size: inherit !important;
+    color: inherit !important;
+  }
+  /* Also reset KaTeX spans that global heading rules might target */
+  .katex, .katex * {
+    text-transform: none !important;
+  }
+}
+
+@media print {
+  body {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    background-color: white !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Hide navigation elements, sidebars, and app wrappers */
+  aside, nav, header:not(.print-header), #sidebar, .sidebar {
+    display: none !important;
+  }
+  
+  /* Reset margins for main layouts */
+  main, .main-content {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  /* Reset aggressive heading styles so print headings look normal */
+  h1 { font-size: 22pt !important; letter-spacing: normal !important; line-height: 1.3 !important; }
+  h2 { font-size: 16pt !important; letter-spacing: normal !important; line-height: 1.4 !important; }
+  h3 { font-size: 13pt !important; letter-spacing: normal !important; }
+  h4 { font-size: 12pt !important; letter-spacing: normal !important; }
+
+  /* Preserve KaTeX math in print */
+  .katex, .katex * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    text-transform: none !important;
+  }
+  .katex table th, .katex-html table th {
+    color: inherit !important;
+    font-weight: inherit !important;
+    text-transform: none !important;
+    font-size: inherit !important;
+    border-bottom: none !important;
+  }
+  .katex table td, .katex-html table td {
+    font-size: inherit !important;
+    color: inherit !important;
+  }
+
+  /* SVG rendering in print */
+  svg {
+    max-width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .page-break-after {
+    page-break-after: always;
+  }
+  .page-break-inside-avoid {
+    page-break-inside: avoid;
+  }
+  @page {
+    margin: 1.5cm;
   }
 }

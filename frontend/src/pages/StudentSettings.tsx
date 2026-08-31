@@ -1,7 +1,73 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import axios from 'axios';
+import { useAuth } from '../context/AuthContext';
 
 const StudentSettings = () => {
+  const { studentId } = useAuth();
   const [activeTab, setActiveTab] = useState<'profile' | 'notifications' | 'security'>('profile');
+  
+  const [name, setName] = useState('');
+  const [enrollmentNo, setEnrollmentNo] = useState('');
+  const [email, setEmail] = useState('');
+  const [profilePictureUrl, setProfilePictureUrl] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (studentId) {
+      axios.get(`http://localhost:5000/api/v1/students/${studentId}`)
+        .then(res => {
+          setName(res.data.name || '');
+          setEnrollmentNo(res.data.enrollmentNo || '');
+          setEmail(res.data.email || '');
+          setProfilePictureUrl(res.data.profilePictureUrl || '');
+          setLoading(false);
+        })
+        .catch(err => {
+          console.error('Failed to fetch student profile', err);
+          setLoading(false);
+        });
+    }
+  }, [studentId]);
+
+  const handleSaveChanges = async () => {
+    if (!studentId) return;
+    setSaving(true);
+    try {
+      await axios.put(`http://localhost:5000/api/v1/students/${studentId}/settings`, {
+        name,
+        email
+      });
+      alert('Profile updated successfully!');
+    } catch (error) {
+      console.error('Failed to save settings', error);
+      alert('Failed to save settings. Please try again.');
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files || e.target.files.length === 0 || !studentId) return;
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append('profilePic', file);
+    
+    try {
+      const res = await axios.put(`http://localhost:5000/api/v1/students/${studentId}/profile-picture`, formData, {
+        headers: { 'Content-Type': 'multipart/form-data' }
+      });
+      setProfilePictureUrl(res.data.profilePictureUrl);
+    } catch (err) {
+      console.error(err);
+      alert('Failed to upload picture');
+    }
+  };
+
+  if (loading) {
+    return <div className="p-8 text-gray-500">Loading settings...</div>;
+  }
 
   return (
     <div className="flex flex-col min-w-0 w-full p-8">
@@ -10,8 +76,12 @@ const StudentSettings = () => {
           <h2 className="text-3xl font-bold text-gray-800 tracking-tight">Account Settings</h2>
           <p className="text-gray-500 mt-1">Manage your profile, notifications, and security preferences.</p>
         </div>
-        <button className="px-6 py-2 bg-blue-600 text-white rounded font-medium hover:bg-blue-700 transition-colors">
-          Save Changes
+        <button 
+          onClick={activeTab === 'profile' ? handleSaveChanges : undefined}
+          disabled={saving}
+          className="px-6 py-2 bg-blue-600 text-white rounded font-medium hover:bg-blue-700 transition-colors disabled:bg-blue-400"
+        >
+          {saving ? 'Saving...' : 'Save Changes'}
         </button>
       </div>
 
@@ -47,25 +117,59 @@ const StudentSettings = () => {
               <h3 className="text-xl font-bold text-gray-800 mb-6 border-b border-gray-200 pb-2">Personal Profile</h3>
               
               <div className="flex items-center gap-6 mb-8">
-                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvDFGGUUhte5Il16V8Pep99BbX8tDyQO8ttDhsPE8852MXFppyhtg1ePJEsP-p6-YIkJryaLKyAc3ZzdsXaoired0_-TKqqGoz89FIyQGHWSSfRRgU_TiCwn97wwN7U65IlHQMempnpO9H5dGaQOAZfkZ9-N175BxsteS7x1pR-GnPGT7r0vVtBEplTEnE0HQhIgIAsjdSstYCUO4SRHlJF3W34g1_NiGWlZkOQcEr04H0mE-TBkZcwEJuSkHmltqYFUW0n1F73Cxh" alt="Profile" className="w-24 h-24 rounded-full border border-gray-200 object-cover" />
-                <button className="px-4 py-2 bg-white border border-gray-300 rounded font-medium text-sm hover:bg-gray-50">Change Picture</button>
+                <img 
+                  src={profilePictureUrl ? `http://localhost:5000${profilePictureUrl}` : "https://lh3.googleusercontent.com/aida-public/AB6AXuBvDFGGUUhte5Il16V8Pep99BbX8tDyQO8ttDhsPE8852MXFppyhtg1ePJEsP-p6-YIkJryaLKyAc3ZzdsXaoired0_-TKqqGoz89FIyQGHWSSfRRgU_TiCwn97wwN7U65IlHQMempnpO9H5dGaQOAZfkZ9-N175BxsteS7x1pR-GnPGT7r0vVtBEplTEnE0HQhIgIAsjdSstYCUO4SRHlJF3W34g1_NiGWlZkOQcEr04H0mE-TBkZcwEJuSkHmltqYFUW0n1F73Cxh"} 
+                  alt="Profile" 
+                  className="w-24 h-24 rounded-full border border-gray-200 object-cover" 
+                />
+                <div>
+                  <input 
+                    type="file" 
+                    accept="image/*" 
+                    className="hidden" 
+                    ref={fileInputRef} 
+                    onChange={handleImageUpload} 
+                  />
+                  <button 
+                    onClick={() => fileInputRef.current?.click()}
+                    className="px-4 py-2 bg-white border border-gray-300 rounded font-medium text-sm hover:bg-gray-50"
+                  >
+                    Change Picture
+                  </button>
+                </div>
               </div>
 
               <div className="space-y-6">
                 <div className="grid grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                    <input type="text" defaultValue="Rahul Sharma" className="w-full px-4 py-2 border border-gray-300 rounded focus:ring-blue-500 focus:border-blue-500" />
+                    <input 
+                      type="text" 
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      className="w-full px-4 py-2 border border-gray-300 rounded focus:ring-blue-500 focus:border-blue-500" 
+                    />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Enrollment Number</label>
-                    <input type="text" defaultValue="ENR-2027-1001" disabled className="w-full px-4 py-2 border border-gray-200 bg-gray-100 rounded text-gray-500 cursor-not-allowed" />
+                    <input 
+                      type="text" 
+                      value={enrollmentNo} 
+                      disabled 
+                      className="w-full px-4 py-2 border border-gray-200 bg-gray-100 rounded text-gray-500 cursor-not-allowed" 
+                    />
                   </div>
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                  <input type="email" defaultValue="rahul.s@example.com" className="w-full px-4 py-2 border border-gray-300 rounded focus:ring-blue-500 focus:border-blue-500" />
+                  <input 
+                    type="email" 
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="student@example.com"
+                    className="w-full px-4 py-2 border border-gray-300 rounded focus:ring-blue-500 focus:border-blue-500" 
+                  />
                 </div>
               </div>
             </div>

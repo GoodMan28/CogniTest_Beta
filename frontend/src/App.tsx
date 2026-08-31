@@ -1,5 +1,7 @@
 
+import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import axios from 'axios';
 import { AuthProvider } from './context/AuthContext';
 import AdminLayout from './components/AdminLayout';
 import StudentLayout from './components/StudentLayout';
@@ -9,13 +11,35 @@ import StudentProfile from './pages/StudentProfile';
 import StudentDirectory from './pages/StudentDirectory';
 import Tests from './pages/Tests';
 import Reports from './pages/Reports';
+import StudentTests from './pages/StudentTests';
 import AdminSettings from './pages/AdminSettings';
 import StudentSettings from './pages/StudentSettings';
 import QuestionBank from './pages/QuestionBank';
-
-const Analytics = () => <h2 className="text-3xl font-bold text-gray-800 tracking-tight p-8">Analytics</h2>;
+import PaperGenerator from './pages/PaperGenerator';
+import StudentLogin from './pages/StudentLogin';
+import StudentSignup from './pages/StudentSignup';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
+  useEffect(() => {
+    // Fetch institute settings once on load to dynamically update the title and favicon
+    axios.get('http://localhost:5000/api/v1/institute')
+      .then(res => {
+        if (res.data.name) {
+          document.title = `${res.data.name} | CogniTest`;
+        }
+        if (res.data.logoUrl) {
+          let link = document.querySelector("link[rel~='icon']") as HTMLLinkElement;
+          if (!link) {
+            link = document.createElement('link');
+            link.rel = 'icon';
+            document.head.appendChild(link);
+          }
+          link.href = `http://localhost:5000${res.data.logoUrl}`;
+        }
+      })
+      .catch(err => console.error('Failed to load branding for head', err));
+  }, []);
   return (
     <AuthProvider>
       <Router>
@@ -28,18 +52,25 @@ function App() {
             <Route path="students" element={<StudentDirectory />} />
             <Route path="students/:id" element={<StudentProfile />} />
             <Route path="tests" element={<Tests />} />
-            <Route path="analytics" element={<Analytics />} />
+            <Route path="generator" element={<PaperGenerator />} />
             <Route path="reports" element={<Reports />} />
             <Route path="questions" element={<QuestionBank />} />
             <Route path="settings" element={<AdminSettings />} />
           </Route>
 
-          {/* Student Routes */}
-          <Route path="/student" element={<StudentLayout />}>
-            <Route index element={<StudentProfile />} />
-            <Route path="custom-tests" element={<CustomTests />} />
-            <Route path="reports" element={<Reports />} />
-            <Route path="settings" element={<StudentSettings />} />
+          {/* Student Auth Routes */}
+          <Route path="/student/login" element={<StudentLogin />} />
+          <Route path="/student/signup" element={<StudentSignup />} />
+
+          {/* Student Protected Routes */}
+          <Route path="/student" element={<ProtectedRoute />}>
+            <Route element={<StudentLayout />}>
+              <Route index element={<StudentProfile />} />
+              <Route path="custom-tests" element={<CustomTests />} />
+              <Route path="tests" element={<StudentTests />} />
+              <Route path="reports" element={<Reports />} />
+              <Route path="settings" element={<StudentSettings />} />
+            </Route>
           </Route>
         </Routes>
       </Router>

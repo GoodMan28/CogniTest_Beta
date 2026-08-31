@@ -12,6 +12,10 @@ export interface IEvaluationReport extends Document {
   };
   omrImageUrl: string;
   createdAt: Date;
+  responses?: Array<{
+    questionNo: number;
+    selectedOption: string;
+  }>;
 }
 
 const EvaluationReportSchema = new Schema<IEvaluationReport>({
@@ -25,6 +29,10 @@ const EvaluationReportSchema = new Schema<IEvaluationReport>({
     unanswered: [{ type: Schema.Types.ObjectId }]
   },
   omrImageUrl: { type: String, required: true },
+  responses: [{
+    questionNo: { type: Number, required: true },
+    selectedOption: { type: String, required: true }
+  }],
   createdAt: { type: Date, default: Date.now }
 });
 

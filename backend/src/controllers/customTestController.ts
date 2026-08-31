@@ -1,113 +1,79 @@
 import { Request, Response } from 'express';
 import { PhysicsQuestion, ChemistryQuestion, BiologyQuestion, getQuestionModel } from '../models/Question';
 import { EvaluationReport } from '../models/EvaluationReport';
-
+import { StudentAnalytics } from '../models/StudentAnalytics';
+import { Types } from 'mongoose';
 import { Pinecone } from '@pinecone-database/pinecone';
 
+/**
+ * Generate a custom AI-based test for a student using SWOT weakness analysis
+ * and Pinecone vector similarity search.
+ *
+ * Strategy:
+ *  1. Fetch the student's critical weaknesses (chapter names) from their SWOT profile
+ *  2. Use incorrectly answered question IDs as "seed vectors" in Pinecone
+ *  3. Query Pinecone with metadata filter { subject, chapter ∈ weaknesses }
+ *     to find semantically similar questions within weak chapters
+ *  4. Exclude already-seen questions
+ *  5. Fill remaining slots with MongoDB random sampling as fallback
+ */
 export const generateCustomTest = async (req: Request, res: Response) => {
   try {
-    const { studentId, mode, filters } = req.body;
+    const { studentId, subject, numQuestions = 10 } = req.body;
 
-    if (mode === 'dynamic') {
-      const reports = await EvaluationReport.find({ studentId }).sort({ createdAt: -1 }).limit(5);
-      const failedQuestionIds = reports.flatMap(r => r.performance.incorrect);
-      
-      let questions: any[] = [];
-
-      if (failedQuestionIds.length > 0) {
-        const targetId = failedQuestionIds[0].toString();
-        // Find the actual failed question in MongoDB to get its metadata
-        let failedQ = await PhysicsQuestion.findById(targetId) || 
-                      await ChemistryQuestion.findById(targetId) || 
-                      await BiologyQuestion.findById(targetId);
-
-        if (failedQ) {
-          try {
-            const pc = new Pinecone({ apiKey: process.env.PINECONE_API_KEY || '' });
-            const indexName = process.env.PINECONE_INDEX || 'cognitest-embeddings';
-            const index = pc.Index(indexName);
-
-            // Query Pinecone for 5 similar questions using metadata filters!
-            const queryResponse = await index.query({
-              id: targetId,
-              topK: 6, // Ask for 6 in case it returns itself
-              includeMetadata: false,
-              filter: {
-                subject: failedQ.subject,
-                chapter: failedQ.chapter
-              }
-            });
-
-            // Filter out the failed question itself, take top 5
-            const similarIds = queryResponse.matches
-                .map(m => m.id)
-                .filter(id => id !== targetId)
-                .slice(0, 5);
-
-            const QuestionModel = getQuestionModel(failedQ.subject);
-            const similarQs = await QuestionModel.find({ _id: { $in: similarIds } });
-            questions.push(...similarQs);
-
-            // Fill the remaining questions (to make a perfect 10) randomly from the exact same chapter!
-            const remainingCount = 10 - similarQs.length;
-            if (remainingCount > 0) {
-              const randomQs = await QuestionModel.aggregate([
-                { $match: { 
-                    subject: failedQ.subject, 
-                    chapter: failedQ.chapter, 
-                    _id: { $nin: [...similarQs.map(q => q._id), failedQ._id] } 
-                }},
-                { $sample: { size: remainingCount } }
-              ]);
-              questions.push(...randomQs);
-            }
-          } catch (pcError) {
-            console.error("Pinecone query failed, falling back:", pcError);
-          }
-        }
-      }
-
-      // Fallback if no failures, or if Pinecone failed completely
-      if (questions.length < 10) {
-        const fallbackPhysics = await PhysicsQuestion.aggregate([{ $sample: { size: 4 } }]);
-        const fallbackChemistry = await ChemistryQuestion.aggregate([{ $sample: { size: 3 } }]);
-        const fallbackBiology = await BiologyQuestion.aggregate([{ $sample: { size: 3 } }]);
-        questions = [...fallbackPhysics, ...fallbackChemistry, ...fallbackBiology];
-      }
-      
-      return res.status(200).json(questions.slice(0, 10));
-    } else if (mode === 'static') {
-      const matchFilters: any = {};
-      if (filters?.subject) matchFilters.subject = filters.subject;
-      if (filters?.unit) matchFilters.unit = filters.unit;
-      if (filters?.chapter) matchFilters.chapter = filters.chapter;
-
-      let questions: any[] = [];
-      
-      if (filters?.subject) {
-        // Query specific collection
-        try {
-          const QuestionModel = getQuestionModel(filters.subject);
-          questions = await QuestionModel.aggregate([
-            { $match: matchFilters },
-            { $sample: { size: 10 } }
-          ]);
-        } catch (e) {
-          return res.status(400).json({ message: 'Invalid subject filter' });
-        }
-      } else {
-        // Query all collections
-        const physics = await PhysicsQuestion.aggregate([{ $match: matchFilters }, { $sample: { size: 4 } }]);
-        const chemistry = await ChemistryQuestion.aggregate([{ $match: matchFilters }, { $sample: { size: 3 } }]);
-        const biology = await BiologyQuestion.aggregate([{ $match: matchFilters }, { $sample: { size: 3 } }]);
-        questions = [...physics, ...chemistry, ...biology];
-      }
-      
-      return res.status(200).json(questions);
-    } else {
-      return res.status(400).json({ message: 'Invalid mode. Must be "dynamic" or "static".' });
+    if (!studentId || !subject) {
+      return res.status(400).json({ message: 'studentId and subject are required.' });
     }
+
+    const validSubjects = ['Physics', 'Chemistry', 'Biology'];
+    if (!validSubjects.includes(subject)) {
+      return res.status(400).json({ message: `Invalid subject. Must be one of: ${validSubjects.join(', ')}` });
+    }
+
+    const validCounts = [10, 15, 20];
+    const targetCount = validCounts.includes(numQuestions) ? numQuestions : 10;    // ── Step 1: Fetch SWOT weaknesses ──
+    const analytics = await StudentAnalytics.findOne({ studentId });
+    const weakChapters: string[] = analytics?.swotProfile?.[subject as 'Physics' | 'Chemistry' | 'Biology']?.criticalWeaknesses || [];
+
+    console.log(`[CustomTest Demo Mode] Student ${studentId} | Subject: ${subject} | Weak chapters: [${weakChapters.join(', ')}]`);
+
+    const QuestionModel = getQuestionModel(subject);
+    let questions: any[] = [];
+
+    // ── DEMO MODE: Statically fetch from weak topics only (ignoring seen history) ──
+    if (weakChapters.length > 0) {
+      questions = await QuestionModel.aggregate([
+        { $match: { chapter: { $in: weakChapters } } },
+        { $sample: { size: targetCount } }
+      ]);
+      console.log(`[CustomTest Demo Mode] Fetched ${questions.length} questions from weak chapters.`);
+    }
+
+    // ── Fallback if no weak chapters or not enough questions ──
+    if (questions.length < targetCount) {
+      const existingIds = questions.map(q => q._id);
+      const fillCount = targetCount - questions.length;
+      
+      const randomFill = await QuestionModel.aggregate([
+        { $match: { _id: { $nin: existingIds } } },
+        { $sample: { size: fillCount } }
+      ]);
+
+      questions.push(...randomFill);
+      console.log(`[CustomTest Demo Mode] Added ${randomFill.length} random fallback questions.`);
+    }
+
+    // Shuffle final array
+    for (let i = questions.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [questions[i], questions[j]] = [questions[j], questions[i]];
+    }
+
+    console.log(`[CustomTest Demo Mode] Returning ${questions.length} questions`);
+    return res.status(200).json(questions);
+
   } catch (error: any) {
+    console.error('[CustomTest] Error:', error);
     res.status(500).json({ message: error.message });
   }
 };

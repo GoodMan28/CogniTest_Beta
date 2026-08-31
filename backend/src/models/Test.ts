@@ -2,6 +2,7 @@ import { Schema, model, Document, Types } from 'mongoose';
 
 export interface ITest extends Document {
   instituteId: Types.ObjectId;
+  templateId?: Types.ObjectId; // Optional reference to the blueprint template
   title: string;
   date: Date;
   examType: string;
@@ -24,6 +25,7 @@ export interface ITest extends Document {
 
 const TestSchema = new Schema<ITest>({
   instituteId: { type: Schema.Types.ObjectId, ref: 'Institute', required: true },
+  templateId: { type: Schema.Types.ObjectId, ref: 'Template' },
   title: { type: String, required: true },
   date: { type: Date, required: true },
   examType: { type: String, required: true },

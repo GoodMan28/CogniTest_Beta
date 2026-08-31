@@ -1,5 +1,6 @@
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const mockPerformanceData = [
@@ -10,11 +11,13 @@ const mockPerformanceData = [
 ];
 
 const Dashboard = () => {
+  const navigate = useNavigate();
   const [stats, setStats] = useState({
     activeStudents: 0,
     testsConducted: 0,
     averageScore: 0,
-    needsAttention: [] as any[]
+    needsAttention: [] as any[],
+    performanceData: [] as any[]
   });
   const [recentTests, setRecentTests] = useState<any[]>([]);
 
@@ -23,7 +26,7 @@ const Dashboard = () => {
       try {
         const statsRes = await axios.get('/api/v1/analytics/dashboard');
         setStats(statsRes.data);
-        
+
         const testsRes = await axios.get('/api/v1/tests?limit=4');
         setRecentTests(testsRes.data);
       } catch (error) {
@@ -40,13 +43,8 @@ const Dashboard = () => {
           <h2 className="text-3xl font-bold text-gray-800 tracking-tight">Overview</h2>
           <p className="text-gray-500 mt-1">Welcome back. Here's what's happening today.</p>
         </div>
-        <div className="flex gap-3">
-          <button className="px-4 py-2 border border-gray-300 rounded text-gray-700 font-medium text-sm hover:bg-gray-50 transition-colors">
-            Export Data
-          </button>
-        </div>
       </div>
-      
+
       {/* Metrics Row */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
@@ -95,22 +93,22 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+
         {/* Main Chart */}
         <div className="lg:col-span-2 bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <h3 className="text-lg font-bold text-gray-800 mb-6">Batch Performance Trends</h3>
-          <div className="h-64">
+          <div className="h-[300px]">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={mockPerformanceData}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E5E7EB" />
-                <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{fill: '#6B7280', fontSize: 12}} dy={10} />
-                <YAxis axisLine={false} tickLine={false} tick={{fill: '#6B7280', fontSize: 12}} dx={-10} />
-                <Tooltip 
-                  contentStyle={{borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)'}}
-                  cursor={{stroke: '#F3F4F6', strokeWidth: 2}}
+                <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#6B7280', fontSize: 12 }} dy={10} />
+                <YAxis axisLine={false} tickLine={false} tick={{ fill: '#6B7280', fontSize: 12 }} dx={-10} />
+                <Tooltip
+                  contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
+                  cursor={{ stroke: '#F3F4F6', strokeWidth: 2 }}
                 />
-                <Line type="monotone" dataKey="score" stroke="#2563EB" strokeWidth={3} dot={{r: 4, fill: '#2563EB', strokeWidth: 2, stroke: '#fff'}} activeDot={{r: 6}} />
+                <Line type="monotone" dataKey="score" stroke="#2563EB" strokeWidth={3} dot={{ r: 4, fill: '#2563EB', strokeWidth: 2, stroke: '#fff' }} activeDot={{ r: 6 }} />
               </LineChart>
             </ResponsiveContainer>
           </div>
@@ -123,16 +121,31 @@ const Dashboard = () => {
             {stats.needsAttention.length === 0 ? (
               <p className="text-sm text-gray-500">No students found.</p>
             ) : (
-              stats.needsAttention.map((student, i) => (
-                <div key={i} className="flex items-start justify-between border-b border-gray-100 pb-4 last:border-0 last:pb-0">
-                  <div>
-                    <p className="text-sm font-bold text-gray-900">{student.name}</p>
-                    <p className="text-xs text-gray-500">{student.batch}</p>
-                    <p className="text-xs text-red-600 mt-1 font-medium">{student.issue}</p>
+              <>
+                {stats.needsAttention.map((student, i) => (
+                  <div key={i} className="flex items-start justify-between border-b border-gray-100 pb-4 last:border-0 last:pb-0">
+                    <div>
+                      <p className="text-sm font-bold text-gray-900">{student.name}</p>
+                      <p className="text-xs text-gray-500">{student.batch}</p>
+                      <p className="text-xs text-red-600 mt-1 font-medium">{student.issue}</p>
+                    </div>
+                    <button
+                      onClick={() => navigate(`/admin/students/${student.studentId}`)}
+                      className="text-blue-600 text-xs font-medium hover:underline"
+                    >
+                      View Profile
+                    </button>
                   </div>
-                  <button className="text-blue-600 text-xs font-medium hover:underline">View Profile</button>
+                ))}
+                <div className="pt-2">
+                  <button
+                    onClick={() => navigate('/admin/students')}
+                    className="w-full py-2 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-lg text-sm font-medium text-gray-700 transition-colors"
+                  >
+                    View All Students
+                  </button>
                 </div>
-              ))
+              </>
             )}
           </div>
         </div>
@@ -141,7 +154,12 @@ const Dashboard = () => {
       <div className="mt-8 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
         <div className="px-6 py-5 border-b border-gray-200 flex justify-between items-center bg-gray-50/50">
           <h3 className="text-lg font-bold text-gray-800">Recent Mock Tests</h3>
-          <button className="text-blue-600 text-sm font-medium hover:underline">View All</button>
+          <button
+            onClick={() => navigate('/admin/reports')}
+            className="text-blue-600 text-sm font-medium hover:underline"
+          >
+            View All
+          </button>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-sm text-left">
@@ -174,7 +192,12 @@ const Dashboard = () => {
                     )}
                   </td>
                   <td className="px-6 py-4 text-right">
-                    <button className="text-blue-600 font-medium hover:underline">Review Reports</button>
+                    <button
+                      onClick={() => navigate('/admin/reports', { state: { openTestAnalyticsId: test._id } })}
+                      className="text-blue-600 font-medium hover:underline"
+                    >
+                      Review Reports
+                    </button>
                   </td>
                 </tr>
               ))}

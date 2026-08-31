@@ -39,11 +39,26 @@ export const getDashboardStats = async (req: Request, res: Response) => {
       issue: `Scored ${Math.round((r.score / r.totalMarks) * 100)}% on recent test`
     })).filter(x => x.name);
 
+    // Generate performanceData
+    const allTests = await Test.find().sort({ date: 1 });
+    const performanceData = [];
+    for (const t of allTests) {
+      const testReports = reports.filter(r => r.testId.toString() === t._id.toString());
+      if (testReports.length > 0) {
+        const testAvg = Math.round(testReports.reduce((acc, r) => acc + ((r.score / r.totalMarks) * 100), 0) / testReports.length);
+        performanceData.push({
+          name: t.title,
+          score: testAvg
+        });
+      }
+    }
+
     res.status(200).json({
       activeStudents: studentCount,
       testsConducted: testCount,
       averageScore: avgScore,
-      needsAttention
+      needsAttention,
+      performanceData
     });
   } catch (error: any) {
     res.status(500).json({ message: error.message });

@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
-import katex from 'katex';
+// import katex from 'katex';
 import 'katex/dist/katex.min.css';
 
 interface Question {
@@ -28,7 +28,7 @@ const SUBJECTS = ['Physics', 'Chemistry', 'Biology'] as const;
 type Subject = typeof SUBJECTS[number];
 
 const SUBJECT_COLORS: Record<Subject, { bg: string; text: string; border: string; activeBadgeBg: string; activeBadgeText: string; icon: string }> = {
-  Physics:   { bg: 'bg-blue-50',    text: 'text-blue-700',    border: 'border-blue-200',    activeBadgeBg: 'bg-blue-600',    activeBadgeText: 'text-white', icon: 'bolt' },
+  Physics:   { bg: 'bg-blue-50',    text: 'text-blue-700',    border: 'border-blue-200',    activeBadgeBg: 'bg-blue-500',    activeBadgeText: 'text-white', icon: 'bolt' },
   Chemistry: { bg: 'bg-emerald-50', text: 'text-emerald-700', border: 'border-emerald-200', activeBadgeBg: 'bg-emerald-600', activeBadgeText: 'text-white', icon: 'science' },
   Biology:   { bg: 'bg-amber-50',   text: 'text-amber-700',   border: 'border-amber-200',   activeBadgeBg: 'bg-amber-600',   activeBadgeText: 'text-white', icon: 'eco' },
 };
@@ -46,39 +46,7 @@ const stripLatex = (text: string): string => {
     .trim();
 };
 
-const LatexText = ({ text }: { text: string }) => {
-  if (!text) return null;
-  // Handle literal '\\n' which might be stored in the DB as string '\n'
-  const normalizedText = text.replace(/\\n/g, '\n');
-  const parts = normalizedText.split(/(\$[^$]+\$)/g);
-  return (
-    <>
-      {parts.map((part, index) => {
-        if (part.startsWith('$') && part.endsWith('$')) {
-          const latexString = part.slice(1, -1);
-          try {
-            const html = katex.renderToString(latexString, { throwOnError: false });
-            return <span key={index} dangerouslySetInnerHTML={{ __html: html }} />;
-          } catch (e) {
-            return <span key={index}>{part}</span>;
-          }
-        }
-        
-        // Handle newlines in normal text
-        return (
-          <span key={index}>
-            {part.split('\n').map((line, i, arr) => (
-              <span key={i}>
-                {line}
-                {i < arr.length - 1 && <br />}
-              </span>
-            ))}
-          </span>
-        );
-      })}
-    </>
-  );
-};
+import LatexText from '../components/LatexText';
 
 const QuestionBank = () => {
   const [activeSubject, setActiveSubject] = useState<Subject>('Physics');
@@ -201,11 +169,11 @@ const QuestionBank = () => {
       {/* Filters Row */}
       <div className="flex gap-3 mb-5 items-center">
         <div className="relative flex-1 max-w-md">
-          <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-[20px]">search</span>
+          <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-[20px] pointer-events-none">search</span>
           <input
             type="text"
             placeholder="Search questions..."
-            className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+            className="w-full !pl-12 pr-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
@@ -353,9 +321,19 @@ const QuestionBank = () => {
 
                                 {/* Conditionally render SMILES */}
                                 {q.smilesNotation && (
-                                  <div className="mb-4 p-3 bg-white rounded-lg border border-gray-200">
-                                    <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Molecular Structure (SMILES)</p>
-                                    <code className="text-xs text-gray-700 bg-gray-50 px-2 py-1 rounded font-mono break-all">{q.smilesNotation}</code>
+                                  <div className="mb-4 p-3 bg-gray-50 rounded-lg border border-gray-200 inline-block max-w-sm">
+                                    <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-2">Molecular Structure</p>
+                                    <div className="flex flex-col gap-2 items-center bg-white p-3 rounded-lg border border-gray-100 shadow-sm">
+                                      <img 
+                                        src={`https://cactus.nci.nih.gov/chemical/structure/${encodeURIComponent(q.smilesNotation)}/image`} 
+                                        alt="Molecular Structure" 
+                                        className="max-h-[160px] object-contain"
+                                        onError={(e) => {
+                                          e.currentTarget.style.display = 'none';
+                                        }}
+                                      />
+                                      <code className="text-xs text-gray-500 font-mono break-all">{q.smilesNotation}</code>
+                                    </div>
                                   </div>
                                 )}
 
@@ -400,7 +378,17 @@ const QuestionBank = () => {
                                           {m.type === 'svg' ? (
                                             <div className="max-w-[200px]" dangerouslySetInnerHTML={{ __html: m.content }} />
                                           ) : (
-                                            <code className="text-xs font-mono text-gray-600 break-all">{m.content}</code>
+                                            <div className="flex flex-col gap-1 items-center bg-white p-2 border border-gray-100 rounded">
+                                              <img 
+                                                src={`https://cactus.nci.nih.gov/chemical/structure/${encodeURIComponent(m.content)}/image`} 
+                                                alt="Option Structure" 
+                                                className="max-h-[100px] object-contain"
+                                                onError={(e) => {
+                                                  e.currentTarget.style.display = 'none';
+                                                }}
+                                              />
+                                              <code className="text-[10px] text-gray-500 font-mono break-all">{m.content}</code>
+                                            </div>
                                           )}
                                         </div>
                                       ))}

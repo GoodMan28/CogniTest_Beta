@@ -3,7 +3,8 @@ import { uploadBatchOMR, evaluateJsonBatch, clearDemo } from '../controllers/eva
 import multer from 'multer';
 
 const router = Router();
-const upload = multer({ dest: 'uploads/' });
+import os from 'os';
+const upload = multer({ dest: os.tmpdir() });
 
 router.post('/upload-batch', upload.single('file'), uploadBatchOMR);
 router.post('/evaluate-json', evaluateJsonBatch);

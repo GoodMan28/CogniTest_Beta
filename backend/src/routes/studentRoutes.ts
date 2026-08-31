@@ -2,17 +2,14 @@ import { Router } from 'express';
 import multer from 'multer';
 import path from 'path';
 import fs from 'fs';
+import os from 'os';
 import { getStudents, getStudentById, updateStudentSettings, uploadProfilePicture } from '../controllers/studentController';
 
 const router = Router();
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    const dir = path.join(__dirname, '../../uploads/profiles');
-    if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir, { recursive: true });
-    }
-    cb(null, dir);
+    cb(null, os.tmpdir());
   },
   filename: (req, file, cb) => {
     cb(null, `profile-${Date.now()}${path.extname(file.originalname)}`);

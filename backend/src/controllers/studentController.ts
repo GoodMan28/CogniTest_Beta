@@ -53,7 +53,9 @@ export const uploadProfilePicture = async (req: Request, res: Response) => {
       return res.status(400).json({ message: 'No file uploaded' });
     }
 
-    const profilePictureUrl = `/uploads/profiles/${req.file.filename}`;
+    const base64Image = req.file.buffer.toString('base64');
+    const mimeType = req.file.mimetype;
+    const profilePictureUrl = `data:${mimeType};base64,${base64Image}`;
     
     const student = await Student.findByIdAndUpdate(
       req.params.id,

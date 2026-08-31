@@ -50,7 +50,9 @@ export const updateBranding = async (req: Request, res: Response) => {
 
     if (req.file) {
       // Assuming multer saves the file and we store the relative URL
-      institute.logoUrl = `/uploads/logos/${req.file.filename}`;
+      const base64Image = req.file.buffer.toString('base64');
+      const mimeType = req.file.mimetype;
+      institute.logoUrl = `data:${mimeType};base64,${base64Image}`;
     }
 
     await institute.save();

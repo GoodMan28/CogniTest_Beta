@@ -7,14 +7,7 @@ import { getStudents, getStudentById, updateStudentSettings, uploadProfilePictur
 
 const router = Router();
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, os.tmpdir());
-  },
-  filename: (req, file, cb) => {
-    cb(null, `profile-${Date.now()}${path.extname(file.originalname)}`);
-  }
-});
+const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
 router.get('/', getStudents);

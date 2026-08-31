@@ -8,14 +8,7 @@ import { getInstitute, updateInstituteSettings, updateBranding } from '../contro
 const router = Router();
 
 // Configure Multer for logo uploads
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, os.tmpdir());
-  },
-  filename: (req, file, cb) => {
-    cb(null, `logo-${Date.now()}${path.extname(file.originalname)}`);
-  }
-});
+const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
 router.get('/', getInstitute);

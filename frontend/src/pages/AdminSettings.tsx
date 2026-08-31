@@ -241,7 +241,7 @@ const AdminSettings = () => {
                       {logoFile ? (
                         <img src={URL.createObjectURL(logoFile)} alt="Logo Preview" className="w-full h-full object-cover" />
                       ) : logoUrl ? (
-                        <img src={`http://localhost:5000${logoUrl}`} alt="Institute Logo" className="w-full h-full object-contain" />
+                        <img src={(logoUrl?.startsWith("data:") ? logoUrl : `http://localhost:5000${logoUrl}`)} alt="Institute Logo" className="w-full h-full object-contain" />
                       ) : (
                         <span className="material-symbols-outlined text-3xl">image</span>
                       )}

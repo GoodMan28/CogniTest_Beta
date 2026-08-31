@@ -80,7 +80,7 @@ const StudentDirectory = () => {
                   <td className="p-4">
                     <div className="flex items-center gap-3">
                       {student.profilePictureUrl ? (
-                        <img src={`http://localhost:5000${student.profilePictureUrl}`} alt={student.name} className="w-8 h-8 rounded-full object-cover border border-gray-200" />
+                        <img src={(student.profilePictureUrl?.startsWith("data:") ? student.profilePictureUrl : `http://localhost:5000${student.profilePictureUrl}`)} alt={student.name} className="w-8 h-8 rounded-full object-cover border border-gray-200" />
                       ) : (
                         <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 font-bold text-xs uppercase">
                           {student.name.charAt(0)}

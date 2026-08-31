@@ -35,7 +35,7 @@ function App() {
             link.rel = 'icon';
             document.head.appendChild(link);
           }
-          link.href = `http://localhost:5000${res.data.logoUrl}`;
+          link.href = (res.data.logoUrl?.startsWith("data:") ? res.data.logoUrl : `http://localhost:5000${res.data.logoUrl}`);
         }
       })
       .catch(err => console.error('Failed to load branding for head', err));

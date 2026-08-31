@@ -118,7 +118,7 @@ const StudentSettings = () => {
               
               <div className="flex items-center gap-6 mb-8">
                 <img 
-                  src={profilePictureUrl ? `http://localhost:5000${profilePictureUrl}` : "https://lh3.googleusercontent.com/aida-public/AB6AXuBvDFGGUUhte5Il16V8Pep99BbX8tDyQO8ttDhsPE8852MXFppyhtg1ePJEsP-p6-YIkJryaLKyAc3ZzdsXaoired0_-TKqqGoz89FIyQGHWSSfRRgU_TiCwn97wwN7U65IlHQMempnpO9H5dGaQOAZfkZ9-N175BxsteS7x1pR-GnPGT7r0vVtBEplTEnE0HQhIgIAsjdSstYCUO4SRHlJF3W34g1_NiGWlZkOQcEr04H0mE-TBkZcwEJuSkHmltqYFUW0n1F73Cxh"} 
+                  src={profilePictureUrl ? (profilePictureUrl?.startsWith("data:") ? profilePictureUrl : `http://localhost:5000${profilePictureUrl}`) : "https://lh3.googleusercontent.com/aida-public/AB6AXuBvDFGGUUhte5Il16V8Pep99BbX8tDyQO8ttDhsPE8852MXFppyhtg1ePJEsP-p6-YIkJryaLKyAc3ZzdsXaoired0_-TKqqGoz89FIyQGHWSSfRRgU_TiCwn97wwN7U65IlHQMempnpO9H5dGaQOAZfkZ9-N175BxsteS7x1pR-GnPGT7r0vVtBEplTEnE0HQhIgIAsjdSstYCUO4SRHlJF3W34g1_NiGWlZkOQcEr04H0mE-TBkZcwEJuSkHmltqYFUW0n1F73Cxh"} 
                   alt="Profile" 
                   className="w-24 h-24 rounded-full border border-gray-200 object-cover" 
                 />

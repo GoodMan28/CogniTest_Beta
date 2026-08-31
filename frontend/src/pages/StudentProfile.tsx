@@ -241,7 +241,7 @@ const StudentAnalytics = () => {
         <div className="absolute inset-0 border-2 border-transparent bg-gradient-to-r from-blue-500 to-indigo-500 opacity-10 pointer-events-none rounded-xl" style={{"WebkitMask":"linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)","WebkitMaskComposite":"xor","maskComposite":"exclude","padding":"2px"}}></div>
         <div className="flex items-center gap-6 z-10">
           {student.profilePictureUrl ? (
-            <img src={`http://localhost:5000${student.profilePictureUrl}`} alt={student.name} className="w-20 h-20 rounded-full border-4 border-white shadow-sm object-cover" />
+            <img src={(student.profilePictureUrl?.startsWith("data:") ? student.profilePictureUrl : `http://localhost:5000${student.profilePictureUrl}`)} alt={student.name} className="w-20 h-20 rounded-full border-4 border-white shadow-sm object-cover" />
           ) : (
             <div className="w-20 h-20 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 font-bold text-3xl border-4 border-white shadow-sm">
               {student.name.charAt(0)}

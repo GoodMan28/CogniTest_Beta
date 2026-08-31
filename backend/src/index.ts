@@ -40,6 +40,10 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 // Serve uploaded files
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
+app.get('/', (req, res) => {
+  res.status(200).send('CogniTest Backend is running properly!');
+});
+
 connectDB();
 
 app.use('/api/v1/tests', testRoutes);

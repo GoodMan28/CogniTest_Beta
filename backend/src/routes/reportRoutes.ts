@@ -110,11 +110,20 @@ router.get('/:reportId/review', async (req, res) => {
       }
     }
 
-    for (const q of test.questions) {
-      let questionDoc = await PhysicsQuestion.findById(q.questionId);
-      if (!questionDoc) questionDoc = await ChemistryQuestion.findById(q.questionId);
-      if (!questionDoc) questionDoc = await BiologyQuestion.findById(q.questionId);
+    const questionIds = test.questions.map((q: any) => q.questionId);
+    const [physicsQuestions, chemistryQuestions, biologyQuestions] = await Promise.all([
+      PhysicsQuestion.find({ _id: { $in: questionIds } }),
+      ChemistryQuestion.find({ _id: { $in: questionIds } }),
+      BiologyQuestion.find({ _id: { $in: questionIds } })
+    ]);
 
+    const questionsMap = new Map();
+    physicsQuestions.forEach(q => questionsMap.set(q._id.toString(), q));
+    chemistryQuestions.forEach(q => questionsMap.set(q._id.toString(), q));
+    biologyQuestions.forEach(q => questionsMap.set(q._id.toString(), q));
+
+    for (const q of test.questions) {
+      const questionDoc = questionsMap.get(q.questionId.toString());
       if (!questionDoc) continue;
 
       const studentChoice = responsesMap.get(q.questionNo) || 'unanswered';
@@ -202,15 +211,17 @@ router.get('/test/:testId/analytics', async (req, res) => {
     const passRate = Math.round((passCount / reports.length) * 100);
 
     // Resolve question details and count aggregate results
+    const questionIds = test.questions.map((q: any) => q.questionId);
+    const [physicsQuestions, chemistryQuestions, biologyQuestions] = await Promise.all([
+      PhysicsQuestion.find({ _id: { $in: questionIds } }).select('subject chapter topic correctOption'),
+      ChemistryQuestion.find({ _id: { $in: questionIds } }).select('subject chapter topic correctOption'),
+      BiologyQuestion.find({ _id: { $in: questionIds } }).select('subject chapter topic correctOption')
+    ]);
+
     const questionDetailsMap = new Map();
-    for (const q of test.questions) {
-      let doc = await PhysicsQuestion.findById(q.questionId).select('subject chapter topic correctOption');
-      if (!doc) doc = await ChemistryQuestion.findById(q.questionId).select('subject chapter topic correctOption');
-      if (!doc) doc = await BiologyQuestion.findById(q.questionId).select('subject chapter topic correctOption');
-      if (doc) {
-        questionDetailsMap.set(doc._id.toString(), doc);
-      }
-    }
+    physicsQuestions.forEach(q => questionDetailsMap.set(q._id.toString(), q));
+    chemistryQuestions.forEach(q => questionDetailsMap.set(q._id.toString(), q));
+    biologyQuestions.forEach(q => questionDetailsMap.set(q._id.toString(), q));
 
     // chapterStats: { [subject]: { [chapter]: { correct: 0, total: 0 } } }
     const chapterStats: Record<string, Record<string, { correct: number; total: number }>> = {
@@ -307,11 +318,21 @@ router.get('/test/:testId/questions', async (req, res) => {
       return res.status(404).json({ message: 'Test not found' });
     }
 
+    const questionIds = test.questions.map((q: any) => q.questionId);
+    const [physicsQuestions, chemistryQuestions, biologyQuestions] = await Promise.all([
+      PhysicsQuestion.find({ _id: { $in: questionIds } }),
+      ChemistryQuestion.find({ _id: { $in: questionIds } }),
+      BiologyQuestion.find({ _id: { $in: questionIds } })
+    ]);
+
+    const questionsMap = new Map();
+    physicsQuestions.forEach(q => questionsMap.set(q._id.toString(), q));
+    chemistryQuestions.forEach(q => questionsMap.set(q._id.toString(), q));
+    biologyQuestions.forEach(q => questionsMap.set(q._id.toString(), q));
+
     const questions: any[] = [];
     for (const q of test.questions) {
-      let doc: any = await PhysicsQuestion.findById(q.questionId);
-      if (!doc) doc = await ChemistryQuestion.findById(q.questionId);
-      if (!doc) doc = await BiologyQuestion.findById(q.questionId);
+      const doc = questionsMap.get(q.questionId.toString());
       if (!doc) continue;
 
       questions.push({

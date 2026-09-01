@@ -38,7 +38,11 @@ app.get('/', (req, res) => {
   res.status(200).send('CogniTest Backend is running properly!');
 });
 
-connectDB();
+// Ensure DB connection for every request (essential for serverless)
+app.use(async (req, res, next) => {
+  await connectDB();
+  next();
+});
 
 app.use('/api/v1/tests', testRoutes);
 app.use('/api/v1/templates', templateRoutes);

@@ -61,9 +61,10 @@ export const login = async (req: Request, res: Response) => {
   try {
     const { enrollmentNo, password } = req.body;
 
-    const cleanEnrollmentNo = enrollmentNo.trim();
+    const cleanEnrollmentNo = String(enrollmentNo || '').trim();
+    const cleanPassword = String(password || '');
 
-    if (!cleanEnrollmentNo || !password) {
+    if (!cleanEnrollmentNo || !cleanPassword) {
       return res.status(400).json({ message: 'Enrollment number and password are required' });
     }
 
@@ -75,7 +76,7 @@ export const login = async (req: Request, res: Response) => {
       return res.status(400).json({ message: 'Invalid credentials' });
     }
 
-    const isMatch = await bcrypt.compare(password, student.password);
+    const isMatch = await bcrypt.compare(cleanPassword, student.password);
     if (!isMatch) {
       return res.status(400).json({ message: 'Invalid credentials' });
     }

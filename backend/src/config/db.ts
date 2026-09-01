@@ -10,8 +10,15 @@ if (!cached) {
 }
 
 export const connectDB = async () => {
-  if (cached.conn) {
+  if (cached.conn && cached.conn.connection.readyState === 1) {
     return cached.conn;
+  }
+
+  // If connection exists but is dead/disconnected, we must discard it to force reconnect
+  if (cached.conn && cached.conn.connection.readyState !== 1) {
+    console.log('MongoDB connection is dead, reconnecting...');
+    cached.promise = null;
+    cached.conn = null;
   }
 
   if (!cached.promise) {

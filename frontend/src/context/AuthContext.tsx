@@ -46,7 +46,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       if (token) {
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         try {
-          const res = await axios.get('http://localhost:5000/api/v1/auth/student/me');
+          const res = await axios.get('/api/v1/auth/student/me');
           setStudent(res.data);
         } catch (error) {
           console.error('Session expired or invalid', error);
@@ -62,7 +62,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const login = async (enrollmentNo: string, password: string) => {
-    const res = await axios.post('http://localhost:5000/api/v1/auth/student/login', { enrollmentNo, password });
+    const res = await axios.post('/api/v1/auth/student/login', { enrollmentNo, password });
     const { token, student: user } = res.data;
     
     localStorage.setItem('token', token);
@@ -71,7 +71,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const signup = async (data: any) => {
-    const res = await axios.post('http://localhost:5000/api/v1/auth/student/signup', data);
+    const res = await axios.post('/api/v1/auth/student/signup', data);
     const { token, student: user } = res.data;
     
     localStorage.setItem('token', token);

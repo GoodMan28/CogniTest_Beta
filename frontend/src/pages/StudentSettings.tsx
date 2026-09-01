@@ -16,7 +16,7 @@ const StudentSettings = () => {
 
   useEffect(() => {
     if (studentId) {
-      axios.get(`http://localhost:5000/api/v1/students/${studentId}`)
+      axios.get(`/api/v1/students/${studentId}`)
         .then(res => {
           setName(res.data.name || '');
           setEnrollmentNo(res.data.enrollmentNo || '');
@@ -35,7 +35,7 @@ const StudentSettings = () => {
     if (!studentId) return;
     setSaving(true);
     try {
-      await axios.put(`http://localhost:5000/api/v1/students/${studentId}/settings`, {
+      await axios.put(`/api/v1/students/${studentId}/settings`, {
         name,
         email
       });
@@ -55,7 +55,7 @@ const StudentSettings = () => {
     formData.append('profilePic', file);
     
     try {
-      const res = await axios.put(`http://localhost:5000/api/v1/students/${studentId}/profile-picture`, formData, {
+      const res = await axios.put(`/api/v1/students/${studentId}/profile-picture`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       setProfilePictureUrl(res.data.profilePictureUrl);
@@ -118,7 +118,7 @@ const StudentSettings = () => {
               
               <div className="flex items-center gap-6 mb-8">
                 <img 
-                  src={profilePictureUrl ? (profilePictureUrl?.startsWith("data:") ? profilePictureUrl : `http://localhost:5000${profilePictureUrl}`) : "https://lh3.googleusercontent.com/aida-public/AB6AXuBvDFGGUUhte5Il16V8Pep99BbX8tDyQO8ttDhsPE8852MXFppyhtg1ePJEsP-p6-YIkJryaLKyAc3ZzdsXaoired0_-TKqqGoz89FIyQGHWSSfRRgU_TiCwn97wwN7U65IlHQMempnpO9H5dGaQOAZfkZ9-N175BxsteS7x1pR-GnPGT7r0vVtBEplTEnE0HQhIgIAsjdSstYCUO4SRHlJF3W34g1_NiGWlZkOQcEr04H0mE-TBkZcwEJuSkHmltqYFUW0n1F73Cxh"} 
+                  src={profilePictureUrl ? (profilePictureUrl?.startsWith("data:") ? profilePictureUrl : `${import.meta.env.VITE_API_URL || ''}${profilePictureUrl}`) : "https://lh3.googleusercontent.com/aida-public/AB6AXuBvDFGGUUhte5Il16V8Pep99BbX8tDyQO8ttDhsPE8852MXFppyhtg1ePJEsP-p6-YIkJryaLKyAc3ZzdsXaoired0_-TKqqGoz89FIyQGHWSSfRRgU_TiCwn97wwN7U65IlHQMempnpO9H5dGaQOAZfkZ9-N175BxsteS7x1pR-GnPGT7r0vVtBEplTEnE0HQhIgIAsjdSstYCUO4SRHlJF3W34g1_NiGWlZkOQcEr04H0mE-TBkZcwEJuSkHmltqYFUW0n1F73Cxh"} 
                   alt="Profile" 
                   className="w-24 h-24 rounded-full border border-gray-200 object-cover" 
                 />

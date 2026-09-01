@@ -23,7 +23,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 function App() {
   useEffect(() => {
     // Fetch institute settings once on load to dynamically update the title and favicon
-    axios.get('http://localhost:5000/api/v1/institute')
+    axios.get('/api/v1/institute')
       .then(res => {
         if (res.data.name) {
           document.title = `${res.data.name} | CogniTest`;
@@ -35,7 +35,7 @@ function App() {
             link.rel = 'icon';
             document.head.appendChild(link);
           }
-          link.href = (res.data.logoUrl?.startsWith("data:") ? res.data.logoUrl : `http://localhost:5000${res.data.logoUrl}`);
+          link.href = (res.data.logoUrl?.startsWith("data:") ? res.data.logoUrl : `${import.meta.env.VITE_API_URL || ''}${res.data.logoUrl}`);
         }
       })
       .catch(err => console.error('Failed to load branding for head', err));

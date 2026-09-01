@@ -25,7 +25,7 @@ export default function QuestionPickerModal({ section, initialSelectedIds, onSav
 
   // Fetch chapters on mount
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/v1/questions/chapters?subject=${section.subject}`)
+    axios.get(`/api/v1/questions/chapters?subject=${section.subject}`)
       .then(res => setChapters(res.data))
       .catch(err => console.error('Failed to fetch chapters', err));
   }, [section.subject]);
@@ -33,7 +33,7 @@ export default function QuestionPickerModal({ section, initialSelectedIds, onSav
   // Fetch topics when chapter changes
   useEffect(() => {
     if (selectedChapter) {
-      axios.get(`http://localhost:5000/api/v1/questions/topics?subject=${section.subject}&chapter=${selectedChapter}`)
+      axios.get(`/api/v1/questions/topics?subject=${section.subject}&chapter=${selectedChapter}`)
         .then(res => setTopics(res.data))
         .catch(err => console.error('Failed to fetch topics', err));
     } else {
@@ -54,7 +54,7 @@ export default function QuestionPickerModal({ section, initialSelectedIds, onSav
     if (selectedTopic) params.append('topic', selectedTopic);
     if (searchQuery) params.append('search', searchQuery);
 
-    axios.get(`http://localhost:5000/api/v1/questions?${params.toString()}`)
+    axios.get(`/api/v1/questions?${params.toString()}`)
       .then(res => {
         setQuestions(res.data.questions);
         setIsLoading(false);

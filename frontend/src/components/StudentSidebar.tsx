@@ -8,7 +8,7 @@ const StudentSidebar = () => {
   const [institute, setInstitute] = useState<{ name: string; logoUrl?: string } | null>(null);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/v1/institute')
+    axios.get('/api/v1/institute')
       .then(res => setInstitute(res.data))
       .catch(err => console.error('Failed to fetch institute for sidebar', err));
   }, []);
@@ -25,7 +25,7 @@ const StudentSidebar = () => {
     <aside className="w-[240px] h-screen border-r border-gray-200 flex flex-col fixed left-0 top-0 z-50 bg-[#FAFAFA]">
       <div className="px-4 pt-6 pb-2">
         {institute?.logoUrl ? (
-          <img src={(institute.logoUrl?.startsWith("data:") ? institute.logoUrl : `http://localhost:5000${institute.logoUrl}`)} alt={institute.name || 'Institute Logo'} className="w-full h-auto max-h-32 object-contain object-left" />
+          <img src={(institute.logoUrl?.startsWith("data:") ? institute.logoUrl : `${import.meta.env.VITE_API_URL || ''}${institute.logoUrl}`)} alt={institute.name || 'Institute Logo'} className="w-full h-auto max-h-32 object-contain object-left" />
         ) : (
           <h1 className="text-xl font-semibold text-gray-900 tracking-tight">{institute?.name || 'Loading...'}</h1>
         )}

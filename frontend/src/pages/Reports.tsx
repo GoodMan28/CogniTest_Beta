@@ -17,7 +17,7 @@ const Reports = () => {
   const [institute, setInstitute] = useState<{ name: string; logoUrl?: string; themeColor?: string } | null>(null);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/v1/institute')
+    axios.get('/api/v1/institute')
       .then(res => setInstitute(res.data))
       .catch(err => console.error('Failed to fetch institute', err));
   }, []);
@@ -371,7 +371,7 @@ const Reports = () => {
           <div className="flex justify-between items-start border-b-2 border-gray-900 pb-6 mb-6">
             <div>
               {institute?.logoUrl ? (
-                <img src={(institute.logoUrl?.startsWith("data:") ? institute.logoUrl : `http://localhost:5000${institute.logoUrl}`)} alt={institute.name || 'Institute Logo'} className="max-h-16 object-contain mb-4" />
+                <img src={(institute.logoUrl?.startsWith("data:") ? institute.logoUrl : `${import.meta.env.VITE_API_URL || ''}${institute.logoUrl}`)} alt={institute.name || 'Institute Logo'} className="max-h-16 object-contain mb-4" />
               ) : (
                 <h1 className="text-3xl font-black text-gray-900 tracking-tight mb-2">{institute?.name || 'CogniTest Institute'}</h1>
               )}
@@ -1694,7 +1694,7 @@ const Reports = () => {
             <div className="flex justify-between items-start border-b-2 border-gray-900 pb-6 mb-8">
               <div>
                 {institute?.logoUrl ? (
-                  <img src={(institute.logoUrl?.startsWith("data:") ? institute.logoUrl : `http://localhost:5000${institute.logoUrl}`)} alt={institute?.name || 'Logo'} className="max-h-16 object-contain mb-4" />
+                  <img src={(institute.logoUrl?.startsWith("data:") ? institute.logoUrl : `${import.meta.env.VITE_API_URL || ''}${institute.logoUrl}`)} alt={institute?.name || 'Logo'} className="max-h-16 object-contain mb-4" />
                 ) : (
                   <h1 className="text-3xl font-black text-gray-900 mb-2">{institute?.name || 'CogniTest'}</h1>
                 )}
@@ -1804,7 +1804,7 @@ const Reports = () => {
             <div className="flex justify-between items-start border-b-2 border-gray-900 pb-6 mb-8">
               <div>
                 {institute?.logoUrl ? (
-                  <img src={(institute.logoUrl?.startsWith("data:") ? institute.logoUrl : `http://localhost:5000${institute.logoUrl}`)} alt={institute?.name || 'Logo'} className="max-h-16 object-contain mb-4" />
+                  <img src={(institute.logoUrl?.startsWith("data:") ? institute.logoUrl : `${import.meta.env.VITE_API_URL || ''}${institute.logoUrl}`)} alt={institute?.name || 'Logo'} className="max-h-16 object-contain mb-4" />
                 ) : (
                   <div className="text-3xl font-black text-gray-900 mb-2">{institute?.name || 'CogniTest'}</div>
                 )}

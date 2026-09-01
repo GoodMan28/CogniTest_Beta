@@ -68,8 +68,9 @@ export const login = async (req: Request, res: Response) => {
       return res.status(400).json({ message: 'Enrollment number and password are required' });
     }
 
+    const escapedEnrollmentNo = cleanEnrollmentNo.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
     const student = await Student.findOne({ 
-      enrollmentNo: { $regex: new RegExp(`^${cleanEnrollmentNo}$`, 'i') } 
+      enrollmentNo: { $regex: new RegExp(`^${escapedEnrollmentNo}$`, 'i') } 
     });
     
     if (!student || !student.password) {

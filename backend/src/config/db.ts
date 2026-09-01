@@ -10,15 +10,8 @@ if (!cached) {
 }
 
 export const connectDB = async () => {
-  if (cached.conn && cached.conn.connection.readyState === 1) {
+  if (cached.conn) {
     return cached.conn;
-  }
-
-  // If connection exists but is dead/disconnected, we must discard it to force reconnect
-  if (cached.conn && cached.conn.connection.readyState !== 1) {
-    console.log('MongoDB connection is dead, reconnecting...');
-    cached.promise = null;
-    cached.conn = null;
   }
 
   if (!cached.promise) {
@@ -28,7 +21,6 @@ export const connectDB = async () => {
     mongoose.set('strictQuery', true);
     
     cached.promise = mongoose.connect(finalUri, {
-      bufferCommands: false,
       serverSelectionTimeoutMS: 5000
     }).then((mongoose) => {
       console.log(`MongoDB Connected: ${mongoose.connection.host}`);

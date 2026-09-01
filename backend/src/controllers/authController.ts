@@ -61,11 +61,16 @@ export const login = async (req: Request, res: Response) => {
   try {
     const { enrollmentNo, password } = req.body;
 
-    if (!enrollmentNo || !password) {
+    const cleanEnrollmentNo = enrollmentNo.trim();
+
+    if (!cleanEnrollmentNo || !password) {
       return res.status(400).json({ message: 'Enrollment number and password are required' });
     }
 
-    const student = await Student.findOne({ enrollmentNo });
+    const student = await Student.findOne({ 
+      enrollmentNo: { $regex: new RegExp(`^${cleanEnrollmentNo}$`, 'i') } 
+    });
+    
     if (!student || !student.password) {
       return res.status(400).json({ message: 'Invalid credentials' });
     }

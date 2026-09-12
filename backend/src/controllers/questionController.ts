@@ -1,5 +1,12 @@
 import { Request, Response } from 'express';
 import { PhysicsQuestion, ChemistryQuestion, BiologyQuestion, getQuestionModel } from '../models/Question';
+import { physicsTaxonomy, chemistryTaxonomy, biologyTaxonomy } from '../utils/taxonomy';
+
+const getTaxonomy = (subject: string) => {
+  if (subject === 'Physics') return physicsTaxonomy;
+  if (subject === 'Chemistry') return chemistryTaxonomy;
+  return biologyTaxonomy;
+};
 
 /**
  * GET /api/v1/questions
@@ -143,8 +150,17 @@ export const getChapters = async (req: Request, res: Response) => {
     const Model = getQuestionModel(subject);
     
     const filter = unit ? { unit } : {};
-    const chapters = await Model.distinct('chapter', filter);
-    res.status(200).json(chapters.filter(Boolean).sort());
+    let chapters = await Model.distinct('chapter', filter);
+    chapters = chapters.filter(Boolean);
+
+    // Strictly enforce taxonomy filtering if a unit is provided
+    if (unit) {
+      const taxonomy = getTaxonomy(subject);
+      const allowedChapters = taxonomy[unit] || [];
+      chapters = chapters.filter(c => allowedChapters.includes(c));
+    }
+    
+    res.status(200).json(chapters.sort());
   } catch (error: any) {
     res.status(500).json({ message: error.message });
   }

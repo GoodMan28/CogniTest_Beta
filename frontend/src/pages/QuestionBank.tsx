@@ -6,7 +6,7 @@ import 'katex/dist/katex.min.css';
 interface Question {
   _id: string;
   subject: string;
-  unit: string[];
+  unit: string;
   chapter: string[];
   topic: string[];
   questionIntent: string;
@@ -318,11 +318,11 @@ const QuestionBank = () => {
                               {/* Left: Question + Options */}
                               <div className="col-span-8">
                                 <div className="flex flex-wrap gap-1.5 mb-3">
-                                  {q.unit?.map((u, i) => (
-                                    <span key={`u-${i}`} className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-violet-100 text-violet-700 border border-violet-200">
-                                      {u}
+                                  {q.unit && (
+                                    <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-violet-100 text-violet-700 border border-violet-200">
+                                      {q.unit}
                                     </span>
-                                  ))}
+                                  )}
                                   {q.chapter?.map((c, i) => (
                                     <span key={`c-${i}`} className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-gray-200 text-gray-600 border border-gray-300">
                                       {c}
@@ -449,7 +449,7 @@ const QuestionBank = () => {
                                   <div className="space-y-2 text-xs text-gray-500">
                                     <div className="flex justify-between">
                                       <span>Unit</span>
-                                      <span className="font-medium text-gray-700 text-right max-w-[60%] break-words">{q.unit?.join(', ')}</span>
+                                      <span className="font-medium text-gray-700 text-right max-w-[60%] break-words">{q.unit}</span>
                                     </div>
                                     <div className="flex justify-between">
                                       <span>Chapter</span>

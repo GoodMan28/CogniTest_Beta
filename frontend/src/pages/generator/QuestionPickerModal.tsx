@@ -224,9 +224,9 @@ export default function QuestionPickerModal({ section, initialSelectedIds, onSav
                     <div className="flex-1">
                       <div className="flex items-center justify-between mb-2">
                         <div className="flex items-center space-x-2 text-xs font-medium text-gray-500">
-                          {q.unit?.map((u: string, i: number) => (
-                            <span key={`u-${i}`} className="bg-violet-50 text-violet-700 px-2 py-0.5 rounded border border-violet-100">{u}</span>
-                          ))}
+                          {q.unit && (
+                            <span className="bg-violet-50 text-violet-700 px-2 py-0.5 rounded border border-violet-100">{q.unit}</span>
+                          )}
                           {q.chapter?.map((c: string, i: number) => (
                             <span key={`c-${i}`} className="bg-gray-100 px-2 py-0.5 rounded">{c}</span>
                           ))}

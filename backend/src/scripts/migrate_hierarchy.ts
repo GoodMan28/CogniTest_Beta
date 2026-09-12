@@ -106,9 +106,9 @@ const migrateModel = async (Model: any, subjectName: string) => {
   let migratedCount = 0;
 
   for (const doc of docs) {
-    let units = new Set<string>();
-    let chapters = new Set<string>();
-    let topics = new Set<string>();
+    let unit = 'Uncategorized';
+    const chapters = new Set<string>();
+    const topics = new Set<string>();
 
     const oldChapter = typeof doc.chapter === 'string' ? doc.chapter : (doc.chapter?.[0] || "");
     const oldTopics = Array.isArray(doc.topic) ? doc.topic : [];
@@ -117,7 +117,7 @@ const migrateModel = async (Model: any, subjectName: string) => {
     if (oldChapter) {
       const mapping = getMapping(subjectName, oldChapter);
       if (mapping.unit !== 'Uncategorized') {
-        units.add(mapping.unit);
+        unit = mapping.unit;
         if (mapping.chapter !== 'Miscellaneous') chapters.add(mapping.chapter);
         if (!isUnitOrChapter(oldChapter)) topics.add(oldChapter);
       } else {
@@ -130,7 +130,7 @@ const migrateModel = async (Model: any, subjectName: string) => {
       if (typeof t !== 'string') continue;
       const mapping = getMapping(subjectName, t);
       if (mapping.unit !== 'Uncategorized' && mapping.chapter !== 'Miscellaneous') {
-        units.add(mapping.unit);
+        if (unit === 'Uncategorized') unit = mapping.unit; // use first valid unit found
         chapters.add(mapping.chapter);
       }
       if (!isUnitOrChapter(t)) {
@@ -139,13 +139,12 @@ const migrateModel = async (Model: any, subjectName: string) => {
     }
 
     // Fallbacks
-    if (units.size === 0) units.add("Uncategorized");
     if (chapters.size === 0) chapters.add("Uncategorized");
 
     // Update using any to bypass strict type checks for old schema during migration
     await Model.updateOne({ _id: doc._id }, {
       $set: {
-        unit: Array.from(units),
+        unit: unit,
         chapter: Array.from(chapters),
         topic: Array.from(topics)
       }

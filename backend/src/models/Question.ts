@@ -3,7 +3,7 @@ import { Schema, model, Document, Types } from 'mongoose';
 export interface IQuestion extends Document {
   instituteId: Types.ObjectId;
   subject: string;
-  unit: string[];
+  unit: string;
   chapter: string[];
   topic: string[];
   questionIntent: string;
@@ -30,9 +30,9 @@ const OptionMediaSchema = new Schema({
 const QuestionSchema = new Schema<IQuestion>({
   instituteId: { type: Schema.Types.ObjectId, ref: 'Institute', required: true },
   subject: { type: String, required: true },
-  unit: [{ type: String, required: true }],
-  chapter: [{ type: String, required: true }],
-  topic: [{ type: String }],
+  unit: { type: String, index: true },
+  chapter: { type: [String], index: true },
+  topic: { type: [String] },
   questionIntent: { type: String, required: true },
   questionText: { type: String, required: true },
   options: [{ type: String }],

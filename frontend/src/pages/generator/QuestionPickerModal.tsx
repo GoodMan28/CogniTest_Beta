@@ -13,22 +13,32 @@ interface Props {
 export default function QuestionPickerModal({ section, initialSelectedIds, onSave, onClose }: Props) {
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set(initialSelectedIds));
   
+  const [units, setUnits] = useState<string[]>([]);
   const [chapters, setChapters] = useState<string[]>([]);
   const [topics, setTopics] = useState<string[]>([]);
   const [questions, setQuestions] = useState<any[]>([]);
   
+  const [selectedUnit, setSelectedUnit] = useState<string>('');
   const [selectedChapter, setSelectedChapter] = useState<string>('');
   const [selectedTopic, setSelectedTopic] = useState<string>('');
   const [searchQuery, setSearchQuery] = useState('');
   
   const [isLoading, setIsLoading] = useState(false);
 
-  // Fetch chapters on mount
+  // Fetch units on mount
   useEffect(() => {
-    axios.get(`/api/v1/questions/chapters?subject=${section.subject}`)
+    axios.get(`/api/v1/questions/units?subject=${section.subject}`)
+      .then(res => setUnits(res.data))
+      .catch(err => console.error('Failed to fetch units', err));
+  }, [section.subject]);
+
+  // Fetch chapters when unit changes
+  useEffect(() => {
+    const unitParam = selectedUnit ? `&unit=${selectedUnit}` : '';
+    axios.get(`/api/v1/questions/chapters?subject=${section.subject}${unitParam}`)
       .then(res => setChapters(res.data))
       .catch(err => console.error('Failed to fetch chapters', err));
-  }, [section.subject]);
+  }, [selectedUnit, section.subject]);
 
   // Fetch topics when chapter changes
   useEffect(() => {
@@ -50,6 +60,7 @@ export default function QuestionPickerModal({ section, initialSelectedIds, onSav
       limit: '50' // Just fetch first 50 for demo purposes
     });
     
+    if (selectedUnit) params.append('unit', selectedUnit);
     if (selectedChapter) params.append('chapter', selectedChapter);
     if (selectedTopic) params.append('topic', selectedTopic);
     if (searchQuery) params.append('search', searchQuery);
@@ -63,7 +74,7 @@ export default function QuestionPickerModal({ section, initialSelectedIds, onSav
         console.error('Failed to fetch questions', err);
         setIsLoading(false);
       });
-  }, [section.subject, selectedChapter, selectedTopic, searchQuery]);
+  }, [section.subject, selectedUnit, selectedChapter, selectedTopic, searchQuery]);
 
   const remaining = section.totalQuestions - selectedIds.size;
 
@@ -139,9 +150,18 @@ export default function QuestionPickerModal({ section, initialSelectedIds, onSav
         </select>
 
         <select 
+          value={selectedUnit}
+          onChange={e => { setSelectedUnit(e.target.value); setSelectedChapter(''); setSelectedTopic(''); }}
+          className="border border-gray-300 rounded-md py-1.5 px-3 text-sm focus:ring-[#0070c0] focus:border-[#0070c0] min-w-[150px]"
+        >
+          <option value="">All Units</option>
+          {units.map(u => <option key={u} value={u}>{u.length > 20 ? u.substring(0,20)+'...' : u}</option>)}
+        </select>
+
+        <select 
           value={selectedChapter}
-          onChange={e => setSelectedChapter(e.target.value)}
-          className="border border-gray-300 rounded-md py-1.5 px-3 text-sm focus:ring-[#0070c0] focus:border-[#0070c0] min-w-[200px]"
+          onChange={e => { setSelectedChapter(e.target.value); setSelectedTopic(''); }}
+          className="border border-gray-300 rounded-md py-1.5 px-3 text-sm focus:ring-[#0070c0] focus:border-[#0070c0] min-w-[150px]"
         >
           <option value="">All Chapters</option>
           {chapters.map(c => <option key={c} value={c}>{c}</option>)}
@@ -151,7 +171,7 @@ export default function QuestionPickerModal({ section, initialSelectedIds, onSav
           value={selectedTopic}
           onChange={e => setSelectedTopic(e.target.value)}
           disabled={!selectedChapter}
-          className="border border-gray-300 rounded-md py-1.5 px-3 text-sm focus:ring-[#0070c0] focus:border-[#0070c0] min-w-[200px] disabled:bg-gray-50"
+          className="border border-gray-300 rounded-md py-1.5 px-3 text-sm focus:ring-[#0070c0] focus:border-[#0070c0] min-w-[150px] disabled:bg-gray-50"
         >
           <option value="">All Topics</option>
           {topics.map(t => <option key={t} value={t}>{t}</option>)}
@@ -204,9 +224,16 @@ export default function QuestionPickerModal({ section, initialSelectedIds, onSav
                     <div className="flex-1">
                       <div className="flex items-center justify-between mb-2">
                         <div className="flex items-center space-x-2 text-xs font-medium text-gray-500">
-                          <span className="bg-gray-100 px-2 py-0.5 rounded">{q.chapter || 'Unknown'}</span>
-                          <span>•</span>
-                          <span className="text-gray-400">{q.topic?.[0] || 'Unknown'}</span>
+                          {q.unit?.map((u: string, i: number) => (
+                            <span key={`u-${i}`} className="bg-violet-50 text-violet-700 px-2 py-0.5 rounded border border-violet-100">{u}</span>
+                          ))}
+                          {q.chapter?.map((c: string, i: number) => (
+                            <span key={`c-${i}`} className="bg-gray-100 px-2 py-0.5 rounded">{c}</span>
+                          ))}
+                          {q.topic?.length > 0 && <span>•</span>}
+                          {q.topic?.map((t: string, i: number) => (
+                            <span key={`t-${i}`} className="text-gray-400">{t}</span>
+                          ))}
                         </div>
                         <span className="text-xs text-gray-400">ID: {q._id.slice(-6)}</span>
                       </div>

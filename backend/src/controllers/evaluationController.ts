@@ -58,9 +58,13 @@ export const uploadBatchOMR = async (req: Request, res: Response) => {
       if (!questionDoc) continue;
 
       let mappedCorrect = questionDoc.correctOption;
-      if (!['A', 'B', 'C', 'D'].includes(mappedCorrect)) {
-        const idx = questionDoc.options ? questionDoc.options.indexOf(mappedCorrect) : -1;
-        if (idx !== -1) mappedCorrect = ['A', 'B', 'C', 'D'][idx];
+      if (questionDoc.questionType === 'multiple_choice' && mappedCorrect) {
+        if (!['A', 'B', 'C', 'D'].includes(mappedCorrect)) {
+          const idx = questionDoc.options ? questionDoc.options.indexOf(mappedCorrect) : -1;
+          if (idx !== -1) mappedCorrect = ['A', 'B', 'C', 'D'][idx];
+        }
+      } else if (questionDoc.questionType === 'numerical') {
+        mappedCorrect = questionDoc.numericalAnswer !== undefined ? String(questionDoc.numericalAnswer) : undefined;
       }
 
       const choice = studentChoices[q.questionNo];
@@ -311,9 +315,13 @@ export const evaluateJsonBatch = async (req: Request, res: Response) => {
         if (!questionDoc) continue;
 
         let mappedCorrect = questionDoc.correctOption;
-        if (!['A', 'B', 'C', 'D'].includes(mappedCorrect)) {
-          const idx = questionDoc.options ? questionDoc.options.indexOf(mappedCorrect) : -1;
-          if (idx !== -1) mappedCorrect = ['A', 'B', 'C', 'D'][idx];
+        if (questionDoc.questionType === 'multiple_choice' && mappedCorrect) {
+          if (!['A', 'B', 'C', 'D'].includes(mappedCorrect)) {
+            const idx = questionDoc.options ? questionDoc.options.indexOf(mappedCorrect) : -1;
+            if (idx !== -1) mappedCorrect = ['A', 'B', 'C', 'D'][idx];
+          }
+        } else if (questionDoc.questionType === 'numerical') {
+          mappedCorrect = questionDoc.numericalAnswer !== undefined ? String(questionDoc.numericalAnswer) : undefined;
         }
 
         const rawChoice = responses[q.questionNo.toString()];

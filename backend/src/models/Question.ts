@@ -6,10 +6,13 @@ export interface IQuestion extends Document {
   unit: string;
   chapter: string[];
   topic: string[];
+  questionType: 'multiple_choice' | 'numerical';
+  difficulty?: 'easy' | 'medium' | 'hard';
   questionIntent: string;
   questionText: string;
-  options: string[];
-  correctOption: string;
+  options?: string[];
+  correctOption?: string;
+  numericalAnswer?: number;
   solutionText: string;
   isEmbedded: boolean;
   // Rich media fields for diagrams and molecular structures
@@ -33,10 +36,13 @@ const QuestionSchema = new Schema<IQuestion>({
   unit: { type: String, index: true },
   chapter: { type: [String], index: true },
   topic: { type: [String] },
+  questionType: { type: String, enum: ['multiple_choice', 'numerical'], default: 'multiple_choice' },
+  difficulty: { type: String, enum: ['easy', 'medium', 'hard'] },
   questionIntent: { type: String, required: true },
   questionText: { type: String, required: true },
   options: [{ type: String }],
-  correctOption: { type: String, required: true },
+  correctOption: { type: String },
+  numericalAnswer: { type: Number },
   solutionText: { type: String, required: true },
   isEmbedded: { type: Boolean, default: false },
   // Rich media (all optional — text-only questions work as before)

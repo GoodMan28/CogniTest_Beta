@@ -19,6 +19,7 @@ export const getQuestions = async (req: Request, res: Response) => {
     const page = Math.max(1, parseInt(req.query.page as string) || 1);
     const limit = Math.min(50, Math.max(1, parseInt(req.query.limit as string) || 20));
     const search = (req.query.search as string) || '';
+    const unit = (req.query.unit as string) || '';
     const chapter = (req.query.chapter as string) || '';
     const topic = (req.query.topic as string) || '';
     const skip = (page - 1) * limit;
@@ -30,6 +31,9 @@ export const getQuestions = async (req: Request, res: Response) => {
     if (search) {
       filter.questionText = { $regex: search, $options: 'i' };
     }
+    if (unit) {
+      filter.unit = unit;
+    }
     if (chapter) {
       filter.chapter = chapter;
     }
@@ -39,7 +43,7 @@ export const getQuestions = async (req: Request, res: Response) => {
 
     const [questions, total] = await Promise.all([
       Model.find(filter)
-        .select('subject chapter topic questionIntent questionText options correctOption solutionText diagramSvg smilesNotation optionsMedia createdAt')
+        .select('subject unit chapter topic questionIntent questionText options correctOption solutionText diagramSvg smilesNotation optionsMedia createdAt')
         .sort({ createdAt: -1 })
         .skip(skip)
         .limit(limit)
@@ -74,17 +78,20 @@ export const getQuestionStats = async (_req: Request, res: Response) => {
       BiologyQuestion.countDocuments()
     ]);
 
-    // Chapter breakdowns
+    // Chapter breakdowns (unwind chapter arrays)
     const [physicsChapters, chemistryChapters, biologyChapters] = await Promise.all([
       PhysicsQuestion.aggregate([
+        { $unwind: '$chapter' },
         { $group: { _id: '$chapter', count: { $sum: 1 } } },
         { $sort: { count: -1 } }
       ]),
       ChemistryQuestion.aggregate([
+        { $unwind: '$chapter' },
         { $group: { _id: '$chapter', count: { $sum: 1 } } },
         { $sort: { count: -1 } }
       ]),
       BiologyQuestion.aggregate([
+        { $unwind: '$chapter' },
         { $group: { _id: '$chapter', count: { $sum: 1 } } },
         { $sort: { count: -1 } }
       ])
@@ -109,15 +116,34 @@ export const getQuestionStats = async (_req: Request, res: Response) => {
 };
 
 /**
+ * GET /api/v1/questions/units
+ * 
+ * Returns distinct units for a given subject.
+ */
+export const getUnits = async (req: Request, res: Response) => {
+  try {
+    const subject = (req.query.subject as string) || 'Physics';
+    const Model = getQuestionModel(subject);
+    const units = await Model.distinct('unit');
+    res.status(200).json(units.filter(Boolean).sort());
+  } catch (error: any) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+/**
  * GET /api/v1/questions/chapters
  * 
- * Returns distinct chapters for a given subject. Used for filter dropdowns.
+ * Returns distinct chapters for a given subject (and optionally unit).
  */
 export const getChapters = async (req: Request, res: Response) => {
   try {
     const subject = (req.query.subject as string) || 'Physics';
+    const unit = req.query.unit as string;
     const Model = getQuestionModel(subject);
-    const chapters = await Model.distinct('chapter');
+    
+    const filter = unit ? { unit } : {};
+    const chapters = await Model.distinct('chapter', filter);
     res.status(200).json(chapters.filter(Boolean).sort());
   } catch (error: any) {
     res.status(500).json({ message: error.message });

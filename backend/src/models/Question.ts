@@ -3,7 +3,8 @@ import { Schema, model, Document, Types } from 'mongoose';
 export interface IQuestion extends Document {
   instituteId: Types.ObjectId;
   subject: string;
-  chapter: string;
+  unit: string[];
+  chapter: string[];
   topic: string[];
   questionIntent: string;
   questionText: string;
@@ -29,7 +30,8 @@ const OptionMediaSchema = new Schema({
 const QuestionSchema = new Schema<IQuestion>({
   instituteId: { type: Schema.Types.ObjectId, ref: 'Institute', required: true },
   subject: { type: String, required: true },
-  chapter: { type: String, required: true },
+  unit: [{ type: String, required: true }],
+  chapter: [{ type: String, required: true }],
   topic: [{ type: String }],
   questionIntent: { type: String, required: true },
   questionText: { type: String, required: true },
@@ -44,7 +46,7 @@ const QuestionSchema = new Schema<IQuestion>({
   optionsMedia: [{ type: OptionMediaSchema }]
 }, { timestamps: true });
 
-QuestionSchema.index({ instituteId: 1, subject: 1, chapter: 1 });
+QuestionSchema.index({ instituteId: 1, subject: 1 });
 
 export const PhysicsQuestion = model<IQuestion>('PhysicsQuestion', QuestionSchema, 'physics_questions');
 export const ChemistryQuestion = model<IQuestion>('ChemistryQuestion', QuestionSchema, 'chemistry_questions');

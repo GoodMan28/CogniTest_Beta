@@ -6,7 +6,8 @@ import 'katex/dist/katex.min.css';
 interface Question {
   _id: string;
   subject: string;
-  chapter: string;
+  unit: string[];
+  chapter: string[];
   topic: string[];
   questionIntent: string;
   questionText: string;
@@ -52,11 +53,13 @@ const QuestionBank = () => {
   const [activeSubject, setActiveSubject] = useState<Subject>('Physics');
   const [questions, setQuestions] = useState<Question[]>([]);
   const [stats, setStats] = useState<Stats | null>(null);
+  const [units, setUnits] = useState<string[]>([]);
   const [chapters, setChapters] = useState<string[]>([]);
   const [topics, setTopics] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
 
   const [search, setSearch] = useState('');
+  const [unitFilter, setUnitFilter] = useState('');
   const [chapterFilter, setChapterFilter] = useState('');
   const [topicFilter, setTopicFilter] = useState('');
   const [page, setPage] = useState(1);
@@ -72,14 +75,24 @@ const QuestionBank = () => {
   }, []);
 
   useEffect(() => {
+    setUnitFilter('');
     setChapterFilter('');
     setTopicFilter('');
     setPage(1);
     setExpandedId(null);
-    axios.get('/api/v1/questions/chapters', { params: { subject: activeSubject } })
+    axios.get('/api/v1/questions/units', { params: { subject: activeSubject } })
+      .then(res => setUnits(res.data))
+      .catch(err => console.error('Failed to fetch units:', err));
+  }, [activeSubject]);
+
+  useEffect(() => {
+    setChapterFilter('');
+    setTopicFilter('');
+    setPage(1);
+    axios.get('/api/v1/questions/chapters', { params: { subject: activeSubject, unit: unitFilter } })
       .then(res => setChapters(res.data))
       .catch(err => console.error('Failed to fetch chapters:', err));
-  }, [activeSubject]);
+  }, [activeSubject, unitFilter]);
 
   useEffect(() => {
     setTopicFilter('');
@@ -102,6 +115,7 @@ const QuestionBank = () => {
           page,
           limit: ITEMS_PER_PAGE,
           search: search || undefined,
+          unit: unitFilter || undefined,
           chapter: chapterFilter || undefined,
           topic: topicFilter || undefined,
         }
@@ -114,7 +128,7 @@ const QuestionBank = () => {
     } finally {
       setLoading(false);
     }
-  }, [activeSubject, page, search, chapterFilter, topicFilter]);
+  }, [activeSubject, page, search, unitFilter, chapterFilter, topicFilter]);
 
   useEffect(() => {
     const timer = setTimeout(() => fetchQuestions(), 300);
@@ -124,7 +138,7 @@ const QuestionBank = () => {
   useEffect(() => {
     setPage(1);
     setExpandedId(null);
-  }, [search, chapterFilter, topicFilter]);
+  }, [search, unitFilter, chapterFilter, topicFilter]);
 
   const colors = SUBJECT_COLORS[activeSubject];
 
@@ -179,24 +193,34 @@ const QuestionBank = () => {
           />
         </div>
         <select
-          className={`px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-700 outline-none focus:border-${colors.text.split('-')[1]}-400 transition-colors w-64 appearance-none cursor-pointer`}
+          className={`px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-700 outline-none focus:border-${colors.text.split('-')[1]}-400 transition-colors w-48 appearance-none cursor-pointer`}
+          value={unitFilter}
+          onChange={(e) => setUnitFilter(e.target.value)}
+        >
+          <option value="">All Units</option>
+          {units.map(u => (
+            <option key={u} value={u}>{u.length > 20 ? u.substring(0,20)+'...' : u}</option>
+          ))}
+        </select>
+        <select
+          className={`px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-700 outline-none focus:border-${colors.text.split('-')[1]}-400 transition-colors w-48 appearance-none cursor-pointer`}
           value={chapterFilter}
           onChange={(e) => setChapterFilter(e.target.value)}
         >
           <option value="">All Chapters</option>
           {chapters.map(ch => (
-            <option key={ch} value={ch}>{ch}</option>
+            <option key={ch} value={ch}>{ch.length > 20 ? ch.substring(0,20)+'...' : ch}</option>
           ))}
         </select>
         {chapterFilter && (
           <select
-            className={`px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-700 outline-none focus:border-${colors.text.split('-')[1]}-400 transition-colors w-64 appearance-none cursor-pointer`}
+            className={`px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-700 outline-none focus:border-${colors.text.split('-')[1]}-400 transition-colors w-48 appearance-none cursor-pointer`}
             value={topicFilter}
             onChange={(e) => setTopicFilter(e.target.value)}
           >
             <option value="">All Topics</option>
             {topics.map(t => (
-              <option key={t} value={t}>{t}</option>
+              <option key={t} value={t}>{t.length > 20 ? t.substring(0,20)+'...' : t}</option>
             ))}
           </select>
         )}
@@ -294,11 +318,18 @@ const QuestionBank = () => {
                               {/* Left: Question + Options */}
                               <div className="col-span-8">
                                 <div className="flex flex-wrap gap-1.5 mb-3">
-                                  <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-gray-200 text-gray-600 border border-gray-300">
-                                    {q.chapter}
-                                  </span>
-                                  {q.topic.map((t, i) => (
-                                    <span key={i} className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded ${colors.bg} ${colors.text} border ${colors.border}`}>
+                                  {q.unit?.map((u, i) => (
+                                    <span key={`u-${i}`} className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-violet-100 text-violet-700 border border-violet-200">
+                                      {u}
+                                    </span>
+                                  ))}
+                                  {q.chapter?.map((c, i) => (
+                                    <span key={`c-${i}`} className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-gray-200 text-gray-600 border border-gray-300">
+                                      {c}
+                                    </span>
+                                  ))}
+                                  {q.topic?.map((t, i) => (
+                                    <span key={`t-${i}`} className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded ${colors.bg} ${colors.text} border ${colors.border}`}>
                                       {t}
                                     </span>
                                   ))}
@@ -417,8 +448,12 @@ const QuestionBank = () => {
                                   <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Details</h4>
                                   <div className="space-y-2 text-xs text-gray-500">
                                     <div className="flex justify-between">
+                                      <span>Unit</span>
+                                      <span className="font-medium text-gray-700 text-right max-w-[60%] break-words">{q.unit?.join(', ')}</span>
+                                    </div>
+                                    <div className="flex justify-between">
                                       <span>Chapter</span>
-                                      <span className="font-medium text-gray-700 text-right max-w-[60%] break-words">{q.chapter}</span>
+                                      <span className="font-medium text-gray-700 text-right max-w-[60%] break-words">{q.chapter?.join(', ')}</span>
                                     </div>
                                     <div className="flex justify-between gap-4">
                                       <span className="flex-shrink-0">Correct Answer</span>

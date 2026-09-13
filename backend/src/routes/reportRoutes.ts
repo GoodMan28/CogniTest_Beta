@@ -2,9 +2,18 @@ import { Router } from 'express';
 import PDFDocument from 'pdfkit';
 import { EvaluationReport } from '../models/EvaluationReport';
 import { Test } from '../models/Test';
-import { PhysicsQuestion, ChemistryQuestion, BiologyQuestion } from '../models/Question';
+import { PhysicsQuestion, ChemistryQuestion, BiologyQuestion, MathematicsQuestion } from '../models/Question';
+import { adminAuth } from '../middleware/adminAuth';
+import { tenantAuth } from '../middleware/tenantAuth';
+import { getReportAnalysis, getPracticeQuestions, saveMistakeReason } from '../controllers/reportAnalysisController';
 
 const router = Router();
+
+// Deep per-report analysis (Scoreboard, subject/difficulty/type breakdowns, drill-down,
+// cohort comparison, Fix It Zone). Student sees only their own; admin sees their institute's.
+router.get('/:reportId/analysis', tenantAuth as any, getReportAnalysis as any);
+router.get('/:reportId/questions/:questionNo/practice', tenantAuth as any, getPracticeQuestions as any);
+router.put('/:reportId/questions/:questionNo/reason', tenantAuth as any, saveMistakeReason as any);
 
 // Endpoint for students to get their reports
 router.get('/student/:studentId', async (req, res) => {
@@ -24,7 +33,7 @@ router.get('/student/:studentId', async (req, res) => {
 });
 
 // Endpoint for admin to publish reports for a test
-router.post('/publish/:testId', async (req, res) => {
+router.post('/publish/:testId', adminAuth as any, async (req, res) => {
   try {
     const { testId } = req.params;
     const test = await Test.findById(testId);
@@ -111,16 +120,18 @@ router.get('/:reportId/review', async (req, res) => {
     }
 
     const questionIds = test.questions.map((q: any) => q.questionId);
-    const [physicsQuestions, chemistryQuestions, biologyQuestions] = await Promise.all([
+    const [physicsQuestions, chemistryQuestions, biologyQuestions, mathematicsQuestions] = await Promise.all([
       PhysicsQuestion.find({ _id: { $in: questionIds } }),
       ChemistryQuestion.find({ _id: { $in: questionIds } }),
-      BiologyQuestion.find({ _id: { $in: questionIds } })
+      BiologyQuestion.find({ _id: { $in: questionIds } }),
+      MathematicsQuestion.find({ _id: { $in: questionIds } })
     ]);
 
     const questionsMap = new Map();
     physicsQuestions.forEach(q => questionsMap.set(q._id.toString(), q));
     chemistryQuestions.forEach(q => questionsMap.set(q._id.toString(), q));
     biologyQuestions.forEach(q => questionsMap.set(q._id.toString(), q));
+    mathematicsQuestions.forEach(q => questionsMap.set(q._id.toString(), q));
 
     for (const q of test.questions) {
       const questionDoc = questionsMap.get(q.questionId.toString());
@@ -135,15 +146,26 @@ router.get('/:reportId/review', async (req, res) => {
         status = 'incorrect';
       }
 
+      // Some seeds store the correct option's text rather than its letter — normalise for the UI
+      let correctOption = questionDoc.correctOption;
+      if (questionDoc.questionType === 'numerical') {
+        correctOption = questionDoc.numericalAnswer !== undefined && questionDoc.numericalAnswer !== null ? String(questionDoc.numericalAnswer) : correctOption;
+      } else if (correctOption && !['A', 'B', 'C', 'D'].includes(correctOption)) {
+        const idx = questionDoc.options ? questionDoc.options.indexOf(correctOption) : -1;
+        if (idx !== -1) correctOption = ['A', 'B', 'C', 'D'][idx];
+      }
+
       reviewQuestions.push({
         questionNo: q.questionNo,
         questionId: questionDoc._id,
-        subject: questionDoc.subject,
+        subject: q.subject || questionDoc.subject,
         chapter: questionDoc.chapter,
         topic: questionDoc.topic,
+        difficulty: questionDoc.difficulty,
+        questionType: questionDoc.questionType,
         questionText: questionDoc.questionText,
         options: questionDoc.options,
-        correctOption: questionDoc.correctOption,
+        correctOption,
         solutionText: questionDoc.solutionText,
         diagramSvg: questionDoc.diagramSvg,
         smilesNotation: questionDoc.smilesNotation,
@@ -185,7 +207,7 @@ router.get('/:reportId/review', async (req, res) => {
 });
 
 // GET /api/v1/reports/test/:testId/analytics
-router.get('/test/:testId/analytics', async (req, res) => {
+router.get('/test/:testId/analytics', adminAuth as any, async (req, res) => {
   try {
     const { testId } = req.params;
     const test = await Test.findById(testId);
@@ -310,7 +332,7 @@ router.get('/test/:testId/analytics', async (req, res) => {
 });
 
 // GET /api/v1/reports/test/:testId/questions — Returns full question data for a test (Admin Sample PDF)
-router.get('/test/:testId/questions', async (req, res) => {
+router.get('/test/:testId/questions', adminAuth as any, async (req, res) => {
   try {
     const { testId } = req.params;
     const test = await Test.findById(testId);

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import adminApi from '../api/adminApi';
 import { useAuth } from '../context/AuthContext';
 
 const StudentAnalytics = () => {
@@ -124,11 +125,12 @@ const StudentAnalytics = () => {
         let studentId = id || authStudentId;
         
         if (studentId) {
+          const api = isAdminView ? adminApi : axios;
           const [studentRes, analyticsRes, reportsRes, testsRes] = await Promise.all([
-            axios.get(`/api/v1/students/${studentId}`),
-            axios.get(`/api/v1/analytics/student/${studentId}`).catch(() => ({ data: null })),
-            axios.get(`/api/v1/reports/student/${studentId}`),
-            axios.get('/api/v1/tests')
+            api.get(`/api/v1/students/${studentId}`),
+            api.get(`/api/v1/analytics/student/${studentId}`).catch(() => ({ data: null })),
+            api.get(`/api/v1/reports/student/${studentId}`),
+            api.get('/api/v1/tests')
           ]);
 
           setStudent(studentRes.data);

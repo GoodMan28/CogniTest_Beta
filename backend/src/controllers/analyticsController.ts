@@ -1,9 +1,20 @@
-import { Request, Response } from 'express';
+import { Response } from 'express';
 import { StudentAnalytics } from '../models/StudentAnalytics';
+import { Student } from '../models/Student';
+import { Test } from '../models/Test';
+import { EvaluationReport } from '../models/EvaluationReport';
+import { AdminRequest } from '../middleware/adminAuth';
 
-export const getStudentAnalytics = async (req: Request, res: Response) => {
+export const getStudentAnalytics = async (req: AdminRequest, res: Response) => {
   try {
     const { studentId } = req.params;
+    
+    // Verify the student belongs to this admin's institute
+    const student = await Student.findById(studentId);
+    if (!student || student.instituteId.toString() !== req.admin!.instituteId) {
+      return res.status(404).json({ message: 'Analytics not found for this student.' });
+    }
+
     const analytics = await StudentAnalytics.findOne({ studentId });
     
     if (!analytics) {
@@ -16,22 +27,29 @@ export const getStudentAnalytics = async (req: Request, res: Response) => {
   }
 };
 
-import { Student } from '../models/Student';
-import { Test } from '../models/Test';
-import { EvaluationReport } from '../models/EvaluationReport';
-
-export const getDashboardStats = async (req: Request, res: Response) => {
+export const getDashboardStats = async (req: AdminRequest, res: Response) => {
   try {
-    const studentCount = await Student.countDocuments();
-    const testCount = await Test.countDocuments();
+    const instituteId = req.admin!.instituteId;
+
+    // Only count students belonging to this institute
+    const studentCount = await Student.countDocuments({ instituteId });
+    const testCount = await Test.countDocuments({ instituteId });
     
-    const reports = await EvaluationReport.find();
+    // Get tests for this institute to scope reports
+    const instituteTests = await Test.find({ instituteId }).select('_id');
+    const testIds = instituteTests.map(t => t._id);
+
+    // Only get reports for tests belonging to this institute
+    const reports = await EvaluationReport.find({ testId: { $in: testIds } });
     const avgScore = reports.length > 0 
       ? Math.round(reports.reduce((acc, r) => acc + ((r.score / r.totalMarks) * 100), 0) / reports.length) 
       : 0;
 
-    // For "Needs Attention", let's just find students with low scores in recent tests
-    const lowReports = await EvaluationReport.find().sort({ score: 1 }).limit(5).populate('studentId');
+    // For "Needs Attention", find students with low scores in this institute's tests
+    const lowReports = await EvaluationReport.find({ testId: { $in: testIds } })
+      .sort({ score: 1 })
+      .limit(5)
+      .populate('studentId');
     const needsAttention = lowReports.map(r => ({
       studentId: (r.studentId as any)?._id,
       name: (r.studentId as any)?.name,
@@ -39,8 +57,8 @@ export const getDashboardStats = async (req: Request, res: Response) => {
       issue: `Scored ${Math.round((r.score / r.totalMarks) * 100)}% on recent test`
     })).filter(x => x.name);
 
-    // Generate performanceData
-    const allTests = await Test.find().sort({ date: 1 });
+    // Generate performanceData from this institute's tests only
+    const allTests = await Test.find({ instituteId }).sort({ date: 1 });
     const performanceData = [];
     for (const t of allTests) {
       const testReports = reports.filter(r => r.testId.toString() === t._id.toString());

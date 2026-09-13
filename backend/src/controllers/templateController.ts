@@ -1,12 +1,13 @@
-import { Request, Response } from 'express';
+import { Response } from 'express';
 import { Template } from '../models/Template';
+import { AdminRequest } from '../middleware/adminAuth';
 
-export const createTemplate = async (req: Request, res: Response) => {
+export const createTemplate = async (req: AdminRequest, res: Response) => {
   try {
-    const { instituteId, title, course, sections } = req.body;
+    const { title, course, sections } = req.body;
     
     const newTemplate = new Template({
-      instituteId,
+      instituteId: req.admin!.instituteId, // Always use admin's institute
       title,
       course,
       sections
@@ -19,20 +20,23 @@ export const createTemplate = async (req: Request, res: Response) => {
   }
 };
 
-export const getTemplates = async (req: Request, res: Response) => {
+export const getTemplates = async (req: AdminRequest, res: Response) => {
   try {
-    const templates = await Template.find().sort({ createdAt: -1 });
+    const templates = await Template.find({ instituteId: req.admin!.instituteId }).sort({ createdAt: -1 });
     res.status(200).json(templates);
   } catch (error: any) {
     res.status(500).json({ message: error.message });
   }
 };
 
-export const getTemplateById = async (req: Request, res: Response) => {
+export const getTemplateById = async (req: AdminRequest, res: Response) => {
   try {
     const template = await Template.findById(req.params.id);
     if (!template) {
       return res.status(404).json({ message: 'Template not found' });
+    }
+    if (template.instituteId.toString() !== req.admin!.instituteId) {
+      return res.status(403).json({ message: 'Access denied' });
     }
     res.status(200).json(template);
   } catch (error: any) {

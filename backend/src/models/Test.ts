@@ -20,7 +20,30 @@ export interface ITest extends Document {
     questionNo: number;
     questionId: Types.ObjectId;
     subject?: string;           // Denormalized for fast lookups without joins
+    demoMarking?: {
+      correctMarks: number;
+      incorrectPenalty: number;
+    };
+    recommendations?: Array<{
+      questionId: Types.ObjectId;
+      subject: string;
+      sourceKey: string;
+    }>;
+    authoredDistractorExplanations?: Record<string, string>;
   }>;
+  analysisDemo?: {
+    managed?: boolean;
+    sourceKey?: string;
+    status?: 'DRAFT' | 'BUILDING' | 'FAILED' | 'READY' | 'PUBLISHED';
+    buildId?: string;
+    sourceHash?: string;
+    expectedStudents?: number;
+    policy?: string;
+    computedAt?: Date;
+    publishedAt?: Date;
+    verifiedBuildId?: string;
+    lastError?: string;
+  };
 }
 
 const TestSchema = new Schema<ITest>({
@@ -42,8 +65,32 @@ const TestSchema = new Schema<ITest>({
   questions: [{
     questionNo: { type: Number, required: true },
     questionId: { type: Schema.Types.ObjectId, required: true },
-    subject: { type: String }
-  }]
+    subject: { type: String },
+    demoMarking: {
+      correctMarks: { type: Number },
+      incorrectPenalty: { type: Number }
+    },
+    recommendations: [{
+      questionId: { type: Schema.Types.ObjectId, required: true },
+      subject: { type: String, required: true },
+      sourceKey: { type: String, required: true },
+      _id: false
+    }],
+    authoredDistractorExplanations: { type: Map, of: String }
+  }],
+  analysisDemo: {
+    managed: { type: Boolean },
+    sourceKey: { type: String },
+    status: { type: String, enum: ['DRAFT', 'BUILDING', 'FAILED', 'READY', 'PUBLISHED'] },
+    buildId: { type: String },
+    sourceHash: { type: String },
+    expectedStudents: { type: Number },
+    policy: { type: String },
+    computedAt: { type: Date },
+    publishedAt: { type: Date },
+    verifiedBuildId: { type: String },
+    lastError: { type: String }
+  }
 }, { timestamps: true });
 
 export const Test = model<ITest>('Test', TestSchema);

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import TemplateBuilder from './generator/TemplateBuilder';
 import PaperComposer from './generator/PaperComposer';
-import axios from 'axios';
+import adminApi from '../api/adminApi';
 
 export type TemplateSection = {
   id: string;
@@ -36,7 +36,7 @@ export default function PaperGenerator() {
 
   const handleTemplateSaved = async (newTemplate: PaperTemplate) => {
     try {
-      await axios.post('/api/v1/templates', {
+      await adminApi.post('/api/v1/templates', {
         ...newTemplate,
         instituteId: '654321098765432109876543' // Fallback or use Auth context if available
       });

@@ -23,6 +23,11 @@ export interface IQuestion extends Document {
     type: 'svg' | 'smiles';   // Discriminator: 'svg' for inline SVG, 'smiles' for molecular notation
     content: string;           // The actual SVG XML or SMILES string
   } | null>;
+  analysisDemo?: {
+    managed?: boolean;
+    sourceKey?: string;
+    contentHash?: string;
+  };
 }
 
 const OptionMediaSchema = new Schema({
@@ -49,7 +54,12 @@ const QuestionSchema = new Schema<IQuestion>({
   imageUrl: { type: String },
   diagramSvg: { type: String },
   smilesNotation: { type: String },
-  optionsMedia: [{ type: OptionMediaSchema }]
+  optionsMedia: [{ type: OptionMediaSchema }],
+  analysisDemo: {
+    managed: { type: Boolean },
+    sourceKey: { type: String },
+    contentHash: { type: String }
+  }
 }, { timestamps: true });
 
 QuestionSchema.index({ instituteId: 1, subject: 1 });
@@ -57,11 +67,13 @@ QuestionSchema.index({ instituteId: 1, subject: 1 });
 export const PhysicsQuestion = model<IQuestion>('PhysicsQuestion', QuestionSchema, 'physics_questions');
 export const ChemistryQuestion = model<IQuestion>('ChemistryQuestion', QuestionSchema, 'chemistry_questions');
 export const BiologyQuestion = model<IQuestion>('BiologyQuestion', QuestionSchema, 'biology_questions');
+export const MathematicsQuestion = model<IQuestion>('MathematicsQuestion', QuestionSchema, 'mathematics_questions');
 
 export const getQuestionModel = (subject: string) => {
   const normalized = subject.toLowerCase().trim();
   if (normalized === 'physics') return PhysicsQuestion;
   if (normalized === 'chemistry') return ChemistryQuestion;
   if (normalized === 'biology') return BiologyQuestion;
+  if (normalized === 'mathematics') return MathematicsQuestion;
   throw new Error(`Invalid subject: ${subject}`);
 };

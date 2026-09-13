@@ -1,7 +1,7 @@
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import adminApi from '../api/adminApi';
 
 const mockPerformanceData = [
   { name: 'Week 1', score: 65 },
@@ -24,10 +24,10 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const statsRes = await axios.get('/api/v1/analytics/dashboard');
+        const statsRes = await adminApi.get('/api/v1/analytics/dashboard');
         setStats(statsRes.data);
 
-        const testsRes = await axios.get('/api/v1/tests?limit=4');
+        const testsRes = await adminApi.get('/api/v1/tests?limit=4');
         setRecentTests(testsRes.data);
       } catch (error) {
         console.error('Failed to fetch dashboard data:', error);

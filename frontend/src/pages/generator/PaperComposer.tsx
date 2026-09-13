@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { CheckCircle2, ArrowLeft, LayoutTemplate, Loader2 } from 'lucide-react';
 import type { PaperTemplate } from '../PaperGenerator';
 import QuestionPickerModal from './QuestionPickerModal';
-import axios from 'axios';
+import adminApi from '../../api/adminApi';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 
@@ -40,7 +40,7 @@ export default function PaperComposer({ template, onBack }: Props) {
 
       // 1. Save Template if it's new
       if (!templateId) {
-        const tplRes = await axios.post('/api/v1/templates', {
+        const tplRes = await adminApi.post('/api/v1/templates', {
           ...template,
           instituteId
         });
@@ -65,7 +65,7 @@ export default function PaperComposer({ template, onBack }: Props) {
       });
 
       // 3. Save Test
-      await axios.post('/api/v1/tests', {
+      await adminApi.post('/api/v1/tests', {
         instituteId,
         templateId,
         title: testName,

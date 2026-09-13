@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
+import adminApi from '../api/adminApi';
 import { useNavigate } from 'react-router-dom';
 
 const Tests = () => {
@@ -36,7 +36,7 @@ const Tests = () => {
 
   const fetchTests = async () => {
     try {
-      const res = await axios.get('/api/v1/tests');
+      const res = await adminApi.get('/api/v1/tests');
       setTests(res.data);
     } catch (error) {
       console.error('Failed to fetch tests:', error);
@@ -45,7 +45,7 @@ const Tests = () => {
 
   useEffect(() => {
     fetchTests();
-    axios.get('/api/v1/templates').then(res => setTemplates(res.data)).catch(console.error);
+    adminApi.get('/api/v1/templates').then(res => setTemplates(res.data)).catch(console.error);
   }, []);
 
   const handleIngestTest = async () => {
@@ -93,7 +93,7 @@ const Tests = () => {
         questions: questionsData
       };
 
-      await axios.post('/api/v1/ingestion/ingest-test', payload);
+      await adminApi.post('/api/v1/ingestion/ingest-test', payload);
       
       setIngestionPhase('success');
       fetchTests(); // Refresh the list with the real test!
@@ -146,7 +146,7 @@ const Tests = () => {
       setEvaluationPhase('saving');
 
       // Phase 4: Submit request to backend to process the response_sheet.json
-      const res = await axios.post('/api/v1/evaluation/evaluate-json', {
+      const res = await adminApi.post('/api/v1/evaluation/evaluate-json', {
         testId: selectedTestId
       });
 
@@ -171,7 +171,7 @@ const Tests = () => {
     }
     setIsResetting(true);
     try {
-      await axios.post('/api/v1/evaluation/clear-demo');
+      await adminApi.post('/api/v1/evaluation/clear-demo');
       alert("Demo data successfully cleared! DB reset complete.");
     } catch (error) {
       console.error(error);

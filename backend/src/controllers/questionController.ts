@@ -1,6 +1,7 @@
-import { Request, Response } from 'express';
-import { PhysicsQuestion, ChemistryQuestion, BiologyQuestion, getQuestionModel } from '../models/Question';
+import { Response } from 'express';
+import { PhysicsQuestion, ChemistryQuestion, BiologyQuestion, MathematicsQuestion, getQuestionModel } from '../models/Question';
 import { physicsTaxonomy, chemistryTaxonomy, biologyTaxonomy } from '../utils/taxonomy';
+import { AdminRequest } from '../middleware/adminAuth';
 
 const getTaxonomy = (subject: string) => {
   if (subject === 'Physics') return physicsTaxonomy;
@@ -12,16 +13,11 @@ const getTaxonomy = (subject: string) => {
  * GET /api/v1/questions
  * 
  * Server-side paginated question bank endpoint.
- * 
- * Query params:
- *   - subject:  'Physics' | 'Chemistry' | 'Biology' (required)
- *   - page:     page number (default 1)
- *   - limit:    items per page (default 20, max 50)
- *   - search:   text search on questionText (optional)
- *   - chapter:  filter by exact chapter name (optional)
+ * Scoped to admin's institute.
  */
-export const getQuestions = async (req: Request, res: Response) => {
+export const getQuestions = async (req: AdminRequest, res: Response) => {
   try {
+    const instituteId = req.admin!.instituteId;
     const subject = (req.query.subject as string) || 'Physics';
     const page = Math.max(1, parseInt(req.query.page as string) || 1);
     const limit = Math.min(50, Math.max(1, parseInt(req.query.limit as string) || 20));
@@ -33,8 +29,8 @@ export const getQuestions = async (req: Request, res: Response) => {
 
     const Model = getQuestionModel(subject);
 
-    // Build filter
-    const filter: any = {};
+    // Build filter — always scoped to this institute
+    const filter: any = { instituteId };
     if (search) {
       filter.questionText = { $regex: search, $options: 'i' };
     }
@@ -75,29 +71,35 @@ export const getQuestions = async (req: Request, res: Response) => {
 /**
  * GET /api/v1/questions/stats
  * 
- * Returns counts and chapter breakdowns for all three subjects.
+ * Returns counts and chapter breakdowns for admin's institute only.
  */
-export const getQuestionStats = async (_req: Request, res: Response) => {
+export const getQuestionStats = async (req: AdminRequest, res: Response) => {
   try {
+    const instituteId = req.admin!.instituteId;
+    const instFilter = { instituteId };
+
     const [physicsCount, chemistryCount, biologyCount] = await Promise.all([
-      PhysicsQuestion.countDocuments(),
-      ChemistryQuestion.countDocuments(),
-      BiologyQuestion.countDocuments()
+      PhysicsQuestion.countDocuments(instFilter),
+      ChemistryQuestion.countDocuments(instFilter),
+      BiologyQuestion.countDocuments(instFilter)
     ]);
 
-    // Chapter breakdowns (unwind chapter arrays)
+    // Chapter breakdowns scoped to institute
     const [physicsChapters, chemistryChapters, biologyChapters] = await Promise.all([
       PhysicsQuestion.aggregate([
+        { $match: instFilter },
         { $unwind: '$chapter' },
         { $group: { _id: '$chapter', count: { $sum: 1 } } },
         { $sort: { count: -1 } }
       ]),
       ChemistryQuestion.aggregate([
+        { $match: instFilter },
         { $unwind: '$chapter' },
         { $group: { _id: '$chapter', count: { $sum: 1 } } },
         { $sort: { count: -1 } }
       ]),
       BiologyQuestion.aggregate([
+        { $match: instFilter },
         { $unwind: '$chapter' },
         { $group: { _id: '$chapter', count: { $sum: 1 } } },
         { $sort: { count: -1 } }
@@ -123,15 +125,14 @@ export const getQuestionStats = async (_req: Request, res: Response) => {
 };
 
 /**
- * GET /api/v1/questions/units
- * 
- * Returns distinct units for a given subject.
+ * GET /api/v1/questions/units — scoped to admin's institute
  */
-export const getUnits = async (req: Request, res: Response) => {
+export const getUnits = async (req: AdminRequest, res: Response) => {
   try {
+    const instituteId = req.admin!.instituteId;
     const subject = (req.query.subject as string) || 'Physics';
     const Model = getQuestionModel(subject);
-    const units = await Model.distinct('unit');
+    const units = await Model.distinct('unit', { instituteId });
     res.status(200).json(units.filter(Boolean).sort());
   } catch (error: any) {
     res.status(500).json({ message: error.message });
@@ -139,17 +140,17 @@ export const getUnits = async (req: Request, res: Response) => {
 };
 
 /**
- * GET /api/v1/questions/chapters
- * 
- * Returns distinct chapters for a given subject (and optionally unit).
+ * GET /api/v1/questions/chapters — scoped to admin's institute
  */
-export const getChapters = async (req: Request, res: Response) => {
+export const getChapters = async (req: AdminRequest, res: Response) => {
   try {
+    const instituteId = req.admin!.instituteId;
     const subject = (req.query.subject as string) || 'Physics';
     const unit = req.query.unit as string;
     const Model = getQuestionModel(subject);
     
-    const filter = unit ? { unit } : {};
+    const filter: any = { instituteId };
+    if (unit) filter.unit = unit;
     let chapters = await Model.distinct('chapter', filter);
     chapters = chapters.filter(Boolean);
 
@@ -167,12 +168,11 @@ export const getChapters = async (req: Request, res: Response) => {
 };
 
 /**
- * GET /api/v1/questions/topics
- * 
- * Returns distinct topics for a given subject and chapter.
+ * GET /api/v1/questions/topics — scoped to admin's institute
  */
-export const getTopics = async (req: Request, res: Response) => {
+export const getTopics = async (req: AdminRequest, res: Response) => {
   try {
+    const instituteId = req.admin!.instituteId;
     const subject = (req.query.subject as string) || 'Physics';
     const chapter = req.query.chapter as string;
     
@@ -181,7 +181,7 @@ export const getTopics = async (req: Request, res: Response) => {
     }
 
     const Model = getQuestionModel(subject);
-    const topics = await Model.distinct('topic', { chapter });
+    const topics = await Model.distinct('topic', { instituteId, chapter });
     res.status(200).json(topics.filter(Boolean).sort());
   } catch (error: any) {
     res.status(500).json({ message: error.message });

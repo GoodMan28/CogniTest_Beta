@@ -1,0 +1,709 @@
+{
+  "physics": {
+    "Mechanics": [
+      "Kinematics",
+      "Projectile Motion",
+      "Laws of Motion",
+      "Friction",
+      "Circular Motion",
+      "Work, Energy and Power",
+      "Center of Mass",
+      "Collisions",
+      "Rotational Dynamics",
+      "Gravitation",
+      "Simple Harmonic Motion",
+      "Fluid Mechanics",
+      "Properties of Matter",
+      "Elasticity",
+      "Viscosity",
+      "Surface Tension"
+    ],
+    "Thermodynamics": [
+      "Kinetic Theory of Gases",
+      "Specific Heat",
+      "Polytropic Processes",
+      "First Law of Thermodynamics",
+      "Second Law of Thermodynamics",
+      "Carnot Engine",
+      "Heat Transfer",
+      "Isothermal Process",
+      "Calorimetry",
+      "Latent Heat",
+      "Newton's Law of Cooling",
+      "Radiation",
+      "Wien's Displacement Law",
+      "Cyclic Processes",
+      "Work Done",
+      "Maxwell-Boltzmann Distribution",
+      "Entropy",
+      "Free Expansion",
+      "Refrigerator",
+      "Thermal Conduction",
+      "Adiabatic Process",
+      "Thermal Expansion",
+      "Simple Pendulum",
+      "Isobaric Process",
+      "Mean Free Path",
+      "Spring-Piston System",
+      "Bimetallic Strip",
+      "Effusion",
+      "Formation of Ice",
+      "T-S Diagram",
+      "Isochoric Process",
+      "Solar Constant",
+      "Degrees of Freedom",
+      "Enthalpy",
+      "Stefan-Boltzmann Law"
+    ],
+    "Electromagnetism": [
+      "Electrostatics",
+      "Electric Field",
+      "Electric Potential",
+      "Electric Dipole",
+      "Work and Energy",
+      "Gauss Law",
+      "Electric Flux",
+      "Conductors",
+      "Capacitance",
+      "Dielectrics",
+      "Circuit Theory",
+      "Current Electricity",
+      "Resistance",
+      "RC Circuits",
+      "Drift Velocity",
+      "Magnetic Effects of Current",
+      "Biot-Savart Law",
+      "Ampere's Law",
+      "Force on Charge",
+      "Magnetism",
+      "Magnetic Dipole",
+      "Electromagnetic Induction",
+      "Motional EMF",
+      "Faraday's Law",
+      "LR Circuits",
+      "Alternating Current",
+      "Resonance",
+      "Power in AC",
+      "Electromagnetic Waves",
+      "Poynting Vector",
+      "Wave Equation",
+      "Boundary Value Problems",
+      "Kirchhoff's Laws",
+      "Lorentz Force",
+      "Self Induction",
+      "Transformers",
+      "Displacement Current",
+      "LC Oscillations"
+    ],
+    "Modern Physics": [
+      "Photoelectric Effect",
+      "Matter Waves",
+      "Bohr Model",
+      "Atomic Structure",
+      "Radioactivity",
+      "Successive Disintegration",
+      "Nuclear Physics",
+      "Binding Energy",
+      "X-Rays",
+      "Power and Intensity",
+      "Q-Value",
+      "Probability",
+      "Electromagnetism",
+      "Photon Excitation",
+      "Fission",
+      "Continuous X-Rays",
+      "Stopping Potential Graph",
+      "Nuclear Density",
+      "Positronium",
+      "Carbon Dating",
+      "Microscope Resolution",
+      "Hydrogen Spectrum",
+      "Mixture of Isotopes",
+      "Characteristic X-Rays",
+      "Relativistic Electrons",
+      "Alpha Decay",
+      "Force on Surface"
+    ],
+    "Optics": [
+      "Ray Optics",
+      "Lenses and Mirrors",
+      "Wave Optics",
+      "Interference",
+      "YDSE",
+      "Prism",
+      "Plane Mirror",
+      "Polarization",
+      "Refraction at Spherical Surfaces",
+      "Optical Instruments",
+      "Telescope",
+      "Diffraction",
+      "Lenses",
+      "Total Internal Reflection",
+      "Lens Combination",
+      "Thin Film Interference",
+      "Doppler Effect for Light",
+      "Dispersion",
+      "Resolving Power",
+      "Displacement Method",
+      "Fresnel Biprism",
+      "Refraction at Plane Surfaces",
+      "Variable Refractive Index",
+      "Achromatic Combination",
+      "Defects of Vision",
+      "Multiple Images",
+      "Intensity in Interference",
+      "Reflection Vector Form",
+      "Lens Maker's Formula",
+      "Refraction",
+      "Velocity of Image"
+    ],
+    "Units and Measurements": [
+      "Basic Mathematics"
+    ],
+    "Wave Optics": [
+      "Polarization"
+    ],
+    "Magnetism and Matter": [
+      "Magnetic Dipole"
+    ],
+    "Dual Nature of Radiation and Matter": [
+      "Matter Waves",
+      "Photoelectric Effect"
+    ],
+    "Atoms": [
+      "Bohr Model"
+    ],
+    "Work, Energy and Power": [
+      "Work, Energy and Power",
+      "Circular Motion"
+    ],
+    "Current Electricity": [
+      "Resistance",
+      "Circuit Theory"
+    ],
+    "Kinetic Theory": [
+      "Kinetic Theory of Gases"
+    ],
+    "Ray Optics and Optical Instruments": [
+      "Lens Combination",
+      "Optical Instruments"
+    ],
+    "Electromagnetic Induction": [
+      "Self Induction"
+    ],
+    "Gravitation": [
+      "Gravitation"
+    ],
+    "Semiconductor Electronics": [
+      "Alternating Current",
+      "Logic Gates"
+    ],
+    "Kinematics": [
+      "1-D Motion"
+    ],
+    "System of Particles and Rotational Motion": [
+      "Rotational Dynamics",
+      "Collisions"
+    ],
+    "Electromagnetic Waves": [
+      "Electromagnetic Waves",
+      "Displacement Current"
+    ],
+    "Electrostatics": [
+      "Electrostatics",
+      "Electric Dipole"
+    ],
+    "Moving Charges and Magnetism": [
+      "Lorentz Force"
+    ],
+    "Mechanical Properties of Fluids": [
+      "Surface Tension",
+      "Properties of Matter"
+    ],
+    "Waves": [
+      "Wave Equation"
+    ],
+    "Thermal Properties of Matter": [
+      "Thermal Conduction"
+    ],
+    "Oscillations": [
+      "Simple Harmonic Motion"
+    ],
+    "Electrostatic Potential and Capacitance": [
+      "Capacitance"
+    ],
+    "Laws of Motion": [
+      "Friction"
+    ],
+    "Alternating Current": [
+      "Alternating Current"
+    ]
+  },
+  "chemistry": {
+    "Physical Chemistry": [
+      "Mole Concept",
+      "Stoichiometry",
+      "Atomic Structure",
+      "Bohr Model",
+      "States of Matter",
+      "Real Gases",
+      "Thermodynamics",
+      "Gibbs Free Energy",
+      "Chemical Equilibrium",
+      "Le Chatelier's Principle",
+      "Ionic Equilibrium",
+      "Solubility Product",
+      "Redox Reactions",
+      "Titration",
+      "Solid State",
+      "Defects",
+      "Solutions",
+      "Colligative Properties",
+      "Electrochemistry",
+      "Nernst Equation",
+      "Chemical Kinetics",
+      "Arrhenius Equation",
+      "Surface Chemistry",
+      "Adsorption",
+      "Eudiometry",
+      "Quantum Mechanics",
+      "Thermochemistry",
+      "Simultaneous Equilibria",
+      "Osmotic Pressure",
+      "Electrolysis",
+      "Complex Reactions",
+      "Void Calculations",
+      "Reversible Processes",
+      "Equilibrium Constants",
+      "Salt Hydrolysis",
+      "Raoult's Law",
+      "Conductance",
+      "First Order Reactions",
+      "Adsorption Isotherms",
+      "Photoelectric Effect",
+      "Entropy",
+      "Balancing Equations",
+      "Crystal Lattice",
+      "Work Calculation",
+      "Heisenberg Uncertainty Principle",
+      "Faraday's Laws of Electrolysis",
+      "Crystal Density",
+      "Kinetic Theory of Gases",
+      "Concentration Terms",
+      "Equivalent Concept",
+      "Standard Electrode Potentials",
+      "Quantum Numbers",
+      "Buffer Solutions",
+      "Void Allocation",
+      "Concentration Units"
+    ],
+    "Organic Chemistry": [
+      "General Organic Chemistry",
+      "Aromaticity",
+      "Electronic Effects",
+      "Isomerism",
+      "Stereochemistry",
+      "Hydrocarbons",
+      "Alkynes",
+      "Alkenes",
+      "Alkyl Halides",
+      "Elimination Reactions",
+      "Nucleophilic Substitution",
+      "Alcohols",
+      "Dehydration",
+      "Ethers",
+      "Chemical Properties",
+      "Phenols",
+      "Electrophilic Aromatic Substitution",
+      "Aldehydes and Ketones",
+      "Cannizzaro Reaction",
+      "Aldol Condensation",
+      "Carboxylic Acids",
+      "Chemical Reactions",
+      "Amines",
+      "Preparation Methods",
+      "Biomolecules",
+      "Carbohydrates",
+      "Polymers",
+      "Polymerization",
+      "Chemistry in Everyday Life",
+      "Medicines",
+      "Practical Organic Chemistry",
+      "Quantitative Analysis",
+      "Haloform Reaction",
+      "Alcohols, Phenols and Ethers",
+      "Epoxide Ring Opening",
+      "Decarboxylation",
+      "Diazonium Salts",
+      "Qualitative Analysis",
+      "Reduction Reactions",
+      "Benzene",
+      "Haloarenes",
+      "Nucleophilic Aromatic Substitution",
+      "Condensation Polymers",
+      "Ozonolysis",
+      "Reactions",
+      "Drugs",
+      "Amino Acids",
+      "Grignard Reactions"
+    ],
+    "Inorganic Chemistry": [
+      "Coordination Compounds",
+      "Bonding in Coordination Compounds",
+      "p-Block Elements",
+      "Group 15 Elements",
+      "d and f Block Elements",
+      "Compounds of Transition Elements",
+      "Chemical Bonding and Molecular Structure",
+      "Molecular Orbital Theory",
+      "Isomerism in Coordination Compounds",
+      "Classification of Elements and Periodicity",
+      "Ionization Enthalpy",
+      "Group 18 Elements",
+      "VSEPR Theory",
+      "Potassium Dichromate",
+      "s-Block Elements",
+      "Alkaline Earth Metals",
+      "Principles and Processes of Isolation of Elements",
+      "Refining",
+      "Group 16 Elements",
+      "Nomenclature of Coordination Compounds",
+      "Hydrogen",
+      "Water and Heavy Water",
+      "Qualitative Analysis",
+      "Acid Radicals",
+      "Group 13 Elements",
+      "Dipole Moment",
+      "Lanthanoids",
+      "Magnetic Properties",
+      "Crystal Field Theory",
+      "Group 17 Elements",
+      "Electron Gain Enthalpy",
+      "Alkali Metals",
+      "General Principles and Processes of Isolation of Elements",
+      "Thermodynamic Principles of Metallurgy",
+      "Salt Analysis",
+      "Hydrogen Peroxide",
+      "Bonding in Metal Carbonyls",
+      "Group 14 Elements",
+      "Potassium Permanganate",
+      "Molecular Geometry",
+      "Cation Analysis",
+      "Metallurgy",
+      "Catalytic Properties",
+      "Water Softening"
+    ],
+    "The Solid State": [
+      "Magnetic Properties"
+    ],
+    "Chemical Equilibrium": [
+      "Equilibrium Constant"
+    ],
+    "Organic Chemistry - Some Basic Principles and Techniques": [
+      "Isomerism",
+      "Qualitative Analysis",
+      "General Organic Chemistry"
+    ],
+    "Chemical Bonding and Molecular Structure": [
+      "Molecular Orbital Theory",
+      "Bond Order",
+      "Dipole Moment"
+    ],
+    "Aldehydes, Ketones and Carboxylic Acids": [
+      "Preparation of Aldehydes",
+      "Aldehydes and Ketones",
+      "Carboxylic Acids"
+    ],
+    "Electrochemistry": [
+      "Electrochemistry"
+    ],
+    "Biomolecules": [
+      "Biomolecules"
+    ],
+    "Coordination Compounds": [
+      "Coordination Compounds",
+      "Crystal Field Theory",
+      "Magnetic Properties"
+    ],
+    "Hydrocarbons": [
+      "Hydrocarbons",
+      "Benzene"
+    ],
+    "Equilibrium": [
+      "Ionic Equilibrium",
+      "Le Chatelier's Principle"
+    ],
+    "Some Basic Concepts of Chemistry": [
+      "Mole Concept"
+    ],
+    "The p-Block Elements": [
+      "p-Block Elements"
+    ],
+    "Structure of Atom": [
+      "Atomic Structure"
+    ],
+    "Amines": [
+      "Amines",
+      "Diazonium Salts"
+    ],
+    "Classification of Elements and Periodicity in Properties": [
+      "Classification of Elements and Periodicity"
+    ],
+    "Thermodynamics": [
+      "Thermochemistry"
+    ],
+    "The d- and f-Block Elements": [
+      "d and f Block Elements"
+    ],
+    "Haloalkanes and Haloarenes": [
+      "Nucleophilic Substitution"
+    ],
+    "Chemical Kinetics": [
+      "First Order Reactions"
+    ],
+    "Solutions": [
+      "Colligative Properties",
+      "Solutions",
+      "Raoult's Law"
+    ],
+    "Qualitative Analysis": [
+      "Cation Analysis"
+    ],
+    "Atomic Structure": [
+      "Bohr Model"
+    ],
+    "General Organic Chemistry": [
+      "Qualitative Analysis"
+    ],
+    "Thermochemistry": [
+      "Thermochemistry"
+    ],
+    "Redox Reactions": [
+      "Redox Reactions"
+    ]
+  },
+  "biology": {
+    "Botany - Plant Physiology": [
+      "Photosynthesis in Higher Plants",
+      "C4 Pathway",
+      "Respiration in Plants",
+      "Glycolysis and Krebs Cycle",
+      "Transport in Plants",
+      "Transpiration Pull and Water Movement",
+      "Mineral Nutrition",
+      "Essential Elements and Deficiency Symptoms",
+      "Plant Growth and Development",
+      "Photoperiodism and Vernalization",
+      "Chemiosmotic Hypothesis",
+      "Respiratory Quotient",
+      "Plant Growth Regulators",
+      "Water Potential",
+      "Photorespiration"
+    ],
+    "Botany - Cell Structure": [
+      "Cell Membrane",
+      "Fluid Mosaic Model",
+      "Endomembrane System",
+      "Golgi Apparatus",
+      "Mitochondria",
+      "Structure and Function",
+      "Plastids",
+      "Chloroplast Structure",
+      "Ribosomes",
+      "Cell Organelles",
+      "Nucleus",
+      "Chromatin and Chromosomes",
+      "Cell Cycle and Cell Division",
+      "Meiosis",
+      "Cell Wall",
+      "Plant Cell Wall Structure",
+      "Cytoskeleton",
+      "Cilia and Flagella",
+      "Mitosis and Interphase"
+    ],
+    "Botany - Ecology": [
+      "Organisms and Populations",
+      "Population Interactions",
+      "Ecosystem",
+      "Ecological Pyramids",
+      "Biodiversity and Conservation",
+      "Species-Area Relationship",
+      "Environmental Issues",
+      "Biomagnification",
+      "Population Growth Models",
+      "Nutrient Cycling",
+      "Loss of Biodiversity",
+      "Global Warming and Greenhouse Effect",
+      "Adaptations",
+      "Ecological Succession"
+    ],
+    "Zoology - Human Physiology": [
+      "Neural Control and Coordination",
+      "Action Potential and Synaptic Transmission",
+      "Chemical Coordination and Integration",
+      "Hypothalamic and Pituitary Hormones",
+      "Breathing and Exchange of Gases",
+      "Transport of Gases",
+      "Body Fluids and Circulation",
+      "Cardiac Cycle and ECG",
+      "Excretory Products and Their Elimination",
+      "Counter-Current Mechanism",
+      "Locomotion and Movement",
+      "Muscle Contraction",
+      "Digestion and Absorption",
+      "Gastrointestinal Hormones and Enzymes",
+      "Thyroid and Parathyroid Hormones",
+      "Eye and Ear Anatomy",
+      "Blood Grouping and Coagulation"
+    ],
+    "Zoology - Genetics and Evolution": [
+      "Principles of Inheritance and Variation",
+      "Chromosomal Theory of Inheritance",
+      "Molecular Basis of Inheritance",
+      "DNA Replication",
+      "Pedigree Analysis and Genetic Disorders",
+      "Lac Operon Regulation",
+      "Evolution",
+      "Hardy-Weinberg Equilibrium",
+      "Transcription and Genetic Code",
+      "Origin of Life and Evidences",
+      "Chromosomal Disorders",
+      "Adaptive Radiation and Natural Selection",
+      "DNA Fingerprinting"
+    ],
+    "Zoology - Animal Kingdom": [
+      "Basis of Classification",
+      "Coelom and Symmetry",
+      "Porifera and Cnidaria",
+      "Water Transport System",
+      "Ctenophora",
+      "Comb Jellies",
+      "Annelida and Arthropoda",
+      "Excretory Structures",
+      "Mollusca",
+      "Body Features and Radula",
+      "Echinodermata",
+      "Water Vascular System",
+      "Hemichordata",
+      "Stomochord",
+      "Chordata",
+      "Subphyla and General Characteristics",
+      "Vertebrata",
+      "Cyclostomata",
+      "Aves and Mammalia",
+      "Respiration and Air Sacs"
+    ],
+    "Chemical Coordination and Integration": [
+      "Chemical Coordination and Integration",
+      "Hypothalamic and Pituitary Hormones"
+    ],
+    "Biotechnology: Principles and Processes": [
+      "Biotechnology: Principles and Processes",
+      "Bioreactors"
+    ],
+    "Sexual Reproduction in Flowering Plants": [
+      "Structure and Function",
+      "Meiosis",
+      "Anatomy of Flowering Plants",
+      "Sexual Reproduction in Flowering Plants"
+    ],
+    "Plant Kingdom": [
+      "Biological Classification",
+      "Plant Kingdom"
+    ],
+    "Molecular Basis of Inheritance": [
+      "Transcription and Genetic Code",
+      "Chromatin and Chromosomes",
+      "Molecular Basis of Inheritance"
+    ],
+    "Ecosystem": [
+      "Ecosystem"
+    ],
+    "Morphology of Flowering Plants": [
+      "Anatomy of Flowering Plants"
+    ],
+    "Biodiversity and Conservation": [
+      "Biodiversity and Conservation"
+    ],
+    "Biomolecules": [
+      "Biomolecules"
+    ],
+    "Human Reproduction": [
+      "Principles of Inheritance and Variation",
+      "Structure and Function",
+      "Meiosis",
+      "Reproduction",
+      "Human Reproduction"
+    ],
+    "Human Health and Disease": [
+      "Blood",
+      "Structure and Function",
+      "Human Health and Disease"
+    ],
+    "Structural Organisation in Animals": [
+      "Animal Kingdom",
+      "Amphibia"
+    ],
+    "Principles of Inheritance and Variation": [
+      "Pedigree Analysis and Genetic Disorders",
+      "Principles of Inheritance and Variation"
+    ],
+    "Animal Kingdom": [
+      "Echinodermata",
+      "Cyclostomata",
+      "Chordata",
+      "Animal Kingdom"
+    ],
+    "Plant Growth and Development": [
+      "Plant Growth Regulators"
+    ],
+    "Organisms and Populations": [
+      "Population Growth Models",
+      "Organisms and Populations",
+      "Population Interactions"
+    ],
+    "Biotechnology and its Applications": [
+      "Biotechnology and its Applications"
+    ],
+    "Cell: The Unit of Life": [
+      "Golgi Apparatus",
+      "Cell Organelles",
+      "Ribosomes"
+    ],
+    "Cell Cycle and Cell Division": [
+      "Mitosis and Interphase"
+    ],
+    "Photosynthesis in Higher Plants": [
+      "Photosynthesis in Higher Plants"
+    ],
+    "Evolution": [
+      "Evolution",
+      "Origin of Life and Evidences"
+    ],
+    "Microbes in Human Welfare": [
+      "Biotechnology: Principles and Processes",
+      "Microbes in Human Welfare"
+    ],
+    "Biological Classification": [
+      "Biological Classification"
+    ],
+    "Human Physiology": [
+      "Breathing and Exchange of Gases"
+    ],
+    "Reproductive Health": [
+      "Amniocentesis and MTP"
+    ],
+    "Anatomy of Flowering Plants": [
+      "Anatomy of Flowering Plants"
+    ],
+    "Excretory Products and their Elimination": [
+      "Excretory Products and Their Elimination"
+    ],
+    "Body Fluids and Circulation": [
+      "Body Fluids and Circulation"
+    ],
+    "Respiration in Plants": [
+      "Respiration in Plants"
+    ]
+  }
+}

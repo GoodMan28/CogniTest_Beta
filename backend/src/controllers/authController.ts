@@ -19,7 +19,8 @@ export const signup = async (req: Request, res: Response) => {
       return res.status(400).json({ message: 'Student with this enrollment number already exists' });
     }
 
-    const institute = await Institute.findOne();
+    const adminInstId = process.env.ADMIN_INSTITUTE_ID;
+    const institute = adminInstId ? await Institute.findById(adminInstId) : await Institute.findOne();
     if (!institute) {
       return res.status(500).json({ message: 'Institute not configured. Cannot create student.' });
     }
@@ -126,3 +127,73 @@ export const getMe = async (req: Request, res: Response) => {
     res.status(401).json({ message: 'Invalid token' });
   }
 };
+
+// ─── Admin Authentication ─────────────────────────────────────────
+
+import { Admin } from '../models/Admin';
+
+export const adminLogin = async (req: Request, res: Response) => {
+  try {
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+      return res.status(400).json({ message: 'Email and password are required' });
+    }
+
+    const admin = await Admin.findOne({ email: email.toLowerCase().trim() });
+    if (!admin) {
+      return res.status(400).json({ message: 'Invalid credentials' });
+    }
+
+    const isMatch = await bcrypt.compare(password, admin.password);
+    if (!isMatch) {
+      return res.status(400).json({ message: 'Invalid credentials' });
+    }
+
+    const token = jsonwebtoken.sign(
+      { id: admin._id, instituteId: admin.instituteId.toString(), role: 'admin' },
+      JWT_SECRET,
+      { expiresIn: '7d' }
+    );
+
+    res.status(200).json({
+      token,
+      admin: {
+        _id: admin._id,
+        name: admin.name,
+        email: admin.email,
+        instituteId: admin.instituteId
+      }
+    });
+  } catch (error) {
+    console.error('Admin login error:', error);
+    res.status(500).json({ message: 'Server error during admin login' });
+  }
+};
+
+export const adminGetMe = async (req: Request, res: Response) => {
+  try {
+    const authHeader = req.headers.authorization;
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      return res.status(401).json({ message: 'No token provided' });
+    }
+
+    const token = authHeader.split(' ')[1];
+    const decoded = jsonwebtoken.verify(token, JWT_SECRET) as any;
+
+    if (decoded.role !== 'admin') {
+      return res.status(403).json({ message: 'Not an admin token' });
+    }
+
+    const admin = await Admin.findById(decoded.id).select('-password');
+    if (!admin) {
+      return res.status(404).json({ message: 'Admin not found' });
+    }
+
+    res.status(200).json(admin);
+  } catch (error) {
+    console.error('Admin get me error:', error);
+    res.status(401).json({ message: 'Invalid token' });
+  }
+};
+

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import adminApi from '../api/adminApi';
 
 const StudentDirectory = () => {
   const [students, setStudents] = useState<any[]>([]);
@@ -10,7 +10,7 @@ const StudentDirectory = () => {
   useEffect(() => {
     const fetchStudents = async () => {
       try {
-        const res = await axios.get('/api/v1/students', {
+        const res = await adminApi.get('/api/v1/students', {
           params: { search, batch: batchFilter }
         });
         setStudents(res.data);

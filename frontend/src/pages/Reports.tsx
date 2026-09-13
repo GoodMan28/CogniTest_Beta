@@ -1,23 +1,65 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import adminApi from '../api/adminApi';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
 import { useLocation, useNavigate } from 'react-router-dom';
 // import katex from 'katex';
 import 'katex/dist/katex.min.css';
-import mockRecommendations from '../data/mockRecommendations.json';
 
+import mockRecommendations from '../data/mockRecommendations.json';
 import LatexText from '../components/LatexText';
+import type { PracticeQuestion, ReportAnalysis } from '../types/reportAnalysis';
+import ScoreboardSection from '../components/analysis/ScoreboardSection';
+import SubjectWiseSection from '../components/analysis/SubjectWiseSection';
+import HitRateSection from '../components/analysis/HitRateSection';
+import BatchComparisonSection from '../components/analysis/BatchComparisonSection';
+import DifficultySection from '../components/analysis/DifficultySection';
+import QuestionTypeSection from '../components/analysis/QuestionTypeSection';
+import QuestionBreakdownSection from '../components/analysis/QuestionBreakdownSection';
+import FixItZoneSection from '../components/analysis/FixItZoneSection';
+import DrillDownSection from '../components/analysis/DrillDownSection';
+import StrengthsSection from '../components/analysis/StrengthsSection';
+import RadarChart from '../components/analysis/RadarChart';
+import { getCategory, SUBJECT_CATEGORIES } from '../utils/radarUtils';
+
+// Shared "deep analysis is on its way / failed" placeholder for every
+// section that depends on the /analysis endpoint. Rendered once, right
+// after Subject Performance, rather than duplicated per section. Declared
+// at module scope (not inside Reports) so it isn't re-created every render.
+const AnalysisPlaceholder = ({ loading, error, onRetry }: { loading: boolean; error: string | null; onRetry: () => void }) => (
+  <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8 flex flex-col items-center justify-center text-center">
+    {loading ? (
+      <>
+        <div className="w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mb-3" />
+        <p className="text-sm font-bold text-gray-600">Preparing deep analysis…</p>
+        <p className="text-xs text-gray-400 mt-1">Scoreboard, difficulty, drill-down and more are on their way.</p>
+      </>
+    ) : (
+      <>
+        <span className="material-symbols-outlined text-red-400 text-3xl mb-2">error</span>
+        <p className="text-sm font-bold text-gray-700">Deep analysis unavailable</p>
+        <p className="text-xs text-gray-400 mt-1 mb-4">{error || 'Something went wrong loading the detailed breakdown.'}</p>
+        <button
+          onClick={onRetry}
+          className="px-4 py-1.5 bg-gray-900 text-white rounded-lg text-xs font-bold hover:bg-gray-800 transition-colors"
+        >
+          Retry
+        </button>
+      </>
+    )}
+  </div>
+);
 
 const Reports = () => {
   const { studentId } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
   const isAdmin = location.pathname.startsWith('/admin');
-
+  const api = isAdmin ? adminApi : axios;
   const [institute, setInstitute] = useState<{ name: string; logoUrl?: string; themeColor?: string } | null>(null);
 
   useEffect(() => {
-    axios.get('/api/v1/institute')
+    api.get('/api/v1/institute')
       .then(res => setInstitute(res.data))
       .catch(err => console.error('Failed to fetch institute', err));
   }, []);
@@ -31,8 +73,6 @@ const Reports = () => {
   const [analyticsLoading, setAnalyticsLoading] = useState(false);
   const [selectedSubject, setSelectedSubject] = useState<'Physics' | 'Chemistry' | 'Biology'>('Physics');
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
-  const [tooltipPos, setTooltipPos] = useState<{ x: number; y: number } | null>(null);
-  const [tooltipContent, setTooltipContent] = useState<any | null>(null);
 
   // Admin Sample PDF states
   const [samplePdfData, setSamplePdfData] = useState<{ test: any; questions: any[] } | null>(null);
@@ -41,7 +81,7 @@ const Reports = () => {
   const handleViewSamplePdf = async (testId: string) => {
     try {
       setSamplePdfLoading(testId);
-      const res = await axios.get(`/api/v1/reports/test/${testId}/questions`);
+      const res = await api.get(`/api/v1/reports/test/${testId}/questions`);
       setSamplePdfData(res.data);
     } catch (error) {
       console.error('Failed to fetch test questions for PDF:', error);
@@ -58,7 +98,7 @@ const Reports = () => {
   const handlePrintAnalytics = async (testId: string) => {
     try {
       setPrintAnalyticsLoading(testId);
-      const res = await axios.get(`/api/v1/reports/test/${testId}/analytics`);
+      const res = await api.get(`/api/v1/reports/test/${testId}/analytics`);
       setPrintAnalyticsData(res.data);
     } catch (error) {
       console.error('Failed to fetch analytics for print:', error);
@@ -71,7 +111,7 @@ const Reports = () => {
   const handleViewAnalytics = async (testId: string) => {
     try {
       setAnalyticsLoading(true);
-      const res = await axios.get(`/api/v1/reports/test/${testId}/analytics`);
+      const res = await api.get(`/api/v1/reports/test/${testId}/analytics`);
       setViewingAnalyticsTest(res.data);
     } catch (error) {
       console.error('Failed to fetch test analytics:', error);
@@ -81,56 +121,7 @@ const Reports = () => {
     }
   };
 
-  const getPhysicsCategory = (chapter: string): string => {
-    const ch = chapter.toLowerCase();
-    if (ch.includes('kinematics') || ch.includes('motion') || ch.includes('work') || ch.includes('rotational') || ch.includes('gravitation') || ch.includes('mechanics')) {
-      return 'Mechanics';
-    }
-    if (ch.includes('thermo') || ch.includes('heat') || ch.includes('ktg') || ch.includes('kinetic theory')) {
-      return 'Thermodynamics';
-    }
-    if (ch.includes('electro') || ch.includes('electricity') || ch.includes('magnet') || ch.includes('current')) {
-      return 'Electrodynamics';
-    }
-    if (ch.includes('optics') || ch.includes('ray') || ch.includes('wave')) {
-      return 'Optics';
-    }
-    return 'Modern Physics';
-  };
 
-  const getChemistryCategory = (chapter: string): string => {
-    const ch = chapter.toLowerCase();
-    if (ch.includes('organic') || ch.includes('hydrocarbon') || ch.includes('haloalkane') || ch.includes('alcohol') || ch.includes('aldehyde') || ch.includes('amine') || ch.includes('ether')) {
-      return 'Organic Chemistry';
-    }
-    if (ch.includes('inorganic') || ch.includes('bonding') || ch.includes('p-block') || ch.includes('d-block') || ch.includes('coordination') || ch.includes('periodic') || ch.includes('metallurgy') || ch.includes('block')) {
-      return 'Inorganic Chemistry';
-    }
-    return 'Physical Chemistry';
-  };
-
-  const getBiologyCategory = (chapter: string): string => {
-    const ch = chapter.toLowerCase();
-    if (ch.includes('cell') || ch.includes('biomolecule') || ch.includes('division')) {
-      return 'Cell Biology';
-    }
-    if (ch.includes('genetics') || ch.includes('inheritance') || ch.includes('evolution') || ch.includes('molecular basis')) {
-      return 'Genetics';
-    }
-    if (ch.includes('human') || ch.includes('digestion') || ch.includes('breathing') || ch.includes('circulation') || ch.includes('excretion') || ch.includes('locomotion') || ch.includes('neural') || ch.includes('chemical coordination') || ch.includes('physiology')) {
-      return 'Human Physiology';
-    }
-    if (ch.includes('plant') || ch.includes('photosynthesis') || ch.includes('respiration in plants') || ch.includes('transport in plants') || ch.includes('mineral nutrition') || ch.includes('growth')) {
-      return 'Plant Physiology';
-    }
-    return 'Ecology';
-  };
-
-  const getCategory = (chapter: string, subject: 'Physics' | 'Chemistry' | 'Biology'): string => {
-    if (subject === 'Physics') return getPhysicsCategory(chapter);
-    if (subject === 'Chemistry') return getChemistryCategory(chapter);
-    return getBiologyCategory(chapter);
-  };
 
   const SUBJECT_THEMES = {
     Physics: {
@@ -171,8 +162,38 @@ const Reports = () => {
       fill: 'fill-amber-500/20',
       stroke: 'stroke-amber-600',
       text: 'text-amber-600'
+    },
+    Mathematics: {
+      color: 'text-orange-600',
+      bg: 'bg-orange-500',
+      border: 'border-orange-200',
+      activeBg: 'bg-orange-500',
+      activeText: 'text-white',
+      progress: 'bg-orange-500',
+      lightBorder: 'border-orange-100',
+      hover: 'hover:bg-orange-50',
+      fill: 'fill-orange-500/20',
+      stroke: 'stroke-orange-600',
+      text: 'text-orange-600'
     }
+  } as const;
+
+  // Neutral fallback so an unmapped subject (a new one added to a test later)
+  // never crashes the review view — falls back to a gray theme.
+  const NEUTRAL_THEME = {
+    color: 'text-gray-600',
+    bg: 'bg-gray-500',
+    border: 'border-gray-200',
+    activeBg: 'bg-gray-500',
+    activeText: 'text-white',
+    progress: 'bg-gray-500',
+    lightBorder: 'border-gray-100',
+    hover: 'hover:bg-gray-50',
+    fill: 'fill-gray-500/20',
+    stroke: 'stroke-gray-600',
+    text: 'text-gray-600'
   };
+  const getTheme = (subject: string) => (SUBJECT_THEMES as Record<string, typeof NEUTRAL_THEME>)[subject] || NEUTRAL_THEME;
 
   // Student states
   const [reports, setReports] = useState<any[]>([]);
@@ -182,25 +203,40 @@ const Reports = () => {
   const [reviewLoading, setReviewLoading] = useState(false);
   const [statusFilter, setStatusFilter] = useState<'all' | 'correct' | 'incorrect' | 'unanswered'>('all');
   const [expandedQuestionId, setExpandedQuestionId] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState<'Overview' | 'Physics' | 'Chemistry' | 'Biology'>('Overview');
-  const [masterySubject, setMasterySubject] = useState<'Physics' | 'Chemistry' | 'Biology'>('Physics');
+  const [activeTab, setActiveTab] = useState<string>('Overview');
+  const [masterySubject, setMasterySubject] = useState<string>('Physics');
+
+  // Deep analysis (Scoreboard, subject/difficulty/type breakdowns, drill-down,
+  // cohort comparison, Fix It Zone) — fetched alongside /review but rendered
+  // independently so the base review view never blocks on it.
+  const [analysis, setAnalysis] = useState<ReportAnalysis | null>(null);
+  const [analysisLoading, setAnalysisLoading] = useState(false);
+  const [analysisError, setAnalysisError] = useState<string | null>(null);
+  const pendingPrintRef = useRef(false);
 
   // Practice Modal State
-  const [practiceModalData, setPracticeModalData] = useState<any[] | null>(null);
+  const [practiceModalData, setPracticeModalData] = useState<PracticeQuestion[] | null>(null);
   const [practiceModalAnswers, setPracticeModalAnswers] = useState<Record<number, string>>({});
+  const [practiceModalTitle, setPracticeModalTitle] = useState('');
+  const [practiceLoading, setPracticeLoading] = useState(false);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const printReportId = params.get('printReportId');
     if (printReportId) {
       setLoading(false);
+      pendingPrintRef.current = true;
       fetchReviewDetails(printReportId).then(() => {
+        // Fallback only — the analysis-ready effect below prints as soon as
+        // /analysis settles, which is normally well under this.
         setTimeout(() => {
+          if (!pendingPrintRef.current) return;
+          pendingPrintRef.current = false;
           window.print();
           if (params.get('closeAfterPrint')) {
             window.close();
           }
-        }, 1000);
+        }, 8000);
       });
       return;
     }
@@ -216,8 +252,13 @@ const Reports = () => {
     } else if (studentId) {
       fetchStudentReports().then(() => {
         if (location.state && (location.state as any).autoPrintReportId) {
+          pendingPrintRef.current = true;
           fetchReviewDetails((location.state as any).autoPrintReportId).then(() => {
-            setTimeout(() => window.print(), 500);
+            setTimeout(() => {
+              if (!pendingPrintRef.current) return;
+              pendingPrintRef.current = false;
+              window.print();
+            }, 8000);
           });
           window.history.replaceState({}, document.title);
         }
@@ -225,9 +266,25 @@ const Reports = () => {
     }
   }, [isAdmin, studentId, location.state]);
 
+  // Prints as soon as the deep analysis has settled (success or error) for a
+  // print flow that is waiting on it, instead of relying purely on the fixed
+  // fallback timers above.
+  useEffect(() => {
+    if (!pendingPrintRef.current || analysisLoading) return;
+    pendingPrintRef.current = false;
+    const params = new URLSearchParams(window.location.search);
+    const timer = setTimeout(() => {
+      window.print();
+      if (params.get('closeAfterPrint')) {
+        window.close();
+      }
+    }, 300);
+    return () => clearTimeout(timer);
+  }, [analysis, analysisError, analysisLoading]);
+
   const fetchTests = async () => {
     try {
-      const res = await axios.get('/api/v1/tests');
+      const res = await api.get('/api/v1/tests');
       setTests(res.data);
       setLoading(false);
     } catch (error) {
@@ -239,7 +296,7 @@ const Reports = () => {
   const fetchStudentReports = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(`/api/v1/reports/student/${studentId}`);
+      const res = await api.get(`/api/v1/reports/student/${studentId}`);
       setReports(res.data);
     } catch (error) {
       console.error('Failed to fetch student reports:', error);
@@ -250,7 +307,7 @@ const Reports = () => {
 
   const handlePublish = async (testId: string) => {
     try {
-      await axios.post(`/api/v1/reports/publish/${testId}`);
+      await api.post(`/api/v1/reports/publish/${testId}`);
       fetchTests();
     } catch (error) {
       console.error('Failed to publish test reports:', error);
@@ -260,7 +317,7 @@ const Reports = () => {
   const fetchReviewDetails = async (reportId: string) => {
     try {
       setReviewLoading(true);
-      const res = await axios.get(`/api/v1/reports/${reportId}/review`);
+      const res = await api.get(`/api/v1/reports/${reportId}/review`);
       setReviewData(res.data);
       setSelectedReportId(reportId);
     } catch (error) {
@@ -268,7 +325,64 @@ const Reports = () => {
     } finally {
       setReviewLoading(false);
     }
+
+    // Deep analysis is fetched separately (and not awaited above) so the
+    // base review renders immediately; sections that depend on it show a
+    // placeholder until this settles.
+    setAnalysis(null);
+    setAnalysisError(null);
+    setAnalysisLoading(true);
+    api.get<ReportAnalysis>(`/api/v1/reports/${reportId}/analysis`)
+      .then(res => setAnalysis(res.data))
+      .catch((err: any) => setAnalysisError(err?.response?.data?.message || 'Deep analysis unavailable'))
+      .finally(() => setAnalysisLoading(false));
   };
+
+  const fetchAnalysis = async (reportId: string) => {
+    setAnalysisError(null);
+    setAnalysisLoading(true);
+    try {
+      const res = await api.get<ReportAnalysis>(`/api/v1/reports/${reportId}/analysis`);
+      setAnalysis(res.data);
+    } catch (err: any) {
+      setAnalysisError(err?.response?.data?.message || 'Deep analysis unavailable');
+    } finally {
+      setAnalysisLoading(false);
+    }
+  };
+
+  const openPractice = async (questionNo: number, label: string) => {
+    if (!selectedReportId) return;
+    setPracticeLoading(true);
+    setPracticeModalTitle(label);
+    setPracticeModalAnswers({});
+    try {
+      const res = await api.get<PracticeQuestion[]>(`/api/v1/reports/${selectedReportId}/questions/${questionNo}/practice`);
+      setPracticeModalData(res.data);
+    } catch (error) {
+      console.error('Failed to fetch practice questions:', error);
+      setPracticeModalData([]);
+    } finally {
+      setPracticeLoading(false);
+    }
+  };
+
+  const saveReason = async (questionNo: number, reason: string) => {
+    if (!selectedReportId) return;
+    await api.put(`/api/v1/reports/${selectedReportId}/questions/${questionNo}/reason`, { reason });
+    setAnalysis(prev => prev
+      ? { ...prev, questions: prev.questions.map(q => q.questionNo === questionNo ? { ...q, reason: reason || null } : q) }
+      : prev);
+  };
+
+  const openQuestionInTab = (subject: string, questionId: string) => {
+    setActiveTab(subject);
+    setStatusFilter('all');
+    setExpandedQuestionId(questionId);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const practiceAll = () => navigate('/student/custom-tests');
 
   const isInitialAnalyticsOpen = location.state && (location.state as any).openTestAnalyticsId && !viewingAnalyticsTest;
 
@@ -285,9 +399,29 @@ const Reports = () => {
     const totalAttempted = correctCount + incorrectCount;
     const accuracy = totalAttempted > 0 ? Math.round((correctCount / totalAttempted) * 100) : 0;
 
-    // Subject Performance Analytics
-    const subjects = ['Physics', 'Chemistry', 'Biology'] as const;
-    const subjectStats = subjects.map(sub => {
+    // Subject Performance Analytics — subjects come from the paper itself
+    // (not a hardcoded NEET list) so a JEE paper's Mathematics tab appears.
+    // When the deep analysis has loaded, its buckets already carry the
+    // correct per-question marking (JEE uses demoMarking overrides); the
+    // +4/-1 fallback below only covers the brief window before it arrives.
+    const subjectList: string[] = analysis
+      ? analysis.subjects.map(s => s.label)
+      : Array.from(new Set<string>(questions.map((q: any) => q.subject))).filter(Boolean);
+
+    const subjectStats = subjectList.map(sub => {
+      const analysisBucket = analysis?.subjects.find(s => s.label === sub);
+      if (analysisBucket) {
+        return {
+          subject: sub,
+          correct: analysisBucket.correct,
+          incorrect: analysisBucket.incorrect,
+          unanswered: analysisBucket.skipped,
+          score: analysisBucket.score,
+          accuracy: analysisBucket.accuracyPct ?? 0,
+          totalQuestions: analysisBucket.questionCount,
+          maxMarks: analysisBucket.maxMarks
+        };
+      }
       const subQs = questions.filter((q: any) => q.subject === sub);
       let c = 0, i = 0, u = 0, score = 0;
       subQs.forEach((q: any) => {
@@ -298,7 +432,7 @@ const Reports = () => {
       const total = c + i + u;
       const attempted = c + i;
       const acc = attempted > 0 ? Math.round((c / attempted) * 100) : 0;
-      return { subject: sub, correct: c, incorrect: i, unanswered: u, score, accuracy: acc, totalQuestions: total };
+      return { subject: sub, correct: c, incorrect: i, unanswered: u, score, accuracy: acc, totalQuestions: total, maxMarks: total * 4 };
     });
 
     // Topic Mastery Analytics
@@ -325,7 +459,7 @@ const Reports = () => {
 
     // Collect all weak chapters across all subjects for question review tagging
     const allWeakChapters = new Set<string>();
-    ['Physics', 'Chemistry', 'Biology'].forEach(sub => {
+    subjectList.forEach(sub => {
       const weak = allTopics.filter(t => t.subject === sub).sort((a, b) => a.accuracy - b.accuracy).slice(0, 2).map(t => t.chapter);
       weak.forEach(w => allWeakChapters.add(w));
     });
@@ -348,12 +482,19 @@ const Reports = () => {
       return q.status === statusFilter;
     });
 
-    // Calculate Real Rank
+    // Calculate Real Rank — prefer the deep-analysis cohort (identical
+    // formula, computed server-side from every report of this test) once
+    // it has loaded; fall back to the client-side computation from
+    // batchScores so the numbers are never blank while analysis is loading.
     let rank = 1;
     let totalBatchStudents = 1;
     let percentile = 100;
 
-    if (batchScores && batchScores.length > 0) {
+    if (analysis) {
+      rank = analysis.cohort.rank;
+      totalBatchStudents = analysis.cohort.size;
+      percentile = analysis.cohort.percentile;
+    } else if (batchScores && batchScores.length > 0) {
       totalBatchStudents = batchScores.length;
       rank = batchScores.filter((s: number) => s > report.score).length + 1;
       const studentsBelow = batchScores.filter((s: number) => s < report.score).length;
@@ -423,7 +564,7 @@ const Reports = () => {
                 <div key={i} className="border border-gray-300 rounded-xl p-4">
                   <div className="flex justify-between items-start mb-3">
                     <h4 className="text-lg font-black text-gray-900">{sub.subject}</h4>
-                    <span className="text-lg font-black text-gray-900">{sub.score} <span className="text-xs font-medium text-gray-500">/ {sub.totalQuestions * 4}</span></span>
+                    <span className="text-lg font-black text-gray-900">{sub.score} <span className="text-xs font-medium text-gray-500">/ {sub.maxMarks}</span></span>
                   </div>
                   <div className="flex justify-between text-xs font-bold text-gray-700">
                     <span>Accuracy:</span>
@@ -486,6 +627,21 @@ const Reports = () => {
               </div>
             </div>
           </div>
+
+          {/* Deep analysis sections (print) — only when the /analysis fetch has resolved */}
+          {analysis && (
+            <div className="space-y-6 mb-8">
+              <ScoreboardSection analysis={analysis} />
+              <SubjectWiseSection analysis={analysis} />
+              <HitRateSection analysis={analysis} />
+              <BatchComparisonSection analysis={analysis} />
+              <DifficultySection analysis={analysis} />
+              <QuestionTypeSection analysis={analysis} />
+              <QuestionBreakdownSection analysis={analysis} />
+              <DrillDownSection analysis={analysis} defaultExpanded />
+              <StrengthsSection analysis={analysis} />
+            </div>
+          )}
 
           <h3 className="text-xl font-bold text-gray-900 mb-4 border-b border-gray-200 pb-2">Complete Question Collection</h3>
 
@@ -559,6 +715,9 @@ const Reports = () => {
                   setStatusFilter('all');
                   setExpandedQuestionId(null);
                   setActiveTab('Overview');
+                  setAnalysis(null);
+                  setAnalysisError(null);
+                  setPracticeModalData(null);
                   fetchStudentReports();
                 }}
                 className="flex items-center gap-1 text-sm font-medium text-gray-500 hover:text-blue-600 transition-colors"
@@ -585,10 +744,10 @@ const Reports = () => {
 
             {/* Tabs */}
             <div className="flex gap-6 border-b border-gray-200 px-2">
-              {['Overview', 'Physics', 'Chemistry', 'Biology'].map(tab => (
+              {['Overview', ...subjectList].map(tab => (
                 <button
                   key={tab}
-                  onClick={() => { setActiveTab(tab as any); setStatusFilter('all'); setExpandedQuestionId(null); }}
+                  onClick={() => { setActiveTab(tab); setStatusFilter('all'); setExpandedQuestionId(null); }}
                   className={`py-3 px-2 text-sm font-bold transition-all border-b-2 ${activeTab === tab
                       ? 'border-blue-600 text-blue-600'
                       : 'border-transparent text-gray-500 hover:text-gray-800'
@@ -627,33 +786,37 @@ const Reports = () => {
                 </div>
               </div>
 
-              {/* Quick Stats Strip */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {[
-                  { label: 'Correct', val: correctCount, color: 'text-green-600', bg: 'bg-green-50', border: 'border-green-100' },
-                  { label: 'Incorrect', val: incorrectCount, color: 'text-red-600', bg: 'bg-red-50', border: 'border-red-100' },
-                  { label: 'Unanswered', val: unansweredCount, color: 'text-gray-600', bg: 'bg-gray-50', border: 'border-gray-200' },
-                  { label: 'Total Questions', val: questions.length, color: 'text-blue-600', bg: 'bg-blue-50', border: 'border-blue-100' }
-                ].map((s, i) => (
-                  <div key={i} className={`p-4 rounded-xl border ${s.bg} ${s.border} flex flex-col justify-center items-center`}>
-                    <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">{s.label}</span>
-                    <span className={`text-2xl font-black ${s.color}`}>{s.val}</span>
-                  </div>
-                ))}
-              </div>
+              {/* Quick Stats Strip — replaced by the Scoreboard section once deep analysis loads */}
+              {analysis ? (
+                <ScoreboardSection analysis={analysis} />
+              ) : (
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                  {[
+                    { label: 'Correct', val: correctCount, color: 'text-green-600', bg: 'bg-green-50', border: 'border-green-100' },
+                    { label: 'Incorrect', val: incorrectCount, color: 'text-red-600', bg: 'bg-red-50', border: 'border-red-100' },
+                    { label: 'Unanswered', val: unansweredCount, color: 'text-gray-600', bg: 'bg-gray-50', border: 'border-gray-200' },
+                    { label: 'Total Questions', val: questions.length, color: 'text-blue-600', bg: 'bg-blue-50', border: 'border-blue-100' }
+                  ].map((s, i) => (
+                    <div key={i} className={`p-4 rounded-xl border ${s.bg} ${s.border} flex flex-col justify-center items-center`}>
+                      <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">{s.label}</span>
+                      <span className={`text-2xl font-black ${s.color}`}>{s.val}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
 
               {/* Subject Performance */}
               <div>
                 <h3 className="text-lg font-black text-gray-800 mb-4 tracking-tight">Subject Performance</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {subjectStats.map((sub, i) => {
-                    const theme = SUBJECT_THEMES[sub.subject as keyof typeof SUBJECT_THEMES];
+                    const theme = getTheme(sub.subject);
                     return (
                       <div key={i} className={`bg-white rounded-xl border ${theme.lightBorder} p-6 shadow-sm relative overflow-hidden group`}>
                         <div className={`absolute top-0 left-0 w-1 h-full ${theme.bg} opacity-50`} />
                         <div className="flex justify-between items-start mb-6">
                           <h4 className={`text-xl font-black ${theme.color}`}>{sub.subject}</h4>
-                          <span className={`text-xl font-black text-gray-900`}>{sub.score} <span className="text-sm font-medium text-gray-400">/ {sub.totalQuestions * 4}</span></span>
+                          <span className={`text-xl font-black text-gray-900`}>{sub.score} <span className="text-sm font-medium text-gray-400">/ {sub.maxMarks}</span></span>
                         </div>
                         <div className="space-y-4">
                           <div>
@@ -676,6 +839,19 @@ const Reports = () => {
                   })}
                 </div>
               </div>
+
+              {analysis ? (
+                <>
+                  <SubjectWiseSection analysis={analysis} />
+                  <HitRateSection analysis={analysis} />
+                </>
+              ) : (
+                <AnalysisPlaceholder
+                  loading={analysisLoading}
+                  error={analysisError}
+                  onRetry={() => selectedReportId && fetchAnalysis(selectedReportId)}
+                />
+              )}
 
               {/* Batch Standing */}
               <div className="mb-8">
@@ -731,6 +907,14 @@ const Reports = () => {
                 </div>
               </div>
 
+              {analysis && (
+                <>
+                  <BatchComparisonSection analysis={analysis} />
+                  <DifficultySection analysis={analysis} />
+                  <QuestionTypeSection analysis={analysis} />
+                </>
+              )}
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {/* Topic Mastery */}
                 <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col">
@@ -741,12 +925,12 @@ const Reports = () => {
                     </div>
                     <select
                       value={masterySubject}
-                      onChange={(e) => setMasterySubject(e.target.value as any)}
+                      onChange={(e) => setMasterySubject(e.target.value)}
                       className="text-sm border border-gray-200 rounded-lg px-3 py-1.5 font-bold text-gray-700 bg-gray-50 outline-none focus:border-blue-500"
                     >
-                      <option value="Physics">Physics</option>
-                      <option value="Chemistry">Chemistry</option>
-                      <option value="Biology">Biology</option>
+                      {subjectList.map(sub => (
+                        <option key={sub} value={sub}>{sub}</option>
+                      ))}
                     </select>
                   </div>
 
@@ -814,6 +998,23 @@ const Reports = () => {
                   </div>
                 </div>
               </div>
+
+              {analysis && (
+                <>
+                  <QuestionBreakdownSection analysis={analysis} onOpenQuestion={openQuestionInTab} />
+                  <FixItZoneSection
+                    key={analysis.reportId}
+                    analysis={analysis}
+                    onSaveReason={isAdmin ? async () => {} : saveReason}
+                    onFixIt={openPractice}
+                    onOpenQuestion={openQuestionInTab}
+                    onPracticeAll={isAdmin ? undefined : practiceAll}
+                    readOnly={isAdmin}
+                  />
+                  <DrillDownSection analysis={analysis} />
+                  <StrengthsSection analysis={analysis} />
+                </>
+              )}
 
             </div>
           ) : (
@@ -925,12 +1126,21 @@ const Reports = () => {
                                           {q.status === 'incorrect' && (mockRecommendations as any)[q.questionId] && (
                                             <button
                                               onClick={() => {
+                                                setPracticeModalTitle('');
                                                 setPracticeModalData((mockRecommendations as any)[q.questionId]);
                                                 setPracticeModalAnswers({});
                                               }}
                                               className="ml-2 px-3 py-1 bg-amber-100 hover:bg-amber-200 text-amber-800 rounded-full font-bold text-xs transition-colors flex items-center gap-1.5 border border-amber-300 shadow-sm"
                                             >
-                                              💡 View Recommended Practice
+                                              <span className="material-symbols-outlined text-[18px] text-amber-600">lightbulb</span> View Recommended Practice
+                                            </button>
+                                          )}
+                                          {q.status !== 'correct' && (
+                                            <button
+                                              onClick={() => openPractice(q.questionNo, `Q${q.questionNo} · ${q.subject} · ${q.chapter}`)}
+                                              className="ml-2 px-3 py-1 bg-indigo-100 hover:bg-indigo-200 text-indigo-800 rounded-full font-bold text-xs transition-colors flex items-center gap-1.5 border border-indigo-300 shadow-sm"
+                                            >
+                                              <span className="material-symbols-outlined text-[18px] text-indigo-600">target</span> Practice Similar Questions
                                             </button>
                                           )}
                                         </div>
@@ -1022,7 +1232,9 @@ const Reports = () => {
                       <span className="material-symbols-outlined text-amber-500">psychology</span>
                       Recommended Practice
                     </h3>
-                    <p className="text-sm text-gray-500 font-medium mt-1">Practice these targeted questions to improve your weak areas.</p>
+                    <p className="text-sm text-gray-500 font-medium mt-1">
+                      {practiceModalTitle || 'Practice these targeted questions to improve your weak areas.'}
+                    </p>
                   </div>
                   <button
                     onClick={() => {
@@ -1035,68 +1247,107 @@ const Reports = () => {
                   </button>
                 </div>
 
-                <div className="p-6 space-y-6">
-                  {practiceModalData.map((mq, idx) => (
-                    <div key={idx} className="bg-gray-50/50 rounded-xl border border-gray-200 p-6 shadow-sm">
-                      <h4 className="font-bold text-gray-900 mb-5 flex items-start gap-3">
-                        <span className="bg-blue-600 text-white w-7 h-7 rounded-lg flex items-center justify-center text-xs flex-shrink-0 mt-0.5 shadow-sm font-black">Q{idx + 1}</span>
-                        <div className="leading-relaxed"><LatexText text={mq.questionText} /></div>
-                      </h4>
+                {practiceLoading ? (
+                  <div className="flex flex-col items-center justify-center gap-3 py-16">
+                    <div className="w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full animate-spin" />
+                    <p className="text-sm text-gray-500 font-medium">Loading practice questions...</p>
+                  </div>
+                ) : practiceModalData.length === 0 ? (
+                  <div className="py-16 text-center text-sm text-gray-400 font-medium px-6">
+                    No practice questions available for this concept yet.
+                  </div>
+                ) : (
+                  <div className="p-6 space-y-6">
+                    {practiceModalData.map((mq, idx) => {
+                      const isNumerical = mq.questionType === 'numerical' || !mq.options || mq.options.length === 0;
+                      const isRevealed = !!practiceModalAnswers[idx];
 
-                      <div className="space-y-3 pl-10">
-                        {mq.options.map((opt: string, optIdx: number) => {
-                          const letter = String.fromCharCode(65 + optIdx);
-                          const isSelected = practiceModalAnswers[idx] === letter;
-                          const isAnswered = !!practiceModalAnswers[idx];
-                          const isCorrectOption = mq.correctOption === letter;
+                      return (
+                        <div key={mq.questionId || idx} className="bg-gray-50/50 rounded-xl border border-gray-200 p-6 shadow-sm">
+                          <h4 className="font-bold text-gray-900 mb-5 flex items-start gap-3">
+                            <span className="bg-blue-600 text-white w-7 h-7 rounded-lg flex items-center justify-center text-xs flex-shrink-0 mt-0.5 shadow-sm font-black">Q{idx + 1}</span>
+                            <div className="leading-relaxed"><LatexText text={mq.questionText} /></div>
+                          </h4>
 
-                          let style = "bg-white border-gray-200 hover:border-blue-400 hover:bg-blue-50 text-gray-700 cursor-pointer shadow-sm";
-                          let icon = null;
-
-                          if (isAnswered) {
-                            style = "bg-white border-gray-200 text-gray-400 opacity-60 cursor-default shadow-none";
-                            if (isCorrectOption) {
-                              style = "bg-green-50 border-green-400 text-green-900 font-bold opacity-100 shadow-sm ring-1 ring-green-400";
-                              icon = <span className="material-symbols-outlined text-green-600 text-[18px]">check_circle</span>;
-                            } else if (isSelected && !isCorrectOption) {
-                              style = "bg-red-50 border-red-400 text-red-900 font-bold opacity-100 shadow-sm ring-1 ring-red-400";
-                              icon = <span className="material-symbols-outlined text-red-500 text-[18px]">cancel</span>;
-                            }
-                          }
-
-                          return (
-                            <div
-                              key={optIdx}
-                              onClick={() => {
-                                if (!isAnswered) {
-                                  setPracticeModalAnswers(prev => ({ ...prev, [idx]: letter }));
-                                }
-                              }}
-                              className={`p-3.5 rounded-xl border transition-all flex items-center gap-3 ${style}`}
-                            >
-                              <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold border shadow-sm ${isAnswered && isCorrectOption ? 'bg-green-500 text-white border-green-600' : isAnswered && isSelected ? 'bg-red-500 text-white border-red-600' : 'bg-gray-100 text-gray-500 border-gray-300'}`}>
-                                {letter}
-                              </div>
-                              <div className="flex-1 text-sm"><LatexText text={opt} /></div>
-                              {icon}
+                          {mq.diagramSvg && (
+                            <div className="ml-10 mb-4 p-3 bg-white rounded-xl border border-gray-200 inline-block max-w-full overflow-hidden">
+                              <div className="max-w-[360px]" dangerouslySetInnerHTML={{ __html: mq.diagramSvg }} />
                             </div>
-                          );
-                        })}
-                      </div>
+                          )}
 
-                      {practiceModalAnswers[idx] && (
-                        <div className="mt-6 ml-10 bg-blue-50/70 rounded-xl p-5 border border-blue-100 shadow-sm">
-                          <h5 className="text-[11px] font-bold text-blue-800 uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                            <span className="material-symbols-outlined text-[16px]">lightbulb</span> Step-by-Step Solution
-                          </h5>
-                          <div className="text-sm text-gray-800 leading-relaxed font-medium">
-                            <LatexText text={mq.solutionText} />
-                          </div>
+                          {isNumerical ? (
+                            <div className="pl-10">
+                              {!isRevealed ? (
+                                <button
+                                  onClick={() => setPracticeModalAnswers(prev => ({ ...prev, [idx]: mq.correctOption }))}
+                                  className="px-4 py-2 bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 rounded-lg text-sm font-bold transition-colors"
+                                >
+                                  Reveal answer
+                                </button>
+                              ) : (
+                                <div className="p-3.5 rounded-xl border border-green-400 bg-green-50 text-green-900 font-bold text-sm inline-block">
+                                  Answer: {mq.correctOption}
+                                </div>
+                              )}
+                            </div>
+                          ) : (
+                            <div className="space-y-3 pl-10">
+                              {mq.options.map((opt: string, optIdx: number) => {
+                                const letter = String.fromCharCode(65 + optIdx);
+                                const isSelected = practiceModalAnswers[idx] === letter;
+                                const isAnswered = !!practiceModalAnswers[idx];
+                                const isCorrectOption = mq.correctOption === letter;
+
+                                let style = "bg-white border-gray-200 hover:border-blue-400 hover:bg-blue-50 text-gray-700 cursor-pointer shadow-sm";
+                                let icon = null;
+
+                                if (isAnswered) {
+                                  style = "bg-white border-gray-200 text-gray-400 opacity-60 cursor-default shadow-none";
+                                  if (isCorrectOption) {
+                                    style = "bg-green-50 border-green-400 text-green-900 font-bold opacity-100 shadow-sm ring-1 ring-green-400";
+                                    icon = <span className="material-symbols-outlined text-green-600 text-[18px]">check_circle</span>;
+                                  } else if (isSelected && !isCorrectOption) {
+                                    style = "bg-red-50 border-red-400 text-red-900 font-bold opacity-100 shadow-sm ring-1 ring-red-400";
+                                    icon = <span className="material-symbols-outlined text-red-500 text-[18px]">cancel</span>;
+                                  }
+                                }
+
+                                return (
+                                  <div
+                                    key={optIdx}
+                                    onClick={() => {
+                                      if (!isAnswered) {
+                                        setPracticeModalAnswers(prev => ({ ...prev, [idx]: letter }));
+                                      }
+                                    }}
+                                    className={`p-3.5 rounded-xl border transition-all flex items-center gap-3 ${style}`}
+                                  >
+                                    <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold border shadow-sm ${isAnswered && isCorrectOption ? 'bg-green-500 text-white border-green-600' : isAnswered && isSelected ? 'bg-red-500 text-white border-red-600' : 'bg-gray-100 text-gray-500 border-gray-300'}`}>
+                                      {letter}
+                                    </div>
+                                    <div className="flex-1 text-sm"><LatexText text={opt} /></div>
+                                    {icon}
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          )}
+
+                          {practiceModalAnswers[idx] && (
+                            <div className="mt-6 ml-10 bg-blue-50/70 rounded-xl p-5 border border-blue-100 shadow-sm">
+                              <h5 className="text-[11px] font-bold text-blue-800 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                                <span className="material-symbols-outlined text-[16px]">lightbulb</span> Step-by-Step Solution
+                              </h5>
+                              <div className="text-sm text-gray-800 leading-relaxed font-medium">
+                                <LatexText text={mq.solutionText} />
+                              </div>
+                            </div>
+                          )}
                         </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
+                      );
+                    })}
+                  </div>
+                )}
 
               </div>
             </div>
@@ -1181,11 +1432,6 @@ const Reports = () => {
   // --- ADMIN VIEW: CUMULATIVE TEST ANALYTICS VIEW ---
   if (isAdmin && viewingAnalyticsTest) {
     const theme = SUBJECT_THEMES[selectedSubject];
-    const SUBJECT_CATEGORIES = {
-      Physics: ['Mechanics', 'Thermodynamics', 'Electrodynamics', 'Optics', 'Modern Physics'],
-      Chemistry: ['Physical Chemistry', 'Organic Chemistry', 'Inorganic Chemistry'],
-      Biology: ['Cell Biology', 'Genetics', 'Human Physiology', 'Plant Physiology', 'Ecology']
-    };
     const categories = SUBJECT_CATEGORIES[selectedSubject];
 
     // Compute category accuracies
@@ -1213,30 +1459,7 @@ const Reports = () => {
     const filteredStrengths = viewingAnalyticsTest.swotProfile?.[selectedSubject]?.strengths || [];
     const filteredWeaknesses = viewingAnalyticsTest.swotProfile?.[selectedSubject]?.criticalWeaknesses || [];
 
-    // SVG Radar calculations
-    const cx = 150;
-    const cy = 135;
-    const radius = 80;
-    const numPoints = categoryAccuracies.length;
-    const gridLevels = [0.25, 0.5, 0.75, 1.0];
-    const gridPaths = gridLevels.map(level => {
-      return Array.from({ length: numPoints }).map((_, i) => {
-        const angle = (i * 2 * Math.PI) / numPoints - Math.PI / 2;
-        const x = cx + radius * level * Math.cos(angle);
-        const y = cy + radius * level * Math.sin(angle);
-        return `${x},${y}`;
-      }).join(' ');
-    });
 
-    const getPoints = (accuracies: typeof categoryAccuracies) => {
-      return accuracies.map((item, i) => {
-        const angle = (i * 2 * Math.PI) / numPoints - Math.PI / 2;
-        const scoreFraction = Math.min(Math.max(item.accuracy, 10), 100) / 100;
-        const x = cx + radius * scoreFraction * Math.cos(angle);
-        const y = cy + radius * scoreFraction * Math.sin(angle);
-        return `${x},${y}`;
-      }).join(' ');
-    };
 
     return (
       <div className="flex flex-col min-w-0 w-full p-8 bg-gray-50 min-h-screen">
@@ -1334,112 +1557,12 @@ const Reports = () => {
               <section className="bg-white rounded-xl border border-gray-200 shadow-sm p-6 h-[420px] flex flex-col relative">
                 <h3 className="text-sm font-bold text-gray-700 mb-6 uppercase tracking-wider">Topic Accuracy Breakdown</h3>
                 <div className="flex-1 flex items-center justify-center relative">
-                  <svg width="300" height="270" className="overflow-visible">
-                    {gridPaths.map((path, idx) => (
-                      <polygon key={idx} points={path} fill="none" stroke="#e5e7eb" strokeWidth="1" />
-                    ))}
-
-                    {categoryAccuracies.map((_, i) => {
-                      const angle = (i * 2 * Math.PI) / numPoints - Math.PI / 2;
-                      const x2 = cx + radius * Math.cos(angle);
-                      const y2 = cy + radius * Math.sin(angle);
-                      return <line key={i} x1={cx} y1={cy} x2={x2} y2={y2} stroke="#e5e7eb" strokeWidth="1" />;
-                    })}
-
-                    <polygon
-                      points={getPoints(categoryAccuracies)}
-                      fill="none"
-                      className={`${theme.fill} transition-all duration-500`}
-                      strokeWidth="0"
-                    />
-                    <polygon
-                      points={getPoints(categoryAccuracies)}
-                      fill="none"
-                      className={`${theme.stroke} transition-all duration-500`}
-                      strokeWidth="2.5"
-                    />
-
-                    {categoryAccuracies.map((item, i) => {
-                      const angle = (i * 2 * Math.PI) / numPoints - Math.PI / 2;
-                      const scoreFraction = Math.min(Math.max(item.accuracy, 10), 100) / 100;
-                      const x = cx + radius * scoreFraction * Math.cos(angle);
-                      const y = cy + radius * scoreFraction * Math.sin(angle);
-                      const isHovered = hoveredCategory === item.category;
-
-                      return (
-                        <g key={i} className="cursor-pointer">
-                          <circle
-                            cx={x}
-                            cy={y}
-                            r={isHovered ? 6 : 4}
-                            className={`${isHovered ? theme.bg : 'fill-white'} ${theme.stroke} transition-all duration-150`}
-                            strokeWidth="2"
-                            onMouseEnter={(e) => {
-                              setHoveredCategory(item.category);
-                              const rect = e.currentTarget.getBoundingClientRect();
-                              setTooltipPos({ x: rect.left + window.scrollX - 70, y: rect.top + window.scrollY - 85 });
-                              setTooltipContent(item);
-                            }}
-                            onMouseLeave={() => {
-                              setHoveredCategory(null);
-                              setTooltipPos(null);
-                              setTooltipContent(null);
-                            }}
-                          />
-                        </g>
-                      );
-                    })}
-
-                    {categoryAccuracies.map((item, i) => {
-                      const angle = (i * 2 * Math.PI) / numPoints - Math.PI / 2;
-                      const labelOffset = 18;
-                      const lx = cx + (radius + labelOffset) * Math.cos(angle);
-                      const ly = cy + (radius + labelOffset) * Math.sin(angle);
-
-                      let textAnchor: 'start' | 'middle' | 'end' = 'middle';
-                      if (Math.cos(angle) > 0.1) textAnchor = 'start';
-                      else if (Math.cos(angle) < -0.1) textAnchor = 'end';
-
-                      const isHovered = hoveredCategory === item.category;
-
-                      return (
-                        <text
-                          key={i}
-                          x={lx}
-                          y={ly + 4}
-                          textAnchor={textAnchor}
-                          className={`text-[10px] font-black tracking-wide uppercase transition-colors duration-150 ${isHovered ? `${theme.color} scale-105` : 'fill-gray-500'}`}
-                          onMouseEnter={(e) => {
-                            setHoveredCategory(item.category);
-                            const rect = e.currentTarget.getBoundingClientRect();
-                            setTooltipPos({ x: rect.left + window.scrollX - 45, y: rect.top + window.scrollY - 70 });
-                            setTooltipContent(item);
-                          }}
-                          onMouseLeave={() => {
-                            setHoveredCategory(null);
-                            setTooltipPos(null);
-                            setTooltipContent(null);
-                          }}
-                        >
-                          {item.category}
-                        </text>
-                      );
-                    })}
-                  </svg>
-
-                  {tooltipPos && tooltipContent && (
-                    <div
-                      className="absolute z-20 bg-gray-900 text-white p-3 rounded-lg shadow-xl text-xs flex flex-col gap-1 border border-gray-800"
-                      style={{ left: tooltipPos.x - 30, top: tooltipPos.y - 120 }}
-                    >
-                      <span className="font-black uppercase tracking-wider text-[10px] text-gray-400">{tooltipContent.category}</span>
-                      <div className="flex items-center gap-3 mt-1">
-                        <span className="text-sm font-black text-white">{tooltipContent.accuracy}%</span>
-                        <span className="text-[10px] text-gray-400 font-semibold">{tooltipContent.count} questions attempts</span>
-                      </div>
-                    </div>
-                  )}
-                </div>
+                <RadarChart
+                  categoryAccuracies={categoryAccuracies}
+                  subject={selectedSubject}
+                  theme={theme}
+                  onCategoryHover={setHoveredCategory}
+                />            </div>
               </section>
 
               {/* Class SWOT Analysis */}

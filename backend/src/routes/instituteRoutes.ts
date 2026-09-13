@@ -4,6 +4,8 @@ import path from 'path';
 import fs from 'fs';
 import os from 'os';
 import { getInstitute, updateInstituteSettings, updateBranding } from '../controllers/instituteController';
+import { adminAuth } from '../middleware/adminAuth';
+import { tenantAuth } from '../middleware/tenantAuth';
 
 const router = Router();
 
@@ -11,8 +13,8 @@ const router = Router();
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
-router.get('/', getInstitute);
-router.put('/settings', updateInstituteSettings);
-router.put('/branding', upload.single('logoFile'), updateBranding);
+router.get('/', tenantAuth as any, getInstitute);
+router.put('/settings', adminAuth as any, updateInstituteSettings);
+router.put('/branding', adminAuth as any, upload.single('logoFile'), updateBranding);
 
 export default router;

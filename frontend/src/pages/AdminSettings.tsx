@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
+import adminApi from '../api/adminApi';
 
 const AdminSettings = () => {
   const [activeTab, setActiveTab] = useState<'profile' | 'branding' | 'batches' | 'grading' | 'billing' | 'ingestion'>('profile');
@@ -26,7 +26,7 @@ const AdminSettings = () => {
   useEffect(() => {
     const fetchInstitute = async () => {
       try {
-        const res = await axios.get('/api/v1/institute');
+        const res = await adminApi.get('/api/v1/institute');
         if (res.data.themeColor) setThemeColor(res.data.themeColor);
         if (res.data.logoUrl) setLogoUrl(res.data.logoUrl);
         if (res.data.name) setInstituteName(res.data.name);
@@ -44,7 +44,7 @@ const AdminSettings = () => {
     if (activeTab === 'ingestion') {
       const fetchStatus = async () => {
         try {
-          const res = await axios.get('/api/v1/ingestion/status');
+          const res = await adminApi.get('/api/v1/ingestion/status');
           setIngestionStatus(res.data);
           if (res.data.processing || res.data.pending > 0) {
             setIsIngesting(true);
@@ -63,7 +63,7 @@ const AdminSettings = () => {
 
   const startIngestion = async () => {
     try {
-      await axios.post('/api/v1/ingestion/start');
+      await adminApi.post('/api/v1/ingestion/start');
       setIsIngesting(true);
     } catch (e) {
       alert('Failed to start ingestion. Check console.');
@@ -73,7 +73,7 @@ const AdminSettings = () => {
 
   const clearQueue = async () => {
     try {
-      await axios.delete('/api/v1/ingestion/clear');
+      await adminApi.delete('/api/v1/ingestion/clear');
       setIngestionStatus(null);
       setIsIngesting(false);
       alert('Queue cleared completely.');
@@ -97,7 +97,7 @@ const AdminSettings = () => {
 
     try {
       setIsUploading(true);
-      await axios.post('/api/v1/ingestion/upload', formData, {
+      await adminApi.post('/api/v1/ingestion/upload', formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       alert('Files successfully uploaded and queued for processing!');
@@ -115,7 +115,7 @@ const AdminSettings = () => {
   const handleGlobalSave = async () => {
     if (activeTab === 'profile') {
       try {
-        await axios.put('/api/v1/institute/settings', {
+        await adminApi.put('/api/v1/institute/settings', {
           name: instituteName,
           supportEmail,
           supportPhone
@@ -132,12 +132,12 @@ const AdminSettings = () => {
         if (logoFile) {
           formData.append('logoFile', logoFile);
         }
-        await axios.put('/api/v1/institute/branding', formData, {
+        await adminApi.put('/api/v1/institute/branding', formData, {
           headers: { 'Content-Type': 'multipart/form-data' }
         });
         alert('Branding settings saved successfully!');
         // Re-fetch to get updated URL
-        const res = await axios.get('/api/v1/institute');
+        const res = await adminApi.get('/api/v1/institute');
         if (res.data.logoUrl) setLogoUrl(res.data.logoUrl);
       } catch (e) {
         alert('Failed to save branding settings');

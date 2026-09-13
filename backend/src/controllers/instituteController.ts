@@ -1,10 +1,10 @@
-import { Request, Response } from 'express';
+import { Response } from 'express';
 import { Institute } from '../models/Institute';
+import { AdminRequest } from '../middleware/adminAuth';
 
-export const getInstitute = async (req: Request, res: Response) => {
+export const getInstitute = async (req: AdminRequest, res: Response) => {
   try {
-    // For MVP, just get the first institute
-    const institute = await Institute.findOne();
+    const institute = await Institute.findById(req.admin!.instituteId);
     if (!institute) {
       return res.status(404).json({ message: 'Institute not found' });
     }
@@ -14,10 +14,10 @@ export const getInstitute = async (req: Request, res: Response) => {
   }
 };
 
-export const updateInstituteSettings = async (req: Request, res: Response) => {
+export const updateInstituteSettings = async (req: AdminRequest, res: Response) => {
   try {
     const { name, supportEmail, supportPhone, subscriptionPlan } = req.body;
-    let institute = await Institute.findOne();
+    let institute = await Institute.findById(req.admin!.instituteId);
     
     if (!institute) {
       return res.status(404).json({ message: 'Institute not found' });
@@ -35,10 +35,10 @@ export const updateInstituteSettings = async (req: Request, res: Response) => {
   }
 };
 
-export const updateBranding = async (req: Request, res: Response) => {
+export const updateBranding = async (req: AdminRequest, res: Response) => {
   try {
     const { themeColor } = req.body;
-    let institute = await Institute.findOne();
+    let institute = await Institute.findById(req.admin!.instituteId);
     
     if (!institute) {
       return res.status(404).json({ message: 'Institute not found' });

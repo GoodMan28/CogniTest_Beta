@@ -1,17 +1,25 @@
 
 import { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, Users, FileText, FileOutput, Database, Settings, FilePlus2 } from 'lucide-react';
-import axios from 'axios';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { LayoutDashboard, Users, FileText, FileOutput, Database, Settings, FilePlus2, LogOut } from 'lucide-react';
+import adminApi from '../api/adminApi';
+import { useAdminAuth } from '../context/AdminAuthContext';
 
 const AdminSidebar = () => {
   const [institute, setInstitute] = useState<{ name: string; logoUrl?: string } | null>(null);
+  const { admin, logout } = useAdminAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('/api/v1/institute')
+    adminApi.get('/api/v1/institute')
       .then(res => setInstitute(res.data))
       .catch(err => console.error('Failed to fetch institute for sidebar', err));
   }, []);
+
+  const handleLogout = () => {
+    logout();
+    navigate('/admin/login');
+  };
 
   const navItems = [
     { name: 'Dashboard', path: '/admin', icon: LayoutDashboard },
@@ -51,8 +59,26 @@ const AdminSidebar = () => {
           </NavLink>
         ))}
       </nav>
+      
+      {/* Admin info & logout */}
+      <div className="px-4 py-4 border-t border-gray-200">
+        <div className="flex items-center justify-between">
+          <div className="min-w-0">
+            <p className="text-sm font-medium text-gray-900 truncate">{admin?.name || 'Admin'}</p>
+            <p className="text-xs text-gray-500 truncate">{admin?.email}</p>
+          </div>
+          <button
+            onClick={handleLogout}
+            className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-md transition-colors"
+            title="Sign out"
+          >
+            <LogOut className="w-4 h-4" />
+          </button>
+        </div>
+      </div>
     </aside>
   );
 };
 
 export default AdminSidebar;
+

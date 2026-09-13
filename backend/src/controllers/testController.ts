@@ -1,12 +1,13 @@
-import { Request, Response } from 'express';
+import { Response } from 'express';
 import { Test } from '../models/Test';
+import { AdminRequest } from '../middleware/adminAuth';
 
-export const createTest = async (req: Request, res: Response) => {
+export const createTest = async (req: AdminRequest, res: Response) => {
   try {
-    const { instituteId, title, date, examType, totalQuestions, marksPerQuestion, negativeMarking, questions } = req.body;
+    const { title, date, examType, totalQuestions, marksPerQuestion, negativeMarking, questions } = req.body;
     
     const newTest = new Test({
-      instituteId,
+      instituteId: req.admin!.instituteId, // Always use the admin's institute
       title,
       date,
       examType,
@@ -23,10 +24,11 @@ export const createTest = async (req: Request, res: Response) => {
   }
 };
 
-export const getTests = async (req: Request, res: Response) => {
+export const getTests = async (req: AdminRequest, res: Response) => {
   try {
+    const instituteId = req.admin!.instituteId;
     const limit = req.query.limit ? parseInt(req.query.limit as string) : 0;
-    let query = Test.find().sort({ date: -1 });
+    let query = Test.find({ instituteId }).sort({ date: -1 });
     if (limit > 0) {
       query = query.limit(limit);
     }
@@ -37,11 +39,14 @@ export const getTests = async (req: Request, res: Response) => {
   }
 };
 
-export const getTestById = async (req: Request, res: Response) => {
+export const getTestById = async (req: AdminRequest, res: Response) => {
   try {
     const test = await Test.findById(req.params.id);
     if (!test) {
       return res.status(404).json({ message: 'Test not found' });
+    }
+    if (test.instituteId.toString() !== req.admin!.instituteId) {
+      return res.status(403).json({ message: 'Access denied' });
     }
     res.status(200).json(test);
   } catch (error: any) {

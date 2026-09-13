@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { X, Search, Filter, CheckCircle2 } from 'lucide-react';
-import axios from 'axios';
+import adminApi from '../../api/adminApi';
 import type { TemplateSection } from '../PaperGenerator';
 
 interface Props {
@@ -27,7 +27,7 @@ export default function QuestionPickerModal({ section, initialSelectedIds, onSav
 
   // Fetch units on mount
   useEffect(() => {
-    axios.get(`/api/v1/questions/units?subject=${section.subject}`)
+    adminApi.get(`/api/v1/questions/units?subject=${section.subject}`)
       .then(res => setUnits(res.data))
       .catch(err => console.error('Failed to fetch units', err));
   }, [section.subject]);
@@ -35,7 +35,7 @@ export default function QuestionPickerModal({ section, initialSelectedIds, onSav
   // Fetch chapters when unit changes
   useEffect(() => {
     const unitParam = selectedUnit ? `&unit=${selectedUnit}` : '';
-    axios.get(`/api/v1/questions/chapters?subject=${section.subject}${unitParam}`)
+    adminApi.get(`/api/v1/questions/chapters?subject=${section.subject}${unitParam}`)
       .then(res => setChapters(res.data))
       .catch(err => console.error('Failed to fetch chapters', err));
   }, [selectedUnit, section.subject]);
@@ -43,7 +43,7 @@ export default function QuestionPickerModal({ section, initialSelectedIds, onSav
   // Fetch topics when chapter changes
   useEffect(() => {
     if (selectedChapter) {
-      axios.get(`/api/v1/questions/topics?subject=${section.subject}&chapter=${selectedChapter}`)
+      adminApi.get(`/api/v1/questions/topics?subject=${section.subject}&chapter=${selectedChapter}`)
         .then(res => setTopics(res.data))
         .catch(err => console.error('Failed to fetch topics', err));
     } else {
@@ -65,7 +65,7 @@ export default function QuestionPickerModal({ section, initialSelectedIds, onSav
     if (selectedTopic) params.append('topic', selectedTopic);
     if (searchQuery) params.append('search', searchQuery);
 
-    axios.get(`/api/v1/questions?${params.toString()}`)
+    adminApi.get(`/api/v1/questions?${params.toString()}`)
       .then(res => {
         setQuestions(res.data.questions);
         setIsLoading(false);

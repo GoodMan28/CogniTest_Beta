@@ -138,3 +138,15 @@ Thumbs.db
 
 # Ignore large sample materials
 Sample_material/
+
+# Analysis service (Python) local environment and caches
+analysis_service/venv/
+analysis_service/.pytest_cache/
+**/__pycache__/
+
+# Private prepared-data bundles (never commit real student data)
+private_data/
+
+# Ad-hoc operator scripts with hardcoded credentials (see backend/SECRETS_WARNING.md)
+backend/check.js
+backend/check_subj.js

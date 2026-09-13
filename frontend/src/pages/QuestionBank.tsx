@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import axios from 'axios';
+import adminApi from '../api/adminApi';
 // import katex from 'katex';
 import 'katex/dist/katex.min.css';
 
@@ -69,7 +69,7 @@ const QuestionBank = () => {
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
   useEffect(() => {
-    axios.get('/api/v1/questions/stats')
+    adminApi.get('/api/v1/questions/stats')
       .then(res => setStats(res.data))
       .catch(err => console.error('Failed to fetch stats:', err));
   }, []);
@@ -80,7 +80,7 @@ const QuestionBank = () => {
     setTopicFilter('');
     setPage(1);
     setExpandedId(null);
-    axios.get('/api/v1/questions/units', { params: { subject: activeSubject } })
+    adminApi.get('/api/v1/questions/units', { params: { subject: activeSubject } })
       .then(res => setUnits(res.data))
       .catch(err => console.error('Failed to fetch units:', err));
   }, [activeSubject]);
@@ -89,7 +89,7 @@ const QuestionBank = () => {
     setChapterFilter('');
     setTopicFilter('');
     setPage(1);
-    axios.get('/api/v1/questions/chapters', { params: { subject: activeSubject, unit: unitFilter } })
+    adminApi.get('/api/v1/questions/chapters', { params: { subject: activeSubject, unit: unitFilter } })
       .then(res => setChapters(res.data))
       .catch(err => console.error('Failed to fetch chapters:', err));
   }, [activeSubject, unitFilter]);
@@ -98,7 +98,7 @@ const QuestionBank = () => {
     setTopicFilter('');
     setPage(1);
     if (chapterFilter) {
-      axios.get('/api/v1/questions/topics', { params: { subject: activeSubject, chapter: chapterFilter } })
+      adminApi.get('/api/v1/questions/topics', { params: { subject: activeSubject, chapter: chapterFilter } })
         .then(res => setTopics(res.data))
         .catch(err => console.error('Failed to fetch topics:', err));
     } else {
@@ -109,7 +109,7 @@ const QuestionBank = () => {
   const fetchQuestions = useCallback(async () => {
     setLoading(true);
     try {
-      const res = await axios.get('/api/v1/questions', {
+      const res = await adminApi.get('/api/v1/questions', {
         params: {
           subject: activeSubject,
           page,

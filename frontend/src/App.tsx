@@ -1,8 +1,8 @@
 
 import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import axios from 'axios';
 import { AuthProvider } from './context/AuthContext';
+import { AdminAuthProvider } from './context/AdminAuthContext';
 import AdminLayout from './components/AdminLayout';
 import StudentLayout from './components/StudentLayout';
 import Dashboard from './pages/Dashboard';
@@ -19,63 +19,78 @@ import PaperGenerator from './pages/PaperGenerator';
 import StudentLogin from './pages/StudentLogin';
 import StudentSignup from './pages/StudentSignup';
 import ProtectedRoute from './components/ProtectedRoute';
+import AdminProtectedRoute from './components/AdminProtectedRoute';
+import AdminLogin from './pages/AdminLogin';
+
+import DemoStudentLayout from './components/demo/DemoStudentLayout';
+import DemoReports from './pages/DemoReports';
+import DemoReportDetail from './pages/DemoReportDetail';
+import DemoActivate from './pages/DemoActivate';
+
+const isDemo = import.meta.env.VITE_USE_DEMO === 'true';
 
 function App() {
   useEffect(() => {
-    // Fetch institute settings once on load to dynamically update the title and favicon
-    axios.get('/api/v1/institute')
-      .then(res => {
-        if (res.data.name) {
-          document.title = `${res.data.name} | CogniTest`;
-        }
-        if (res.data.logoUrl) {
-          let link = document.querySelector("link[rel~='icon']") as HTMLLinkElement;
-          if (!link) {
-            link = document.createElement('link');
-            link.rel = 'icon';
-            document.head.appendChild(link);
-          }
-          link.href = (res.data.logoUrl?.startsWith("data:") ? res.data.logoUrl : `${import.meta.env.VITE_API_URL || ''}${res.data.logoUrl}`);
-        }
-      })
-      .catch(err => console.error('Failed to load branding for head', err));
+    if (isDemo) {
+      document.title = 'CogniTest Demo';
+      return;
+    }
+    // Branding is now behind admin auth, so we set a static title
+    // The sidebar and layout will show the institute name after login
+    document.title = 'CogniTest';
   }, []);
   return (
-    <AuthProvider>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Navigate to="/admin" replace />} />
-          
-          {/* Admin Routes */}
-          <Route path="/admin" element={<AdminLayout />}>
-            <Route index element={<Dashboard />} />
-            <Route path="students" element={<StudentDirectory />} />
-            <Route path="students/:id" element={<StudentProfile />} />
-            <Route path="tests" element={<Tests />} />
-            <Route path="generator" element={<PaperGenerator />} />
-            <Route path="reports" element={<Reports />} />
-            <Route path="questions" element={<QuestionBank />} />
-            <Route path="settings" element={<AdminSettings />} />
-          </Route>
+    <AdminAuthProvider>
+      <AuthProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Navigate to="/admin/login" replace />} />
+            
+            {/* Admin Login (public) */}
+            <Route path="/admin/login" element={<AdminLogin />} />
 
-          {/* Student Auth Routes */}
-          <Route path="/student/login" element={<StudentLogin />} />
-          <Route path="/student/signup" element={<StudentSignup />} />
-
-          {/* Student Protected Routes */}
-          <Route path="/student" element={<ProtectedRoute />}>
-            <Route element={<StudentLayout />}>
-              <Route index element={<StudentProfile />} />
-              <Route path="custom-tests" element={<CustomTests />} />
-              <Route path="tests" element={<StudentTests />} />
-              <Route path="reports" element={<Reports />} />
-              <Route path="settings" element={<StudentSettings />} />
+            {/* Admin Protected Routes */}
+            <Route path="/admin" element={<AdminProtectedRoute />}>
+              <Route element={<AdminLayout />}>
+                <Route index element={<Dashboard />} />
+                <Route path="students" element={<StudentDirectory />} />
+                <Route path="students/:id" element={<StudentProfile />} />
+                <Route path="tests" element={<Tests />} />
+                <Route path="generator" element={<PaperGenerator />} />
+                <Route path="reports" element={<Reports />} />
+                <Route path="questions" element={<QuestionBank />} />
+                <Route path="settings" element={<AdminSettings />} />
+              </Route>
             </Route>
-          </Route>
-        </Routes>
-      </Router>
-    </AuthProvider>
+
+            {/* Student Auth Routes */}
+            <Route path="/student/login" element={<StudentLogin />} />
+            <Route path="/student/signup" element={isDemo ? <DemoActivate /> : <StudentSignup />} />
+
+            {/* Student Protected Routes */}
+            <Route path="/student" element={<ProtectedRoute />}>
+              {isDemo ? (
+                <Route element={<DemoStudentLayout />}>
+                  <Route path="reports" element={<DemoReports />} />
+                  <Route path="reports/:id" element={<DemoReportDetail />} />
+                  <Route index element={<Navigate to="/student/reports" replace />} />
+                </Route>
+              ) : (
+                <Route element={<StudentLayout />}>
+                  <Route index element={<StudentProfile />} />
+                  <Route path="custom-tests" element={<CustomTests />} />
+                  <Route path="tests" element={<StudentTests />} />
+                  <Route path="reports" element={<Reports />} />
+                  <Route path="settings" element={<StudentSettings />} />
+                </Route>
+              )}
+            </Route>
+          </Routes>
+        </Router>
+      </AuthProvider>
+    </AdminAuthProvider>
   );
 }
 
 export default App;
+

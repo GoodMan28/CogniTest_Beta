@@ -8,6 +8,11 @@ export interface IStudent extends Document {
   email?: string;
   profilePictureUrl?: string;
   password?: string;
+  analysisDemo?: {
+    claimDigest?: string;
+    claimExpiresAt?: Date;
+    claimedAt?: Date;
+  };
 }
 
 const StudentSchema = new Schema<IStudent>({
@@ -17,7 +22,12 @@ const StudentSchema = new Schema<IStudent>({
   batch: { type: String, required: true },
   email: { type: String },
   profilePictureUrl: { type: String },
-  password: { type: String }
+  password: { type: String },
+  analysisDemo: {
+    claimDigest: { type: String },
+    claimExpiresAt: { type: Date },
+    claimedAt: { type: Date }
+  }
 });
 
 export const Student = model<IStudent>('Student', StudentSchema);

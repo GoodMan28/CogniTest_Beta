@@ -10,6 +10,7 @@ export interface ITemplate extends Document {
     questionType: string;
     totalQuestions: number;
     marksPerQuestion: number;
+    negativeMarking?: number;
   }>;
 }
 
@@ -22,7 +23,8 @@ const TemplateSchema = new Schema<ITemplate>({
     subject: { type: String, required: true },
     questionType: { type: String, required: true },
     totalQuestions: { type: Number, required: true },
-    marksPerQuestion: { type: Number, required: true }
+    marksPerQuestion: { type: Number, required: true },
+    negativeMarking: { type: Number, default: 1 }
   }]
 }, { timestamps: true });
 

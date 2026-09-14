@@ -128,11 +128,23 @@ const Tests = () => {
       alert("Please select a Question Paper first.");
       return;
     }
+    if (!file) {
+      alert("Please choose a response sheet JSON file first.");
+      return;
+    }
 
     setIsUploading(true);
     setEvaluationPhase('reading');
 
     try {
+      const fileText = await file.text();
+      let responses: unknown;
+      try {
+        responses = JSON.parse(fileText);
+      } catch {
+        throw new Error('Response sheet is not valid JSON');
+      }
+
       // Phase 1: Reading OMR Scans (1.5 seconds)
       await new Promise(resolve => setTimeout(resolve, 1500));
       setEvaluationPhase('ocr');
@@ -145,9 +157,10 @@ const Tests = () => {
       await new Promise(resolve => setTimeout(resolve, 2000));
       setEvaluationPhase('saving');
 
-      // Phase 4: Submit request to backend to process the response_sheet.json
-      const res = await adminApi.post('/api/v1/evaluation/evaluate-json', {
-        testId: selectedTestId
+      // Phase 4: Submit the parsed response sheet to the backend for evaluation
+      const res = await adminApi.post('/api/v1/evaluation/evaluate-sheet', {
+        testId: selectedTestId,
+        responses
       });
 
       setEvaluationResults(res.data.results);

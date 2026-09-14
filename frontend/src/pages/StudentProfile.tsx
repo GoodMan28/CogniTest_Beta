@@ -16,8 +16,7 @@ const StudentAnalytics = () => {
   const [availableTests, setAvailableTests] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // Subject view filter state & color themes matching QuestionBank.tsx
-  const [selectedSubject, setSelectedSubject] = useState<'Physics' | 'Chemistry' | 'Biology'>('Physics');
+  const [selectedSubject, setSelectedSubject] = useState<'Physics' | 'Chemistry' | 'Mathematics'>('Physics');
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
 
   const SUBJECT_THEMES = {
@@ -47,18 +46,18 @@ const StudentAnalytics = () => {
       fill: 'fill-emerald-500/20',
       stroke: 'stroke-emerald-600'
     },
-    Biology: {
-      text: 'text-amber-600',
-      textDark: 'text-amber-800',
-      bg: 'bg-amber-50',
-      border: 'border-amber-200',
-      activeBg: 'bg-amber-600',
+    Mathematics: {
+      text: 'text-orange-600',
+      textDark: 'text-orange-800',
+      bg: 'bg-orange-50',
+      border: 'border-orange-200',
+      activeBg: 'bg-orange-600',
       activeText: 'text-white',
-      progress: 'bg-amber-500',
-      lightBorder: 'border-amber-100',
-      hover: 'hover:bg-amber-50',
-      fill: 'fill-amber-500/20',
-      stroke: 'stroke-amber-600'
+      progress: 'bg-orange-500',
+      lightBorder: 'border-orange-100',
+      hover: 'hover:bg-orange-50',
+      fill: 'fill-orange-500/20',
+      stroke: 'stroke-orange-600'
     }
   };
 
@@ -94,27 +93,27 @@ const StudentAnalytics = () => {
     return 'Physical Chemistry'; // default
   };
 
-  const getBiologyCategory = (chapter: string): string => {
+  const getMathematicsCategory = (chapter: string): string => {
     const ch = chapter.toLowerCase();
-    if (ch.includes('cell') || ch.includes('biomolecule') || ch.includes('division')) {
-      return 'Cell Biology';
+    if (ch.includes('algebra') || ch.includes('complex') || ch.includes('quadratic') || ch.includes('sequence') || ch.includes('series') || ch.includes('binomial') || ch.includes('permutation') || ch.includes('combination') || ch.includes('probability') || ch.includes('matrix') || ch.includes('determinant')) {
+      return 'Algebra';
     }
-    if (ch.includes('genetics') || ch.includes('inheritance') || ch.includes('evolution') || ch.includes('molecular basis')) {
-      return 'Genetics';
+    if (ch.includes('calculus') || ch.includes('function') || ch.includes('limit') || ch.includes('continuity') || ch.includes('differentiability') || ch.includes('derivative') || ch.includes('integration') || ch.includes('area') || ch.includes('differential')) {
+      return 'Calculus';
     }
-    if (ch.includes('human') || ch.includes('digestion') || ch.includes('breathing') || ch.includes('circulation') || ch.includes('excretion') || ch.includes('locomotion') || ch.includes('neural') || ch.includes('chemical coordination') || ch.includes('physiology')) {
-      return 'Human Physiology';
+    if (ch.includes('trigonometry') || ch.includes('triangle') || ch.includes('inverse')) {
+      return 'Trigonometry';
     }
-    if (ch.includes('plant') || ch.includes('photosynthesis') || ch.includes('respiration in plants') || ch.includes('transport in plants') || ch.includes('mineral nutrition') || ch.includes('growth')) {
-      return 'Plant Physiology';
+    if (ch.includes('coordinate') || ch.includes('straight line') || ch.includes('circle') || ch.includes('conic') || ch.includes('parabola') || ch.includes('ellipse') || ch.includes('hyperbola')) {
+      return 'Coordinate Geometry';
     }
-    return 'Ecology'; // default
+    return 'Vector & 3D Geometry';
   };
 
-  const getCategory = (chapter: string, subject: 'Physics' | 'Chemistry' | 'Biology'): string => {
+  const getCategory = (chapter: string, subject: 'Physics' | 'Chemistry' | 'Mathematics'): string => {
     if (subject === 'Physics') return getPhysicsCategory(chapter);
     if (subject === 'Chemistry') return getChemistryCategory(chapter);
-    return getBiologyCategory(chapter);
+    return getMathematicsCategory(chapter);
   };
 
   useEffect(() => {
@@ -154,7 +153,7 @@ const StudentAnalytics = () => {
   const SUBJECT_CATEGORIES = {
     Physics: ['Mechanics', 'Thermodynamics', 'Electrodynamics', 'Optics', 'Modern Physics'],
     Chemistry: ['Physical Chemistry', 'Organic Chemistry', 'Inorganic Chemistry'],
-    Biology: ['Cell Biology', 'Genetics', 'Human Physiology', 'Plant Physiology', 'Ecology']
+    Mathematics: ['Algebra', 'Calculus', 'Trigonometry', 'Coordinate Geometry', 'Vector & 3D Geometry']
   };
   const categories = SUBJECT_CATEGORIES[selectedSubject];
 
@@ -272,11 +271,11 @@ const StudentAnalytics = () => {
           <select 
             value={selectedSubject}
             onChange={(e) => setSelectedSubject(e.target.value as any)}
-            className={`px-4 py-2 border rounded-lg text-sm font-bold text-gray-700 outline-none transition-colors bg-white cursor-pointer ${theme.border} focus:border-${selectedSubject === 'Physics' ? 'blue-400' : (selectedSubject === 'Chemistry' ? 'emerald-400' : 'amber-400')}`}
+            className={`px-4 py-2 border rounded-lg text-sm font-bold text-gray-700 outline-none transition-colors bg-white cursor-pointer ${theme.border} focus:border-${selectedSubject === 'Physics' ? 'blue-400' : (selectedSubject === 'Chemistry' ? 'emerald-400' : 'orange-400')}`}
           >
             <option value="Physics">Physics</option>
             <option value="Chemistry">Chemistry</option>
-            <option value="Biology">Biology</option>
+            <option value="Mathematics">Mathematics</option>
           </select>
         </div>
       </div>
@@ -297,7 +296,7 @@ const StudentAnalytics = () => {
               {hoveredCategory ? (
                 <div className="absolute top-16 left-1/2 -translate-x-1/2 bg-gray-900/95 text-white text-[11px] font-bold px-3 py-1.5 rounded-lg shadow-md border border-gray-800 backdrop-blur-sm z-20 flex items-center gap-1.5 transition-all duration-200">
                   <span className={`w-2 h-2 rounded-full ${
-                    selectedSubject === 'Physics' ? 'bg-blue-400' : (selectedSubject === 'Chemistry' ? 'bg-emerald-400' : 'bg-amber-400')
+                    selectedSubject === 'Physics' ? 'bg-blue-400' : (selectedSubject === 'Chemistry' ? 'bg-emerald-400' : 'bg-orange-400')
                   }`}></span>
                   <span>{hoveredCategory}: {categoryAccuracies.find(c => c.category === hoveredCategory)?.accuracy}% ({categoryAccuracies.find(c => c.category === hoveredCategory)?.count} Qs)</span>
                 </div>
@@ -340,7 +339,7 @@ const StudentAnalytics = () => {
                         onMouseEnter={() => setHoveredCategory(coord.label)}
                         onMouseLeave={() => setHoveredCategory(null)}
                         className={`text-[10px] font-extrabold cursor-pointer transition-colors duration-200 ${
-                          isLabelHovered ? (selectedSubject === 'Physics' ? 'fill-blue-600' : (selectedSubject === 'Chemistry' ? 'fill-emerald-600' : 'fill-amber-600')) : 'fill-gray-400'
+                          isLabelHovered ? (selectedSubject === 'Physics' ? 'fill-blue-600' : (selectedSubject === 'Chemistry' ? 'fill-emerald-600' : 'fill-orange-600')) : 'fill-gray-400'
                         }`}
                       >
                         {coord.label}
@@ -376,8 +375,8 @@ const StudentAnalytics = () => {
                           onMouseLeave={() => setHoveredCategory(null)}
                           className={`transition-all duration-200 ${
                             isDotHovered 
-                              ? (selectedSubject === 'Physics' ? 'fill-blue-600 stroke-blue-200 stroke-2' : (selectedSubject === 'Chemistry' ? 'fill-emerald-600 stroke-emerald-200 stroke-2' : 'fill-amber-600 stroke-amber-200 stroke-2'))
-                              : (selectedSubject === 'Physics' ? 'fill-white stroke-blue-600 stroke-2' : (selectedSubject === 'Chemistry' ? 'fill-white stroke-emerald-600 stroke-2' : 'fill-white stroke-amber-600 stroke-2'))
+                              ? (selectedSubject === 'Physics' ? 'fill-blue-600 stroke-blue-200 stroke-2' : (selectedSubject === 'Chemistry' ? 'fill-emerald-600 stroke-emerald-200 stroke-2' : 'fill-orange-600 stroke-orange-200 stroke-2'))
+                              : (selectedSubject === 'Physics' ? 'fill-white stroke-blue-600 stroke-2' : (selectedSubject === 'Chemistry' ? 'fill-white stroke-emerald-600 stroke-2' : 'fill-white stroke-orange-600 stroke-2'))
                           }`}
                         />
                       </g>

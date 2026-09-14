@@ -1,8 +1,9 @@
 import { Router } from 'express';
-import { generateCustomTest } from '../controllers/customTestController';
+import { generateCustomTest, getTaxonomy } from '../controllers/customTestController';
 
 const router = Router();
 
-router.post('/generate', generateCustomTest);
+router.get('/taxonomy', getTaxonomy as any);
+router.post('/generate', generateCustomTest as any);
 
 export default router;

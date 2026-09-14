@@ -1,0 +1,2190 @@
+None selected
+
+Skip to content
+Using BIT Webmail Mail with screen readers
+
+Conversations
+ 
+Program Policies
+Powered by Google
+Last account activity: 0 minutes ago
+Open in 1 other location · Details
+[
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Electronic Configuration"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "easy",
+    "questionIntent": "Tests understanding of electronic configuration",
+    "questionText": "According to the $(n + l)$ rule, which subshell is filled immediately after the $3p$ subshell?",
+    "options": [
+      "$4s$",
+      "$3d$",
+      "$4p$",
+      "$4d$"
+    ],
+    "correctOption": "$4s$",
+    "numericalAnswer": null,
+    "solutionText": "For $3p$, $n+l = 3+1=4$. The next subshell is $4s$ ($n+l = 4+0=4$, lower $n$).",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "26",
+    "sourceQuestionText": "According to the (n + l) rule, which subshell is filled immediately after the 4s subshell?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Electronic Configuration"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "medium",
+    "questionIntent": "Tests understanding of electronic configuration",
+    "questionText": "Which of the following subshells is filled first according to the Aufbau principle?",
+    "options": [
+      "$5s$",
+      "$4d$",
+      "$4p$",
+      "$5p$"
+    ],
+    "correctOption": "$4p$",
+    "numericalAnswer": null,
+    "solutionText": "Values of $n+l$: $5s(5)$, $4d(6)$, $4p(5)$, $5p(6)$. Between $5s$ and $4p$, $4p$ has lower $n$, so it fills first.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "26",
+    "sourceQuestionText": "According to the (n + l) rule, which subshell is filled immediately after the 4s subshell?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Electronic Configuration"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "medium",
+    "questionIntent": "Tests understanding of electronic configuration",
+    "questionText": "What is the next subshell to be filled after $4d$?",
+    "options": [
+      "$5s$",
+      "$5p$",
+      "$4f$",
+      "$6s$"
+    ],
+    "correctOption": "$5p$",
+    "numericalAnswer": null,
+    "solutionText": "$4d$ has $n+l = 4+2=6$. The next is $5p$ with $n+l = 5+1=6$ (higher $n$).",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "26",
+    "sourceQuestionText": "According to the (n + l) rule, which subshell is filled immediately after the 4s subshell?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Mechanics"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "easy",
+    "questionIntent": "Tests understanding of quantum mechanics",
+    "questionText": "Which principle states that electrons fill orbitals of lowest energy first?",
+    "options": [
+      "Aufbau Principle",
+      "Hund's Rule",
+      "Pauli Exclusion Principle",
+      "Heisenberg Uncertainty Principle"
+    ],
+    "correctOption": "Aufbau Principle",
+    "numericalAnswer": null,
+    "solutionText": "The Aufbau principle dictates that electrons occupy the lowest energy orbitals available before filling higher energy ones.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "27",
+    "sourceQuestionText": "Which principle states that no two electrons in an atom can have the same set of all four quantum numbers?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Mechanics"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "easy",
+    "questionIntent": "Tests understanding of quantum mechanics",
+    "questionText": "Which rule asserts that degenerate orbitals must each receive one electron before any pairing occurs?",
+    "options": [
+      "Pauli Exclusion Principle",
+      "Bohr's Postulate",
+      "Hund's Rule",
+      "Aufbau Principle"
+    ],
+    "correctOption": "Hund's Rule",
+    "numericalAnswer": null,
+    "solutionText": "Hund's Rule of Maximum Multiplicity states that pairing of electrons in orbitals belonging to the same subshell does not take place until each orbital is singly occupied.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "27",
+    "sourceQuestionText": "Which principle states that no two electrons in an atom can have the same set of all four quantum numbers?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Heisenberg & De Broglie"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "easy",
+    "questionIntent": "Tests understanding of heisenberg & de broglie",
+    "questionText": "Which principle asserts that it is impossible to simultaneously determine the exact position and momentum of an electron?",
+    "options": [
+      "Pauli Exclusion Principle",
+      "Heisenberg Uncertainty Principle",
+      "Aufbau Principle",
+      "Hund's Rule"
+    ],
+    "correctOption": "Heisenberg Uncertainty Principle",
+    "numericalAnswer": null,
+    "solutionText": "The Heisenberg Uncertainty Principle states $\\Delta x \\cdot \\Delta p \\ge \\frac{h}{4\\pi}$.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "27",
+    "sourceQuestionText": "Which principle states that no two electrons in an atom can have the same set of all four quantum numbers?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Numbers"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "easy",
+    "questionIntent": "Tests understanding of quantum numbers",
+    "questionText": "What are the permissible values of the magnetic quantum number ($m_l$) for an azimuthal quantum number $l = 2$?",
+    "options": [
+      "$0, 1, 2$",
+      "$-1, 0, +1$",
+      "$-2, -1, 0, +1, +2$",
+      "$-3, -2, -1, 0, +1, +2, +3$"
+    ],
+    "correctOption": "$-2, -1, 0, +1, +2$",
+    "numericalAnswer": null,
+    "solutionText": "For a given $l$, $m_l$ ranges from $-l$ to $+l$. For $l=2$, it is $-2, -1, 0, +1, +2$.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "28",
+    "sourceQuestionText": "What are the permissible values of the azimuthal quantum number (l) for a principal quantum number n = 3?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Numbers"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "easy",
+    "questionIntent": "Tests understanding of quantum numbers",
+    "questionText": "Which of the following is a permissible value for the azimuthal quantum number ($l$) when $n = 4$?",
+    "options": [
+      "4",
+      "0",
+      "5",
+      "-1"
+    ],
+    "correctOption": "0",
+    "numericalAnswer": null,
+    "solutionText": "$l$ must be an integer from $0$ to $n-1$. So $0, 1, 2, 3$ are allowed.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "28",
+    "sourceQuestionText": "What are the permissible values of the azimuthal quantum number (l) for a principal quantum number n = 3?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Numbers"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "easy",
+    "questionIntent": "Tests understanding of quantum numbers",
+    "questionText": "What are the allowed values for the spin quantum number ($m_s$) of an electron?",
+    "options": [
+      "$0, 1$",
+      "$-1, 0, +1$",
+      "$+1/2, -1/2$",
+      "$+1, -1$"
+    ],
+    "correctOption": "$+1/2, -1/2$",
+    "numericalAnswer": null,
+    "solutionText": "The spin quantum number $m_s$ can only take two values: $+1/2$ (spin up) and $-1/2$ (spin down).",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "28",
+    "sourceQuestionText": "What are the permissible values of the azimuthal quantum number (l) for a principal quantum number n = 3?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Electronic Configuration"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "medium",
+    "questionIntent": "Tests understanding of electronic configuration",
+    "questionText": "Which electronic configuration for the nitrogen atom explicitly violates the Pauli Exclusion Principle?",
+    "options": [
+      "$1s^2 2s^2 2p^3$",
+      "$1s^2 2s^3 2p^2$",
+      "$1s^2 2s^2 2p_x^2 2p_y^1$",
+      "$1s^2 2s^1 2p^4$"
+    ],
+    "correctOption": "$1s^2 2s^3 2p^2$",
+    "numericalAnswer": null,
+    "solutionText": "An s-orbital can hold a maximum of 2 electrons. $2s^3$ implies three electrons in one orbital, violating Pauli's principle.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "29",
+    "sourceQuestionText": "Which of the following ground-state electronic configurations for the 2p subshell explicitly violates Hund's Rule of Maximum Multiplicity?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Electronic Configuration"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "medium",
+    "questionIntent": "Tests understanding of electronic configuration",
+    "questionText": "Which of the following configurations for carbon ($Z=6$) violates Aufbau Principle?",
+    "options": [
+      "$1s^2 2s^2 2p^2$",
+      "$1s^2 2s^1 2p^3$",
+      "$1s^2 2s^2 2p_x^1 2p_y^1$",
+      "$1s^2 2s^2 2p_x^2$"
+    ],
+    "correctOption": "$1s^2 2s^1 2p^3$",
+    "numericalAnswer": null,
+    "solutionText": "Filling the $2p$ subshell before the $2s$ subshell is completely filled violates the Aufbau principle.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "29",
+    "sourceQuestionText": "Which of the following ground-state electronic configurations for the 2p subshell explicitly violates Hund's Rule of Maximum Multiplicity?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Electronic Configuration"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "medium",
+    "questionIntent": "Tests understanding of electronic configuration",
+    "questionText": "Identify the correct ground-state orbital diagram representation for Oxygen ($Z=8$) in the 2p subshell.",
+    "options": [
+      "$2p_x^2 2p_y^2 2p_z^0$",
+      "$2p_x^2 2p_y^1 2p_z^1$",
+      "$2p_x^1 2p_y^1 2p_z^2$",
+      "$2p_x^1 2p_y^2 2p_z^1$"
+    ],
+    "correctOption": "$2p_x^2 2p_y^1 2p_z^1$",
+    "numericalAnswer": null,
+    "solutionText": "Oxygen has 4 electrons in $2p$. By Hund's rule, they singly occupy $x, y, z$ first, then one pairs up.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "29",
+    "sourceQuestionText": "Which of the following ground-state electronic configurations for the 2p subshell explicitly violates Hund's Rule of Maximum Multiplicity?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Numbers"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "medium",
+    "questionIntent": "Tests understanding of quantum numbers",
+    "questionText": "Which set of quantum numbers $(n, l, m_l, m_s)$ is NOT permissible?",
+    "options": [
+      "$(2, 0, 0, +1/2)$",
+      "$(3, 1, -2, -1/2)$",
+      "$(4, 2, +1, -1/2)$",
+      "$(5, 3, 0, +1/2)$"
+    ],
+    "correctOption": "$(3, 1, -2, -1/2)$",
+    "numericalAnswer": null,
+    "solutionText": "For $l=1$, $m_l$ can only be $-1, 0, +1$. The value $-2$ is impermissible.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "30",
+    "sourceQuestionText": "Which set of quantum numbers (n, l, ml, ms) is NOT permissible for an electron in an atom?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Numbers"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "medium",
+    "questionIntent": "Tests understanding of quantum numbers",
+    "questionText": "Identify the invalid set of quantum numbers:",
+    "options": [
+      "$(1, 0, 0, -1/2)$",
+      "$(2, 2, 0, +1/2)$",
+      "$(3, 2, -1, +1/2)$",
+      "$(4, 1, 1, -1/2)$"
+    ],
+    "correctOption": "$(2, 2, 0, +1/2)$",
+    "numericalAnswer": null,
+    "solutionText": "The azimuthal quantum number $l$ must be less than $n$. $n=2, l=2$ is invalid.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "30",
+    "sourceQuestionText": "Which set of quantum numbers (n, l, ml, ms) is NOT permissible for an electron in an atom?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Numbers"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "medium",
+    "questionIntent": "Tests understanding of quantum numbers",
+    "questionText": "Which of the following represents a valid set of quantum numbers for an electron in a $4d$ orbital?",
+    "options": [
+      "$(4, 1, 0, +1/2)$",
+      "$(4, 2, -3, -1/2)$",
+      "$(4, 2, 0, -1/2)$",
+      "$(3, 2, 0, +1/2)$"
+    ],
+    "correctOption": "$(4, 2, 0, -1/2)$",
+    "numericalAnswer": null,
+    "solutionText": "A $4d$ orbital has $n=4, l=2$. $m_l$ must be between $-2$ and $+2$.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "30",
+    "sourceQuestionText": "Which set of quantum numbers (n, l, ml, ms) is NOT permissible for an electron in an atom?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Electronic Configuration"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "medium",
+    "questionIntent": "Tests understanding of electronic configuration",
+    "questionText": "What is the correct ground state electronic configuration of Copper (Cu, atomic number 29)?",
+    "options": [
+      "$[Ar] 4s^2 3d^9$",
+      "$[Ar] 4s^1 3d^{10}$",
+      "$[Ar] 4s^2 3d^{10}$",
+      "$[Ar] 4s^1 3d^9$"
+    ],
+    "correctOption": "$[Ar] 4s^1 3d^{10}$",
+    "numericalAnswer": null,
+    "solutionText": "Copper adopts $[Ar] 4s^1 3d^{10}$ to achieve a fully filled, highly stable $3d$ subshell.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "31",
+    "sourceQuestionText": "What is the correct ground state electronic configuration of Chromium (Cr, atomic number 24)?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Electronic Configuration"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "medium",
+    "questionIntent": "Tests understanding of electronic configuration",
+    "questionText": "What is the correct electronic configuration of the $\\text{Fe}^{2+}$ ion ($Z=26$)?",
+    "options": [
+      "$[Ar] 4s^2 3d^4$",
+      "$[Ar] 4s^0 3d^6$",
+      "$[Ar] 4s^1 3d^5$",
+      "$[Ar] 4s^2 3d^6$"
+    ],
+    "correctOption": "$[Ar] 4s^0 3d^6$",
+    "numericalAnswer": null,
+    "solutionText": "Iron is $[Ar] 4s^2 3d^6$. When forming cations, 4s electrons are removed first.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "31",
+    "sourceQuestionText": "What is the correct ground state electronic configuration of Chromium (Cr, atomic number 24)?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Electronic Configuration"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "medium",
+    "questionIntent": "Tests understanding of electronic configuration",
+    "questionText": "Which element has the ground state configuration $[Kr] 5s^1 4d^5$?",
+    "options": [
+      "Molybdenum (Mo)",
+      "Chromium (Cr)",
+      "Tungsten (W)",
+      "Silver (Ag)"
+    ],
+    "correctOption": "Molybdenum (Mo)",
+    "numericalAnswer": null,
+    "solutionText": "Mo ($Z=42$) is directly below Cr in the periodic table and shares the anomalous half-filled $s$ and $d$ subshells.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "31",
+    "sourceQuestionText": "What is the correct ground state electronic configuration of Chromium (Cr, atomic number 24)?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Numbers"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "easy",
+    "questionIntent": "Tests understanding of quantum numbers",
+    "questionText": "The principal quantum number ($n$) provides information primarily about the:",
+    "options": [
+      "Orientation of the orbital",
+      "Spin of the electron",
+      "Size and energy of the main shell",
+      "Shape of the orbital"
+    ],
+    "correctOption": "Size and energy of the main shell",
+    "numericalAnswer": null,
+    "solutionText": "The principal quantum number determines the energy level and the average distance from the nucleus (size).",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "32",
+    "sourceQuestionText": "The magnetic quantum number (ml) provides information primarily about the:"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Numbers"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "easy",
+    "questionIntent": "Tests understanding of quantum numbers",
+    "questionText": "The azimuthal quantum number ($l$) determines the:",
+    "options": [
+      "Energy level",
+      "Shape of the subshell",
+      "Orientation in space",
+      "Electron spin"
+    ],
+    "correctOption": "Shape of the subshell",
+    "numericalAnswer": null,
+    "solutionText": "The azimuthal (or angular momentum) quantum number $l$ defines the 3D shape of the orbital (s, p, d, f).",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "32",
+    "sourceQuestionText": "The magnetic quantum number (ml) provides information primarily about the:"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Numbers"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "easy",
+    "questionIntent": "Tests understanding of quantum numbers",
+    "questionText": "Which quantum number differentiates two electrons occupying the exact same orbital?",
+    "options": [
+      "Principal",
+      "Azimuthal",
+      "Magnetic",
+      "Spin"
+    ],
+    "correctOption": "Spin",
+    "numericalAnswer": null,
+    "solutionText": "Two electrons in the same orbital have the same $n, l, m_l$, so they are differentiated only by opposite spins ($m_s$).",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "32",
+    "sourceQuestionText": "The magnetic quantum number (ml) provides information primarily about the:"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Numbers"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "easy",
+    "questionIntent": "Tests understanding of quantum numbers",
+    "questionText": "What is the maximum number of electrons that can be accommodated in a subshell designated by $l = 1$?",
+    "options": [
+      "2",
+      "6",
+      "10",
+      "14"
+    ],
+    "correctOption": "6",
+    "numericalAnswer": null,
+    "solutionText": "For $l=1$ (p-subshell), there are 3 orbitals. $3 \\times 2 = 6$ electrons max.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "33",
+    "sourceQuestionText": "What is the maximum number of electrons that can be accommodated in a subshell designated by l = 2?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Numbers"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "easy",
+    "questionIntent": "Tests understanding of quantum numbers",
+    "questionText": "How many electrons can the $f$-subshell hold?",
+    "options": [
+      "6",
+      "10",
+      "14",
+      "18"
+    ],
+    "correctOption": "14",
+    "numericalAnswer": null,
+    "solutionText": "An f-subshell has $l=3$, meaning $2(3)+1 = 7$ orbitals. $7 \\times 2 = 14$ electrons.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "33",
+    "sourceQuestionText": "What is the maximum number of electrons that can be accommodated in a subshell designated by l = 2?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Numbers"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "easy",
+    "questionIntent": "Tests understanding of quantum numbers",
+    "questionText": "What is the maximum number of electrons in the entire $n = 3$ principal shell?",
+    "options": [
+      "8",
+      "18",
+      "32",
+      "9"
+    ],
+    "correctOption": "18",
+    "numericalAnswer": null,
+    "solutionText": "The max electrons in a shell is $2n^2$. For $n=3$, $2(3^2) = 18$ electrons.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "33",
+    "sourceQuestionText": "What is the maximum number of electrons that can be accommodated in a subshell designated by l = 2?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Electronic Configuration"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "medium",
+    "questionIntent": "Tests understanding of electronic configuration",
+    "questionText": "Which of the following subshells has the highest energy in a multi-electron atom?",
+    "options": [
+      "$4s$",
+      "$3d$",
+      "$4p$",
+      "$3p$"
+    ],
+    "correctOption": "$4p$",
+    "numericalAnswer": null,
+    "solutionText": "$(n+l)$ values: $4s(4), 3d(5), 4p(5), 3p(4)$. Between $3d$ and $4p$, $4p$ has higher $n$, so it has the highest energy.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "34",
+    "sourceQuestionText": "Based on the (n + l) rule, which of the following represents the correct order of increasing energy for these subshells?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Electronic Configuration"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "hard",
+    "questionIntent": "Tests understanding of electronic configuration",
+    "questionText": "Arrange the following in increasing order of energy: $5p, 4f, 6s, 5d$.",
+    "options": [
+      "$5p < 6s < 4f < 5d$",
+      "$6s < 5p < 5d < 4f$",
+      "$5p < 4f < 5d < 6s$",
+      "$4f < 5p < 6s < 5d$"
+    ],
+    "correctOption": "$5p < 6s < 4f < 5d$",
+    "numericalAnswer": null,
+    "solutionText": "$5p(6), 6s(6), 4f(7), 5d(7)$. Order is $5p < 6s < 4f < 5d$.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "34",
+    "sourceQuestionText": "Based on the (n + l) rule, which of the following represents the correct order of increasing energy for these subshells?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Electronic Configuration"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "medium",
+    "questionIntent": "Tests understanding of electronic configuration",
+    "questionText": "According to the Aufbau principle, which orbital is filled immediately after the $5p$ orbital?",
+    "options": [
+      "$5d$",
+      "$6s$",
+      "$4f$",
+      "$6p$"
+    ],
+    "correctOption": "$6s$",
+    "numericalAnswer": null,
+    "solutionText": "For $5p$, $n+l = 6$. The next is $6s$ ($n+l = 6$, but higher $n$).",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "34",
+    "sourceQuestionText": "Based on the (n + l) rule, which of the following represents the correct order of increasing energy for these subshells?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Numbers"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "medium",
+    "questionIntent": "Tests understanding of quantum numbers",
+    "questionText": "Identify the principal and azimuthal quantum numbers for the differentiating electron of Calcium (Ca, Z=20).",
+    "options": [
+      "$n = 3, l = 2$",
+      "$n = 4, l = 0$",
+      "$n = 4, l = 1$",
+      "$n = 3, l = 1$"
+    ],
+    "correctOption": "$n = 4, l = 0$",
+    "numericalAnswer": null,
+    "solutionText": "Calcium's outer configuration is $4s^2$. The last electron enters the $4s$ subshell ($n=4, l=0$).",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "35",
+    "sourceQuestionText": "Identify the principal quantum number (n) and azimuthal quantum number (l) for the differentiating (last) electron of Potassium (K, atomic number 19)."
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Numbers"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "medium",
+    "questionIntent": "Tests understanding of quantum numbers",
+    "questionText": "What are the $n$ and $l$ values for the differentiating electron in Scandium (Sc, Z=21)?",
+    "options": [
+      "$n = 4, l = 0$",
+      "$n = 4, l = 1$",
+      "$n = 3, l = 2$",
+      "$n = 3, l = 1$"
+    ],
+    "correctOption": "$n = 3, l = 2$",
+    "numericalAnswer": null,
+    "solutionText": "Scandium is $[Ar] 4s^2 3d^1$. The differentiating electron enters the $3d$ subshell ($n=3, l=2$).",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "35",
+    "sourceQuestionText": "Identify the principal quantum number (n) and azimuthal quantum number (l) for the differentiating (last) electron of Potassium (K, atomic number 19)."
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Numbers"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "easy",
+    "questionIntent": "Tests understanding of quantum numbers",
+    "questionText": "For the Sodium atom (Na, Z=11), the quantum numbers for the valence electron are:",
+    "options": [
+      "$n = 2, l = 1$",
+      "$n = 3, l = 0$",
+      "$n = 3, l = 1$",
+      "$n = 2, l = 0$"
+    ],
+    "correctOption": "$n = 3, l = 0$",
+    "numericalAnswer": null,
+    "solutionText": "Sodium is $[Ne] 3s^1$. The valence electron is in $3s$, so $n=3, l=0$.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "35",
+    "sourceQuestionText": "Identify the principal quantum number (n) and azimuthal quantum number (l) for the differentiating (last) electron of Potassium (K, atomic number 19)."
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Mechanics"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "easy",
+    "questionIntent": "Tests understanding of quantum mechanics",
+    "questionText": "Which of the following violates the Pauli Exclusion Principle?",
+    "options": [
+      "Two electrons in the same orbital with parallel spins",
+      "Empty degenerate orbitals",
+      "Singly occupied degenerate orbitals",
+      "Electrons in higher energy levels before lower ones are full"
+    ],
+    "correctOption": "Two electrons in the same orbital with parallel spins",
+    "numericalAnswer": null,
+    "solutionText": "Pauli's principle states that no two electrons can have the same 4 quantum numbers. In the same orbital, they must have opposite spins.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "36",
+    "sourceQuestionText": "If an orbital can accommodate a maximum of two electrons, what must be true about those two electrons?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Mechanics"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "easy",
+    "questionIntent": "Tests understanding of quantum mechanics",
+    "questionText": "What is the maximum number of electrons that can be placed in a single $3p_x$ orbital?",
+    "options": [
+      "6",
+      "2",
+      "1",
+      "10"
+    ],
+    "correctOption": "2",
+    "numericalAnswer": null,
+    "solutionText": "ANY single orbital (whether $s, p_x, d_{xy}$, etc.) can hold a maximum of 2 electrons.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "36",
+    "sourceQuestionText": "If an orbital can accommodate a maximum of two electrons, what must be true about those two electrons?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Numbers"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "easy",
+    "questionIntent": "Tests understanding of quantum numbers",
+    "questionText": "If an electron has a spin quantum number of $+1/2$, the other electron in the identical orbital must have:",
+    "options": [
+      "$m_s = +1/2$",
+      "$m_s = 0$",
+      "$m_s = -1/2$",
+      "$m_s = 1$"
+    ],
+    "correctOption": "$m_s = -1/2$",
+    "numericalAnswer": null,
+    "solutionText": "Electrons in the same orbital must have opposite spins.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "36",
+    "sourceQuestionText": "If an orbital can accommodate a maximum of two electrons, what must be true about those two electrons?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Numbers"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "easy",
+    "questionIntent": "Tests understanding of quantum numbers",
+    "questionText": "How many individual orbitals are present in the subshell defined by $n = 3$ and $l = 2$?",
+    "options": [
+      "1",
+      "3",
+      "5",
+      "7"
+    ],
+    "correctOption": "5",
+    "numericalAnswer": null,
+    "solutionText": "For $l=2$ (d-subshell), the number of orbitals is $2l+1 = 5$.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "37",
+    "sourceQuestionText": "How many individual orbitals are present in the subshell defined by n = 4 and l = 1?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Numbers"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "easy",
+    "questionIntent": "Tests understanding of quantum numbers",
+    "questionText": "Calculate the total number of orbitals in the $4f$ subshell.",
+    "options": [
+      "3",
+      "5",
+      "7",
+      "14"
+    ],
+    "correctOption": "7",
+    "numericalAnswer": null,
+    "solutionText": "The $4f$ subshell has $l=3$. Number of orbitals = $2(3)+1 = 7$.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "37",
+    "sourceQuestionText": "How many individual orbitals are present in the subshell defined by n = 4 and l = 1?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Numbers"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "easy",
+    "questionIntent": "Tests understanding of quantum numbers",
+    "questionText": "What is the total number of orbitals present in the second principal shell ($n = 2$)?",
+    "options": [
+      "2",
+      "4",
+      "8",
+      "6"
+    ],
+    "correctOption": "4",
+    "numericalAnswer": null,
+    "solutionText": "Total orbitals in shell $n$ is $n^2$. For $n=2$, it is 4 ($2s$ and three $2p$ orbitals).",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "37",
+    "sourceQuestionText": "How many individual orbitals are present in the subshell defined by n = 4 and l = 1?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Numbers"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "easy",
+    "questionIntent": "Tests understanding of quantum numbers",
+    "questionText": "Which quantum number dictates the spatial orientation of an electron's orbital?",
+    "options": [
+      "Principal",
+      "Azimuthal",
+      "Magnetic",
+      "Spin"
+    ],
+    "correctOption": "Magnetic",
+    "numericalAnswer": null,
+    "solutionText": "The magnetic quantum number ($m_l$) dictates the orientation of the orbital in space.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "38",
+    "sourceQuestionText": "Which of the four quantum numbers does NOT originate from the solution of the Schr\u00f6dinger wave equation?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Numbers"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "easy",
+    "questionIntent": "Tests understanding of quantum numbers",
+    "questionText": "The azimuthal quantum number is directly related to the orbital's:",
+    "options": [
+      "Size",
+      "Three-dimensional shape",
+      "Orientation relative to an external magnetic field",
+      "Electron spin direction"
+    ],
+    "correctOption": "Three-dimensional shape",
+    "numericalAnswer": null,
+    "solutionText": "The azimuthal quantum number ($l$) governs the angular momentum and the shape of the orbital.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "38",
+    "sourceQuestionText": "Which of the four quantum numbers does NOT originate from the solution of the Schr\u00f6dinger wave equation?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Numbers"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "easy",
+    "questionIntent": "Tests understanding of quantum numbers",
+    "questionText": "The principal quantum number $n$ primarily dictates:",
+    "options": [
+      "The shape of the electron cloud",
+      "The spin of the electron",
+      "The energy and distance from the nucleus",
+      "The number of subshells"
+    ],
+    "correctOption": "The energy and distance from the nucleus",
+    "numericalAnswer": null,
+    "solutionText": "The principal quantum number $n$ determines the major energy level and average size of the orbital.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "38",
+    "sourceQuestionText": "Which of the four quantum numbers does NOT originate from the solution of the Schr\u00f6dinger wave equation?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Electronic Configuration"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "medium",
+    "questionIntent": "Tests understanding of electronic configuration",
+    "questionText": "How many unpaired electrons are present in the ground state of an Oxygen atom ($Z=8$)?",
+    "options": [
+      "0",
+      "1",
+      "2",
+      "3"
+    ],
+    "correctOption": "2",
+    "numericalAnswer": null,
+    "solutionText": "Oxygen is $1s^2 2s^2 2p^4$. The $2p$ subshell has 1 pair and 2 unpaired electrons.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "39",
+    "sourceQuestionText": "Applying Hund's Rule, how many unpaired electrons are present in the ground state of a Nitrogen atom (Atomic number 7)?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Electronic Configuration"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "medium",
+    "questionIntent": "Tests understanding of electronic configuration",
+    "questionText": "Determine the number of unpaired electrons in a Phosphorus atom ($Z=15$).",
+    "options": [
+      "1",
+      "2",
+      "3",
+      "5"
+    ],
+    "correctOption": "3",
+    "numericalAnswer": null,
+    "solutionText": "Phosphorus is $[Ne] 3s^2 3p^3$. The three $3p$ electrons are unpaired.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "39",
+    "sourceQuestionText": "Applying Hund's Rule, how many unpaired electrons are present in the ground state of a Nitrogen atom (Atomic number 7)?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Electronic Configuration"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "medium",
+    "questionIntent": "Tests understanding of electronic configuration",
+    "questionText": "How many unpaired electrons are there in a ground-state Sulfur atom ($Z=16$)?",
+    "options": [
+      "0",
+      "1",
+      "2",
+      "4"
+    ],
+    "correctOption": "2",
+    "numericalAnswer": null,
+    "solutionText": "Sulfur is $[Ne] 3s^2 3p^4$. Similar to oxygen, it has 2 unpaired electrons in the $3p$ subshell.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "39",
+    "sourceQuestionText": "Applying Hund's Rule, how many unpaired electrons are present in the ground state of a Nitrogen atom (Atomic number 7)?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Electronic Configuration"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "easy",
+    "questionIntent": "Tests understanding of electronic configuration",
+    "questionText": "The filling of the $5s$ orbital before the $4d$ orbital is justified by:",
+    "options": [
+      "Hund's Rule",
+      "The $(n + l)$ rule",
+      "The Pauli Exclusion Principle",
+      "Heisenberg's Principle"
+    ],
+    "correctOption": "The $(n + l)$ rule",
+    "numericalAnswer": null,
+    "solutionText": "$5s$ has $n+l = 5$, while $4d$ has $n+l = 6$. So $5s$ is filled first.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "40",
+    "sourceQuestionText": "Which principle or rule provides the primary explanation for why the 4s orbital is filled before the 3d orbital in potassium and calcium?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Electronic Configuration"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "medium",
+    "questionIntent": "Tests understanding of electronic configuration",
+    "questionText": "Why do the $4f$ orbitals begin filling only after the $6s$ orbital is completely filled?",
+    "options": [
+      "Because $4f$ has a higher $(n+l)$ value than $6s$",
+      "Because $4f$ is closer to the nucleus",
+      "Because of Hund's Rule",
+      "Because $4f$ has lower energy"
+    ],
+    "correctOption": "Because $4f$ has a higher $(n+l)$ value than $6s$",
+    "numericalAnswer": null,
+    "solutionText": "$6s$ has $n+l = 6$. $4f$ has $n+l = 7$. Thus $6s$ fills first.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "40",
+    "sourceQuestionText": "Which principle or rule provides the primary explanation for why the 4s orbital is filled before the 3d orbital in potassium and calcium?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Electronic Configuration"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "medium",
+    "questionIntent": "Tests understanding of electronic configuration",
+    "questionText": "The $(n+l)$ rule correctly predicts that the $4p$ subshell fills after which subshell?",
+    "options": [
+      "$4s$",
+      "$3d$",
+      "$5s$",
+      "$4d$"
+    ],
+    "correctOption": "$3d$",
+    "numericalAnswer": null,
+    "solutionText": "Order is $4s (4) < 3d (5) < 4p (5)$. $3d$ has a lower $n$ than $4p$, so it fills before $4p$.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "40",
+    "sourceQuestionText": "Which principle or rule provides the primary explanation for why the 4s orbital is filled before the 3d orbital in potassium and calcium?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Electronic Configuration"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "medium",
+    "questionIntent": "Tests understanding of electronic configuration",
+    "questionText": "The electronic configuration $[Ar] 4s^2 3d^{10} 4p^1$ corresponds to which element?",
+    "options": [
+      "Gallium (Ga)",
+      "Germanium (Ge)",
+      "Zinc (Zn)",
+      "Aluminum (Al)"
+    ],
+    "correctOption": "Gallium (Ga)",
+    "numericalAnswer": null,
+    "solutionText": "Total electrons = $18+2+10+1 = 31$, which is Gallium.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "41",
+    "sourceQuestionText": "The electronic configuration 1s2 2s2 2p6 3s2 3p6 3d10 4s1 accurately represents the ground state of which atom?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Electronic Configuration"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "easy",
+    "questionIntent": "Tests understanding of electronic configuration",
+    "questionText": "Which element has the ground state configuration $1s^2 2s^2 2p^6 3s^2 3p^6 4s^2$?",
+    "options": [
+      "Calcium (Ca)",
+      "Potassium (K)",
+      "Scandium (Sc)",
+      "Argon (Ar)"
+    ],
+    "correctOption": "Calcium (Ca)",
+    "numericalAnswer": null,
+    "solutionText": "Total electrons = 20, which corresponds to Calcium.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "41",
+    "sourceQuestionText": "The electronic configuration 1s2 2s2 2p6 3s2 3p6 3d10 4s1 accurately represents the ground state of which atom?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Electronic Configuration"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "medium",
+    "questionIntent": "Tests understanding of electronic configuration",
+    "questionText": "Identify the transition metal with the configuration $[Ar] 4s^2 3d^7$.",
+    "options": [
+      "Iron (Fe)",
+      "Cobalt (Co)",
+      "Nickel (Ni)",
+      "Manganese (Mn)"
+    ],
+    "correctOption": "Cobalt (Co)",
+    "numericalAnswer": null,
+    "solutionText": "Total electrons = $18+2+7 = 27$, which is Cobalt.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "41",
+    "sourceQuestionText": "The electronic configuration 1s2 2s2 2p6 3s2 3p6 3d10 4s1 accurately represents the ground state of which atom?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Numbers"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "easy",
+    "questionIntent": "Tests understanding of quantum numbers",
+    "questionText": "What are the permissible values for the magnetic quantum number ($m_l$) for an electron in a $4p$ orbital?",
+    "options": [
+      "$-1, 0, +1$",
+      "$-2, -1, 0, +1, +2$",
+      "$0, 1, 2, 3$",
+      "$0, 1$"
+    ],
+    "correctOption": "$-1, 0, +1$",
+    "numericalAnswer": null,
+    "solutionText": "For a p-orbital, $l=1$. The values for $m_l$ are $-1, 0, +1$.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "42",
+    "sourceQuestionText": "For a single electron residing in a 3d orbital, what are the possible integer values for its magnetic quantum number (ml)?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Numbers"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "medium",
+    "questionIntent": "Tests understanding of quantum numbers",
+    "questionText": "For an electron in a $4f$ subshell, how many possible values of $m_l$ are there?",
+    "options": [
+      "3",
+      "5",
+      "7",
+      "14"
+    ],
+    "correctOption": "7",
+    "numericalAnswer": null,
+    "solutionText": "For $4f$, $l=3$. $m_l$ ranges from $-3$ to $+3$, giving 7 possible values.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "42",
+    "sourceQuestionText": "For a single electron residing in a 3d orbital, what are the possible integer values for its magnetic quantum number (ml)?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Numbers"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "easy",
+    "questionIntent": "Tests understanding of quantum numbers",
+    "questionText": "An electron has $l=0$. What is its only possible magnetic quantum number?",
+    "options": [
+      "+1",
+      "-1",
+      "0",
+      "+1/2"
+    ],
+    "correctOption": "0",
+    "numericalAnswer": null,
+    "solutionText": "For an s-orbital ($l=0$), the only value for $m_l$ is 0.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "42",
+    "sourceQuestionText": "For a single electron residing in a 3d orbital, what are the possible integer values for its magnetic quantum number (ml)?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Electronic Configuration"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "medium",
+    "questionIntent": "Tests understanding of electronic configuration",
+    "questionText": "Which of these representations for a $d^4$ configuration violates Hund's Rule?",
+    "options": [
+      "4 unpaired electrons with parallel spins",
+      "2 paired electrons and 2 unpaired electrons",
+      "4 unpaired electrons with alternating spins",
+      "1 completely filled orbital and 3 empty ones"
+    ],
+    "correctOption": "2 paired electrons and 2 unpaired electrons",
+    "numericalAnswer": null,
+    "solutionText": "Hund's rule requires all 5 degenerate d-orbitals to be singly occupied before any pairing occurs.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "43",
+    "sourceQuestionText": "An atom's outer configuration is written as 2px2 2py2 2pz0 instead of 2px2 2py1 2pz1. Which fundamental principle is being violated?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Electronic Configuration"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "easy",
+    "questionIntent": "Tests understanding of electronic configuration",
+    "questionText": "If Nitrogen's configuration was written as $1s^2 2s^2 2p_x^3$, which rule is primarily violated?",
+    "options": [
+      "Pauli Exclusion Principle",
+      "Hund's Rule",
+      "Aufbau Principle",
+      "Bohr Model"
+    ],
+    "correctOption": "Pauli Exclusion Principle",
+    "numericalAnswer": null,
+    "solutionText": "A single $p_x$ orbital can only hold 2 electrons. 3 electrons in one orbital violates Pauli's Principle.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "43",
+    "sourceQuestionText": "An atom's outer configuration is written as 2px2 2py2 2pz0 instead of 2px2 2py1 2pz1. Which fundamental principle is being violated?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Electronic Configuration"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "easy",
+    "questionIntent": "Tests understanding of electronic configuration",
+    "questionText": "Writing Carbon as $1s^2 2s^2 2p_x^2 2p_y^0$ instead of $2p_x^1 2p_y^1$ violates:",
+    "options": [
+      "Pauli Exclusion",
+      "Hund's Rule",
+      "Aufbau Principle",
+      "Heisenberg Principle"
+    ],
+    "correctOption": "Hund's Rule",
+    "numericalAnswer": null,
+    "solutionText": "Electrons must not pair up until each degenerate orbital contains one electron.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "43",
+    "sourceQuestionText": "An atom's outer configuration is written as 2px2 2py2 2pz0 instead of 2px2 2py1 2pz1. Which fundamental principle is being violated?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Numbers"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "easy",
+    "questionIntent": "Tests understanding of quantum numbers",
+    "questionText": "What is the maximum number of electrons in an atom that can have the quantum numbers $n=4$ and $l=1$?",
+    "options": [
+      "2",
+      "6",
+      "10",
+      "14"
+    ],
+    "correctOption": "6",
+    "numericalAnswer": null,
+    "solutionText": "These quantum numbers define the $4p$ subshell, which has 3 orbitals and can hold 6 electrons.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "44",
+    "sourceQuestionText": "What is the maximum total number of electrons in a single atom that can share the specific quantum numbers n = 3 and ms = -1/2?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Numbers"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "medium",
+    "questionIntent": "Tests understanding of quantum numbers",
+    "questionText": "How many electrons in a fully filled $n=2$ principal shell have a spin quantum number $m_s = +1/2$?",
+    "options": [
+      "2",
+      "4",
+      "8",
+      "10"
+    ],
+    "correctOption": "4",
+    "numericalAnswer": null,
+    "solutionText": "The $n=2$ shell holds $2n^2 = 8$ electrons. Half of them (4) will have $m_s = +1/2$.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "44",
+    "sourceQuestionText": "What is the maximum total number of electrons in a single atom that can share the specific quantum numbers n = 3 and ms = -1/2?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Numbers"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "medium",
+    "questionIntent": "Tests understanding of quantum numbers",
+    "questionText": "What is the maximum number of electrons that can share the quantum numbers $n=3, l=2, m_l=0$?",
+    "options": [
+      "2",
+      "6",
+      "10",
+      "1"
+    ],
+    "correctOption": "2",
+    "numericalAnswer": null,
+    "solutionText": "These three quantum numbers define a specific single orbital ($3d_{z^2}$). A single orbital can hold a maximum of 2 electrons.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "44",
+    "sourceQuestionText": "What is the maximum total number of electrons in a single atom that can share the specific quantum numbers n = 3 and ms = -1/2?"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Numbers"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "easy",
+    "questionIntent": "Tests understanding of quantum numbers",
+    "questionText": "The maximum number of electrons in a principal shell $n$ is given by:",
+    "options": [
+      "$n^2$",
+      "$2n^2$",
+      "$2l+1$",
+      "$2(2l+1)$"
+    ],
+    "correctOption": "$2n^2$",
+    "numericalAnswer": null,
+    "solutionText": "Total orbitals = $n^2$. Since each orbital holds 2 electrons, max electrons = $2n^2$.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "45",
+    "sourceQuestionText": "The total theoretical number of orbitals in any given principal quantum shell n is mathematically represented by:"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Numbers"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "easy",
+    "questionIntent": "Tests understanding of quantum numbers",
+    "questionText": "The number of orbitals in a given subshell $l$ is mathematically represented by:",
+    "options": [
+      "$2l+1$",
+      "$n^2$",
+      "$2(2l+1)$",
+      "$l+1$"
+    ],
+    "correctOption": "$2l+1$",
+    "numericalAnswer": null,
+    "solutionText": "The magnetic quantum number $m_l$ takes values from $-l$ to $+l$, which gives $2l+1$ total orbitals.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "45",
+    "sourceQuestionText": "The total theoretical number of orbitals in any given principal quantum shell n is mathematically represented by:"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Numbers"
+    ],
+    "questionType": "multiple_choice",
+    "difficulty": "easy",
+    "questionIntent": "Tests understanding of quantum numbers",
+    "questionText": "What is the total theoretical number of subshells present in the principal quantum shell $n=4$?",
+    "options": [
+      "2",
+      "4",
+      "8",
+      "16"
+    ],
+    "correctOption": "4",
+    "numericalAnswer": null,
+    "solutionText": "The number of subshells in a principal shell $n$ is exactly equal to $n$. For $n=4$, they are 4s, 4p, 4d, 4f.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "45",
+    "sourceQuestionText": "The total theoretical number of orbitals in any given principal quantum shell n is mathematically represented by:"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Electronic Configuration"
+    ],
+    "questionType": "numerical",
+    "difficulty": "easy",
+    "questionIntent": "Tests understanding of electronic configuration",
+    "questionText": "Find the maximum number of unpaired electrons in any element of the 2nd period (Li to Ne).",
+    "options": [],
+    "correctOption": null,
+    "numericalAnswer": 3,
+    "solutionText": "Nitrogen ($2s^2 2p^3$) has 3 unpaired electrons, the maximum in the 2p series.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "46",
+    "sourceQuestionText": "Find the maximum number of unpaired electrons found in the ground state of any neutral transition metal atom from the 3d series (Sc to Zn) is"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Electronic Configuration"
+    ],
+    "questionType": "numerical",
+    "difficulty": "medium",
+    "questionIntent": "Tests understanding of electronic configuration",
+    "questionText": "Determine the number of unpaired electrons in a ground-state Chromium atom (Cr, Z=24).",
+    "options": [],
+    "correctOption": null,
+    "numericalAnswer": 6,
+    "solutionText": "Chromium is anomalous: $[Ar] 4s^1 3d^5$. All 6 valence electrons are unpaired.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "46",
+    "sourceQuestionText": "Find the maximum number of unpaired electrons found in the ground state of any neutral transition metal atom from the 3d series (Sc to Zn) is"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Electronic Configuration"
+    ],
+    "questionType": "numerical",
+    "difficulty": "medium",
+    "questionIntent": "Tests understanding of electronic configuration",
+    "questionText": "How many unpaired electrons are present in a ground state Manganese atom (Mn, Z=25)?",
+    "options": [],
+    "correctOption": null,
+    "numericalAnswer": 5,
+    "solutionText": "Mn is $[Ar] 4s^2 3d^5$. The $4s$ is paired, and the five $3d$ electrons are unpaired.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "46",
+    "sourceQuestionText": "Find the maximum number of unpaired electrons found in the ground state of any neutral transition metal atom from the 3d series (Sc to Zn) is"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Numbers"
+    ],
+    "questionType": "numerical",
+    "difficulty": "easy",
+    "questionIntent": "Tests understanding of quantum numbers",
+    "questionText": "Find the integer value of the azimuthal quantum number ($l$) assigned to a $d$-orbital.",
+    "options": [],
+    "correctOption": null,
+    "numericalAnswer": 2,
+    "solutionText": "For a d-orbital, the azimuthal quantum number $l$ is 2.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "47",
+    "sourceQuestionText": "Find the integer value of the azimuthal quantum number (l) assigned to an f-orbital is"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Numbers"
+    ],
+    "questionType": "numerical",
+    "difficulty": "easy",
+    "questionIntent": "Tests understanding of quantum numbers",
+    "questionText": "What is the azimuthal quantum number ($l$) for the subshell that holds a maximum of 6 electrons?",
+    "options": [],
+    "correctOption": null,
+    "numericalAnswer": 1,
+    "solutionText": "The subshell holding 6 electrons is the p-subshell. For p, $l=1$.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "47",
+    "sourceQuestionText": "Find the integer value of the azimuthal quantum number (l) assigned to an f-orbital is"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Numbers"
+    ],
+    "questionType": "numerical",
+    "difficulty": "easy",
+    "questionIntent": "Tests understanding of quantum numbers",
+    "questionText": "Find the integer value of the azimuthal quantum number ($l$) assigned to an $s$-orbital.",
+    "options": [],
+    "correctOption": null,
+    "numericalAnswer": 0,
+    "solutionText": "For an s-orbital, $l = 0$.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "47",
+    "sourceQuestionText": "Find the integer value of the azimuthal quantum number (l) assigned to an f-orbital is"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Numbers"
+    ],
+    "questionType": "numerical",
+    "difficulty": "easy",
+    "questionIntent": "Tests understanding of quantum numbers",
+    "questionText": "Find the maximum number of electrons that can be held in a subshell characterized by $l = 2$.",
+    "options": [],
+    "correctOption": null,
+    "numericalAnswer": 10,
+    "solutionText": "For $l=2$ (d-subshell), max electrons $= 2(2l+1) = 2(5) = 10$.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "48",
+    "sourceQuestionText": "Find the maximum number of electrons that can be held in a subshell characterized by l = 3 is"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Numbers"
+    ],
+    "questionType": "numerical",
+    "difficulty": "easy",
+    "questionIntent": "Tests understanding of quantum numbers",
+    "questionText": "What is the maximum number of electrons that can occupy the entire $n=4$ shell?",
+    "options": [],
+    "correctOption": null,
+    "numericalAnswer": 32,
+    "solutionText": "Max electrons $= 2n^2$. For $n=4$, $2(16) = 32$.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "48",
+    "sourceQuestionText": "Find the maximum number of electrons that can be held in a subshell characterized by l = 3 is"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Numbers"
+    ],
+    "questionType": "numerical",
+    "difficulty": "easy",
+    "questionIntent": "Tests understanding of quantum numbers",
+    "questionText": "Find the maximum number of electrons that can be held in a subshell characterized by $l = 1$.",
+    "options": [],
+    "correctOption": null,
+    "numericalAnswer": 6,
+    "solutionText": "For $l=1$ (p-subshell), max electrons $= 2(3) = 6$.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "48",
+    "sourceQuestionText": "Find the maximum number of electrons that can be held in a subshell characterized by l = 3 is"
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Electronic Configuration"
+    ],
+    "questionType": "numerical",
+    "difficulty": "medium",
+    "questionIntent": "Tests understanding of electronic configuration",
+    "questionText": "Determine the total number of unpaired electrons in a gaseous $\\text{Mn}^{2+}$ ion (Z = 25).",
+    "options": [],
+    "correctOption": null,
+    "numericalAnswer": 5,
+    "solutionText": "Mn is $[Ar] 4s^2 3d^5$. Mn$^{2+}$ loses $4s^2$, leaving $[Ar] 3d^5$ with 5 unpaired electrons.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "49",
+    "sourceQuestionText": "Determine the total number of unpaired electrons in a gaseous Fe3+ ion (Atomic number of Fe = 26)."
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Electronic Configuration"
+    ],
+    "questionType": "numerical",
+    "difficulty": "medium",
+    "questionIntent": "Tests understanding of electronic configuration",
+    "questionText": "Calculate the number of unpaired electrons in a $\\text{Cu}^{2+}$ ion (Z = 29).",
+    "options": [],
+    "correctOption": null,
+    "numericalAnswer": 1,
+    "solutionText": "Cu is $[Ar] 4s^1 3d^{10}$. Cu$^{2+}$ loses $4s^1$ and one $3d$, leaving $[Ar] 3d^9$, which has 1 unpaired electron.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "49",
+    "sourceQuestionText": "Determine the total number of unpaired electrons in a gaseous Fe3+ ion (Atomic number of Fe = 26)."
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Electronic Configuration"
+    ],
+    "questionType": "numerical",
+    "difficulty": "hard",
+    "questionIntent": "Tests understanding of electronic configuration",
+    "questionText": "Determine the total number of unpaired electrons in a gaseous $\\text{Co}^{3+}$ ion (Z = 27).",
+    "options": [],
+    "correctOption": null,
+    "numericalAnswer": 4,
+    "solutionText": "Co is $[Ar] 4s^2 3d^7$. Co$^{3+}$ loses $4s^2$ and one $3d$, leaving $[Ar] 3d^6$. A $d^6$ high-spin state has 4 unpaired electrons.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "49",
+    "sourceQuestionText": "Determine the total number of unpaired electrons in a gaseous Fe3+ ion (Atomic number of Fe = 26)."
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Numbers"
+    ],
+    "questionType": "numerical",
+    "difficulty": "easy",
+    "questionIntent": "Tests understanding of quantum numbers",
+    "questionText": "Calculate the integer value of $(n + l)$ for the $4d$ subshell.",
+    "options": [],
+    "correctOption": null,
+    "numericalAnswer": 6,
+    "solutionText": "For $4d$, $n=4$ and $l=2$. $(n+l) = 4+2 = 6$.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "50",
+    "sourceQuestionText": "Calculate the integer value of (n + l) for the 5p subshell."
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Numbers"
+    ],
+    "questionType": "numerical",
+    "difficulty": "easy",
+    "questionIntent": "Tests understanding of quantum numbers",
+    "questionText": "Calculate the integer value of $(n + l)$ for the $6s$ subshell.",
+    "options": [],
+    "correctOption": null,
+    "numericalAnswer": 6,
+    "solutionText": "For $6s$, $n=6$ and $l=0$. $(n+l) = 6+0 = 6$.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "50",
+    "sourceQuestionText": "Calculate the integer value of (n + l) for the 5p subshell."
+  },
+  {
+    "subject": "Chemistry",
+    "unit": "Physical Chemistry",
+    "chapter": [
+      "Structure of Atom"
+    ],
+    "topic": [
+      "Quantum Numbers"
+    ],
+    "questionType": "numerical",
+    "difficulty": "easy",
+    "questionIntent": "Tests understanding of quantum numbers",
+    "questionText": "Determine the $(n + l)$ value for the $4f$ subshell.",
+    "options": [],
+    "correctOption": null,
+    "numericalAnswer": 7,
+    "solutionText": "For $4f$, $n=4$ and $l=3$. $(n+l) = 4+3 = 7$.",
+    "isEmbedded": false,
+    "imageUrl": null,
+    "diagramSvg": null,
+    "smilesNotation": null,
+    "optionsMedia": null,
+    "sourceQuestionNumber": "50",
+    "sourceQuestionText": "Calculate the integer value of (n + l) for the 5p subshell."
+  }
+]
+final_75_questions_export.json
+Displaying final_75_questions_export.json.

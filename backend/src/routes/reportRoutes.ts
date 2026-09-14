@@ -2,10 +2,30 @@ import { Router } from 'express';
 import PDFDocument from 'pdfkit';
 import { EvaluationReport } from '../models/EvaluationReport';
 import { Test } from '../models/Test';
-import { PhysicsQuestion, ChemistryQuestion, BiologyQuestion, MathematicsQuestion } from '../models/Question';
-import { adminAuth } from '../middleware/adminAuth';
-import { tenantAuth } from '../middleware/tenantAuth';
+import { Student } from '../models/Student';
+import { ALL_QUESTION_MODELS } from '../models/Question';
+import { adminAuth, AdminRequest } from '../middleware/adminAuth';
+import { tenantAuth, TenantRequest } from '../middleware/tenantAuth';
 import { getReportAnalysis, getPracticeQuestions, saveMistakeReason } from '../controllers/reportAnalysisController';
+
+/**
+ * A student may only ever act as themselves; an admin may act on any
+ * student within their own institute. Returns the studentId to actually
+ * use, or null (caller should respond 403) if the requested studentId is
+ * not permitted for this caller.
+ */
+const resolveAllowedStudentId = async (req: TenantRequest, requestedStudentId: string): Promise<string | null> => {
+  if (req.tenant?.role === 'student') {
+    // Students can only ever see their own data — the URL param is ignored.
+    return req.tenant.userId;
+  }
+  // Admin: allowed as long as the student belongs to the admin's institute.
+  const student = await Student.findById(requestedStudentId).select('instituteId');
+  if (!student || student.instituteId.toString() !== req.admin!.instituteId) {
+    return null;
+  }
+  return requestedStudentId;
+};
 
 const router = Router();
 
@@ -16,10 +36,13 @@ router.get('/:reportId/questions/:questionNo/practice', tenantAuth as any, getPr
 router.put('/:reportId/questions/:questionNo/reason', tenantAuth as any, saveMistakeReason as any);
 
 // Endpoint for students to get their reports
-router.get('/student/:studentId', async (req, res) => {
+router.get('/student/:studentId', tenantAuth as any, async (req: TenantRequest, res) => {
   try {
-    const { studentId } = req.params;
-    
+    const studentId = await resolveAllowedStudentId(req, req.params.studentId as string);
+    if (!studentId) {
+      return res.status(403).json({ message: 'Access denied' });
+    }
+
     // We only want reports where the test is published
     const reports = await EvaluationReport.find({ studentId }).populate('testId');
     
@@ -33,12 +56,15 @@ router.get('/student/:studentId', async (req, res) => {
 });
 
 // Endpoint for admin to publish reports for a test
-router.post('/publish/:testId', adminAuth as any, async (req, res) => {
+router.post('/publish/:testId', adminAuth as any, async (req: AdminRequest, res) => {
   try {
     const { testId } = req.params;
     const test = await Test.findById(testId);
     if (!test) return res.status(404).json({ message: 'Test not found' });
-    
+    if (test.instituteId.toString() !== req.admin!.instituteId) {
+      return res.status(403).json({ message: 'Access denied' });
+    }
+
     test.isPublished = true;
     await test.save();
     
@@ -49,9 +75,13 @@ router.post('/publish/:testId', adminAuth as any, async (req, res) => {
 });
 
 // Endpoint for students to pull their PDF report on demand
-router.get('/download/:studentId/:testId', async (req, res) => {
+router.get('/download/:studentId/:testId', tenantAuth as any, async (req: TenantRequest, res) => {
   try {
-    const { studentId, testId } = req.params;
+    const { testId } = req.params;
+    const studentId = await resolveAllowedStudentId(req, req.params.studentId as string);
+    if (!studentId) {
+      return res.status(403).json({ message: 'Access denied' });
+    }
 
     // Set headers for PDF download
     res.setHeader('Content-Type', 'application/pdf');
@@ -98,7 +128,7 @@ router.get('/download/:studentId/:testId', async (req, res) => {
 });
 
 // Endpoint for students/admin to get question-by-question review data for a report
-router.get('/:reportId/review', async (req, res) => {
+router.get('/:reportId/review', tenantAuth as any, async (req: TenantRequest, res) => {
   try {
     const { reportId } = req.params;
     const report = await EvaluationReport.findById(reportId).populate('testId');
@@ -111,6 +141,11 @@ router.get('/:reportId/review', async (req, res) => {
       return res.status(404).json({ message: 'Test details not found' });
     }
 
+    const allowedStudentId = await resolveAllowedStudentId(req, report.studentId.toString());
+    if (!allowedStudentId || allowedStudentId !== report.studentId.toString()) {
+      return res.status(403).json({ message: 'Access denied' });
+    }
+
     const reviewQuestions: any[] = [];
     const responsesMap = new Map();
     if (report.responses) {
@@ -120,18 +155,12 @@ router.get('/:reportId/review', async (req, res) => {
     }
 
     const questionIds = test.questions.map((q: any) => q.questionId);
-    const [physicsQuestions, chemistryQuestions, biologyQuestions, mathematicsQuestions] = await Promise.all([
-      PhysicsQuestion.find({ _id: { $in: questionIds } }),
-      ChemistryQuestion.find({ _id: { $in: questionIds } }),
-      BiologyQuestion.find({ _id: { $in: questionIds } }),
-      MathematicsQuestion.find({ _id: { $in: questionIds } })
-    ]);
+    const questionsBySubject = await Promise.all(ALL_QUESTION_MODELS.map(({ model: QuestionModel }) =>
+      QuestionModel.find({ _id: { $in: questionIds } })
+    ));
 
     const questionsMap = new Map();
-    physicsQuestions.forEach(q => questionsMap.set(q._id.toString(), q));
-    chemistryQuestions.forEach(q => questionsMap.set(q._id.toString(), q));
-    biologyQuestions.forEach(q => questionsMap.set(q._id.toString(), q));
-    mathematicsQuestions.forEach(q => questionsMap.set(q._id.toString(), q));
+    questionsBySubject.forEach(docs => docs.forEach(q => questionsMap.set(q._id.toString(), q)));
 
     for (const q of test.questions) {
       const questionDoc = questionsMap.get(q.questionId.toString());
@@ -207,12 +236,15 @@ router.get('/:reportId/review', async (req, res) => {
 });
 
 // GET /api/v1/reports/test/:testId/analytics
-router.get('/test/:testId/analytics', adminAuth as any, async (req, res) => {
+router.get('/test/:testId/analytics', adminAuth as any, async (req: AdminRequest, res) => {
   try {
     const { testId } = req.params;
     const test = await Test.findById(testId);
     if (!test) {
       return res.status(404).json({ message: 'Test details not found' });
+    }
+    if (test.instituteId.toString() !== req.admin!.instituteId) {
+      return res.status(403).json({ message: 'Access denied' });
     }
 
     const reports = await EvaluationReport.find({ testId });
@@ -234,22 +266,19 @@ router.get('/test/:testId/analytics', adminAuth as any, async (req, res) => {
 
     // Resolve question details and count aggregate results
     const questionIds = test.questions.map((q: any) => q.questionId);
-    const [physicsQuestions, chemistryQuestions, biologyQuestions] = await Promise.all([
-      PhysicsQuestion.find({ _id: { $in: questionIds } }).select('subject chapter topic correctOption'),
-      ChemistryQuestion.find({ _id: { $in: questionIds } }).select('subject chapter topic correctOption'),
-      BiologyQuestion.find({ _id: { $in: questionIds } }).select('subject chapter topic correctOption')
-    ]);
+    const questionsBySubject = await Promise.all(ALL_QUESTION_MODELS.map(({ model: QuestionModel }) =>
+      QuestionModel.find({ _id: { $in: questionIds } }).select('subject chapter topic correctOption')
+    ));
 
     const questionDetailsMap = new Map();
-    physicsQuestions.forEach(q => questionDetailsMap.set(q._id.toString(), q));
-    chemistryQuestions.forEach(q => questionDetailsMap.set(q._id.toString(), q));
-    biologyQuestions.forEach(q => questionDetailsMap.set(q._id.toString(), q));
+    questionsBySubject.forEach(docs => docs.forEach(q => questionDetailsMap.set(q._id.toString(), q)));
 
     // chapterStats: { [subject]: { [chapter]: { correct: 0, total: 0 } } }
     const chapterStats: Record<string, Record<string, { correct: number; total: number }>> = {
       Physics: {},
       Chemistry: {},
-      Biology: {}
+      Biology: {},
+      Mathematics: {}
     };
 
     // Calculate aggregated results
@@ -282,16 +311,18 @@ router.get('/test/:testId/analytics', adminAuth as any, async (req, res) => {
     const chapterMastery: Record<string, Array<{ chapter: string; accuracyPercentage: number; totalAttempted: number }>> = {
       Physics: [],
       Chemistry: [],
-      Biology: []
+      Biology: [],
+      Mathematics: []
     };
-    
+
     const swotProfile: Record<string, { strengths: string[]; criticalWeaknesses: string[] }> = {
       Physics: { strengths: [], criticalWeaknesses: [] },
       Chemistry: { strengths: [], criticalWeaknesses: [] },
-      Biology: { strengths: [], criticalWeaknesses: [] }
+      Biology: { strengths: [], criticalWeaknesses: [] },
+      Mathematics: { strengths: [], criticalWeaknesses: [] }
     };
 
-    for (const subject of ['Physics', 'Chemistry', 'Biology']) {
+    for (const subject of ['Physics', 'Chemistry', 'Biology', 'Mathematics']) {
       const subChapters = chapterStats[subject];
       for (const chapter of Object.keys(subChapters)) {
         const stats = subChapters[chapter];
@@ -332,25 +363,24 @@ router.get('/test/:testId/analytics', adminAuth as any, async (req, res) => {
 });
 
 // GET /api/v1/reports/test/:testId/questions — Returns full question data for a test (Admin Sample PDF)
-router.get('/test/:testId/questions', adminAuth as any, async (req, res) => {
+router.get('/test/:testId/questions', adminAuth as any, async (req: AdminRequest, res) => {
   try {
     const { testId } = req.params;
     const test = await Test.findById(testId);
     if (!test) {
       return res.status(404).json({ message: 'Test not found' });
     }
+    if (test.instituteId.toString() !== req.admin!.instituteId) {
+      return res.status(403).json({ message: 'Access denied' });
+    }
 
     const questionIds = test.questions.map((q: any) => q.questionId);
-    const [physicsQuestions, chemistryQuestions, biologyQuestions] = await Promise.all([
-      PhysicsQuestion.find({ _id: { $in: questionIds } }),
-      ChemistryQuestion.find({ _id: { $in: questionIds } }),
-      BiologyQuestion.find({ _id: { $in: questionIds } })
-    ]);
+    const questionsBySubject = await Promise.all(ALL_QUESTION_MODELS.map(({ model: QuestionModel }) =>
+      QuestionModel.find({ _id: { $in: questionIds } })
+    ));
 
     const questionsMap = new Map();
-    physicsQuestions.forEach(q => questionsMap.set(q._id.toString(), q));
-    chemistryQuestions.forEach(q => questionsMap.set(q._id.toString(), q));
-    biologyQuestions.forEach(q => questionsMap.set(q._id.toString(), q));
+    questionsBySubject.forEach(docs => docs.forEach(q => questionsMap.set(q._id.toString(), q)));
 
     const questions: any[] = [];
     for (const q of test.questions) {
@@ -363,9 +393,11 @@ router.get('/test/:testId/questions', adminAuth as any, async (req, res) => {
         subject: doc.subject,
         chapter: doc.chapter,
         topic: doc.topic,
+        questionType: doc.questionType,
         questionText: doc.questionText,
         options: doc.options,
         correctOption: doc.correctOption,
+        numericalAnswer: doc.numericalAnswer,
         solutionText: doc.solutionText,
         diagramSvg: doc.diagramSvg,
       });

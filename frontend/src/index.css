@@ -94,9 +94,9 @@
   }
 
   /* Layout refinements */
-  nav {
-    background-color: var(--color-background-primary) !important;
-    border-right: 1px solid var(--color-border-subtle) !important;
+  aside nav, .sidebar nav {
+    background-color: var(--color-background-primary);
+    border-right: 1px solid var(--color-border-subtle);
   }
   
   .bg-white {
@@ -236,4 +236,33 @@
   @page {
     margin: 1.5cm;
   }
+}
+
+.markdown-text p {
+  display: inline;
+  margin: 0;
+}
+.markdown-text > .katex-display {
+  display: block;
+  margin: 0.25em 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.markdown-text table {
+  border-collapse: collapse;
+  margin: 0.5em 0;
+}
+.markdown-text th,
+.markdown-text td {
+  border: 1px solid var(--color-border, #E5E5E5);
+  padding: 0.25em 0.5em;
+}
+.markdown-text ul,
+.markdown-text ol {
+  margin: 0.25em 0 0.25em 1.25em;
+  display: block;
+}
+.markdown-text img {
+  max-width: 100%;
+  height: auto;
 }

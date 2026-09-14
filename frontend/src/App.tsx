@@ -21,6 +21,8 @@ import StudentSignup from './pages/StudentSignup';
 import ProtectedRoute from './components/ProtectedRoute';
 import AdminProtectedRoute from './components/AdminProtectedRoute';
 import AdminLogin from './pages/AdminLogin';
+import LandingPage from './pages/LandingPage';
+import ContactUs from './pages/ContactUs';
 
 import DemoStudentLayout from './components/demo/DemoStudentLayout';
 import DemoReports from './pages/DemoReports';
@@ -44,7 +46,8 @@ function App() {
       <AuthProvider>
         <Router>
           <Routes>
-            <Route path="/" element={<Navigate to="/admin/login" replace />} />
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/contact" element={<ContactUs />} />
             
             {/* Admin Login (public) */}
             <Route path="/admin/login" element={<AdminLogin />} />

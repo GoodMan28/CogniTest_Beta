@@ -2,6 +2,29 @@ import { Response } from 'express';
 import { Institute } from '../models/Institute';
 import { AdminRequest } from '../middleware/adminAuth';
 
+import { Request } from 'express';
+
+/**
+ * Public (unauthenticated) lookup used by the student signup form to
+ * populate the batch dropdown — deliberately returns only name + batches,
+ * nothing sensitive.
+ */
+export const getPublicInstituteInfo = async (req: Request, res: Response) => {
+  try {
+    const instituteId = (req.query.instituteId as string) || process.env.ADMIN_INSTITUTE_ID;
+    if (!instituteId) {
+      return res.status(400).json({ message: 'instituteId is required' });
+    }
+    const institute = await Institute.findById(instituteId).select('name batches');
+    if (!institute) {
+      return res.status(404).json({ message: 'Institute not found' });
+    }
+    res.status(200).json({ _id: institute._id, name: institute.name, batches: institute.batches || [] });
+  } catch (error: any) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 export const getInstitute = async (req: AdminRequest, res: Response) => {
   try {
     const institute = await Institute.findById(req.admin!.instituteId);

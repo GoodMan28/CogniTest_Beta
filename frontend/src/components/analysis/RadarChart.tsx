@@ -94,7 +94,7 @@ const RadarChart = ({ categoryAccuracies, subject, theme, onCategoryHover }: Rad
                   setHoveredCategory(item.category);
                   onCategoryHover?.(item.category);
                   const rect = e.currentTarget.getBoundingClientRect();
-                  setTooltipPos({ x: rect.left + window.scrollX - 70, y: rect.top + window.scrollY - 85 });
+                  setTooltipPos({ x: rect.left + rect.width / 2, y: rect.top });
                   setTooltipContent(item);
                 }}
                 onMouseLeave={() => {
@@ -126,7 +126,7 @@ const RadarChart = ({ categoryAccuracies, subject, theme, onCategoryHover }: Rad
               x={lx}
               y={ly + 4}
               textAnchor={textAnchor}
-              className={`text-[9px] sm:text-[10px] font-bold transition-colors ${
+              className={`text-[9px] sm:text-[10px] font-bold transition-colors pointer-events-none ${
                 isHovered ? theme.text : 'fill-gray-500'
               }`}
             >
@@ -138,8 +138,8 @@ const RadarChart = ({ categoryAccuracies, subject, theme, onCategoryHover }: Rad
 
       {tooltipPos && tooltipContent && (
         <div
-          className="absolute z-20 bg-gray-900 text-white p-3 rounded-lg shadow-xl text-xs flex flex-col gap-1 border border-gray-800"
-          style={{ left: tooltipPos.x - 30, top: tooltipPos.y - 120 }}
+          className="fixed z-50 pointer-events-none bg-gray-900 text-white p-3 rounded-lg shadow-xl text-xs flex flex-col gap-1 border border-gray-800"
+          style={{ left: tooltipPos.x, top: tooltipPos.y - 10, transform: 'translate(-50%, -100%)' }}
         >
           <span className="font-black uppercase tracking-wider text-[10px] text-gray-400">
             {tooltipContent.category}

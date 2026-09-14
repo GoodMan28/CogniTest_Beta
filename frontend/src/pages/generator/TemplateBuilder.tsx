@@ -112,7 +112,6 @@ export default function TemplateBuilder({ onComplete, onSaveOnly }: Props) {
                         >
                           <option value="Physics">Physics</option>
                           <option value="Chemistry">Chemistry</option>
-                          <option value="Biology">Biology</option>
                           <option value="Mathematics">Mathematics</option>
                         </select>
                       </td>

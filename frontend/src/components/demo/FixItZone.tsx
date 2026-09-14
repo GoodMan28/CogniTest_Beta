@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import DOMPurify from 'dompurify';
+import PracticeQuestionCard from './PracticeQuestionCard';
 import type { PracticeQuestionDTO, ReflectionItemDTO, ReportDetailDTO } from '../../types/demoAnalysis';
 
 interface FixItZoneProps {
@@ -149,34 +149,8 @@ const FixItZone = ({ report, getPracticeQuestions }: FixItZoneProps) => {
               ) : (
                 <div className="space-y-3 py-2">
                   <h5 className="text-sm font-medium text-gray-700">Practice Questions — self-study, not scored</h5>
-                  {practiceData.map((pq, idx) => (
-                    <div key={pq.sourceKey} className="bg-gray-50 border border-gray-200 rounded p-3">
-                      <p className="text-sm text-gray-800 mb-2">{pq.questionText}</p>
-                      {pq.media?.diagramSvg && (
-                        <div
-                          className="mb-2"
-                          dangerouslySetInnerHTML={{
-                            __html: DOMPurify.sanitize(pq.media.diagramSvg, {
-                              USE_PROFILES: { svg: true, svgFilters: true },
-                            }),
-                          }}
-                        />
-                      )}
-                      {pq.questionType === 'multiple_choice' && pq.options.length > 0 && (
-                        <ul className="list-disc pl-5 mb-2 text-sm text-gray-700">
-                          {pq.options.map((opt, i) => <li key={i}>{opt}</li>)}
-                        </ul>
-                      )}
-                      <details className="mt-2">
-                        <summary className="text-xs text-indigo-600 font-medium cursor-pointer hover:text-indigo-800">
-                          Check / Reveal Answer
-                        </summary>
-                        <div className="mt-2 p-2 bg-white border border-indigo-100 rounded text-sm text-gray-700 space-y-1">
-                          <p><span className="font-medium">Answer: </span>{pq.correctAnswer}</p>
-                          <p><span className="font-medium">Solution: </span>{pq.solutionText}</p>
-                        </div>
-                      </details>
-                    </div>
+                  {practiceData.map(pq => (
+                    <PracticeQuestionCard key={pq.sourceKey} question={pq} />
                   ))}
                 </div>
               )}

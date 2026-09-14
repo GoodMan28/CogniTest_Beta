@@ -1,9 +1,11 @@
-import { Request, Response } from 'express';
+import { Response } from 'express';
+import { Request } from 'express';
 import { Test } from '../models/Test';
-import { PhysicsQuestion, ChemistryQuestion, BiologyQuestion } from '../models/Question';
+import { findQuestionByIdAnySubject, ALL_QUESTION_MODELS } from '../models/Question';
 import { EvaluationReport } from '../models/EvaluationReport';
 import { StudentAnalytics } from '../models/StudentAnalytics';
 import { Student } from '../models/Student';
+import { AdminRequest } from '../middleware/adminAuth';
 import { Types } from 'mongoose';
 import axios from 'axios';
 import FormData from 'form-data';
@@ -11,7 +13,7 @@ import fs from 'fs';
 
 export const uploadBatchOMR = async (req: Request, res: Response) => {
   try {
-    const { testId, studentId } = req.body; 
+    const { testId, studentId } = req.body;
     const file = req.file;
 
     // For MVP frontend which might not send studentId yet, mock it if undefined
@@ -31,7 +33,8 @@ export const uploadBatchOMR = async (req: Request, res: Response) => {
 
     let studentChoices: Record<number, string> = {};
     try {
-      const mlRes = await axios.post('http://localhost:8000/process-omr', form, {
+      const mlServiceUrl = process.env.ML_SERVICE_URL || 'http://localhost:8000';
+      const mlRes = await axios.post(`${mlServiceUrl}/process-omr`, form, {
         headers: { ...form.getHeaders() }
       });
       studentChoices = mlRes.data.choices;
@@ -50,11 +53,7 @@ export const uploadBatchOMR = async (req: Request, res: Response) => {
     const unanswered: Types.ObjectId[] = [];
 
     for (const q of test.questions) {
-      // Look up across all 3 collections
-      let questionDoc = await PhysicsQuestion.findById(q.questionId);
-      if (!questionDoc) questionDoc = await ChemistryQuestion.findById(q.questionId);
-      if (!questionDoc) questionDoc = await BiologyQuestion.findById(q.questionId);
-
+      const questionDoc = await findQuestionByIdAnySubject(q.questionId);
       if (!questionDoc) continue;
 
       let mappedCorrect = questionDoc.correctOption;
@@ -91,7 +90,7 @@ export const uploadBatchOMR = async (req: Request, res: Response) => {
     await report.save();
 
     // 4. Async Analytics Update
-    updateAnalytics(actualStudentId.toString(), correct, incorrect);
+    await generateStudentAnalytics(actualStudentId.toString());
 
     res.status(200).json(report);
   } catch (error: any) {
@@ -99,91 +98,65 @@ export const uploadBatchOMR = async (req: Request, res: Response) => {
   }
 };
 
-const updateAnalytics = async (studentId: string, correct: Types.ObjectId[], incorrect: Types.ObjectId[]) => {
-  try {
-    let analytics = await StudentAnalytics.findOne({ studentId });
-    if (!analytics) {
-      analytics = new StudentAnalytics({
-        studentId,
-        chapterMastery: [],
-        swotProfile: { criticalWeaknesses: [], strengths: [] }
-      });
-    }
-    await analytics.save();
-    console.log('Analytics updated for student:', studentId);
-  } catch (error) {
-    console.error('Failed to update analytics:', error);
-  }
-};
+const SUBJECTS = ALL_QUESTION_MODELS.map(m => m.subject);
 
 export const generateStudentAnalytics = async (studentId: string) => {
   try {
     // 1. Get all reports for the student
     const reports = await EvaluationReport.find({ studentId });
-    
+
     // Collect all correct and incorrect question IDs
     let allCorrectIds: Types.ObjectId[] = [];
     let allIncorrectIds: Types.ObjectId[] = [];
-    
+
     for (const r of reports) {
       allCorrectIds = allCorrectIds.concat(r.performance.correct);
       allIncorrectIds = allIncorrectIds.concat(r.performance.incorrect);
     }
-    
+
     // Fetch details for these questions to group them by chapter and subject
     const getChaptersForIds = async (ids: Types.ObjectId[]) => {
-      const questions: Array<{ id: string; chapter: string; subject: 'Physics' | 'Chemistry' | 'Biology' }> = [];
-      
-      const fetchFromModel = async (Model: any, subjectName: 'Physics' | 'Chemistry' | 'Biology') => {
-        const docs = await Model.find({ _id: { $in: ids } }).select('chapter');
+      const questions: Array<{ id: string; chapter: string; subject: string }> = [];
+
+      await Promise.all(ALL_QUESTION_MODELS.map(async ({ model: QuestionModel, subject }) => {
+        const docs = await QuestionModel.find({ _id: { $in: ids } }).select('chapter');
         for (const doc of docs) {
-          questions.push({ id: doc._id.toString(), chapter: doc.chapter, subject: subjectName });
+          questions.push({ id: doc._id.toString(), chapter: (doc.chapter as any)?.[0] || (doc.chapter as any), subject });
         }
-      };
-      
-      await Promise.all([
-        fetchFromModel(PhysicsQuestion, 'Physics'),
-        fetchFromModel(ChemistryQuestion, 'Chemistry'),
-        fetchFromModel(BiologyQuestion, 'Biology')
-      ]);
-      
+      }));
+
       return questions;
     };
-    
+
     const [correctQuestions, incorrectQuestions] = await Promise.all([
       getChaptersForIds(allCorrectIds),
       getChaptersForIds(allIncorrectIds)
     ]);
-    
+
     // Group stats by chapter
-    const chapterStats: Record<string, { correct: number; incorrect: number; subject: 'Physics' | 'Chemistry' | 'Biology' }> = {};
-    
+    const chapterStats: Record<string, { correct: number; incorrect: number; subject: string }> = {};
+
     for (const q of correctQuestions) {
       if (!chapterStats[q.chapter]) {
         chapterStats[q.chapter] = { correct: 0, incorrect: 0, subject: q.subject };
       }
       chapterStats[q.chapter].correct++;
     }
-    
+
     for (const q of incorrectQuestions) {
       if (!chapterStats[q.chapter]) {
         chapterStats[q.chapter] = { correct: 0, incorrect: 0, subject: q.subject };
       }
       chapterStats[q.chapter].incorrect++;
     }
-    
-    const chapterMastery = {
-      Physics: [] as any[],
-      Chemistry: [] as any[],
-      Biology: [] as any[]
-    };
 
-    const swotProfile = {
-      Physics: { criticalWeaknesses: [] as string[], strengths: [] as string[] },
-      Chemistry: { criticalWeaknesses: [] as string[], strengths: [] as string[] },
-      Biology: { criticalWeaknesses: [] as string[], strengths: [] as string[] }
-    };
-    
+    const chapterMastery: Record<string, any[]> = {};
+    const swotProfile: Record<string, { criticalWeaknesses: string[]; strengths: string[] }> = {};
+    for (const subject of SUBJECTS) {
+      chapterMastery[subject] = [];
+      swotProfile[subject] = { criticalWeaknesses: [], strengths: [] };
+    }
+
     for (const chapter of Object.keys(chapterStats)) {
       const stats = chapterStats[chapter];
       const totalAttempted = stats.correct + stats.incorrect;
@@ -194,9 +167,9 @@ export const generateStudentAnalytics = async (studentId: string) => {
           accuracyPercentage,
           totalAttempted
         };
-        
+
         chapterMastery[stats.subject].push(entry);
-        
+
         if (accuracyPercentage >= 80) {
           swotProfile[stats.subject].strengths.push(chapter);
         } else if (accuracyPercentage < 50) {
@@ -204,12 +177,12 @@ export const generateStudentAnalytics = async (studentId: string) => {
         }
       }
     }
-    
+
     // Sort chapterMastery lists by accuracyPercentage desc
-    chapterMastery.Physics.sort((a, b) => b.accuracyPercentage - a.accuracyPercentage);
-    chapterMastery.Chemistry.sort((a, b) => b.accuracyPercentage - a.accuracyPercentage);
-    chapterMastery.Biology.sort((a, b) => b.accuracyPercentage - a.accuracyPercentage);
-    
+    for (const subject of SUBJECTS) {
+      chapterMastery[subject].sort((a, b) => b.accuracyPercentage - a.accuracyPercentage);
+    }
+
     // Save to StudentAnalytics
     let analytics = await StudentAnalytics.findOne({ studentId });
     if (!analytics) {
@@ -217,145 +190,140 @@ export const generateStudentAnalytics = async (studentId: string) => {
         studentId: new Types.ObjectId(studentId)
       });
     }
-    
-    analytics.chapterMastery = chapterMastery;
-    analytics.swotProfile = swotProfile;
+
+    analytics.chapterMastery = chapterMastery as any;
+    analytics.swotProfile = swotProfile as any;
     analytics.lastUpdated = new Date();
     await analytics.save();
-    
+
     console.log('Successfully generated live subject-wise analytics for student:', studentId);
   } catch (error) {
     console.error('Failed to generate student analytics:', error);
   }
 };
 
-export const evaluateJsonBatch = async (req: Request, res: Response) => {
+/**
+ * POST /api/v1/evaluation/evaluate-sheet (admin-only)
+ *
+ * Body: { testId, responses: { "<enrollmentNo>": { "1": "2", "2": "unanswered", "71": "5.5" } } }
+ * MCQ digits map 1->A, 2->B, 3->C, 4->D; anything else is treated as unattempted.
+ * Numerical answers are compared with |given - expected| <= 0.01 tolerance.
+ * Idempotent per (student, test): re-running replaces the prior report and re-derives analytics.
+ */
+export const evaluateSheet = async (req: AdminRequest, res: Response) => {
   try {
-    const { testId } = req.body;
-    let targetTest;
-    if (testId) {
-      targetTest = await Test.findById(testId);
-    } else {
-      // Find the latest test
-      targetTest = await Test.findOne().sort({ createdAt: -1 });
+    const { testId, responses } = req.body;
+    if (!testId || !responses || typeof responses !== 'object') {
+      return res.status(400).json({ message: 'testId and responses are required' });
     }
 
-    if (!targetTest) {
-      return res.status(404).json({ message: 'No test found for evaluation' });
+    const test = await Test.findById(testId);
+    if (!test) return res.status(404).json({ message: 'Test not found' });
+    if (test.instituteId.toString() !== req.admin!.instituteId) {
+      return res.status(403).json({ message: 'Access denied' });
     }
 
-    // 1. Read response_sheet.json directly from filesystem
-    const filePath = 'c:\\Users\\Abhineet Anand\\Desktop\\CogniTest\\response_sheet.json';
-    if (!fs.existsSync(filePath)) {
-      return res.status(404).json({ message: 'response_sheet.json not found' });
+    const optionMap: Record<string, string> = { '1': 'A', '2': 'B', '3': 'C', '4': 'D' };
+    const batch = test.batches && test.batches.length > 0 ? test.batches[0] : undefined;
+
+    // Resolve question docs once for the whole test.
+    const questionDocs = new Map<string, any>();
+    for (const q of test.questions) {
+      const doc = await findQuestionByIdAnySubject(q.questionId);
+      if (doc) questionDocs.set(q.questionId.toString(), doc);
     }
 
-    const fileContent = fs.readFileSync(filePath, 'utf8');
-    const studentResponses = JSON.parse(fileContent);
-
-    const studentNames = Object.keys(studentResponses);
+    const studentKeys = Object.keys(responses);
     const results: any[] = [];
 
-    // Extract target year from test title or default to 27
-    let testYear = '27';
-    const match = targetTest.title.match(/20(\d{2})/);
-    if (match && match[1]) {
-      testYear = match[1];
-    }
-
-    // Map answer digits to option letters
-    const optionMap: Record<string, string> = {
-      '1': 'A',
-      '2': 'B',
-      '3': 'C',
-      '4': 'D',
-      'unanswered': 'unanswered'
-    };
-
-    let studentIndex = 0;
-    for (const name of studentNames) {
-      studentIndex++;
-      // Batch code: '01' for Alpha (default)
-      const batchCode = '01';
-
-      // Look up student by name and instituteId first to prevent duplication
-      let student = await Student.findOne({ name, instituteId: targetTest.instituteId });
-      
+    for (const key of studentKeys) {
+      // Match by enrollment number first, then by name, scoped to this institute.
+      let student = await Student.findOne({ enrollmentNo: key, instituteId: test.instituteId });
       if (!student) {
-        // Serial number: unique auto-incrementing serial number based on count of existing students
-        const currentCount = await Student.countDocuments({ instituteId: targetTest.instituteId });
-        const serialNo = (1016 + currentCount).toString();
-        const enrollmentNo = `${testYear}${batchCode}${serialNo}`;
-
+        student = await Student.findOne({ name: key, instituteId: test.instituteId });
+      }
+      if (!student) {
+        if (!batch) {
+          results.push({ studentKey: key, error: 'Student not found and test has no batch to auto-enroll into' });
+          continue;
+        }
+        const currentCount = await Student.countDocuments({ instituteId: test.instituteId });
         student = new Student({
-          instituteId: targetTest.instituteId,
-          enrollmentNo,
-          name,
-          batch: 'NEET-2027 Alpha'
+          instituteId: test.instituteId,
+          enrollmentNo: key.match(/^[A-Za-z0-9._-]+$/) ? key : `AUTO-${Date.now()}-${currentCount}`,
+          name: key,
+          batch
         });
         await student.save();
       }
 
-      // Delete any existing report to prevent duplicates for this student
-      await EvaluationReport.deleteMany({ studentId: student._id, testId: targetTest._id });
+      // Idempotent: wipe any prior report for this (student, test) before re-inserting.
+      await EvaluationReport.deleteMany({ studentId: student._id, testId: test._id });
 
-      const responses = studentResponses[name];
+      const studentResponses = responses[key];
       let score = 0;
       const correct: Types.ObjectId[] = [];
       const incorrect: Types.ObjectId[] = [];
       const unanswered: Types.ObjectId[] = [];
       const formattedResponses: Array<{ questionNo: number; selectedOption: string }> = [];
 
-      for (const q of targetTest.questions) {
-        // Look up across all 3 collections
-        let questionDoc = await PhysicsQuestion.findById(q.questionId);
-        if (!questionDoc) questionDoc = await ChemistryQuestion.findById(q.questionId);
-        if (!questionDoc) questionDoc = await BiologyQuestion.findById(q.questionId);
-
+      for (const q of test.questions) {
+        const questionDoc = questionDocs.get(q.questionId.toString());
         if (!questionDoc) continue;
 
-        let mappedCorrect = questionDoc.correctOption;
-        if (questionDoc.questionType === 'multiple_choice' && mappedCorrect) {
-          if (!['A', 'B', 'C', 'D'].includes(mappedCorrect)) {
-            const idx = questionDoc.options ? questionDoc.options.indexOf(mappedCorrect) : -1;
-            if (idx !== -1) mappedCorrect = ['A', 'B', 'C', 'D'][idx];
+        const rawAnswer = studentResponses[q.questionNo.toString()];
+        let isCorrect = false;
+        let isAttempted = false;
+        let selectedOption = 'unanswered';
+
+        if (questionDoc.questionType === 'numerical') {
+          const parsed = rawAnswer !== undefined && rawAnswer !== null && rawAnswer !== 'unanswered'
+            ? parseFloat(rawAnswer)
+            : NaN;
+          if (!Number.isNaN(parsed)) {
+            isAttempted = true;
+            selectedOption = String(parsed);
+            if (questionDoc.numericalAnswer !== undefined && questionDoc.numericalAnswer !== null) {
+              isCorrect = Math.abs(parsed - questionDoc.numericalAnswer) <= 0.01;
+            }
           }
-        } else if (questionDoc.questionType === 'numerical') {
-          mappedCorrect = questionDoc.numericalAnswer !== undefined ? String(questionDoc.numericalAnswer) : undefined;
+        } else {
+          const mapped = optionMap[String(rawAnswer)];
+          if (mapped) {
+            isAttempted = true;
+            selectedOption = mapped;
+            let correctLetter = questionDoc.correctOption;
+            if (correctLetter && !['A', 'B', 'C', 'D'].includes(correctLetter)) {
+              const idx = questionDoc.options ? questionDoc.options.indexOf(correctLetter) : -1;
+              if (idx !== -1) correctLetter = ['A', 'B', 'C', 'D'][idx];
+            }
+            isCorrect = mapped === correctLetter;
+          }
         }
 
-        const rawChoice = responses[q.questionNo.toString()];
-        const mappedChoice = optionMap[rawChoice] || 'unanswered';
+        formattedResponses.push({ questionNo: q.questionNo, selectedOption });
 
-        formattedResponses.push({
-          questionNo: q.questionNo,
-          selectedOption: mappedChoice
-        });
-
-        if (mappedChoice === 'unanswered') {
+        if (!isAttempted) {
           unanswered.push(questionDoc._id as Types.ObjectId);
-        } else if (mappedChoice === mappedCorrect) {
+        } else if (isCorrect) {
           correct.push(questionDoc._id as Types.ObjectId);
-          score += targetTest.marksPerQuestion;
+          score += test.marksPerQuestion;
         } else {
           incorrect.push(questionDoc._id as Types.ObjectId);
-          score -= targetTest.negativeMarking; // Subtract negative marking!
+          score -= test.negativeMarking; // Not clamped at zero — matches JEE-style negative totals.
         }
       }
 
-      // Save Evaluation Report
       const report = new EvaluationReport({
         studentId: student._id,
-        testId: targetTest._id,
+        testId: test._id,
         score,
-        totalMarks: targetTest.totalQuestions * targetTest.marksPerQuestion,
+        totalMarks: test.totalQuestions * test.marksPerQuestion,
         performance: { correct, incorrect, unanswered },
-        responses: formattedResponses,
-        omrImageUrl: 'https://mock-s3-bucket.url/omr-image.jpg'
+        responses: formattedResponses
       });
       await report.save();
 
-      // Trigger analytics generation
       await generateStudentAnalytics(student._id.toString());
 
       results.push({
@@ -370,8 +338,8 @@ export const evaluateJsonBatch = async (req: Request, res: Response) => {
     }
 
     res.status(200).json({
-      message: 'OMR JSON Batch evaluated successfully',
-      testTitle: targetTest.title,
+      message: 'Response sheet evaluated successfully',
+      testTitle: test.title,
       results
     });
   } catch (error: any) {
@@ -388,4 +356,3 @@ export const clearDemo = async (req: Request, res: Response) => {
     res.status(500).json({ message: error.message });
   }
 };
-

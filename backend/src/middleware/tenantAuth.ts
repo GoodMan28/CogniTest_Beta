@@ -1,8 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import * as jsonwebtoken from 'jsonwebtoken';
 import { Student } from '../models/Student';
-
-const JWT_SECRET = process.env.JWT_SECRET || 'fallback_secret_key_change_me_in_prod';
+import { JWT_SECRET } from '../utils/jwt';
 
 // Extend Express Request to carry tenant info (either admin or student)
 export interface TenantRequest extends Request {

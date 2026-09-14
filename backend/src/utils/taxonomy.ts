@@ -14,6 +14,15 @@ export const chemistryTaxonomy: Record<string, string[]> = {
   "Organic Chemistry": ["General Organic Chemistry", "Hydrocarbons", "Haloalkanes and Haloarenes", "Alcohols, Phenols and Ethers", "Aldehydes, Ketones and Carboxylic Acids", "Amines", "Biomolecules", "Polymers", "Chemistry in Everyday Life", "Practical Organic Chemistry (POC)"]
 };
 
+export const mathsTaxonomy: Record<string, string[]> = {
+  "Algebra": ["Sets, Relations and Functions", "Complex Numbers", "Quadratic Equations", "Permutations and Combinations", "Binomial Theorem", "Sequences and Series", "Matrices and Determinants", "Mathematical Reasoning"],
+  "Trigonometry": ["Trigonometric Functions", "Trigonometric Equations", "Inverse Trigonometric Functions", "Properties of Triangles"],
+  "Coordinate Geometry": ["Straight Lines", "Circles", "Conic Sections (Parabola, Ellipse, Hyperbola)"],
+  "Calculus": ["Limits and Continuity", "Differentiability", "Application of Derivatives", "Indefinite Integrals", "Definite Integrals", "Area Under Curves", "Differential Equations"],
+  "Vectors and 3D Geometry": ["Vectors", "Three-Dimensional Geometry"],
+  "Statistics and Probability": ["Statistics", "Probability"]
+};
+
 export const biologyTaxonomy: Record<string, string[]> = {
   "Diversity of Living Organisms": ["The Living World", "Biological Classification", "Plant Kingdom", "Animal Kingdom"],
   "Structural Organisation in Plants and Animals": ["Morphology of Flowering Plants", "Anatomy of Flowering Plants", "Structural Organisation in Animals"],

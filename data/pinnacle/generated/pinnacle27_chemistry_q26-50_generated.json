@@ -1,0 +1,2220 @@
+None selected
+
+Skip to content
+Using BIT Webmail Mail with screen readers
+
+1 of 7,922
+Document from Abhineet Anand
+Inbox
+
+ABHINEET ANAND <btech10112.23@bitmesra.ac.in>
+Attachments
+5:37 PM (3 minutes ago)
+to me
+
+ One attachment
+  •  Scanned by Gmail
+[
+  {
+    "sourceQuestionNumber": "Chemistry Q26",
+    "sourceSubject": "Chemistry",
+    "sourceQuestionText": "What is the pH of a 0.001M aqueous solution of HCl at 25°C?\n(a) 3\n(b) 2\n(c) 1\n(d) 4",
+    "generatedQuestions": [
+      {
+        "subject": "Chemistry",
+        "unit": "Physical Chemistry",
+        "chapter": [
+          "Equilibrium"
+        ],
+        "topic": [
+          "Ionic Equilibrium (pH, Buffers)"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "easy",
+        "questionIntent": "Tests calculation of pH for a strong monoprotic acid solution from its molar concentration.",
+        "questionText": "What is the pH of a 0.01 M aqueous solution of HCl at 25°C?",
+        "options": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "correctOption": "2",
+        "numericalAnswer": null,
+        "solutionText": "HCl is a strong monoprotic acid and dissociates completely: [H+] = 0.01 M = 1x10^-2 M. pH = -log[H+] = -log(1x10^-2) = 2. Hence pH = 2.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Physical Chemistry",
+        "chapter": [
+          "Equilibrium"
+        ],
+        "topic": [
+          "Ionic Equilibrium (pH, Buffers)"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "medium",
+        "questionIntent": "Tests calculation of pH for a strong acid solution whose concentration is not a simple power of ten.",
+        "questionText": "What is the pH of a 5x10^-3 M aqueous solution of HCl at 25°C? (Given: log 5 = 0.70)",
+        "options": [
+          "2.30",
+          "2.70",
+          "3.30",
+          "1.70"
+        ],
+        "correctOption": "2.30",
+        "numericalAnswer": null,
+        "solutionText": "HCl dissociates completely: [H+] = 5x10^-3 M. pH = -log(5x10^-3) = -log5 - log(10^-3) = -0.70 + 3 = 2.30.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Physical Chemistry",
+        "chapter": [
+          "Equilibrium"
+        ],
+        "topic": [
+          "Ionic Equilibrium (pH, Buffers)"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "hard",
+        "questionIntent": "Tests pH calculation after dilution of a strong acid, requiring a moles-based concentration recalculation before applying the pH formula.",
+        "questionText": "200 mL of 0.001 M HCl is mixed with 300 mL of water. What is the pH of the resulting solution at 25°C? (Given: log 4 = 0.60)",
+        "options": [
+          "3.40",
+          "3.00",
+          "3.70",
+          "2.60"
+        ],
+        "correctOption": "3.40",
+        "numericalAnswer": null,
+        "solutionText": "Moles of HCl = 0.200 L x 0.001 M = 2x10^-4 mol. Total volume after dilution = 200 + 300 = 500 mL = 0.5 L. New [H+] = (2x10^-4)/0.5 = 4x10^-4 M. pH = -log(4x10^-4) = -log4 + 4 = -0.60 + 4 = 3.40.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Chemistry Q27",
+    "sourceSubject": "Chemistry",
+    "sourceQuestionText": "Calculate the pOH of a 0.01M aqueous solution of NaOH at 25°C.\n(a) 12.0\n(b) 13.0\n(c) 2.0\n(d) 1.0",
+    "generatedQuestions": [
+      {
+        "subject": "Chemistry",
+        "unit": "Physical Chemistry",
+        "chapter": [
+          "Equilibrium"
+        ],
+        "topic": [
+          "Ionic Equilibrium (pH, Buffers)"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "easy",
+        "questionIntent": "Tests calculation of pOH for a strong base solution from its molar concentration.",
+        "questionText": "What is the pOH of a 0.1 M aqueous solution of NaOH at 25°C?",
+        "options": [
+          "1.0",
+          "2.0",
+          "13.0",
+          "0.1"
+        ],
+        "correctOption": "1.0",
+        "numericalAnswer": null,
+        "solutionText": "NaOH is a strong base and dissociates completely: [OH-] = 0.1 M = 1x10^-1 M. pOH = -log[OH-] = -log(10^-1) = 1.0.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Physical Chemistry",
+        "chapter": [
+          "Equilibrium"
+        ],
+        "topic": [
+          "Ionic Equilibrium (pH, Buffers)"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "medium",
+        "questionIntent": "Tests calculation of pOH for a strong base concentration that is not a simple power of ten.",
+        "questionText": "What is the pOH of a 4x10^-3 M aqueous solution of NaOH at 25°C? (Given: log 4 = 0.60)",
+        "options": [
+          "2.40",
+          "1.60",
+          "3.60",
+          "2.70"
+        ],
+        "correctOption": "2.40",
+        "numericalAnswer": null,
+        "solutionText": "[OH-] = 4x10^-3 M. pOH = -log(4x10^-3) = -log4 + 3 = -0.60 + 3 = 2.40.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Physical Chemistry",
+        "chapter": [
+          "Equilibrium"
+        ],
+        "topic": [
+          "Ionic Equilibrium (pH, Buffers)"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "hard",
+        "questionIntent": "Tests pOH calculation after dilution of a strong base, requiring a moles-based recalculation of concentration.",
+        "questionText": "100 mL of 0.01 M NaOH is mixed with 400 mL of water. What is the pOH of the resulting solution at 25°C? (Given: log 2 = 0.30)",
+        "options": [
+          "2.70",
+          "2.30",
+          "3.30",
+          "1.70"
+        ],
+        "correctOption": "2.70",
+        "numericalAnswer": null,
+        "solutionText": "Moles NaOH = 0.100 L x 0.01 M = 1x10^-3 mol. Total volume = 100 + 400 = 500 mL = 0.5 L. New [OH-] = (1x10^-3)/0.5 = 2x10^-3 M. pOH = -log(2x10^-3) = -log2 + 3 = -0.30 + 3 = 2.70.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Chemistry Q28",
+    "sourceSubject": "Chemistry",
+    "sourceQuestionText": "Which of the following is the conjugate base of the strong acid HClO4?\n(a) ClO3-\n(b) Cl-\n(c) ClO4-\n(d) HClO3",
+    "generatedQuestions": [
+      {
+        "subject": "Chemistry",
+        "unit": "Physical Chemistry",
+        "chapter": [
+          "Equilibrium"
+        ],
+        "topic": [
+          "Ionic Equilibrium (pH, Buffers)"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "easy",
+        "questionIntent": "Tests identification of the conjugate base of a strong monoprotic acid.",
+        "questionText": "What is the conjugate base of the strong acid HCl?",
+        "options": [
+          "Cl2",
+          "Cl-",
+          "HCl2-",
+          "ClO-"
+        ],
+        "correctOption": "Cl-",
+        "numericalAnswer": null,
+        "solutionText": "A conjugate base is formed by removing one H+ from the acid. Removing H+ from HCl leaves Cl-, which is its conjugate base.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Physical Chemistry",
+        "chapter": [
+          "Equilibrium"
+        ],
+        "topic": [
+          "Ionic Equilibrium (pH, Buffers)"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "medium",
+        "questionIntent": "Tests identification of the conjugate base formed after the first dissociation step of a strong polyprotic acid.",
+        "questionText": "What is the conjugate base formed after the first (complete) dissociation of the strong acid H2SO4?",
+        "options": [
+          "HSO4-",
+          "SO4(2-)",
+          "H2SO3",
+          "HSO3-"
+        ],
+        "correctOption": "HSO4-",
+        "numericalAnswer": null,
+        "solutionText": "Removing one H+ from H2SO4 gives the hydrogen sulfate ion, HSO4-, which is its conjugate base for the first (complete) dissociation step.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Physical Chemistry",
+        "chapter": [
+          "Equilibrium"
+        ],
+        "topic": [
+          "Ionic Equilibrium (pH, Buffers)"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "hard",
+        "questionIntent": "Tests both identification of a strong acid's conjugate base and conceptual reasoning about why that conjugate base is extremely weak.",
+        "questionText": "Which of the following correctly identifies the conjugate base of HNO3 and correctly explains why it behaves as an extremely weak base?",
+        "options": [
+          "NO3-; because HNO3 is a strong acid, its conjugate base has negligible tendency to accept a proton back",
+          "NO2-; because HNO3 is a weak acid, its conjugate base readily accepts a proton",
+          "HNO2; because it still retains one hydrogen atom",
+          "NO3-; because it carries a negative charge, which always makes it a strong base"
+        ],
+        "correctOption": "NO3-; because HNO3 is a strong acid, its conjugate base has negligible tendency to accept a proton back",
+        "numericalAnswer": null,
+        "solutionText": "HNO3 dissociates almost completely in water, so it is a strong acid. Removing H+ from HNO3 gives NO3-. A key principle of conjugate acid-base pairs is that the stronger the acid, the weaker its conjugate base; since HNO3 is strong, NO3- has essentially no tendency to reassociate with H+ in water, making it an extremely weak base.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Chemistry Q29",
+    "sourceSubject": "Chemistry",
+    "sourceQuestionText": "What is the conjugate acid of the weak base NH3?\n(a) NH4+\n(b) HNO3\n(c) NH^2-\n(d) NH2-",
+    "generatedQuestions": [
+      {
+        "subject": "Chemistry",
+        "unit": "Physical Chemistry",
+        "chapter": [
+          "Equilibrium"
+        ],
+        "topic": [
+          "Ionic Equilibrium (pH, Buffers)"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "easy",
+        "questionIntent": "Tests identification of the conjugate acid of a simple weak base by adding one proton.",
+        "questionText": "What is the conjugate acid of the weak base CH3NH2 (methylamine)?",
+        "options": [
+          "CH3NH3+",
+          "CH3NH-",
+          "CH4N",
+          "CH3NH2+"
+        ],
+        "correctOption": "CH3NH3+",
+        "numericalAnswer": null,
+        "solutionText": "A conjugate acid is formed by adding one H+ to the base. Adding H+ to CH3NH2 gives the methylammonium ion, CH3NH3+.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Physical Chemistry",
+        "chapter": [
+          "Equilibrium"
+        ],
+        "topic": [
+          "Ionic Equilibrium (pH, Buffers)"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "medium",
+        "questionIntent": "Tests identification of the conjugate acid formed when a cyclic weak base accepts a proton.",
+        "questionText": "What is the conjugate acid formed when the weak base pyridine (C5H5N) accepts a proton?",
+        "options": [
+          "C5H6N+",
+          "C5H4N-",
+          "C5H5N2+",
+          "C5H6N-"
+        ],
+        "correctOption": "C5H6N+",
+        "numericalAnswer": null,
+        "solutionText": "The lone pair on pyridine's nitrogen atom accepts H+: C5H5N + H+ -> C5H6N+ (the pyridinium ion), which is the conjugate acid.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Physical Chemistry",
+        "chapter": [
+          "Equilibrium"
+        ],
+        "topic": [
+          "Ionic Equilibrium (pH, Buffers)"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "hard",
+        "questionIntent": "Tests determination of the molecular formula of a conjugate acid formed by mono-protonation of a diprotic weak base.",
+        "questionText": "Ethylenediamine, H2NCH2CH2NH2 (molecular formula C2H8N2), is a diprotic weak base. What is the molecular formula of the species formed after it accepts one proton at a single nitrogen atom?",
+        "options": [
+          "C2H9N2+",
+          "C2H7N2-",
+          "C2H10N2(2+)",
+          "C2H8N2"
+        ],
+        "correctOption": "C2H9N2+",
+        "numericalAnswer": null,
+        "solutionText": "Accepting one H+ adds one hydrogen atom and one positive charge to the neutral molecule: C2H8N2 + H+ -> C2H9N2+. This mono-protonated species is the conjugate acid formed at the first basic nitrogen; the second nitrogen remains unprotonated.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Chemistry Q30",
+    "sourceSubject": "Chemistry",
+    "sourceQuestionText": "What is the resulting pH when equal volumes of 0.1 M HCl and 0.1 M NaOH are mixed together at 25°C?\n(a) pH=1\n(b) pH=7\n(c) pH=0\n(d) pH=13",
+    "generatedQuestions": [
+      {
+        "subject": "Chemistry",
+        "unit": "Physical Chemistry",
+        "chapter": [
+          "Equilibrium"
+        ],
+        "topic": [
+          "Ionic Equilibrium (pH, Buffers)"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "easy",
+        "questionIntent": "Tests the concept that mixing equal moles of a strong acid and strong base produces a neutral solution.",
+        "questionText": "What is the resulting pH when equal volumes of 0.05 M HCl and 0.05 M NaOH are mixed together at 25°C?",
+        "options": [
+          "7",
+          "6",
+          "8",
+          "1"
+        ],
+        "correctOption": "7",
+        "numericalAnswer": null,
+        "solutionText": "HCl + NaOH -> NaCl + H2O. Since HCl and NaOH have equal concentration and equal volume, they contain equal moles and neutralize each other exactly, leaving a neutral NaCl solution. Hence pH = 7.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Physical Chemistry",
+        "chapter": [
+          "Equilibrium"
+        ],
+        "topic": [
+          "Ionic Equilibrium (pH, Buffers)"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "medium",
+        "questionIntent": "Tests pH calculation for a strong acid-base mixture where the acid is present in excess.",
+        "questionText": "100 mL of 0.2 M HCl is mixed with 100 mL of 0.1 M NaOH. What is the pH of the resulting solution at 25°C? (Given: log 5 = 0.70)",
+        "options": [
+          "1.30",
+          "1.00",
+          "0.70",
+          "2.30"
+        ],
+        "correctOption": "1.30",
+        "numericalAnswer": null,
+        "solutionText": "Moles HCl = 0.100 x 0.2 = 0.02 mol; moles NaOH = 0.100 x 0.1 = 0.01 mol. NaOH is completely consumed, leaving excess HCl = 0.02 - 0.01 = 0.01 mol. Total volume = 100 + 100 = 200 mL = 0.2 L. [H+] = 0.01/0.2 = 0.05 M = 5x10^-2 M. pH = -log(5x10^-2) = -log5 + 2 = -0.70 + 2 = 1.30.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Physical Chemistry",
+        "chapter": [
+          "Equilibrium"
+        ],
+        "topic": [
+          "Ionic Equilibrium (pH, Buffers)"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "hard",
+        "questionIntent": "Tests pH calculation for a mixture of a diprotic strong acid with a strong base in unequal volumes, requiring correct accounting of both acidic protons.",
+        "questionText": "50 mL of 0.1 M H2SO4 is mixed with 80 mL of 0.1 M NaOH. What is the pH of the resulting solution at 25°C? (Given: log 1.54 = 0.19)",
+        "options": [
+          "1.81",
+          "1.30",
+          "2.00",
+          "0.81"
+        ],
+        "correctOption": "1.81",
+        "numericalAnswer": null,
+        "solutionText": "Moles H2SO4 = 0.050 x 0.1 = 5x10^-3 mol, giving moles H+ = 2 x 5x10^-3 = 0.01 mol (H2SO4 is diprotic and fully dissociates). Moles NaOH = 0.080 x 0.1 = 8x10^-3 mol, giving 0.008 mol OH-. Excess H+ = 0.01 - 0.008 = 0.002 mol. Total volume = 50 + 80 = 130 mL = 0.13 L. [H+] = 0.002/0.13 = 1.54x10^-2 M. pH = -log(1.54x10^-2) = -log1.54 + 2 = -0.19 + 2 = 1.81.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Chemistry Q31",
+    "sourceSubject": "Chemistry",
+    "sourceQuestionText": "According to the Bronsted-Lowry concept, what is the nature of the conjugate base of a very strong acid?\n(a) Neutral species\n(b) Very strong base\n(c) Very weak base\n(d) Weak base",
+    "generatedQuestions": [
+      {
+        "subject": "Chemistry",
+        "unit": "Physical Chemistry",
+        "chapter": [
+          "Equilibrium"
+        ],
+        "topic": [
+          "Ionic Equilibrium (pH, Buffers)"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "easy",
+        "questionIntent": "Tests the Bronsted-Lowry relationship between the strength of a base and the strength of its conjugate acid.",
+        "questionText": "According to the Bronsted-Lowry concept, what is the nature of the conjugate acid of a very strong base?",
+        "options": [
+          "Very strong acid",
+          "Neutral species",
+          "Very weak acid",
+          "Weak base"
+        ],
+        "correctOption": "Very weak acid",
+        "numericalAnswer": null,
+        "solutionText": "Just as a very strong acid gives an extremely weak conjugate base, a very strong base gives an extremely weak conjugate acid, since it has almost no tendency to donate back the proton it has gained.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Physical Chemistry",
+        "chapter": [
+          "Equilibrium"
+        ],
+        "topic": [
+          "Ionic Equilibrium (pH, Buffers)"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "medium",
+        "questionIntent": "Tests the general inverse relationship between acid strength and conjugate base strength.",
+        "questionText": "Which of the following statements correctly relates acid strength to conjugate base strength?",
+        "options": [
+          "A stronger acid always has a stronger conjugate base",
+          "A stronger acid always has a weaker conjugate base",
+          "Acid strength and conjugate base strength are unrelated",
+          "A stronger acid always has a conjugate base of exactly equal strength"
+        ],
+        "correctOption": "A stronger acid always has a weaker conjugate base",
+        "numericalAnswer": null,
+        "solutionText": "Acid strength and conjugate base strength are inversely related: the stronger the acid (greater tendency to donate H+), the weaker its conjugate base (lesser tendency to accept H+ back), because a large equilibrium shift toward dissociation corresponds to a very small reverse (base) equilibrium constant.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Physical Chemistry",
+        "chapter": [
+          "Equilibrium"
+        ],
+        "topic": [
+          "Ionic Equilibrium (pH, Buffers)"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "hard",
+        "questionIntent": "Tests quantitative application of the inverse acid-conjugate base strength relationship using Ka values.",
+        "questionText": "Given two acids, HA (Ka = 1x10^-2) and HB (Ka = 1x10^-7), which of the following correctly ranks the base strength of their conjugate bases, A- and B-?",
+        "options": [
+          "A- is a stronger base than B-",
+          "B- is a stronger base than A-",
+          "A- and B- have equal base strength",
+          "Base strength cannot be determined from Ka values"
+        ],
+        "correctOption": "B- is a stronger base than A-",
+        "numericalAnswer": null,
+        "solutionText": "For a conjugate pair, Ka x Kb = Kw (constant at a given temperature). HA has the larger Ka (1x10^-2), meaning it is the stronger acid, so its conjugate base A- has the smaller Kb (weaker base). HB has the smaller Ka (1x10^-7), meaning it is the weaker acid, so its conjugate base B- has the larger Kb (stronger base). Hence B- is a stronger base than A-.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Chemistry Q32",
+    "sourceSubject": "Chemistry",
+    "sourceQuestionText": "What is the expected pH of a 10^-8 M solution of HCl at 25°C?\n(a) 7.00\n(b) 8.00\n(c) 6.00\n(d) 6.98",
+    "generatedQuestions": [
+      {
+        "subject": "Chemistry",
+        "unit": "Physical Chemistry",
+        "chapter": [
+          "Equilibrium"
+        ],
+        "topic": [
+          "Ionic Equilibrium (pH, Buffers)"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "easy",
+        "questionIntent": "Tests routine pH calculation for a strong acid concentration high enough that water's autoionization can be neglected.",
+        "questionText": "What is the pH of a 1x10^-2 M aqueous solution of HCl at 25°C (a concentration high enough that the autoionization of water can be neglected)?",
+        "options": [
+          "2",
+          "12",
+          "7",
+          "1.98"
+        ],
+        "correctOption": "2",
+        "numericalAnswer": null,
+        "solutionText": "At this concentration, [H+] from HCl (0.01 M) vastly exceeds the [H+] contributed by water, so it can be neglected. pH = -log(0.01) = 2.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Physical Chemistry",
+        "chapter": [
+          "Equilibrium"
+        ],
+        "topic": [
+          "Ionic Equilibrium (pH, Buffers)"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "medium",
+        "questionIntent": "Tests conceptual understanding of why the simple pH formula fails for extremely dilute strong acids.",
+        "questionText": "For extremely dilute strong acid solutions (concentration approaching 10^-7 M or lower), why does the simple formula pH = -log(C_acid) become inaccurate?",
+        "options": [
+          "Because HCl becomes a weak acid at low concentration",
+          "Because the H+ contributed by the autoionization of water becomes comparable to that from the acid",
+          "Because water evaporates at low acid concentration",
+          "Because pH is undefined below 10^-7 M"
+        ],
+        "correctOption": "Because the H+ contributed by the autoionization of water becomes comparable to that from the acid",
+        "numericalAnswer": null,
+        "solutionText": "At very low acid concentrations, the H+ ions produced by the acid's dissociation become comparable in magnitude to the H+ ions naturally present from water's own autoionization (1x10^-7 M at 25°C). Ignoring the water contribution then gives an incorrect pH, so both sources of H+ must be included via a quadratic mass-balance equation.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Physical Chemistry",
+        "chapter": [
+          "Equilibrium"
+        ],
+        "topic": [
+          "Ionic Equilibrium (pH, Buffers)"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "hard",
+        "questionIntent": "Tests the full quadratic-equation method for finding the pH of an extremely dilute strong acid where water's autoionization cannot be ignored.",
+        "questionText": "What is the pH of a 1x10^-7 M aqueous solution of HCl at 25°C, taking into account the autoionization of water? (Given: Kw = 1x10^-14, log 1.618 = 0.209)",
+        "options": [
+          "6.79",
+          "7.00",
+          "6.50",
+          "7.21"
+        ],
+        "correctOption": "6.79",
+        "numericalAnswer": null,
+        "solutionText": "Let Ca = 1x10^-7 M be the acid's contribution. Charge/mass balance gives [H+]^2 - Ca[H+] - Kw = 0. Substituting: [H+] = [Ca + sqrt(Ca^2 + 4Kw)]/2 = [1x10^-7 + sqrt(1x10^-14 + 4x10^-14)]/2 = [1x10^-7 + sqrt(5x10^-14)]/2 = [1x10^-7 + 2.236x10^-7]/2 = 3.236x10^-7/2 = 1.618x10^-7 M. pH = -log(1.618x10^-7) = 7 - log(1.618) = 7 - 0.209 = 6.79 (slightly acidic, less than 7, as expected for an acid, but far from the naive estimate of pH = 7).",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Chemistry Q33",
+    "sourceSubject": "Chemistry",
+    "sourceQuestionText": "If 100 mL of a strong acid solution with pH=2 is mixed with 100 mL of a strong base solution with pH=12, what is the pH of the resulting mixture?\n(a) 5\n(b) 12\n(c) 2\n(d) 7",
+    "generatedQuestions": [
+      {
+        "subject": "Chemistry",
+        "unit": "Physical Chemistry",
+        "chapter": [
+          "Equilibrium"
+        ],
+        "topic": [
+          "Ionic Equilibrium (pH, Buffers)"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "easy",
+        "questionIntent": "Tests recognition that mixing equal volumes of a strong acid and strong base with complementary pH/pOH values gives exact neutralization.",
+        "questionText": "100 mL of a strong acid solution with pH = 3 is mixed with 100 mL of a strong base solution with pH = 11. What is the pH of the resulting mixture at 25°C?",
+        "options": [
+          "7",
+          "3",
+          "11",
+          "4"
+        ],
+        "correctOption": "7",
+        "numericalAnswer": null,
+        "solutionText": "[H+] of the acid = 1x10^-3 M; the base has pOH = 14-11 = 3, so [OH-] = 1x10^-3 M. Equal concentrations and equal volumes mean equal moles of H+ and OH-, so they neutralize exactly, giving a neutral solution: pH = 7.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Physical Chemistry",
+        "chapter": [
+          "Equilibrium"
+        ],
+        "topic": [
+          "Ionic Equilibrium (pH, Buffers)"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "medium",
+        "questionIntent": "Tests pH calculation when unequal volumes of a strong acid and strong base (given via pH/pOH) are mixed, leaving the base in excess.",
+        "questionText": "100 mL of a strong acid solution with pH = 2 is mixed with 300 mL of a strong base solution with pH = 12. What is the pH of the resulting mixture at 25°C? (Given: log 5 = 0.70)",
+        "options": [
+          "11.70",
+          "2.30",
+          "7.00",
+          "12.30"
+        ],
+        "correctOption": "11.70",
+        "numericalAnswer": null,
+        "solutionText": "[H+] of acid = 1x10^-2 M, moles = 0.100 x 0.01 = 1x10^-3 mol. [OH-] of base = 1x10^-2 M (pOH=2), moles = 0.300 x 0.01 = 3x10^-3 mol. Excess OH- = 3x10^-3 - 1x10^-3 = 2x10^-3 mol, in a total volume of 400 mL = 0.4 L. [OH-] = 2x10^-3/0.4 = 5x10^-3 M. pOH = -log(5x10^-3) = 3 - log5 = 3 - 0.70 = 2.30. pH = 14 - 2.30 = 11.70.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Physical Chemistry",
+        "chapter": [
+          "Equilibrium"
+        ],
+        "topic": [
+          "Ionic Equilibrium (pH, Buffers)"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "hard",
+        "questionIntent": "Tests pH calculation when unequal volumes of a strong acid and strong base are mixed leaving the acid in excess, requiring conversion from pH/pOH to concentration and back.",
+        "questionText": "300 mL of a strong acid solution with pH = 1 is mixed with 200 mL of a strong base solution with pH = 13. What is the pH of the resulting mixture at 25°C? (Given: log 2 = 0.30)",
+        "options": [
+          "1.70",
+          "1.30",
+          "2.30",
+          "0.70"
+        ],
+        "correctOption": "1.70",
+        "numericalAnswer": null,
+        "solutionText": "[H+] of acid = 0.1 M, moles = 0.300 x 0.1 = 0.03 mol. [OH-] of base = 0.1 M (pOH=1), moles = 0.200 x 0.1 = 0.02 mol. Excess H+ = 0.03 - 0.02 = 0.01 mol, in a total volume of 500 mL = 0.5 L. [H+] = 0.01/0.5 = 0.02 M = 2x10^-2 M. pH = -log(2x10^-2) = 2 - log2 = 2 - 0.30 = 1.70.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Chemistry Q34",
+    "sourceSubject": "Chemistry",
+    "sourceQuestionText": "Which of the following expressions correctly relates the pH and pOH of an aqueous solution at 25°C?\n(a) pH+pOH=14\n(b) pH x pOH=14\n(c) pH / pOH=14\n(d) pH-pOH=14",
+    "generatedQuestions": [
+      {
+        "subject": "Chemistry",
+        "unit": "Physical Chemistry",
+        "chapter": [
+          "Equilibrium"
+        ],
+        "topic": [
+          "Ionic Equilibrium (pH, Buffers)"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "easy",
+        "questionIntent": "Tests direct application of the pH + pOH = 14 relationship at 25°C.",
+        "questionText": "At 25°C, if the pH of a solution is 9, what is its pOH?",
+        "options": [
+          "5",
+          "9",
+          "14",
+          "-5"
+        ],
+        "correctOption": "5",
+        "numericalAnswer": null,
+        "solutionText": "At 25°C, pH + pOH = 14. So pOH = 14 - pH = 14 - 9 = 5.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Physical Chemistry",
+        "chapter": [
+          "Equilibrium"
+        ],
+        "topic": [
+          "Ionic Equilibrium (pH, Buffers)"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "medium",
+        "questionIntent": "Tests understanding that the pH + pOH = 14 relationship is derived from the ionic product of water.",
+        "questionText": "The ionic product of water, Kw, at 25°C is 1x10^-14. Which of the following correctly expresses the resulting relationship between pH and pOH at this temperature?",
+        "options": [
+          "pH + pOH = 14 (from -log Kw)",
+          "pH - pOH = 14",
+          "pH x pOH = 14",
+          "pH = pOH always, regardless of solution"
+        ],
+        "correctOption": "pH + pOH = 14 (from -log Kw)",
+        "numericalAnswer": null,
+        "solutionText": "Kw = [H+][OH-] = 1x10^-14. Taking -log of both sides: -log[H+] + (-log[OH-]) = -log(1x10^-14), i.e., pH + pOH = 14 at 25°C.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Physical Chemistry",
+        "chapter": [
+          "Equilibrium"
+        ],
+        "topic": [
+          "Ionic Equilibrium (pH, Buffers)"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "hard",
+        "questionIntent": "Tests understanding that pH + pOH equals pKw, which varies with temperature rather than always being 14.",
+        "questionText": "At a certain temperature, the ionic product of water, Kw, is found to be 1x10^-13 (instead of 1x10^-14 as at 25°C). What is the value of pH + pOH for any aqueous solution at this temperature?",
+        "options": [
+          "13",
+          "14",
+          "12",
+          "1"
+        ],
+        "correctOption": "13",
+        "numericalAnswer": null,
+        "solutionText": "In general, pH + pOH = pKw = -log(Kw), which is only equal to 14 at 25°C because Kw = 1x10^-14 there. At the given temperature, Kw = 1x10^-13, so pKw = -log(1x10^-13) = 13. Hence pH + pOH = 13 at this temperature.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Chemistry Q35",
+    "sourceSubject": "Chemistry",
+    "sourceQuestionText": "Which of the following is considered a weak conjugate base?\n(a) CH3COO-\n(b) Cl-\n(c) F-\n(d) CN-",
+    "generatedQuestions": [
+      {
+        "subject": "Chemistry",
+        "unit": "Physical Chemistry",
+        "chapter": [
+          "Equilibrium"
+        ],
+        "topic": [
+          "Ionic Equilibrium (pH, Buffers)"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "easy",
+        "questionIntent": "Tests the principle that the weaker the parent acid, the stronger its conjugate base, using given Ka values.",
+        "questionText": "Given the following acids and their Ka values - HF (Ka = 6.6x10^-4), CH3COOH (Ka = 1.8x10^-5), and HCN (Ka = 6.2x10^-10) - which of their conjugate bases is the strongest base?",
+        "options": [
+          "F-",
+          "CH3COO-",
+          "CN-",
+          "All are equally strong"
+        ],
+        "correctOption": "CN-",
+        "numericalAnswer": null,
+        "solutionText": "The weaker the acid (smaller Ka), the stronger its conjugate base. Among the three, HCN has the smallest Ka (6.2x10^-10), making it the weakest acid, so CN- is the strongest conjugate base of the three.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Physical Chemistry",
+        "chapter": [
+          "Equilibrium"
+        ],
+        "topic": [
+          "Ionic Equilibrium (pH, Buffers)"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "medium",
+        "questionIntent": "Tests identification of the weakest conjugate base among bases derived from both a strong acid and several weak acids.",
+        "questionText": "Which of the following conjugate bases is expected to be the weakest base?",
+        "options": [
+          "HSO4- (from H2SO4, a strong acid in its first ionization)",
+          "CH3COO- (from CH3COOH, a weak acid)",
+          "HCO3- (from H2CO3, a weak acid)",
+          "NO2- (from HNO2, a weak acid)"
+        ],
+        "correctOption": "HSO4- (from H2SO4, a strong acid in its first ionization)",
+        "numericalAnswer": null,
+        "solutionText": "Since the first ionization of H2SO4 is essentially complete (it behaves as a strong acid), its conjugate base HSO4- has almost no tendency to reassociate with a proton, making it the weakest base of the four options; the other three come from genuinely weak acids and are comparatively stronger bases.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Physical Chemistry",
+        "chapter": [
+          "Equilibrium"
+        ],
+        "topic": [
+          "Ionic Equilibrium (pH, Buffers)"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "hard",
+        "questionIntent": "Tests quantitative use of the Ka x Kb = Kw relationship to compare the relative base strengths of two conjugate bases.",
+        "questionText": "Two weak acids, HX (Ka = 1x10^-4) and HY (Ka = 1x10^-8), are compared. If Kb(X-) and Kb(Y-) are the base ionization constants of their respective conjugate bases at 25°C, what is the ratio Kb(Y-)/Kb(X-)?",
+        "options": [
+          "10^4",
+          "10^-4",
+          "10^2",
+          "1"
+        ],
+        "correctOption": "10^4",
+        "numericalAnswer": null,
+        "solutionText": "For a conjugate acid-base pair, Ka x Kb = Kw = 1x10^-14 at 25°C. Kb(X-) = Kw/Ka(HX) = 1x10^-14/1x10^-4 = 1x10^-10. Kb(Y-) = Kw/Ka(HY) = 1x10^-14/1x10^-8 = 1x10^-6. Ratio Kb(Y-)/Kb(X-) = (1x10^-6)/(1x10^-10) = 1x10^4.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Chemistry Q36",
+    "sourceSubject": "Chemistry",
+    "sourceQuestionText": "Which of the following ligands is classified as a hexadentate ligand?\n(a) Oxalate ion (ox)\n(b) Ethylenediamine (en)\n(c) EDTA\n(d) Diethylenetriamine (dien)",
+    "generatedQuestions": [
+      {
+        "subject": "Chemistry",
+        "unit": "Inorganic Chemistry",
+        "chapter": [
+          "Coordination Compounds"
+        ],
+        "topic": [
+          "Werner's Theory"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "easy",
+        "questionIntent": "Tests identification of a bidentate ligand from a list of common ligands.",
+        "questionText": "Which of the following is an example of a bidentate ligand?",
+        "options": [
+          "NH3",
+          "Ethylenediamine (en)",
+          "Cl-",
+          "H2O"
+        ],
+        "correctOption": "Ethylenediamine (en)",
+        "numericalAnswer": null,
+        "solutionText": "Ethylenediamine (en), H2NCH2CH2NH2, has two nitrogen donor atoms that can simultaneously bind to a metal ion, making it a bidentate ligand. NH3, Cl-, and H2O each have only one donor atom and are monodentate.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Inorganic Chemistry",
+        "chapter": [
+          "Coordination Compounds"
+        ],
+        "topic": [
+          "Werner's Theory"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "medium",
+        "questionIntent": "Tests identification of a tetradentate ligand by comparing the denticity of related polyamine ligands.",
+        "questionText": "Which of the following is classified as a tetradentate ligand?",
+        "options": [
+          "Ethylenediamine (en)",
+          "Diethylenetriamine (dien)",
+          "Triethylenetetramine (trien)",
+          "EDTA"
+        ],
+        "correctOption": "Triethylenetetramine (trien)",
+        "numericalAnswer": null,
+        "solutionText": "En has 2 nitrogen donor atoms (bidentate); dien has 3 nitrogen donor atoms (tridentate); trien has 4 nitrogen donor atoms (tetradentate); EDTA has 6 donor atoms (hexadentate). Hence trien is the tetradentate ligand.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Inorganic Chemistry",
+        "chapter": [
+          "Coordination Compounds"
+        ],
+        "topic": [
+          "Werner's Theory"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "hard",
+        "questionIntent": "Tests application of ligand denticity to determine how many hexadentate ligand molecules are needed to saturate an octahedral coordination sphere.",
+        "questionText": "EDTA is hexadentate and can occupy all six coordination positions of an octahedral metal ion. If EDTA is used to form a complex with Ca2+ (which forms an octahedral, six-coordinate complex), how many EDTA molecules per Ca2+ ion are needed to fully saturate its coordination sphere?",
+        "options": [
+          "Only 1 EDTA molecule is needed, since its denticity (6) matches the coordination number",
+          "2 EDTA molecules are needed",
+          "3 EDTA molecules are needed",
+          "6 EDTA molecules are needed"
+        ],
+        "correctOption": "Only 1 EDTA molecule is needed, since its denticity (6) matches the coordination number",
+        "numericalAnswer": null,
+        "solutionText": "EDTA binds through six donor atoms (two nitrogen and four oxygen atoms), giving it a denticity of 6. Since the coordination number of the octahedral Ca2+ complex is also 6, a single hexadentate EDTA molecule alone can occupy all six coordination sites, so only 1 EDTA molecule per Ca2+ ion is required.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Chemistry Q37",
+    "sourceSubject": "Chemistry",
+    "sourceQuestionText": "According to Werner's Coordination Theory, the primary valency of a central metal atom corresponds to its:\n(a) Oxidation state\n(b) Coordination number\n(c) Total number of ligands\n(d) Number of unpaired electrons",
+    "generatedQuestions": [
+      {
+        "subject": "Chemistry",
+        "unit": "Inorganic Chemistry",
+        "chapter": [
+          "Coordination Compounds"
+        ],
+        "topic": [
+          "Werner's Theory"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "easy",
+        "questionIntent": "Tests the definition of secondary valency in Werner's Coordination Theory.",
+        "questionText": "According to Werner's Coordination Theory, the secondary valency of a central metal atom corresponds to its:",
+        "options": [
+          "Oxidation state",
+          "Coordination number",
+          "Total charge on the complex",
+          "Number of unpaired electrons"
+        ],
+        "correctOption": "Coordination number",
+        "numericalAnswer": null,
+        "solutionText": "In Werner's theory, primary valency corresponds to the oxidation state of the metal, while secondary valency corresponds to the coordination number, i.e., the number of donor atoms directly bonded to the central metal.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Inorganic Chemistry",
+        "chapter": [
+          "Coordination Compounds"
+        ],
+        "topic": [
+          "Werner's Theory"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "medium",
+        "questionIntent": "Tests calculation of both primary and secondary valency from the formula of a coordination compound with a mixed-ligand octahedral complex.",
+        "questionText": "In the complex [Co(NH3)5Cl]Cl2, what are the primary and secondary valencies of cobalt, respectively?",
+        "options": [
+          "3 and 6",
+          "2 and 5",
+          "3 and 5",
+          "6 and 3"
+        ],
+        "correctOption": "3 and 6",
+        "numericalAnswer": null,
+        "solutionText": "The two Cl- ions outside the bracket balance a +2 charge on the complex ion [Co(NH3)5Cl]2+. Inside the bracket, NH3 is neutral and the one Cl- ligand contributes -1, so Co + (-1) = +2, giving Co = +3 (primary valency). The coordination number (secondary valency) = 5 (NH3) + 1 (Cl) = 6.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Inorganic Chemistry",
+        "chapter": [
+          "Coordination Compounds"
+        ],
+        "topic": [
+          "Werner's Theory"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "hard",
+        "questionIntent": "Tests calculation of primary and secondary valency for a complex with an anionic outer-sphere ion and a mix of monodentate ligands.",
+        "questionText": "In the complex [Cr(NH3)4Cl2]NO3, determine the primary and secondary valencies of chromium.",
+        "options": [
+          "Primary=3, Secondary=6",
+          "Primary=1, Secondary=6",
+          "Primary=3, Secondary=4",
+          "Primary=2, Secondary=6"
+        ],
+        "correctOption": "Primary=3, Secondary=6",
+        "numericalAnswer": null,
+        "solutionText": "The outer NO3- balances a +1 charge on the complex ion [Cr(NH3)4Cl2]+. Inside the bracket, NH3 is neutral and the two Cl- ligands contribute -2 total, so Cr + (-2) = +1, giving Cr = +3 (primary valency). The coordination number (secondary valency) = 4 (NH3) + 2 (Cl) = 6.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Chemistry Q38",
+    "sourceSubject": "Chemistry",
+    "sourceQuestionText": "What is the secondary valency of platinum in the complex [Pt(en)2Cl2]2+, where en (ethylenediamine) is a bidentate ligand?\n(a) 2\n(b) 4\n(c) 6\n(d) 8",
+    "generatedQuestions": [
+      {
+        "subject": "Chemistry",
+        "unit": "Inorganic Chemistry",
+        "chapter": [
+          "Coordination Compounds"
+        ],
+        "topic": [
+          "Werner's Theory"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "easy",
+        "questionIntent": "Tests calculation of coordination number for a complex with only monodentate ligands.",
+        "questionText": "What is the secondary valency (coordination number) of cobalt in the complex [Co(NH3)6]3+?",
+        "options": [
+          "3",
+          "6",
+          "9",
+          "2"
+        ],
+        "correctOption": "6",
+        "numericalAnswer": null,
+        "solutionText": "Each of the 6 NH3 ligands is monodentate, donating one pair of electrons each. So the coordination number (secondary valency) of Co is 6.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Inorganic Chemistry",
+        "chapter": [
+          "Coordination Compounds"
+        ],
+        "topic": [
+          "Werner's Theory"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "medium",
+        "questionIntent": "Tests calculation of coordination number for a complex containing only bidentate ligands.",
+        "questionText": "What is the secondary valency (coordination number) of platinum in the complex [Pt(en)3]4+, where en is a bidentate ligand?",
+        "options": [
+          "3",
+          "4",
+          "6",
+          "8"
+        ],
+        "correctOption": "6",
+        "numericalAnswer": null,
+        "solutionText": "Each of the 3 en ligands is bidentate, donating 2 pairs of electrons each (via its two N atoms), giving a total of 3 x 2 = 6 donor atoms. So the coordination number of Pt is 6.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Inorganic Chemistry",
+        "chapter": [
+          "Coordination Compounds"
+        ],
+        "topic": [
+          "Werner's Theory"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "hard",
+        "questionIntent": "Tests calculation of coordination number for a complex containing a mix of bidentate and monodentate ligands.",
+        "questionText": "What is the secondary valency (coordination number) of chromium in the complex [Cr(ox)2(H2O)2]-, where ox is the bidentate oxalate ion?",
+        "options": [
+          "4",
+          "6",
+          "8",
+          "2"
+        ],
+        "correctOption": "6",
+        "numericalAnswer": null,
+        "solutionText": "Each of the 2 oxalate (ox) ligands is bidentate, contributing 2 donor atoms each, i.e., 2x2 = 4 donor atoms in total. The 2 water molecules are monodentate, contributing 1 donor atom each, i.e., 2 more. Total coordination number = 4 + 2 = 6.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Chemistry Q39",
+    "sourceSubject": "Chemistry",
+    "sourceQuestionText": "What is the hybridization of the central metal ion in the diamagnetic complex [Ni(CN)4]2-?\n(a) sp3\n(b) sp3d2\n(c) dsp2\n(d) d2sp3",
+    "generatedQuestions": [
+      {
+        "subject": "Chemistry",
+        "unit": "Inorganic Chemistry",
+        "chapter": [
+          "Coordination Compounds"
+        ],
+        "topic": [
+          "Bonding & Stability"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "easy",
+        "questionIntent": "Tests identification of hybridization for a paramagnetic tetrahedral nickel complex using Valence Bond Theory.",
+        "questionText": "What is the hybridization of the central metal ion in the paramagnetic, tetrahedral complex [NiCl4]2-?",
+        "options": [
+          "sp3",
+          "dsp2",
+          "sp3d2",
+          "d2sp3"
+        ],
+        "correctOption": "sp3",
+        "numericalAnswer": null,
+        "solutionText": "Cl- is a weak field ligand and does not force pairing of the Ni2+ (d8) electrons. The unpaired electrons remain, and the complex adopts a tetrahedral geometry using sp3 hybridization, consistent with its paramagnetism.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Inorganic Chemistry",
+        "chapter": [
+          "Coordination Compounds"
+        ],
+        "topic": [
+          "Bonding & Stability"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "medium",
+        "questionIntent": "Tests identification of hybridization for a diamagnetic square planar platinum complex.",
+        "questionText": "What is the hybridization of the central metal ion in the diamagnetic, square planar complex [Pt(NH3)4]2+?",
+        "options": [
+          "sp3",
+          "dsp2",
+          "sp3d2",
+          "d2sp3"
+        ],
+        "correctOption": "dsp2",
+        "numericalAnswer": null,
+        "solutionText": "Pt2+ has a d8 configuration. In this square planar, diamagnetic complex, the d-electrons are paired, freeing one d-orbital to combine with one s and two p orbitals, giving dsp2 hybridization.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Inorganic Chemistry",
+        "chapter": [
+          "Coordination Compounds"
+        ],
+        "topic": [
+          "Bonding & Stability"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "hard",
+        "questionIntent": "Tests comparative reasoning about oxidation state and hybridization for two nickel complexes that are both diamagnetic but have different geometries.",
+        "questionText": "The complex [Ni(CO)4] is diamagnetic and tetrahedral, while [Ni(CN)4]2- is diamagnetic and square planar. Which option correctly identifies the oxidation state and hybridization of Ni in each complex?",
+        "options": [
+          "[Ni(CO)4]: Ni(0), d10, sp3; [Ni(CN)4]2-: Ni(II), d8, dsp2",
+          "[Ni(CO)4]: Ni(II), d8, dsp2; [Ni(CN)4]2-: Ni(0), d10, sp3",
+          "Both complexes: Ni(II), d8, dsp2",
+          "Both complexes: Ni(0), d10, sp3"
+        ],
+        "correctOption": "[Ni(CO)4]: Ni(0), d10, sp3; [Ni(CN)4]2-: Ni(II), d8, dsp2",
+        "numericalAnswer": null,
+        "solutionText": "In [Ni(CO)4], CO is a neutral ligand, so Ni is in the 0 oxidation state (d10 configuration); d10 has no unpaired electrons in any geometry, and Ni uses sp3 hybridization, giving a diamagnetic tetrahedral complex. In [Ni(CN)4]2-, the overall 2- charge with four CN- (each -1) means Ni is +2 (d8 configuration); CN- is a strong field ligand that forces pairing of the d8 electrons, freeing a d-orbital for dsp2 hybridization and giving a diamagnetic square planar complex.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Chemistry Q40",
+    "sourceSubject": "Chemistry",
+    "sourceQuestionText": "Which of the following is an example of an ambidentate ligand?\n(a) SCN-\n(b) NH3\n(c) en\n(d) Cl-",
+    "generatedQuestions": [
+      {
+        "subject": "Chemistry",
+        "unit": "Inorganic Chemistry",
+        "chapter": [
+          "Coordination Compounds"
+        ],
+        "topic": [
+          "Isomerism"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "easy",
+        "questionIntent": "Tests recognition of which common ligand is NOT ambidentate.",
+        "questionText": "Which of the following is NOT an example of an ambidentate ligand?",
+        "options": [
+          "NO2-",
+          "CN-",
+          "NH3",
+          "SCN-"
+        ],
+        "correctOption": "NH3",
+        "numericalAnswer": null,
+        "solutionText": "An ambidentate ligand has two different donor atoms through which it can bind. NO2- (via N or O), CN- (via C or N), and SCN- (via S or N) are all ambidentate. NH3 has only nitrogen as a donor atom and so is not ambidentate.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Inorganic Chemistry",
+        "chapter": [
+          "Coordination Compounds"
+        ],
+        "topic": [
+          "Isomerism"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "medium",
+        "questionIntent": "Tests knowledge of the two possible coordination modes of the ambidentate thiocyanate ligand.",
+        "questionText": "An ambidentate ligand can coordinate to a metal through two different donor atoms. Which pair below correctly represents the two possible coordination modes of the thiocyanate ion, SCN-?",
+        "options": [
+          "Through S (thiocyanato) or through N (isothiocyanato)",
+          "Through C or through S only",
+          "Through N only, in two different orientations",
+          "Through S only, in two different orientations"
+        ],
+        "correctOption": "Through S (thiocyanato) or through N (isothiocyanato)",
+        "numericalAnswer": null,
+        "solutionText": "SCN- has two possible donor atoms: sulfur and nitrogen. When bonded through S, it is called thiocyanato; when bonded through N, it is called isothiocyanato.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Inorganic Chemistry",
+        "chapter": [
+          "Coordination Compounds"
+        ],
+        "topic": [
+          "Isomerism"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "hard",
+        "questionIntent": "Tests the ability to connect ambidentate ligand behavior to the specific type of isomerism it causes.",
+        "questionText": "The existence of two distinct complexes, [Co(NH3)5(NCS)]2+ and [Co(NH3)5(SCN)]2+, which differ only in which atom of the thiocyanate ligand is bonded to cobalt, is an example of which type of isomerism?",
+        "options": [
+          "Linkage isomerism",
+          "Ionization isomerism",
+          "Coordination isomerism",
+          "Geometrical isomerism"
+        ],
+        "correctOption": "Linkage isomerism",
+        "numericalAnswer": null,
+        "solutionText": "Since SCN- is an ambidentate ligand, it can bind to the metal via its N atom (as NCS-, isothiocyanato) or via its S atom (as SCN-, thiocyanato). Complexes that differ only in which donor atom of the same ambidentate ligand is attached to the metal exhibit linkage isomerism.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Chemistry Q41",
+    "sourceSubject": "Chemistry",
+    "sourceQuestionText": "What primarily dictates whether a coordination complex exhibits color?\n(a) Presence of unpaired d-electrons\n(b) Presence of ligands with high molecular weight\n(c) Absence of a central metal ion\n(d) Presence of a d10 configuration",
+    "generatedQuestions": [
+      {
+        "subject": "Chemistry",
+        "unit": "Inorganic Chemistry",
+        "chapter": [
+          "Coordination Compounds"
+        ],
+        "topic": [
+          "Crystal Field Theory (CFT)"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "easy",
+        "questionIntent": "Tests understanding that colour in transition metal complexes arises from d-d electronic transitions.",
+        "questionText": "The colour observed in most transition metal complexes arises primarily due to which of the following phenomena?",
+        "options": [
+          "d-d electronic transitions",
+          "s-s electronic transitions",
+          "Complete absence of d-electrons",
+          "Ionic bonding between metal and ligand"
+        ],
+        "correctOption": "d-d electronic transitions",
+        "numericalAnswer": null,
+        "solutionText": "When ligands split the d-orbitals of a transition metal into different energy levels (crystal field splitting), electrons can absorb visible light and get excited from a lower to a higher d-orbital. This d-d transition, and the wavelengths of light absorbed, gives rise to the observed colour.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Inorganic Chemistry",
+        "chapter": [
+          "Coordination Compounds"
+        ],
+        "topic": [
+          "Crystal Field Theory (CFT)"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "medium",
+        "questionIntent": "Tests identification of a colourless complex based on the metal ion having a completely filled d-subshell.",
+        "questionText": "Which of the following complexes is expected to be colourless due to the absence of d-d transitions?",
+        "options": [
+          "[Zn(NH3)4]2+",
+          "[Cu(NH3)4]2+",
+          "[Ti(H2O)6]3+",
+          "[Cr(H2O)6]3+"
+        ],
+        "correctOption": "[Zn(NH3)4]2+",
+        "numericalAnswer": null,
+        "solutionText": "Zn2+ has a d10 configuration, which is completely filled, so no d-d transition is possible and the complex is colourless. Cu2+ (d9), Ti3+ (d1), and Cr3+ (d3) all have partially filled d-subshells and are coloured.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Inorganic Chemistry",
+        "chapter": [
+          "Coordination Compounds"
+        ],
+        "topic": [
+          "Crystal Field Theory (CFT)"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "hard",
+        "questionIntent": "Tests the ability to identify colourless ions using the general d0/d10 rule, including reasoning for the underlying cause.",
+        "questionText": "Which of the following pairs of ions is expected to be colourless in aqueous solution, and why?",
+        "options": [
+          "Sc3+ (d0) and Zn2+ (d10) - both lack the partially-filled d orbitals needed for d-d transitions",
+          "Ti3+ (d1) and Cu2+ (d9) - both have unpaired electrons, so they are colourless",
+          "Sc3+ and Ti3+ - both are colourless because they belong to the same period",
+          "Zn2+ and Cu2+ - both are colourless because they are +2 ions"
+        ],
+        "correctOption": "Sc3+ (d0) and Zn2+ (d10) - both lack the partially-filled d orbitals needed for d-d transitions",
+        "numericalAnswer": null,
+        "solutionText": "Colour in transition metal ions arises from d-d transitions, which require a partially filled d subshell (neither completely empty nor completely full). Sc3+ has a d0 configuration and Zn2+ has a d10 configuration; in both cases no d-d transition is possible, so both ions are colourless in aqueous solution.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Chemistry Q42",
+    "sourceSubject": "Chemistry",
+    "sourceQuestionText": "Which of the following complex ions is diamagnetic?\n(a) [FeF6]3-\n(b) [Co(NH3)6]3+\n(c) [NiCl4]2-\n(d) [Co(H2O)6]3+",
+    "generatedQuestions": [
+      {
+        "subject": "Chemistry",
+        "unit": "Inorganic Chemistry",
+        "chapter": [
+          "Coordination Compounds"
+        ],
+        "topic": [
+          "Crystal Field Theory (CFT)"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "easy",
+        "questionIntent": "Tests identification of a diamagnetic octahedral complex using crystal field theory.",
+        "questionText": "Which of the following complex ions is diamagnetic?",
+        "options": [
+          "[Co(NH3)6]3+",
+          "[CoF6]3-",
+          "[Ni(H2O)6]2+",
+          "[Cu(NH3)4]2+"
+        ],
+        "correctOption": "[Co(NH3)6]3+",
+        "numericalAnswer": null,
+        "solutionText": "Co3+ has a d6 configuration. NH3 is a strong field ligand, forcing a low-spin arrangement: t2g6 eg0, with no unpaired electrons, so [Co(NH3)6]3+ is diamagnetic. [CoF6]3- (weak field, high spin), [Ni(H2O)6]2+ (d8, always paramagnetic in octahedral field), and [Cu(NH3)4]2+ (d9, always has 1 unpaired electron) are all paramagnetic.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Inorganic Chemistry",
+        "chapter": [
+          "Coordination Compounds"
+        ],
+        "topic": [
+          "Crystal Field Theory (CFT)"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "medium",
+        "questionIntent": "Tests identification of the single paramagnetic complex among several otherwise diamagnetic complexes.",
+        "questionText": "Which of the following complex ions is paramagnetic?",
+        "options": [
+          "[Co(NH3)6]3+",
+          "[Ni(CN)4]2-",
+          "[Fe(CN)6]4-",
+          "[CoF6]3-"
+        ],
+        "correctOption": "[CoF6]3-",
+        "numericalAnswer": null,
+        "solutionText": "Co3+ (d6) with the weak field ligand F- adopts a high-spin configuration: t2g4 eg2, giving 4 unpaired electrons, so [CoF6]3- is paramagnetic. [Co(NH3)6]3+ (strong field, low-spin d6) and [Fe(CN)6]4- (Fe2+ d6, strong field, low-spin) are diamagnetic, and [Ni(CN)4]2- (Ni2+ d8, strong field, dsp2, square planar) is also diamagnetic.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Inorganic Chemistry",
+        "chapter": [
+          "Coordination Compounds"
+        ],
+        "topic": [
+          "Crystal Field Theory (CFT)"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "hard",
+        "questionIntent": "Tests determination of the exact number of unpaired electrons and magnetic classification of a low-spin d5 octahedral complex.",
+        "questionText": "Given the complex [Mn(CN)6]4-, determine the number of unpaired electrons and state whether the complex is paramagnetic or diamagnetic.",
+        "options": [
+          "1 unpaired electron; paramagnetic",
+          "0 unpaired electrons; diamagnetic",
+          "5 unpaired electrons; paramagnetic",
+          "3 unpaired electrons; paramagnetic"
+        ],
+        "correctOption": "1 unpaired electron; paramagnetic",
+        "numericalAnswer": null,
+        "solutionText": "Mn2+ has a d5 configuration. CN- is a strong field ligand, causing the complex to adopt a low-spin configuration: t2g5 eg0. This leaves 1 unpaired electron in the t2g set, so [Mn(CN)6]4- is paramagnetic, with 1 unpaired electron.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Chemistry Q43",
+    "sourceSubject": "Chemistry",
+    "sourceQuestionText": "In the coordination compound K4[Fe(CN)6], what are the primary and secondary valencies of iron, respectively?\n(a) Primary=6, Secondary=2\n(b) Primary=4, Secondary=6\n(c) Primary=2, Secondary=6\n(d) Primary=6, Secondary=4",
+    "generatedQuestions": [
+      {
+        "subject": "Chemistry",
+        "unit": "Inorganic Chemistry",
+        "chapter": [
+          "Coordination Compounds"
+        ],
+        "topic": [
+          "Werner's Theory"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "easy",
+        "questionIntent": "Tests calculation of primary and secondary valency for a simple anionic hexacyanide complex.",
+        "questionText": "In the coordination compound K3[Fe(CN)6], what are the primary and secondary valencies of iron, respectively?",
+        "options": [
+          "Primary=3, Secondary=6",
+          "Primary=2, Secondary=6",
+          "Primary=6, Secondary=3",
+          "Primary=3, Secondary=3"
+        ],
+        "correctOption": "Primary=3, Secondary=6",
+        "numericalAnswer": null,
+        "solutionText": "The 3 K+ ions balance a -3 charge on [Fe(CN)6]3-. The 6 CN- ligands contribute -6 total, so Fe + (-6) = -3, giving Fe = +3 (primary valency). The coordination number (secondary valency) is 6, from the 6 CN- ligands.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Inorganic Chemistry",
+        "chapter": [
+          "Coordination Compounds"
+        ],
+        "topic": [
+          "Werner's Theory"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "medium",
+        "questionIntent": "Tests calculation of primary and secondary valency for a cationic ammine complex balanced by an outer-sphere anion.",
+        "questionText": "In the coordination compound [Cu(NH3)4]Cl2, what are the primary and secondary valencies of copper, respectively?",
+        "options": [
+          "Primary=2, Secondary=4",
+          "Primary=4, Secondary=2",
+          "Primary=2, Secondary=6",
+          "Primary=4, Secondary=4"
+        ],
+        "correctOption": "Primary=2, Secondary=4",
+        "numericalAnswer": null,
+        "solutionText": "The 2 Cl- ions outside the bracket balance a +2 charge on [Cu(NH3)4]2+. Since NH3 is neutral, Cu itself carries the +2 charge (primary valency = 2). The coordination number (secondary valency) is 4, from the 4 NH3 ligands.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Inorganic Chemistry",
+        "chapter": [
+          "Coordination Compounds"
+        ],
+        "topic": [
+          "Werner's Theory"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "hard",
+        "questionIntent": "Tests the more advanced case of a neutral, zero-oxidation-state metal carbonyl complex with an odd coordination number.",
+        "questionText": "In the neutral coordination compound [Fe(CO)5], what are the primary and secondary valencies of iron, respectively? (CO is a neutral ligand.)",
+        "options": [
+          "Primary=0, Secondary=5",
+          "Primary=5, Secondary=0",
+          "Primary=2, Secondary=5",
+          "Primary=0, Secondary=10"
+        ],
+        "correctOption": "Primary=0, Secondary=5",
+        "numericalAnswer": null,
+        "solutionText": "[Fe(CO)5] is an overall neutral molecule and CO is a neutral (zero-charge) ligand. Since the sum of oxidation states must equal the overall charge (zero) and all 5 CO ligands contribute zero charge, Fe must be in the 0 oxidation state (primary valency = 0). The coordination number (secondary valency) equals the number of donor atoms bound to Fe, which is 5 (one from each CO ligand).",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Chemistry Q44",
+    "sourceSubject": "Chemistry",
+    "sourceQuestionText": "What term describes a ligand that coordinates to a single metal ion through two or more donor atoms, forming a five- or six-membered ring?\n(a) Bridging ligand\n(b) Monodentate ligand\n(c) Chelating ligand\n(d) Ambidentate ligand",
+    "generatedQuestions": [
+      {
+        "subject": "Chemistry",
+        "unit": "Inorganic Chemistry",
+        "chapter": [
+          "Coordination Compounds"
+        ],
+        "topic": [
+          "Werner's Theory"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "easy",
+        "questionIntent": "Tests the definition of a monodentate ligand as a contrast to chelating and bridging ligands.",
+        "questionText": "What is the term used for a ligand that occupies only one coordination site by donating a single pair of electrons from one donor atom?",
+        "options": [
+          "Monodentate ligand",
+          "Bidentate ligand",
+          "Chelating ligand",
+          "Bridging ligand"
+        ],
+        "correctOption": "Monodentate ligand",
+        "numericalAnswer": null,
+        "solutionText": "A monodentate ligand has only one donor atom and can bind to a metal ion at only one coordination site (e.g., NH3, Cl-, H2O).",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Inorganic Chemistry",
+        "chapter": [
+          "Coordination Compounds"
+        ],
+        "topic": [
+          "Werner's Theory"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "medium",
+        "questionIntent": "Tests the definition of a bridging ligand, distinguishing it from a chelating ligand.",
+        "questionText": "A single ligand that simultaneously connects and coordinates to two different metal centers in a polynuclear complex is referred to as a:",
+        "options": [
+          "Chelating ligand",
+          "Bridging ligand",
+          "Ambidentate ligand",
+          "Monodentate ligand"
+        ],
+        "correctOption": "Bridging ligand",
+        "numericalAnswer": null,
+        "solutionText": "A bridging ligand donates electron pairs to two different metal centers at the same time, linking them together, as opposed to a chelating ligand, which wraps around and binds to a single metal center through multiple donor atoms.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Inorganic Chemistry",
+        "chapter": [
+          "Coordination Compounds"
+        ],
+        "topic": [
+          "Werner's Theory"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "hard",
+        "questionIntent": "Tests understanding of the chelate effect as the stability consequence of multi-site chelation.",
+        "questionText": "EDTA forms a highly stable complex with metal ions by binding through six donor atoms simultaneously, creating multiple interlocking rings around the central metal ion. This overall extra stabilization, resulting from multi-site chelation, is best described as the:",
+        "options": [
+          "Chelate effect",
+          "Trans effect",
+          "Jahn-Teller effect",
+          "Common ion effect"
+        ],
+        "correctOption": "Chelate effect",
+        "numericalAnswer": null,
+        "solutionText": "When a polydentate ligand like EDTA binds to a metal ion through multiple donor atoms simultaneously, forming several 5- or 6-membered chelate rings, the resulting complex is markedly more thermodynamically stable than a comparable complex formed with monodentate ligands. This enhanced stability due to chelation is known as the chelate effect.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Chemistry Q45",
+    "sourceSubject": "Chemistry",
+    "sourceQuestionText": "The complex [Fe(H2O)6]2+ is found to be paramagnetic with 4 unpaired electrons. This is consistent with which type of ligand field and electron configuration?\n(a) Strong field, low spin, t2g6eg0\n(b) Weak field, high spin, t2g4eg2\n(c) Strong field, high spin, t2g4eg2\n(d) Weak field, low spin, t2g6eg0",
+    "generatedQuestions": [
+      {
+        "subject": "Chemistry",
+        "unit": "Inorganic Chemistry",
+        "chapter": [
+          "Coordination Compounds"
+        ],
+        "topic": [
+          "Crystal Field Theory (CFT)"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "easy",
+        "questionIntent": "Tests determination of the number of unpaired electrons in a high-spin d5 octahedral complex.",
+        "questionText": "How many unpaired electrons are present in the high-spin octahedral complex [Mn(H2O)6]2+?",
+        "options": [
+          "5",
+          "3",
+          "1",
+          "0"
+        ],
+        "correctOption": "5",
+        "numericalAnswer": null,
+        "solutionText": "Mn2+ has a d5 configuration. H2O is a weak field ligand, giving a high-spin arrangement: t2g3 eg2, with all 5 electrons unpaired.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Inorganic Chemistry",
+        "chapter": [
+          "Coordination Compounds"
+        ],
+        "topic": [
+          "Crystal Field Theory (CFT)"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "medium",
+        "questionIntent": "Tests determination of the number of unpaired electrons in a high-spin d7 octahedral complex.",
+        "questionText": "How many unpaired electrons are present in the octahedral complex [Co(H2O)6]2+?",
+        "options": [
+          "1",
+          "3",
+          "5",
+          "7"
+        ],
+        "correctOption": "3",
+        "numericalAnswer": null,
+        "solutionText": "Co2+ has a d7 configuration. H2O is a weak field ligand, giving a high-spin arrangement: t2g5 eg2. The eg pair is fully unpaired (2 electrons) and the t2g set has 5 electrons in 3 orbitals, leaving 1 orbital unpaired there as well, giving a total of 3 unpaired electrons.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Inorganic Chemistry",
+        "chapter": [
+          "Coordination Compounds"
+        ],
+        "topic": [
+          "Crystal Field Theory (CFT)"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "hard",
+        "questionIntent": "Tests calculation of the spin-only magnetic moment from the number of unpaired electrons in a high-spin d6 complex.",
+        "questionText": "The complex [Fe(H2O)6]2+ is high spin with 4 unpaired electrons, while [Fe(CN)6]4- is low spin with 0 unpaired electrons, even though both contain Fe2+ (d6). Calculate the spin-only magnetic moment (in Bohr Magnetons, BM) of [Fe(H2O)6]2+, given the formula mu = sqrt[n(n+2)] BM.",
+        "options": [
+          "4.90 BM",
+          "2.83 BM",
+          "5.92 BM",
+          "0 BM"
+        ],
+        "correctOption": "4.90 BM",
+        "numericalAnswer": null,
+        "solutionText": "[Fe(H2O)6]2+ has Fe2+ (d6 configuration). H2O is a weak field ligand, so the complex is high spin: t2g4 eg2, giving n = 4 unpaired electrons. Using the spin-only formula, mu = sqrt[n(n+2)] = sqrt[4x6] = sqrt(24) = 4.90 BM.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Chemistry Q46",
+    "sourceSubject": "Chemistry",
+    "sourceQuestionText": "Find the pH (integer value) of a 0.1 M aqueous solution of HCl at 25°C.",
+    "generatedQuestions": [
+      {
+        "subject": "Chemistry",
+        "unit": "Physical Chemistry",
+        "chapter": [
+          "Equilibrium"
+        ],
+        "topic": [
+          "Ionic Equilibrium (pH, Buffers)"
+        ],
+        "questionType": "numerical",
+        "difficulty": "easy",
+        "questionIntent": "Tests basic pH calculation for a strong monoprotic acid solution.",
+        "questionText": "Find the pH (integer value) of a 0.01 M aqueous solution of HCl at 25°C.",
+        "options": [],
+        "correctOption": null,
+        "numericalAnswer": 2,
+        "solutionText": "HCl dissociates completely: [H+] = 0.01 M = 1x10^-2 M. pH = -log(1x10^-2) = 2.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Physical Chemistry",
+        "chapter": [
+          "Equilibrium"
+        ],
+        "topic": [
+          "Ionic Equilibrium (pH, Buffers)"
+        ],
+        "questionType": "numerical",
+        "difficulty": "medium",
+        "questionIntent": "Tests pH calculation for a different strong monoprotic acid at a smaller concentration.",
+        "questionText": "Find the pH (integer value) of a 1x10^-5 M aqueous solution of HNO3 at 25°C.",
+        "options": [],
+        "correctOption": null,
+        "numericalAnswer": 5,
+        "solutionText": "HNO3 dissociates completely: [H+] = 1x10^-5 M. pH = -log(1x10^-5) = 5.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Physical Chemistry",
+        "chapter": [
+          "Equilibrium"
+        ],
+        "topic": [
+          "Ionic Equilibrium (pH, Buffers)"
+        ],
+        "questionType": "numerical",
+        "difficulty": "hard",
+        "questionIntent": "Tests pH calculation after a large-factor dilution of a strong acid, requiring a moles-based recalculation of concentration.",
+        "questionText": "500 mL of 0.1 M HCl is diluted to 50 L with water. Find the pH (integer value) of the resulting solution at 25°C.",
+        "options": [],
+        "correctOption": null,
+        "numericalAnswer": 3,
+        "solutionText": "Moles of HCl = 0.500 L x 0.1 M = 0.05 mol. New concentration after dilution to 50 L = 0.05/50 = 1x10^-3 M. pH = -log(1x10^-3) = 3.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Chemistry Q47",
+    "sourceSubject": "Chemistry",
+    "sourceQuestionText": "A basic solution has a hydrogen ion concentration [H+] of 1x10^-11 M. Find the pOH (integer value) of this solution at 25°C.",
+    "generatedQuestions": [
+      {
+        "subject": "Chemistry",
+        "unit": "Physical Chemistry",
+        "chapter": [
+          "Equilibrium"
+        ],
+        "topic": [
+          "Ionic Equilibrium (pH, Buffers)"
+        ],
+        "questionType": "numerical",
+        "difficulty": "easy",
+        "questionIntent": "Tests direct pOH calculation from a given hydroxide ion concentration.",
+        "questionText": "A solution has a hydroxide ion concentration [OH-] of 1x10^-3 M. Find its pOH (integer value).",
+        "options": [],
+        "correctOption": null,
+        "numericalAnswer": 3,
+        "solutionText": "pOH = -log[OH-] = -log(1x10^-3) = 3.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Physical Chemistry",
+        "chapter": [
+          "Equilibrium"
+        ],
+        "topic": [
+          "Ionic Equilibrium (pH, Buffers)"
+        ],
+        "questionType": "numerical",
+        "difficulty": "medium",
+        "questionIntent": "Tests pOH calculation that requires first finding pH from [H+], then applying pH + pOH = 14.",
+        "questionText": "A basic solution has a hydrogen ion concentration [H+] of 1x10^-9 M. Find its pOH (integer value) at 25°C.",
+        "options": [],
+        "correctOption": null,
+        "numericalAnswer": 5,
+        "solutionText": "pH = -log(1x10^-9) = 9. At 25°C, pH + pOH = 14, so pOH = 14 - 9 = 5.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Physical Chemistry",
+        "chapter": [
+          "Equilibrium"
+        ],
+        "topic": [
+          "Ionic Equilibrium (pH, Buffers)"
+        ],
+        "questionType": "numerical",
+        "difficulty": "hard",
+        "questionIntent": "Tests pOH calculation at a non-standard temperature where Kw differs from its value at 25°C, requiring use of pKw instead of the fixed value 14.",
+        "questionText": "At a certain temperature, Kw = 1x10^-12, and a solution at this temperature has [H+] = 1x10^-4 M. Find the pOH (integer value) of this solution at this temperature.",
+        "options": [],
+        "correctOption": null,
+        "numericalAnswer": 8,
+        "solutionText": "pKw = -log(Kw) = -log(1x10^-12) = 12. pH = -log(1x10^-4) = 4. Since pH + pOH = pKw at any temperature, pOH = pKw - pH = 12 - 4 = 8.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Chemistry Q48",
+    "sourceSubject": "Chemistry",
+    "sourceQuestionText": "Find the secondary valency (integer value) of cobalt in the complex [Co(en)3]3+, where en is a bidentate ligand.",
+    "generatedQuestions": [
+      {
+        "subject": "Chemistry",
+        "unit": "Inorganic Chemistry",
+        "chapter": [
+          "Coordination Compounds"
+        ],
+        "topic": [
+          "Werner's Theory"
+        ],
+        "questionType": "numerical",
+        "difficulty": "easy",
+        "questionIntent": "Tests calculation of coordination number for a complex with only monodentate ligands.",
+        "questionText": "Find the secondary valency (integer value) of chromium in the complex [Cr(NH3)6]3+.",
+        "options": [],
+        "correctOption": null,
+        "numericalAnswer": 6,
+        "solutionText": "Each of the 6 NH3 ligands is monodentate, so the coordination number (secondary valency) of Cr is 6.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Inorganic Chemistry",
+        "chapter": [
+          "Coordination Compounds"
+        ],
+        "topic": [
+          "Werner's Theory"
+        ],
+        "questionType": "numerical",
+        "difficulty": "medium",
+        "questionIntent": "Tests calculation of coordination number for a square planar complex with 4 monodentate ligands.",
+        "questionText": "Find the secondary valency (integer value) of nickel in the complex [Ni(CN)4]2-.",
+        "options": [],
+        "correctOption": null,
+        "numericalAnswer": 4,
+        "solutionText": "Each of the 4 CN- ligands is monodentate, so the coordination number (secondary valency) of Ni is 4.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Inorganic Chemistry",
+        "chapter": [
+          "Coordination Compounds"
+        ],
+        "topic": [
+          "Werner's Theory"
+        ],
+        "questionType": "numerical",
+        "difficulty": "hard",
+        "questionIntent": "Tests calculation of coordination number when a single hexadentate ligand occupies the entire coordination sphere.",
+        "questionText": "Find the secondary valency (integer value) of iron in the complex [Fe(EDTA)]-, where EDTA acts as a hexadentate ligand occupying all available coordination positions.",
+        "options": [],
+        "correctOption": null,
+        "numericalAnswer": 6,
+        "solutionText": "EDTA is hexadentate, meaning it donates 6 pairs of electrons from 6 different donor atoms to the single Fe center. So the coordination number (secondary valency) of Fe is 6, contributed entirely by the one EDTA molecule.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Chemistry Q49",
+    "sourceSubject": "Chemistry",
+    "sourceQuestionText": "Find the number of unpaired electrons (integer value) in the tetrahedral complex [NiCl4]2-.",
+    "generatedQuestions": [
+      {
+        "subject": "Chemistry",
+        "unit": "Inorganic Chemistry",
+        "chapter": [
+          "Coordination Compounds"
+        ],
+        "topic": [
+          "Crystal Field Theory (CFT)"
+        ],
+        "questionType": "numerical",
+        "difficulty": "easy",
+        "questionIntent": "Tests determination of unpaired electron count in a high-spin tetrahedral d7 complex.",
+        "questionText": "Find the number of unpaired electrons (integer value) in the tetrahedral complex [CoCl4]2-.",
+        "options": [],
+        "correctOption": null,
+        "numericalAnswer": 3,
+        "solutionText": "Co2+ has a d7 configuration. Tetrahedral complexes have small crystal field splitting and are essentially always high spin. Filling the 5 d-orbitals by Hund's rule with 7 electrons leaves 3 orbitals singly occupied, giving 3 unpaired electrons.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Inorganic Chemistry",
+        "chapter": [
+          "Coordination Compounds"
+        ],
+        "topic": [
+          "Crystal Field Theory (CFT)"
+        ],
+        "questionType": "numerical",
+        "difficulty": "medium",
+        "questionIntent": "Tests determination of unpaired electron count in a high-spin tetrahedral d5 complex.",
+        "questionText": "Find the number of unpaired electrons (integer value) in the tetrahedral complex [MnCl4]2-.",
+        "options": [],
+        "correctOption": null,
+        "numericalAnswer": 5,
+        "solutionText": "Mn2+ has a d5 configuration. Being tetrahedral (small crystal field splitting, high spin), all 5 electrons occupy the 5 d-orbitals singly, giving 5 unpaired electrons.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Inorganic Chemistry",
+        "chapter": [
+          "Coordination Compounds"
+        ],
+        "topic": [
+          "Crystal Field Theory (CFT)"
+        ],
+        "questionType": "numerical",
+        "difficulty": "hard",
+        "questionIntent": "Tests calculation of the spin-only magnetic moment from the unpaired electron count of a high-spin tetrahedral d8 complex, requiring a decimal answer.",
+        "questionText": "The tetrahedral complex [NiCl4]2- has 2 unpaired electrons in its ground state. Calculate its spin-only magnetic moment (in Bohr Magnetons, BM), using mu = sqrt[n(n+2)]. (Give your answer rounded to two decimal places.)",
+        "options": [],
+        "correctOption": null,
+        "numericalAnswer": 2.83,
+        "solutionText": "With n = 2 unpaired electrons, mu = sqrt[n(n+2)] = sqrt[2x4] = sqrt(8) = 2.828, which rounds to 2.83 BM.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Chemistry Q50",
+    "sourceSubject": "Chemistry",
+    "sourceQuestionText": "Find the primary valency (integer value) of the central metal atom in the complex [Cu(NH3)4]SO4.",
+    "generatedQuestions": [
+      {
+        "subject": "Chemistry",
+        "unit": "Inorganic Chemistry",
+        "chapter": [
+          "Coordination Compounds"
+        ],
+        "topic": [
+          "Werner's Theory"
+        ],
+        "questionType": "numerical",
+        "difficulty": "easy",
+        "questionIntent": "Tests calculation of the oxidation state (primary valency) of a metal in a simple ammine sulfate complex.",
+        "questionText": "Find the primary valency (integer value) of zinc in the complex [Zn(NH3)4]SO4.",
+        "options": [],
+        "correctOption": null,
+        "numericalAnswer": 2,
+        "solutionText": "The SO4(2-) ion balances a +2 charge on the complex cation [Zn(NH3)4]2+. Since NH3 is neutral, Zn itself carries the +2 charge, so the primary valency of Zn is 2.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Inorganic Chemistry",
+        "chapter": [
+          "Coordination Compounds"
+        ],
+        "topic": [
+          "Werner's Theory"
+        ],
+        "questionType": "numerical",
+        "difficulty": "medium",
+        "questionIntent": "Tests calculation of the oxidation state (primary valency) of a metal balanced by three outer-sphere chloride ions.",
+        "questionText": "Find the primary valency (integer value) of chromium in the complex [Cr(NH3)6]Cl3.",
+        "options": [],
+        "correctOption": null,
+        "numericalAnswer": 3,
+        "solutionText": "The 3 Cl- ions outside the bracket balance a +3 charge on the complex cation [Cr(NH3)6]3+. Since NH3 is neutral, Cr itself carries the +3 charge, so the primary valency of Cr is 3.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Chemistry",
+        "unit": "Inorganic Chemistry",
+        "chapter": [
+          "Coordination Compounds"
+        ],
+        "topic": [
+          "Werner's Theory"
+        ],
+        "questionType": "numerical",
+        "difficulty": "hard",
+        "questionIntent": "Tests calculation of the oxidation state (primary valency) of a metal in an anionic complex balanced by an outer-sphere cation, requiring accounting for anionic ligand charges.",
+        "questionText": "Find the primary valency (integer value) of silver in the complex K[Ag(CN)2].",
+        "options": [],
+        "correctOption": null,
+        "numericalAnswer": 1,
+        "solutionText": "The K+ ion outside the bracket balances a -1 charge on the complex anion [Ag(CN)2]-. The 2 CN- ligands contribute -2 total charge, so Ag + (-2) = -1, giving Ag = +1. Hence the primary valency of Ag is 1.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  }
+]
+pinnacle27_chemistry_26-50_generated.json
+Displaying pinnacle27_chemistry_26-50_generated.json.

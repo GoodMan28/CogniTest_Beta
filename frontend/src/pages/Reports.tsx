@@ -7,7 +7,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import 'katex/dist/katex.min.css';
 
 import mockRecommendations from '../data/mockRecommendations.json';
-import LatexText from '../components/LatexText';
+import MarkdownText from '../components/MarkdownText';
 import type { PracticeQuestion, ReportAnalysis } from '../types/reportAnalysis';
 import ScoreboardSection from '../components/analysis/ScoreboardSection';
 import SubjectWiseSection from '../components/analysis/SubjectWiseSection';
@@ -71,7 +71,7 @@ const Reports = () => {
   // Admin Analytics states
   const [viewingAnalyticsTest, setViewingAnalyticsTest] = useState<any | null>(null);
   const [analyticsLoading, setAnalyticsLoading] = useState(false);
-  const [selectedSubject, setSelectedSubject] = useState<'Physics' | 'Chemistry' | 'Biology'>('Physics');
+  const [selectedSubject, setSelectedSubject] = useState<'Physics' | 'Chemistry' | 'Mathematics'>('Physics');
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
 
   // Admin Sample PDF states
@@ -111,7 +111,7 @@ const Reports = () => {
   const handleViewAnalytics = async (testId: string) => {
     try {
       setAnalyticsLoading(true);
-      const res = await api.get(`/api/v1/reports/test/${testId}/analytics`);
+      const res = await adminApi.get(`/api/v1/reports/test/${testId}/analytics`);
       setViewingAnalyticsTest(res.data);
     } catch (error) {
       console.error('Failed to fetch test analytics:', error);
@@ -149,19 +149,6 @@ const Reports = () => {
       fill: 'fill-emerald-500/20',
       stroke: 'stroke-emerald-600',
       text: 'text-emerald-600'
-    },
-    Biology: {
-      color: 'text-amber-600',
-      bg: 'bg-amber-600',
-      border: 'border-amber-200',
-      activeBg: 'bg-amber-600',
-      activeText: 'text-white',
-      progress: 'bg-amber-500',
-      lightBorder: 'border-amber-100',
-      hover: 'hover:bg-amber-50',
-      fill: 'fill-amber-500/20',
-      stroke: 'stroke-amber-600',
-      text: 'text-amber-600'
     },
     Mathematics: {
       color: 'text-orange-600',
@@ -652,7 +639,7 @@ const Reports = () => {
                 <div className="flex items-start gap-4 mb-4">
                   <span className="bg-gray-900 text-white w-8 h-8 rounded flex items-center justify-center font-bold flex-shrink-0">Q{q.questionNo}</span>
                   <div className="flex-1 font-semibold text-gray-900">
-                    <LatexText text={q.questionText} />
+                    <MarkdownText text={q.questionText} />
                   </div>
                 </div>
 
@@ -676,7 +663,7 @@ const Reports = () => {
                       <div key={i} className={`flex items-start gap-2 p-3 rounded-lg border text-sm ${style}`}>
                         <span className="font-bold">{letter}.</span>
                         <div className="flex-1">
-                          <LatexText text={opt} />
+                          <MarkdownText text={opt} />
                         </div>
                       </div>
                     );
@@ -1146,7 +1133,7 @@ const Reports = () => {
                                         </div>
 
                                         <div className="text-gray-900 leading-relaxed font-semibold">
-                                          <LatexText text={q.questionText} />
+                                          <MarkdownText text={q.questionText} />
                                         </div>
 
                                         {/* Render diagram if exists */}
@@ -1157,9 +1144,28 @@ const Reports = () => {
                                           </div>
                                         )}
 
-                                        {/* Render options */}
-                                        <div className="grid grid-cols-2 gap-3 mt-4">
-                                          {q.options.map((opt: string, i: number) => {
+                                        {/* Render options or numerical answer */}
+                                        {q.questionType === 'numerical' ? (
+                                          <div className="mt-4 flex gap-6">
+                                            <div className="bg-gray-50 px-4 py-3 rounded-lg border border-gray-200 flex-1">
+                                              <span className="text-xs font-bold text-gray-500 uppercase block mb-1">Your Answer</span>
+                                              <span className={`text-lg font-black ${
+                                                q.status === 'correct' ? 'text-green-600' :
+                                                q.status === 'incorrect' ? 'text-red-600' : 'text-gray-900'
+                                              }`}>
+                                                {q.studentChoice !== undefined && q.studentChoice !== null && q.studentChoice !== 'unanswered' ? q.studentChoice : 'Not Attempted'}
+                                              </span>
+                                            </div>
+                                            <div className="bg-green-50 px-4 py-3 rounded-lg border border-green-200 flex-1">
+                                              <span className="text-xs font-bold text-green-700 uppercase block mb-1">Correct Answer</span>
+                                              <span className="text-lg font-black text-green-700">
+                                                {q.numericalAnswer !== undefined ? q.numericalAnswer : q.correctOption}
+                                              </span>
+                                            </div>
+                                          </div>
+                                        ) : (
+                                          <div className="grid grid-cols-2 gap-3 mt-4">
+                                            {q.options?.map((opt: string, i: number) => {
                                             const letter = String.fromCharCode(65 + i);
                                             const isCorrect = q.correctOption === letter;
                                             const isStudentSelected = q.studentChoice === letter;
@@ -1178,7 +1184,7 @@ const Reports = () => {
                                                   {letter}
                                                 </span>
                                                 <div className="flex-1 min-w-0 overflow-x-auto overflow-y-hidden pb-1">
-                                                  <LatexText text={opt} />
+                                                  <MarkdownText text={opt} />
                                                 </div>
                                                 {isCorrect && (
                                                   <span className="material-symbols-outlined text-green-600 text-[18px] flex-shrink-0 mt-0.5">check_circle</span>
@@ -1187,9 +1193,10 @@ const Reports = () => {
                                                   <span className="material-symbols-outlined text-red-500 text-[18px] flex-shrink-0 mt-0.5">cancel</span>
                                                 )}
                                               </div>
-                                            );
-                                          })}
-                                        </div>
+                                              );
+                                            })}
+                                          </div>
+                                        )}
                                       </div>
 
                                       {/* Right Side: Explanation / Solution */}
@@ -1201,7 +1208,7 @@ const Reports = () => {
                                               Step-by-Step Solution
                                             </h4>
                                             <div className="text-sm text-gray-700 leading-relaxed overflow-x-auto pb-2 max-h-[300px] overflow-y-auto custom-scrollbar pr-2">
-                                              {q.solutionText ? <LatexText text={q.solutionText} /> : 'No solution explanation available.'}
+                                              {q.solutionText ? <MarkdownText text={q.solutionText} /> : 'No solution explanation available.'}
                                             </div>
                                           </div>
                                         </div>
@@ -1266,7 +1273,7 @@ const Reports = () => {
                         <div key={mq.questionId || idx} className="bg-gray-50/50 rounded-xl border border-gray-200 p-6 shadow-sm">
                           <h4 className="font-bold text-gray-900 mb-5 flex items-start gap-3">
                             <span className="bg-blue-600 text-white w-7 h-7 rounded-lg flex items-center justify-center text-xs flex-shrink-0 mt-0.5 shadow-sm font-black">Q{idx + 1}</span>
-                            <div className="leading-relaxed"><LatexText text={mq.questionText} /></div>
+                            <div className="leading-relaxed"><MarkdownText text={mq.questionText} /></div>
                           </h4>
 
                           {mq.diagramSvg && (
@@ -1325,7 +1332,7 @@ const Reports = () => {
                                     <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold border shadow-sm ${isAnswered && isCorrectOption ? 'bg-green-500 text-white border-green-600' : isAnswered && isSelected ? 'bg-red-500 text-white border-red-600' : 'bg-gray-100 text-gray-500 border-gray-300'}`}>
                                       {letter}
                                     </div>
-                                    <div className="flex-1 text-sm"><LatexText text={opt} /></div>
+                                    <div className="flex-1 text-sm"><MarkdownText text={opt} /></div>
                                     {icon}
                                   </div>
                                 );
@@ -1339,7 +1346,7 @@ const Reports = () => {
                                 <span className="material-symbols-outlined text-[16px]">lightbulb</span> Step-by-Step Solution
                               </h5>
                               <div className="text-sm text-gray-800 leading-relaxed font-medium">
-                                <LatexText text={mq.solutionText} />
+                                <MarkdownText text={mq.solutionText} />
                               </div>
                             </div>
                           )}
@@ -1543,7 +1550,7 @@ const Reports = () => {
             >
               <option value="Physics">Physics</option>
               <option value="Chemistry">Chemistry</option>
-              <option value="Biology">Biology</option>
+              <option value="Mathematics">Mathematics</option>
             </select>
           </div>
         </div>
@@ -1845,7 +1852,7 @@ const Reports = () => {
                         <span className="text-[10px] font-bold uppercase px-2 py-0.5 bg-blue-50 text-blue-600 rounded border border-blue-100">{q.chapter}</span>
                       </div>
                       <div className="font-semibold text-gray-900 leading-relaxed">
-                        <LatexText text={q.questionText} />
+                        <MarkdownText text={q.questionText} />
                       </div>
                     </div>
                   </div>
@@ -1856,19 +1863,27 @@ const Reports = () => {
                     </div>
                   )}
 
-                  <div className="grid grid-cols-2 gap-3 pl-12">
-                    {q.options.map((opt: string, i: number) => {
-                      const letter = String.fromCharCode(65 + i);
-                      return (
-                        <div key={i} className="flex items-start gap-2 p-3 rounded-lg border border-gray-200 bg-gray-50 text-sm">
-                          <span className="font-bold text-gray-700 flex-shrink-0">{letter}.</span>
-                          <div className="flex-1 text-gray-800">
-                            <LatexText text={opt} />
+                  {q.questionType === 'numerical' ? (
+                    <div className="pl-12">
+                      <span className="inline-block text-xs font-bold uppercase text-gray-500 bg-gray-100 border border-gray-200 rounded px-3 py-2">
+                        Numerical Answer Type
+                      </span>
+                    </div>
+                  ) : (
+                    <div className="grid grid-cols-2 gap-3 pl-12">
+                      {q.options.map((opt: string, i: number) => {
+                        const letter = String.fromCharCode(65 + i);
+                        return (
+                          <div key={i} className="flex items-start gap-2 p-3 rounded-lg border border-gray-200 bg-gray-50 text-sm">
+                            <span className="font-bold text-gray-700 flex-shrink-0">{letter}.</span>
+                            <div className="flex-1 text-gray-800">
+                              <MarkdownText text={opt} />
+                            </div>
                           </div>
-                        </div>
-                      );
-                    })}
-                  </div>
+                        );
+                      })}
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
@@ -1880,7 +1895,9 @@ const Reports = () => {
                 {samplePdfData.questions.map((q: any) => (
                   <div key={q.questionId} className="flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-lg px-3 py-2">
                     <span className="text-xs font-bold text-gray-500">Q{q.questionNo}</span>
-                    <span className="text-sm font-black text-green-700">{q.correctOption}</span>
+                    <span className="text-sm font-black text-green-700">
+                      {q.questionType === 'numerical' ? q.numericalAnswer : q.correctOption}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -1958,7 +1975,7 @@ const Reports = () => {
             </div>
 
             {/* Chapter Mastery Tables — one per subject */}
-            {(['Physics', 'Chemistry', 'Biology'] as const).map(subj => {
+            {(['Physics', 'Chemistry', 'Mathematics'] as const).map(subj => {
               const chapters: any[] = printAnalyticsData.chapterMastery?.[subj] || [];
               const swot = printAnalyticsData.swotProfile?.[subj];
               if (!chapters.length) return null;

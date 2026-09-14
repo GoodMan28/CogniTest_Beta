@@ -238,7 +238,11 @@ def get_practice_questions(
         if doc["questionType"] == "multiple_choice":
             correct_answer = doc.get("correctOption") or ""
         else:
-            correct_answer = str(doc.get("numericalAnswer"))
+            value = doc.get("numericalAnswer")
+            # Whole-number floats from older imports must not render as "5.0".
+            if isinstance(value, float) and value.is_integer():
+                value = int(value)
+            correct_answer = str(value)
 
         media = None
         if doc.get("imageUrl") or doc.get("diagramSvg"):

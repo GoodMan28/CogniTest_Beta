@@ -1,11 +1,13 @@
 import { Response } from 'express';
-import { PhysicsQuestion, ChemistryQuestion, BiologyQuestion, MathematicsQuestion, getQuestionModel } from '../models/Question';
-import { physicsTaxonomy, chemistryTaxonomy, biologyTaxonomy } from '../utils/taxonomy';
+import { Types } from 'mongoose';
+import { ALL_QUESTION_MODELS, getQuestionModel } from '../models/Question';
+import { physicsTaxonomy, chemistryTaxonomy, biologyTaxonomy, mathsTaxonomy } from '../utils/taxonomy';
 import { AdminRequest } from '../middleware/adminAuth';
 
 const getTaxonomy = (subject: string) => {
   if (subject === 'Physics') return physicsTaxonomy;
   if (subject === 'Chemistry') return chemistryTaxonomy;
+  if (subject === 'Mathematics') return mathsTaxonomy;
   return biologyTaxonomy;
 };
 
@@ -76,49 +78,31 @@ export const getQuestions = async (req: AdminRequest, res: Response) => {
 export const getQuestionStats = async (req: AdminRequest, res: Response) => {
   try {
     const instituteId = req.admin!.instituteId;
-    const instFilter = { instituteId };
+    // .find()/.countDocuments() cast a string instituteId to ObjectId via the
+    // schema automatically, but .aggregate()'s $match does not — cast explicitly
+    // so the chapter aggregation actually matches instead of silently returning [].
+    const instFilter = { instituteId: new Types.ObjectId(instituteId) };
 
-    const [physicsCount, chemistryCount, biologyCount] = await Promise.all([
-      PhysicsQuestion.countDocuments(instFilter),
-      ChemistryQuestion.countDocuments(instFilter),
-      BiologyQuestion.countDocuments(instFilter)
-    ]);
+    const counts: Record<string, number> = {};
+    const chapters: Record<string, { chapter: string; count: number }[]> = {};
 
-    // Chapter breakdowns scoped to institute
-    const [physicsChapters, chemistryChapters, biologyChapters] = await Promise.all([
-      PhysicsQuestion.aggregate([
-        { $match: instFilter },
-        { $unwind: '$chapter' },
-        { $group: { _id: '$chapter', count: { $sum: 1 } } },
-        { $sort: { count: -1 } }
-      ]),
-      ChemistryQuestion.aggregate([
-        { $match: instFilter },
-        { $unwind: '$chapter' },
-        { $group: { _id: '$chapter', count: { $sum: 1 } } },
-        { $sort: { count: -1 } }
-      ]),
-      BiologyQuestion.aggregate([
-        { $match: instFilter },
-        { $unwind: '$chapter' },
-        { $group: { _id: '$chapter', count: { $sum: 1 } } },
-        { $sort: { count: -1 } }
-      ])
-    ]);
+    await Promise.all(ALL_QUESTION_MODELS.map(async ({ model: QuestionModel, subject }) => {
+      const [count, chapterAgg] = await Promise.all([
+        QuestionModel.countDocuments(instFilter),
+        QuestionModel.aggregate([
+          { $match: instFilter },
+          { $unwind: '$chapter' },
+          { $group: { _id: '$chapter', count: { $sum: 1 } } },
+          { $sort: { count: -1 } }
+        ])
+      ]);
+      counts[subject] = count;
+      chapters[subject] = chapterAgg.map(c => ({ chapter: c._id || 'Uncategorized', count: c.count }));
+    }));
 
-    res.status(200).json({
-      counts: {
-        Physics: physicsCount,
-        Chemistry: chemistryCount,
-        Biology: biologyCount,
-        total: physicsCount + chemistryCount + biologyCount
-      },
-      chapters: {
-        Physics: physicsChapters.map(c => ({ chapter: c._id || 'Uncategorized', count: c.count })),
-        Chemistry: chemistryChapters.map(c => ({ chapter: c._id || 'Uncategorized', count: c.count })),
-        Biology: biologyChapters.map(c => ({ chapter: c._id || 'Uncategorized', count: c.count }))
-      }
-    });
+    counts.total = Object.values(counts).reduce((sum, c) => sum + c, 0);
+
+    res.status(200).json({ counts, chapters });
   } catch (error: any) {
     res.status(500).json({ message: error.message });
   }

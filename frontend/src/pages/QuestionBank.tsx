@@ -21,17 +21,17 @@ interface Question {
 }
 
 interface Stats {
-  counts: { Physics: number; Chemistry: number; Biology: number; total: number };
+  counts: { Physics: number; Chemistry: number; Mathematics: number; total: number };
   chapters: Record<string, Array<{ chapter: string; count: number }>>;
 }
 
-const SUBJECTS = ['Physics', 'Chemistry', 'Biology'] as const;
+const SUBJECTS = ['Physics', 'Chemistry', 'Mathematics'] as const;
 type Subject = typeof SUBJECTS[number];
 
 const SUBJECT_COLORS: Record<Subject, { bg: string; text: string; border: string; activeBadgeBg: string; activeBadgeText: string; icon: string }> = {
   Physics:   { bg: 'bg-blue-50',    text: 'text-blue-700',    border: 'border-blue-200',    activeBadgeBg: 'bg-blue-500',    activeBadgeText: 'text-white', icon: 'bolt' },
   Chemistry: { bg: 'bg-emerald-50', text: 'text-emerald-700', border: 'border-emerald-200', activeBadgeBg: 'bg-emerald-600', activeBadgeText: 'text-white', icon: 'science' },
-  Biology:   { bg: 'bg-amber-50',   text: 'text-amber-700',   border: 'border-amber-200',   activeBadgeBg: 'bg-amber-600',   activeBadgeText: 'text-white', icon: 'eco' },
+  Mathematics: { bg: 'bg-orange-50', text: 'text-orange-700', border: 'border-orange-200', activeBadgeBg: 'bg-orange-600', activeBadgeText: 'text-white', icon: 'functions' },
 };
 
 const ITEMS_PER_PAGE = 15;
@@ -47,7 +47,7 @@ const stripLatex = (text: string): string => {
     .trim();
 };
 
-import LatexText from '../components/LatexText';
+import MarkdownText from '../components/MarkdownText';
 
 const QuestionBank = () => {
   const [activeSubject, setActiveSubject] = useState<Subject>('Physics');
@@ -336,7 +336,7 @@ const QuestionBank = () => {
                                 </div>
 
                                 <p className="text-gray-800 leading-relaxed mb-4 whitespace-pre-line break-words">
-                                  <LatexText text={q.questionText} />
+                                  <MarkdownText text={q.questionText} />
                                 </p>
 
                                 {/* Conditionally render SVG diagram */}
@@ -388,7 +388,7 @@ const QuestionBank = () => {
                                           {letter}
                                         </span>
                                         <div className="flex-1 min-w-0 overflow-x-auto overflow-y-hidden pb-1">
-                                          <LatexText text={opt} />
+                                          <MarkdownText text={opt} />
                                         </div>
                                         {isCorrect && (
                                           <span className="material-symbols-outlined text-green-600 text-[18px] flex-shrink-0 mt-0.5">check_circle</span>
@@ -433,7 +433,7 @@ const QuestionBank = () => {
                                 <div className="bg-white rounded-lg border border-gray-200 p-4 overflow-hidden">
                                   <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Solution</h4>
                                   <div className="text-sm text-gray-700 leading-relaxed whitespace-pre-line break-words overflow-x-auto pb-2">
-                                    {q.solutionText ? <LatexText text={q.solutionText} /> : 'No solution available.'}
+                                    {q.solutionText ? <MarkdownText text={q.solutionText} /> : 'No solution available.'}
                                   </div>
                                 </div>
 
@@ -458,7 +458,7 @@ const QuestionBank = () => {
                                     <div className="flex justify-between gap-4">
                                       <span className="flex-shrink-0">Correct Answer</span>
                                       <span className={`font-bold ${colors.text} text-right break-words min-w-0`}>
-                                        <LatexText text={q.correctOption} />
+                                        <MarkdownText text={q.correctOption} />
                                       </span>
                                     </div>
                                     {q.diagramSvg && (

@@ -1,4 +1,4 @@
-import type { ReportDetailDTO, Insight, MetricBucket } from '../../types/demoAnalysis';
+import type { ReportDetailDTO } from '../../types/demoAnalysis';
 
 interface StrengthsAndImprovementsProps {
   report: ReportDetailDTO;
@@ -10,14 +10,10 @@ interface StrengthsAndImprovementsProps {
  * subject. Matches PDF Sections 10–13.
  */
 const StrengthsAndImprovements = ({ report }: StrengthsAndImprovementsProps) => {
-  const { insights, breakdowns, summary, questions } = report;
+  const { breakdowns, questions } = report;
   const subjectBreakdown = breakdowns.find(b => b.scope === 'subject');
   const chapterBreakdown = breakdowns.find(b => b.scope === 'chapter');
   const difficultyBreakdown = breakdowns.find(b => b.scope === 'difficulty');
-
-  // Separate strengths from weaknesses
-  const strengths = insights.filter(i => i.label === 'Strength');
-  const weaknesses = insights.filter(i => i.label === 'Needs improvement');
 
   // Generate prose-style strength observations
   const generateStrengthProse = (): string[] => {

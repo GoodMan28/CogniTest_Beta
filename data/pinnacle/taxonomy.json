@@ -1,0 +1,124 @@
+{
+  "Physics": {
+    "Mechanics": {
+      "Units and Measurements": ["Dimensions", "Error Analysis", "Significant Figures", "Vernier Calipers & Screw Gauge"],
+      "Kinematics": ["1D Motion", "Projectile Motion", "Relative Motion", "Uniform Circular Motion", "Kinematics Graphs"],
+      "Laws of Motion": ["Newton's Laws", "Friction", "Circular Dynamics", "Pseudo Force", "Conservation of Momentum"],
+      "Work Energy and Power": ["Work Done", "Kinetic Energy", "Potential Energy", "Work-Energy Theorem", "Power", "Collisions"],
+      "System of Particles and Rotational Motion": ["Center of Mass", "Moment of Inertia", "Torque", "Angular Momentum", "Rolling Motion"],
+      "Gravitation": ["Kepler's Laws", "Newton's Law of Gravitation", "Acceleration due to Gravity", "Escape Velocity", "Satellites"],
+      "Mechanical Properties of Solids": ["Stress and Strain", "Hooke's Law", "Young's Modulus", "Bulk Modulus", "Shear Modulus"],
+      "Mechanical Properties of Fluids": ["Pascal's Law", "Archimedes Principle", "Bernoulli's Principle", "Viscosity", "Surface Tension"]
+    },
+    "Heat and Thermodynamics": {
+      "Thermal Properties of Matter": ["Thermal Expansion", "Specific Heat Capacity", "Calorimetry", "Heat Transfer (Conduction, Convection, Radiation)"],
+      "Thermodynamics": ["First Law of Thermodynamics", "Isothermal Process", "Adiabatic Process", "Carnot Engine", "Second Law of Thermodynamics"],
+      "Kinetic Theory of Gases": ["Ideal Gas Laws", "RMS Speed", "Degree of Freedom", "Equipartition of Energy", "Mean Free Path"]
+    },
+    "Oscillations and Waves": {
+      "Oscillations": ["SHM Equations", "Energy in SHM", "Simple Pendulum", "Spring-Mass System", "Damped and Forced Oscillations"],
+      "Waves": ["Wave Equation", "Speed of Wave", "Superposition of Waves", "Standing Waves", "Beats", "Doppler Effect"]
+    },
+    "Electrodynamics": {
+      "Electrostatics": ["Coulomb's Law", "Electric Field", "Gauss Law", "Electric Potential", "Electric Dipole", "Capacitance", "Dielectrics"],
+      "Current Electricity": ["Ohm's Law", "Drift Velocity", "Kirchhoff's Laws", "Resistors in Series and Parallel", "Measuring Instruments (Meter Bridge, Potentiometer)"],
+      "Moving Charges and Magnetism": ["Biot-Savart Law", "Ampere's Law", "Magnetic Force on Charge", "Magnetic Force on Wire", "Galvanometer"],
+      "Magnetism and Matter": ["Earth's Magnetism", "Magnetic Properties of Materials", "Permanent Magnets"],
+      "Electromagnetic Induction": ["Faraday's Law", "Lenz's Law", "Motional EMF", "Self and Mutual Inductance", "AC Generator"],
+      "Alternating Current": ["RMS Value", "Phasors", "LCR Series Circuit", "Resonance", "Power in AC", "Transformers"],
+      "Electromagnetic Waves": ["Displacement Current", "EM Spectrum", "Properties of EM Waves"]
+    },
+    "Optics": {
+      "Ray Optics and Optical Instruments": ["Reflection", "Refraction", "Total Internal Reflection", "Lenses", "Prism", "Optical Instruments (Microscope, Telescope)"],
+      "Wave Optics": ["Huygens Principle", "Interference (YDSE)", "Diffraction", "Polarization"]
+    },
+    "Modern Physics": {
+      "Dual Nature of Radiation and Matter": ["Photoelectric Effect", "Einstein's Equation", "Matter Waves (De Broglie)"],
+      "Atoms": ["Rutherford Model", "Bohr Model", "Hydrogen Spectrum"],
+      "Nuclei": ["Mass Defect and Binding Energy", "Nuclear Fission and Fusion", "Radioactivity (Alpha, Beta, Gamma)"],
+      "Semiconductor Electronics": ["Energy Bands", "p-n Junction", "Diodes", "Transistors", "Logic Gates"],
+      "Communication Systems": ["Modulation", "Bandwidth", "Propagation of EM Waves"]
+    },
+    "Experimental Skills in Physics": {
+      "Experimental Physics": ["Vernier Caliper", "Screw Gauge", "Simple Pendulum", "Meter Bridge", "Post Office Box", "Focal Length Measurement"]
+    }
+  },
+  "Chemistry": {
+    "Physical Chemistry": {
+      "Some Basic Concepts of Chemistry": ["Mole Concept", "Stoichiometry", "Concentration Terms", "Empirical & Molecular Formula"],
+      "Structure of Atom": ["Bohr Model", "Quantum Numbers", "Electronic Configuration", "Heisenberg & De Broglie"],
+      "States of Matter": ["Ideal Gas Laws", "Real Gases (Van der Waals)", "Kinetic Theory of Gases", "Liquid State Properties"],
+      "Thermodynamics": ["First Law", "Enthalpy", "Entropy", "Gibbs Free Energy", "Hess's Law"],
+      "Equilibrium": ["Chemical Equilibrium (Kp, Kc)", "Le Chatelier Principle", "Ionic Equilibrium (pH, Buffers)", "Solubility Product"],
+      "Redox Reactions": ["Oxidation Number", "Balancing Redox Reactions", "Types of Redox Reactions"],
+      "Solid State": ["Crystal Lattices and Unit Cells", "Packing Efficiency", "Defects in Solids", "Electrical/Magnetic Properties"],
+      "Solutions": ["Raoult's Law", "Colligative Properties", "Vant Hoff Factor", "Ideal and Non-ideal Solutions"],
+      "Electrochemistry": ["Nernst Equation", "Electrolytic Cells & Faraday's Laws", "Conductance (Kohlrausch's Law)", "Batteries & Corrosion"],
+      "Chemical Kinetics": ["Rate of Reaction", "Order & Molecularity", "Integrated Rate Equations", "Arrhenius Equation"],
+      "Surface Chemistry": ["Adsorption", "Colloids", "Catalysis", "Emulsions"]
+    },
+    "Inorganic Chemistry": {
+      "Classification of Elements": ["Periodic Trends (Size, IE, EA, EN)", "Mendeleev & Modern Periodic Table"],
+      "Chemical Bonding": ["VSEPR Theory", "Valence Bond Theory", "Molecular Orbital Theory", "Dipole Moment", "Hydrogen Bonding"],
+      "s-Block Elements": ["Alkali Metals", "Alkaline Earth Metals", "Important Compounds"],
+      "p-Block Elements": ["Group 13 & 14", "Group 15 (Nitrogen family)", "Group 16 (Oxygen family)", "Group 17 (Halogens)", "Group 18 (Noble Gases)"],
+      "d- and f-Block Elements": ["Transition Elements Properties", "Lanthanides & Actinides", "Potassium Dichromate & Permanganate"],
+      "Coordination Compounds": ["Werner's Theory", "IUPAC Nomenclature", "Isomerism", "Crystal Field Theory (CFT)", "Bonding & Stability"],
+      "General Principles of Isolation of Elements": ["Metallurgy Basics", "Extraction of Metals (Fe, Cu, Zn, Al)", "Refining Methods"],
+      "Hydrogen": ["Isotopes of Hydrogen", "Hydrides", "Water & Heavy Water", "Hydrogen Peroxide"],
+      "Environmental Chemistry": ["Air Pollution", "Water Pollution", "Ozone Depletion", "Green Chemistry"]
+    },
+    "Organic Chemistry": {
+      "General Organic Chemistry": ["IUPAC Nomenclature", "Isomerism (Structural & Stereo)", "Electronic Effects (Inductive, Resonance, Hyperconjugation)", "Reaction Intermediates (Carbocations, etc.)"],
+      "Hydrocarbons": ["Alkanes", "Alkenes", "Alkynes", "Aromatic Hydrocarbons (Benzene)"],
+      "Haloalkanes and Haloarenes": ["SN1 and SN2 Reactions", "Elimination Reactions", "Preparation and Properties", "Grignard Reagents"],
+      "Alcohols, Phenols and Ethers": ["Preparation and Properties of Alcohols", "Properties of Phenols", "Ethers"],
+      "Aldehydes, Ketones and Carboxylic Acids": ["Nucleophilic Addition Reactions", "Aldol & Cannizzaro Reactions", "Carboxylic Acids and Derivatives"],
+      "Amines": ["Preparation and Properties", "Basicity of Amines", "Diazonium Salts"],
+      "Biomolecules": ["Carbohydrates", "Proteins and Amino Acids", "Nucleic Acids", "Vitamins"],
+      "Polymers": ["Addition Polymers", "Condensation Polymers", "Biodegradable Polymers"],
+      "Chemistry in Everyday Life": ["Drugs and Medicines", "Food Additives", "Cleansing Agents (Soaps & Detergents)"],
+      "Practical Organic Chemistry (POC)": ["Detection of Elements", "Functional Group Tests", "Separation Techniques"]
+    }
+  },
+  "Mathematics": {
+    "Algebra": {
+      "Sets, Relations and Functions": ["Sets Operations", "Types of Relations", "Types of Functions", "Domain & Range", "Composite & Inverse Functions"],
+      "Complex Numbers": ["Algebra of Complex Numbers", "Argand Plane & Polar Form", "Properties of Modulus & Conjugate", "Roots of Unity"],
+      "Quadratic Equations": ["Nature of Roots", "Relation between Roots & Coefficients", "Common Roots", "Maximum/Minimum Value"],
+      "Permutations and Combinations": ["Fundamental Principle of Counting", "Permutations", "Combinations", "Circular Permutation", "Distribution of Objects"],
+      "Binomial Theorem": ["General & Middle Terms", "Properties of Binomial Coefficients", "Multinomial Theorem"],
+      "Sequences and Series": ["Arithmetic Progression (AP)", "Geometric Progression (GP)", "Harmonic Progression (HP)", "AM, GM, HM Inequalities", "Sum of Special Series"],
+      "Matrices and Determinants": ["Algebra of Matrices", "Types of Matrices", "Properties of Determinants", "Adjoint & Inverse", "System of Linear Equations"],
+      "Mathematical Reasoning": ["Statements & Logical Operations", "Tautology & Fallacy"]
+    },
+    "Trigonometry": {
+      "Trigonometric Functions": ["Trigonometric Ratios & Identities", "Signs of Trig Functions", "Multiple & Submultiple Angles", "Graphs of Trig Functions"],
+      "Trigonometric Equations": ["Principal & General Solutions", "Systems of Trigonometric Equations"],
+      "Inverse Trigonometric Functions": ["Domain & Range", "Properties of Inverse Trig Functions", "Graphs"],
+      "Properties of Triangles": ["Sine & Cosine Rules", "Incircle & Excircles", "Solution of Triangles"]
+    },
+    "Coordinate Geometry": {
+      "Straight Lines": ["Distance & Section Formula", "Forms of Equation of Line", "Distance of Point from Line", "Family of Lines", "Pair of Straight Lines"],
+      "Circles": ["Standard Equations", "Tangents & Normals", "Intersection of Circles", "Family of Circles", "Director Circle"],
+      "Conic Sections (Parabola, Ellipse, Hyperbola)": ["Standard Equations & Properties", "Tangents & Normals", "Chords & Asymptotes"]
+    },
+    "Calculus": {
+      "Limits and Continuity": ["Evaluation of Limits (L'Hopital)", "Limits using Expansions", "Continuity of Functions", "Types of Discontinuities"],
+      "Differentiability": ["Differentiability at a Point", "Rules of Differentiation", "Parametric & Implicit Differentiation"],
+      "Application of Derivatives": ["Rate Measure", "Tangents & Normals", "Monotonicity (Increasing/Decreasing)", "Maxima & Minima", "Rolle's & LMVT"],
+      "Indefinite Integrals": ["Standard Integrals", "Integration by Substitution", "Integration by Parts", "Partial Fractions"],
+      "Definite Integrals": ["Newton-Leibnitz Formula", "Properties of Definite Integrals", "Limit of a Sum"],
+      "Area Under Curves": ["Area bounded by Curves", "Area between Two Curves"],
+      "Differential Equations": ["Order & Degree", "Variable Separable", "Homogeneous Differential Equations", "Linear Differential Equations"]
+    },
+    "Vectors and 3D Geometry": {
+      "Vectors": ["Addition of Vectors", "Dot Product", "Cross Product", "Scalar & Vector Triple Products"],
+      "Three-Dimensional Geometry": ["Direction Cosines & Ratios", "Equation of Line in 3D", "Equation of Plane", "Shortest Distance between Lines", "Intersection of Line and Plane"]
+    },
+    "Statistics and Probability": {
+      "Statistics": ["Mean, Median, Mode", "Variance & Standard Deviation", "Mean Deviation"],
+      "Probability": ["Conditional Probability", "Bayes' Theorem", "Binomial Distribution", "Probability Distribution of Random Variable"]
+    }
+  }
+}

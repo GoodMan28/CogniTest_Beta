@@ -1,5 +1,6 @@
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from app.db import db_client
 
 @asynccontextmanager
@@ -16,6 +17,14 @@ from app.api.routers.auth import router as auth_router
 from app.api.routers.reports import router as reports_router
 
 app = FastAPI(lifespan=lifespan)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Update this in production to match frontend domains
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 app.include_router(auth_router)
 app.include_router(reports_router)
 @app.get("/health")

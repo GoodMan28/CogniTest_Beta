@@ -14,7 +14,7 @@ are cross-file checks and are implemented in app/services/bundle.py
 import math
 from datetime import datetime
 from decimal import Decimal
-from typing import Any, Dict, List, Literal, Optional
+from typing import Any, Dict, List, Literal, Optional, Union
 
 from bson import ObjectId
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
@@ -201,7 +201,7 @@ class PracticeQuestionSchema(QuestionContentBase):
 
     sourceKey: str = Field(..., min_length=1, max_length=200)
     correctOption: Optional[str] = None
-    numericalAnswer: Optional[int] = None
+    numericalAnswer: Optional[Union[int, float]] = None
 
     @field_validator("correctOption")
     @classmethod
@@ -212,6 +212,22 @@ class PracticeQuestionSchema(QuestionContentBase):
     @classmethod
     def _no_boolean_numerical_answer(cls, v):
         return _reject_boolean(v)
+
+    @field_validator("numericalAnswer", mode="after")
+    @classmethod
+    def _finite_and_int_when_whole(cls, v):
+        # Practice questions are self-study, never graded, so a decimal
+        # answer (e.g. 6.93 s) is legitimate here — unlike AnswerKeySchema,
+        # which stays int-only for the real paper. Whole-number floats
+        # (5.0) are stored as int so the DTO never shows "5.0".
+        if v is None:
+            return v
+        if isinstance(v, float):
+            if not math.isfinite(v):
+                raise ValueError("numericalAnswer must be finite")
+            if v.is_integer():
+                return int(v)
+        return v
 
     @model_validator(mode="after")
     def _validate_exactly_one_answer_matching_type(self) -> "PracticeQuestionSchema":

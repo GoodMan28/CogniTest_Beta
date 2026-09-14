@@ -18,11 +18,13 @@ export interface IStudentAnalytics extends Document {
     Physics: IChapterMasteryEntry[];
     Chemistry: IChapterMasteryEntry[];
     Biology: IChapterMasteryEntry[];
+    Mathematics: IChapterMasteryEntry[];
   };
   swotProfile: {
     Physics: ISwotEntry;
     Chemistry: ISwotEntry;
     Biology: ISwotEntry;
+    Mathematics: ISwotEntry;
   };
 }
 
@@ -43,12 +45,14 @@ const StudentAnalyticsSchema = new Schema<IStudentAnalytics>({
   chapterMastery: {
     Physics: [ChapterMasterySchema],
     Chemistry: [ChapterMasterySchema],
-    Biology: [ChapterMasterySchema]
+    Biology: [ChapterMasterySchema],
+    Mathematics: [ChapterMasterySchema]
   },
   swotProfile: {
     Physics: { type: SwotEntrySchema, default: () => ({}) },
     Chemistry: { type: SwotEntrySchema, default: () => ({}) },
-    Biology: { type: SwotEntrySchema, default: () => ({}) }
+    Biology: { type: SwotEntrySchema, default: () => ({}) },
+    Mathematics: { type: SwotEntrySchema, default: () => ({}) }
   }
 }, { timestamps: true });
 

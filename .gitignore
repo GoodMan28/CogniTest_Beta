@@ -150,3 +150,6 @@ private_data/
 # Ad-hoc operator scripts with hardcoded credentials (see backend/SECRETS_WARNING.md)
 backend/check.js
 backend/check_subj.js
+
+# Test/seed credentials — never commit
+memory/test_credentials.md

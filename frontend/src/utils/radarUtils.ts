@@ -43,16 +43,35 @@ export const getBiologyCategory = (chapter: string): string => {
   return 'Ecology';
 };
 
+export const getMathematicsCategory = (chapter: string): string => {
+  const ch = chapter.toLowerCase();
+  if (ch.includes('algebra') || ch.includes('complex') || ch.includes('quadratic') || ch.includes('sequence') || ch.includes('series') || ch.includes('binomial') || ch.includes('permutation') || ch.includes('combination') || ch.includes('probability') || ch.includes('matrix') || ch.includes('determinant')) {
+    return 'Algebra';
+  }
+  if (ch.includes('calculus') || ch.includes('function') || ch.includes('limit') || ch.includes('continuity') || ch.includes('differentiability') || ch.includes('derivative') || ch.includes('integration') || ch.includes('area') || ch.includes('differential')) {
+    return 'Calculus';
+  }
+  if (ch.includes('trigonometry') || ch.includes('triangle') || ch.includes('inverse')) {
+    return 'Trigonometry';
+  }
+  if (ch.includes('coordinate') || ch.includes('straight line') || ch.includes('circle') || ch.includes('conic') || ch.includes('parabola') || ch.includes('ellipse') || ch.includes('hyperbola')) {
+    return 'Coordinate Geometry';
+  }
+  return 'Vector & 3D Geometry';
+};
+
 export const getCategory = (chapter: string, subject: string): string => {
   if (subject === 'Physics') return getPhysicsCategory(chapter);
   if (subject === 'Chemistry') return getChemistryCategory(chapter);
+  if (subject === 'Mathematics') return getMathematicsCategory(chapter);
   return getBiologyCategory(chapter);
 };
 
 export const SUBJECT_CATEGORIES: Record<string, string[]> = {
   Physics: ['Mechanics', 'Thermodynamics', 'Electrodynamics', 'Optics', 'Modern Physics'],
   Chemistry: ['Physical Chemistry', 'Organic Chemistry', 'Inorganic Chemistry'],
-  Biology: ['Cell Biology', 'Genetics', 'Human Physiology', 'Plant Physiology', 'Ecology']
+  Biology: ['Cell Biology', 'Genetics', 'Human Physiology', 'Plant Physiology', 'Ecology'],
+  Mathematics: ['Algebra', 'Calculus', 'Trigonometry', 'Coordinate Geometry', 'Vector & 3D Geometry']
 };
 
 export const SUBJECT_HEX: Record<string, { fill: string; stroke: string }> = {

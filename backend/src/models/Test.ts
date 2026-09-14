@@ -7,6 +7,7 @@ export interface ITest extends Document {
   date: Date;
   examType: string;
   sourceExam?: string;          // e.g. NEET BATCH 2027 MOCK TEST 1
+  batches?: string[];           // Which student batches this test is visible to; empty/absent = visible to all
   totalQuestions: number;
   marksPerQuestion: number;
   negativeMarking: number;
@@ -53,6 +54,7 @@ const TestSchema = new Schema<ITest>({
   date: { type: Date, required: true },
   examType: { type: String, required: true },
   sourceExam: { type: String },
+  batches: { type: [String], default: [] },
   totalQuestions: { type: Number, required: true },
   marksPerQuestion: { type: Number, required: true },
   negativeMarking: { type: Number, required: true },

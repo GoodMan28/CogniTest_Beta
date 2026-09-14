@@ -5,7 +5,7 @@ import { useAuth } from '../context/AuthContext';
 import { useSearchParams } from 'react-router-dom';
 // import katex from 'katex';
 
-import LatexText from '../components/LatexText';
+import MarkdownText from '../components/MarkdownText';
 
 // ── Subject color themes ──
 const SUBJECT_THEMES: Record<string, { bg: string; activeBg: string; text: string; border: string; ring: string; gradient: string }> = {
@@ -17,9 +17,9 @@ const SUBJECT_THEMES: Record<string, { bg: string; activeBg: string; text: strin
     bg: 'bg-emerald-50', activeBg: 'bg-emerald-600', text: 'text-emerald-600',
     border: 'border-emerald-200', ring: 'ring-emerald-500/30', gradient: 'from-emerald-600 to-teal-600'
   },
-  Biology: {
-    bg: 'bg-amber-50', activeBg: 'bg-amber-600', text: 'text-amber-600',
-    border: 'border-amber-200', ring: 'ring-amber-500/30', gradient: 'from-amber-600 to-orange-600'
+  Mathematics: {
+    bg: 'bg-orange-50', activeBg: 'bg-orange-600', text: 'text-orange-600',
+    border: 'border-orange-200', ring: 'ring-orange-500/30', gradient: 'from-orange-600 to-red-600'
   },
 };
 
@@ -40,15 +40,48 @@ const CustomTests = () => {
 
   // Config state - URL is the single source of truth for subject
   const subjParam = searchParams.get('subject');
-  const subject: 'Physics' | 'Chemistry' | 'Biology' = 
-    (subjParam === 'Chemistry' || subjParam === 'Biology') ? subjParam : 'Physics';
+  const subject: 'Physics' | 'Chemistry' | 'Mathematics' = 
+    (subjParam === 'Chemistry' || subjParam === 'Mathematics') ? subjParam : 'Physics';
 
-  const setSubject = (newSubject: 'Physics' | 'Chemistry' | 'Biology') => {
+  const setSubject = (newSubject: 'Physics' | 'Chemistry' | 'Mathematics') => {
     setSearchParams({ subject: newSubject }, { replace: true });
   };
 
   const [numQuestions, setNumQuestions] = useState<10 | 15 | 20>(10);
   const [timed, setTimed] = useState(false);
+
+  // Mode state
+  const [testMode, setTestMode] = useState<'swot' | 'custom'>('swot');
+  const [taxonomy, setTaxonomy] = useState<{ units: string[], chapters: string[], topics: string[] }>({ units: [], chapters: [], topics: [] });
+  const [selectedUnits, setSelectedUnits] = useState<string[]>([]);
+  const [selectedChapters, setSelectedChapters] = useState<string[]>([]);
+  const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
+  const [isLocked, setIsLocked] = useState(false);
+
+  // Fetch taxonomy and lock status on mount or subject change
+  useEffect(() => {
+    if (studentId) {
+      axios.get(`/api/v1/custom-test/taxonomy?subject=${subject}&studentId=${studentId}`)
+        .then(res => {
+          setTaxonomy(res.data);
+          setIsLocked(false);
+        })
+        .catch(err => {
+          if (err.response?.status === 403 && err.response?.data?.locked) {
+            setIsLocked(true);
+          } else {
+            console.error('Failed to fetch taxonomy', err);
+          }
+        });
+    }
+  }, [subject, studentId]);
+
+  // Reset selections on subject change
+  useEffect(() => {
+    setSelectedUnits([]);
+    setSelectedChapters([]);
+    setSelectedTopics([]);
+  }, [subject]);
 
   // Phase state
   const [phase, setPhase] = useState<TestPhase>('config');
@@ -104,7 +137,11 @@ const CustomTests = () => {
         studentId,
         subject,
         numQuestions,
-        timed
+        timed,
+        mode: testMode,
+        units: selectedUnits,
+        chapters: selectedChapters,
+        topics: selectedTopics
       });
       setQuestions(res.data);
       setAnswers({});
@@ -113,9 +150,13 @@ const CustomTests = () => {
         setTimeLeft(timedDurations[numQuestions] * 60);
       }
       setPhase('test');
-    } catch (error) {
-      console.error('Failed to generate test:', error);
-      alert('Failed to generate test. Please try again.');
+    } catch (error: any) {
+      if (error.response?.status === 403) {
+        alert(error.response.data.message || 'Feature locked.');
+      } else {
+        console.error('Failed to generate test:', error);
+        alert('Failed to generate test. Please try again.');
+      }
       setPhase('config');
     }
   };
@@ -180,23 +221,60 @@ const CustomTests = () => {
 
         <div className="grid grid-cols-12 gap-6">
           {/* Config Panel */}
-          <div className="col-span-12 lg:col-span-5 space-y-6">
-            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-              <h3 className="text-lg font-bold text-gray-800 mb-6 flex items-center gap-2">
-                <span className="material-symbols-outlined text-blue-600">tune</span>
-                Test Configuration
+          <div className="col-span-12 lg:col-span-5 space-y-6 relative">
+            {isLocked && (
+              <div className="absolute inset-0 bg-white/70 backdrop-blur-[2px] z-20 flex flex-col items-center justify-center rounded-xl border border-gray-100 text-center p-6">
+                <div className="w-16 h-16 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center mb-4 shadow-sm">
+                  <span className="material-symbols-outlined text-3xl">lock</span>
+                </div>
+                <h4 className="font-bold text-gray-800 text-lg">Feature Locked</h4>
+                <p className="text-sm text-gray-600 mt-2 max-w-[250px]">
+                  Custom AI and Filter Tests require a Premium coaching plan.
+                </p>
+              </div>
+            )}
+            <div className={`bg-white rounded-xl shadow-sm border border-gray-200 p-6 transition-opacity duration-300 ${isLocked ? 'opacity-40 pointer-events-none blur-[1px]' : ''}`}>
+              <h3 className="text-lg font-bold text-gray-800 mb-6 flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <span className="material-symbols-outlined text-blue-600">tune</span>
+                  Test Configuration
+                </div>
               </h3>
+
+              {/* Mode Toggle */}
+              <div className="mb-6 bg-gray-50 p-1.5 rounded-lg flex gap-1 border border-gray-200">
+                <button
+                  onClick={() => setTestMode('swot')}
+                  className={`flex-1 py-2 text-xs font-bold rounded-md transition-all duration-200 ${
+                    testMode === 'swot' 
+                      ? 'bg-white text-gray-800 shadow-sm border border-gray-200' 
+                      : 'text-gray-500 hover:text-gray-700'
+                  }`}
+                >
+                  AI Weakness Test
+                </button>
+                <button
+                  onClick={() => setTestMode('custom')}
+                  className={`flex-1 py-2 text-xs font-bold rounded-md transition-all duration-200 ${
+                    testMode === 'custom' 
+                      ? 'bg-white text-gray-800 shadow-sm border border-gray-200' 
+                      : 'text-gray-500 hover:text-gray-700'
+                  }`}
+                >
+                  Custom Filter Test
+                </button>
+              </div>
 
               {/* Subject Selection */}
               <div className="mb-6">
                 <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">Subject</label>
                 <div className="grid grid-cols-3 gap-2">
-                  {(['Physics', 'Chemistry', 'Biology'] as const).map(s => {
+                  {(['Physics', 'Chemistry', 'Mathematics'] as const).map(s => {
                     const isActive = subject === s;
                     let activeClasses = '';
                     if (s === 'Physics') activeClasses = 'bg-blue-500 text-white border-transparent shadow-md scale-[1.02]';
                     else if (s === 'Chemistry') activeClasses = 'bg-emerald-600 text-white border-transparent shadow-md scale-[1.02]';
-                    else activeClasses = 'bg-amber-600 text-white border-transparent shadow-md scale-[1.02]';
+                    else activeClasses = 'bg-orange-600 text-white border-transparent shadow-md scale-[1.02]';
 
                     return (
                       <button
@@ -223,7 +301,7 @@ const CustomTests = () => {
                     let activeClasses = '';
                     if (subject === 'Physics') activeClasses = 'bg-blue-500 text-white border-transparent shadow-md';
                     else if (subject === 'Chemistry') activeClasses = 'bg-emerald-600 text-white border-transparent shadow-md';
-                    else activeClasses = 'bg-amber-600 text-white border-transparent shadow-md';
+                    else activeClasses = 'bg-orange-600 text-white border-transparent shadow-md';
 
                     return (
                       <button
@@ -255,7 +333,7 @@ const CustomTests = () => {
                     onClick={() => setTimed(!timed)}
                     className={`relative flex-shrink-0 w-9 h-5 rounded-full transition-colors duration-200 flex items-center p-0.5 ${
                       timed 
-                        ? (subject === 'Physics' ? 'bg-blue-500' : subject === 'Chemistry' ? 'bg-emerald-600' : 'bg-amber-600') 
+                        ? (subject === 'Physics' ? 'bg-blue-500' : subject === 'Chemistry' ? 'bg-emerald-600' : 'bg-orange-600') 
                         : 'bg-gray-300'
                     }`}
                   >
@@ -264,13 +342,63 @@ const CustomTests = () => {
                 </div>
               </div>
 
+              {/* Custom Mode Filters */}
+              {testMode === 'custom' && (
+                <div className="mb-6 pt-4 border-t border-gray-100 relative">
+                  <div className="space-y-4">
+                    <div>
+                      <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Chapters</label>
+                      <div className="max-h-40 overflow-y-auto space-y-1 pr-2">
+                        {taxonomy.chapters.length === 0 ? (
+                          <p className="text-xs text-gray-400 italic">No chapters available</p>
+                        ) : taxonomy.chapters.map(ch => (
+                          <label key={ch} className="flex items-start gap-2 p-2 hover:bg-gray-50 rounded-lg cursor-pointer transition-colors border border-transparent hover:border-gray-200">
+                            <input
+                              type="checkbox"
+                              checked={selectedChapters.includes(ch)}
+                              onChange={(e) => {
+                                if (e.target.checked) setSelectedChapters(prev => [...prev, ch]);
+                                else setSelectedChapters(prev => prev.filter(c => c !== ch));
+                              }}
+                              className="mt-0.5 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                            />
+                            <span className="text-sm text-gray-700">{ch}</span>
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Topics (Optional)</label>
+                      <div className="max-h-40 overflow-y-auto space-y-1 pr-2">
+                        {taxonomy.topics.length === 0 ? (
+                          <p className="text-xs text-gray-400 italic">No topics available</p>
+                        ) : taxonomy.topics.map(topic => (
+                          <label key={topic} className="flex items-start gap-2 p-2 hover:bg-gray-50 rounded-lg cursor-pointer transition-colors border border-transparent hover:border-gray-200">
+                            <input
+                              type="checkbox"
+                              checked={selectedTopics.includes(topic)}
+                              onChange={(e) => {
+                                if (e.target.checked) setSelectedTopics(prev => [...prev, topic]);
+                                else setSelectedTopics(prev => prev.filter(t => t !== topic));
+                              }}
+                              className="mt-0.5 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                            />
+                            <span className="text-sm text-gray-700">{topic}</span>
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
               {/* Generate Button */}
               <button
                 onClick={handleGenerate}
-                className={`w-full py-3.5 bg-gradient-to-r ${theme.gradient} text-white rounded-xl font-bold text-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-md`}
+                disabled={isLocked}
+                className={`w-full py-3.5 bg-gradient-to-r ${theme.gradient} text-white rounded-xl font-bold text-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-md disabled:opacity-50 disabled:cursor-not-allowed`}
               >
-
-                Generate AI Test
+                {isLocked ? 'Locked' : (testMode === 'custom' ? 'Generate Custom Test' : 'Generate AI Test')}
               </button>
             </div>
           </div>
@@ -290,29 +418,55 @@ const CustomTests = () => {
               </div>
 
               <h3 className="text-xl font-bold text-gray-800 mb-4">How It Works</h3>
-              <div className="max-w-md space-y-4 text-left">
-                <div className="flex gap-3 items-start">
-                  <span className={`w-7 h-7 rounded-full ${theme.bg} ${theme.text} flex items-center justify-center text-xs font-bold shrink-0 mt-0.5`}>1</span>
-                  <div>
-                    <p className="text-sm font-semibold text-gray-700">SWOT Analysis</p>
-                    <p className="text-xs text-gray-500">Your critical weaknesses are identified from past test evaluations.</p>
+              {testMode === 'swot' ? (
+                <div className="max-w-md space-y-4 text-left">
+                  <div className="flex gap-3 items-start">
+                    <span className={`w-7 h-7 rounded-full ${theme.bg} ${theme.text} flex items-center justify-center text-xs font-bold shrink-0 mt-0.5`}>1</span>
+                    <div>
+                      <p className="text-sm font-semibold text-gray-700">SWOT Analysis</p>
+                      <p className="text-xs text-gray-500">Your critical weaknesses are identified from past test evaluations.</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-3 items-start">
+                    <span className={`w-7 h-7 rounded-full ${theme.bg} ${theme.text} flex items-center justify-center text-xs font-bold shrink-0 mt-0.5`}>2</span>
+                    <div>
+                      <p className="text-sm font-semibold text-gray-700">Vector Similarity Search</p>
+                      <p className="text-xs text-gray-500">Questions similar to what you got wrong are found using AI embeddings in Pinecone.</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-3 items-start">
+                    <span className={`w-7 h-7 rounded-full ${theme.bg} ${theme.text} flex items-center justify-center text-xs font-bold shrink-0 mt-0.5`}>3</span>
+                    <div>
+                      <p className="text-sm font-semibold text-gray-700">Smart Filtering</p>
+                      <p className="text-xs text-gray-500">Already-seen questions are excluded. Only unseen questions from weak chapters are selected.</p>
+                    </div>
                   </div>
                 </div>
-                <div className="flex gap-3 items-start">
-                  <span className={`w-7 h-7 rounded-full ${theme.bg} ${theme.text} flex items-center justify-center text-xs font-bold shrink-0 mt-0.5`}>2</span>
-                  <div>
-                    <p className="text-sm font-semibold text-gray-700">Vector Similarity Search</p>
-                    <p className="text-xs text-gray-500">Questions similar to what you got wrong are found using AI embeddings in Pinecone.</p>
+              ) : (
+                <div className="max-w-md space-y-4 text-left">
+                  <div className="flex gap-3 items-start">
+                    <span className={`w-7 h-7 rounded-full ${theme.bg} ${theme.text} flex items-center justify-center text-xs font-bold shrink-0 mt-0.5`}>1</span>
+                    <div>
+                      <p className="text-sm font-semibold text-gray-700">Custom Filtering</p>
+                      <p className="text-xs text-gray-500">You hand-pick the chapters and topics you want to practice.</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-3 items-start">
+                    <span className={`w-7 h-7 rounded-full ${theme.bg} ${theme.text} flex items-center justify-center text-xs font-bold shrink-0 mt-0.5`}>2</span>
+                    <div>
+                      <p className="text-sm font-semibold text-gray-700">Randomized Selection</p>
+                      <p className="text-xs text-gray-500">The system randomly selects questions that match your exact filters.</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-3 items-start">
+                    <span className={`w-7 h-7 rounded-full ${theme.bg} ${theme.text} flex items-center justify-center text-xs font-bold shrink-0 mt-0.5`}>3</span>
+                    <div>
+                      <p className="text-sm font-semibold text-gray-700">Focused Practice</p>
+                      <p className="text-xs text-gray-500">Perfect for revising specific syllabus chunks before an exam.</p>
+                    </div>
                   </div>
                 </div>
-                <div className="flex gap-3 items-start">
-                  <span className={`w-7 h-7 rounded-full ${theme.bg} ${theme.text} flex items-center justify-center text-xs font-bold shrink-0 mt-0.5`}>3</span>
-                  <div>
-                    <p className="text-sm font-semibold text-gray-700">Smart Filtering</p>
-                    <p className="text-xs text-gray-500">Already-seen questions are excluded. Only unseen questions from weak chapters are selected.</p>
-                  </div>
-                </div>
-              </div>
+              )}
             </div>
           </div>
         </div>
@@ -486,7 +640,7 @@ const CustomTests = () => {
             <div className="mb-4">
               <p className="text-base font-medium text-gray-800 leading-relaxed">
                 <span className="font-bold text-gray-400 mr-2">Q{currentIndex + 1}.</span>
-                <LatexText text={currentQuestion.questionText} />
+                <MarkdownText text={currentQuestion.questionText} />
               </p>
             </div>
 
@@ -548,7 +702,7 @@ const CustomTests = () => {
                 } else if (isSelected) {
                   let activeBorder = 'border-blue-500 bg-blue-50';
                   if (subject === 'Chemistry') activeBorder = 'border-emerald-600 bg-emerald-50';
-                  if (subject === 'Biology') activeBorder = 'border-amber-600 bg-amber-50';
+                  if (subject === 'Mathematics') activeBorder = 'border-orange-600 bg-orange-50';
                   optionStyle = activeBorder;
                 }
 
@@ -559,7 +713,7 @@ const CustomTests = () => {
                 } else if (isSelected) {
                   if (subject === 'Physics') bubbleStyle = 'border-transparent bg-blue-500 text-white';
                   else if (subject === 'Chemistry') bubbleStyle = 'border-transparent bg-emerald-600 text-white';
-                  else bubbleStyle = 'border-transparent bg-amber-600 text-white';
+                  else bubbleStyle = 'border-transparent bg-orange-600 text-white';
                 }
 
                 return (
@@ -577,7 +731,7 @@ const CustomTests = () => {
                       {isReviewMode && isCorrect ? '✓' : isReviewMode && isSelected && !isCorrect ? '✗' : label}
                     </span>
                     <span className="text-sm text-gray-700 flex-1">
-                      <LatexText text={option} />
+                      <MarkdownText text={option} />
                     </span>
                   </button>
                 );
@@ -626,7 +780,7 @@ const CustomTests = () => {
                   <span className="material-symbols-outlined text-[14px]">lightbulb</span> Solution
                 </p>
                 <p className="text-sm text-gray-700 leading-relaxed">
-                  <LatexText text={currentQuestion.solutionText} />
+                  <MarkdownText text={currentQuestion.solutionText} />
                 </p>
               </div>
             )}

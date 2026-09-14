@@ -207,7 +207,7 @@ export interface PracticeQuestionDTO {
   difficulty: Difficulty;
   questionText: string;
   options: string[];
-  correctAnswer: string; // letter or integer string — practice is self-study, not an exam
+  correctAnswer: string; // MCQ letter ("A".."D") or a number string, possibly decimal (e.g. "6.93") — self-study, not scored
   solutionText: string;
   media?: QuestionMedia;
 }

@@ -1,11 +1,13 @@
 
 import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, Beaker, FileOutput, Settings, Library } from 'lucide-react';
+import { LayoutDashboard, Beaker, FileOutput, Settings, Library, LogOut } from 'lucide-react';
 import axios from 'axios';
+import { useAuth } from '../context/AuthContext';
 
 const StudentSidebar = () => {
   const [institute, setInstitute] = useState<{ name: string; logoUrl?: string } | null>(null);
+  const { logout } = useAuth();
 
   useEffect(() => {
     axios.get('/api/v1/institute')
@@ -49,6 +51,15 @@ const StudentSidebar = () => {
           </NavLink>
         ))}
       </nav>
+      <div className="p-4 border-t border-gray-200">
+        <button
+          onClick={logout}
+          className="flex items-center space-x-3 px-3 py-2 w-full text-left rounded-md transition-colors duration-150 text-[14px] text-red-600 hover:bg-red-50 hover:text-red-700"
+        >
+          <LogOut className="w-4 h-4" />
+          <span>Sign Out</span>
+        </button>
+      </div>
     </aside>
   );
 };

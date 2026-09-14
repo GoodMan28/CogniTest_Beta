@@ -165,6 +165,36 @@ def test_practice_question_has_no_question_no_field():
     assert not hasattr(parsed, "questionNo")
 
 
+def _numerical_practice(**overrides):
+    base = {
+        "sourceKey": "p2-1", "subject": "Physics", "unit": "Mechanics",
+        "chapter": ["Kinematics"], "topic": ["1D Motion"], "questionType": "numerical",
+        "difficulty": "easy", "questionIntent": "x", "questionText": "x", "solutionText": "x",
+    }
+    base.update(overrides)
+    return base
+
+def test_practice_question_accepts_decimal_numerical_answer():
+    # Practice answers are self-study (never graded) so 6.93 is legitimate.
+    parsed = PracticeQuestionSchema(**_numerical_practice(numericalAnswer=6.93))
+    assert parsed.numericalAnswer == 6.93
+
+def test_practice_question_normalizes_whole_float_to_int():
+    parsed = PracticeQuestionSchema(**_numerical_practice(numericalAnswer=5.0))
+    assert parsed.numericalAnswer == 5 and isinstance(parsed.numericalAnswer, int)
+
+def test_practice_question_rejects_non_finite_and_boolean_numerical_answer():
+    with pytest.raises(ValidationError):
+        PracticeQuestionSchema(**_numerical_practice(numericalAnswer=float("inf")))
+    with pytest.raises(ValidationError):
+        PracticeQuestionSchema(**_numerical_practice(numericalAnswer=True))
+
+def test_answer_key_still_rejects_decimal_numerical_answer():
+    # The real paper's key is unchanged: integers only.
+    with pytest.raises(ValidationError):
+        AnswerKeySchema(questionNo=2, numericalAnswer=6.93)
+
+
 # --- RecommendationSchema ---
 
 def test_recommendation_schema_parses_the_fixture():

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import DOMPurify from 'dompurify';
-import Latex from 'react-latex-next';
-import 'katex/dist/katex.min.css';
+import MarkdownText from '../MarkdownText';
 import type { PracticeQuestionDTO, QuestionStatus, ReflectionItemDTO, ReportDetailDTO } from '../../types/demoAnalysis';
 import PracticePanel from './PracticePanel';
 import ReflectionInput from './ReflectionInput';
@@ -84,7 +83,7 @@ const QuestionReview = ({ report, getPracticeQuestions, updateReflection }: Ques
 
               <div className="p-4 md:p-6">
                 <div className="prose prose-sm max-w-none text-gray-800 mb-4">
-                  <Latex>{q.questionText}</Latex>
+                  <MarkdownText text={q.questionText} />
                 </div>
 
                 {q.media?.imageUrl && (
@@ -115,7 +114,7 @@ const QuestionReview = ({ report, getPracticeQuestions, updateReflection }: Ques
                       return (
                         <div key={idx} className={`p-3 border rounded-md flex items-start space-x-3 ${optClass}`}>
                           <span className="font-medium text-gray-900">{letter}.</span>
-                          <span className="text-gray-700"><Latex>{opt}</Latex></span>
+                          <span className="text-gray-700"><MarkdownText text={opt} /></span>
                         </div>
                       );
                     })}
@@ -145,7 +144,7 @@ const QuestionReview = ({ report, getPracticeQuestions, updateReflection }: Ques
                 )}
 
                 <div className="mb-6 p-3 bg-indigo-50 border border-indigo-100 rounded text-sm text-gray-700">
-                  <span className="font-medium">Solution: </span><Latex>{q.solutionText}</Latex>
+                  <span className="font-medium">Solution: </span><MarkdownText text={q.solutionText} />
                 </div>
 
                 {/* Practice and Reflection */}

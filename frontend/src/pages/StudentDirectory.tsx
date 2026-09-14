@@ -7,6 +7,20 @@ const StudentDirectory = () => {
   const [search, setSearch] = useState('');
   const [batchFilter, setBatchFilter] = useState('All Batches');
 
+  const [batches, setBatches] = useState<string[]>([]);
+
+  useEffect(() => {
+    const fetchBatches = async () => {
+      try {
+        const res = await adminApi.get('/api/v1/institute');
+        setBatches(res.data.batches || []);
+      } catch (error) {
+        console.error('Failed to fetch batches:', error);
+      }
+    };
+    fetchBatches();
+  }, []);
+
   useEffect(() => {
     const fetchStudents = async () => {
       try {
@@ -41,9 +55,9 @@ const StudentDirectory = () => {
             onChange={(e) => setBatchFilter(e.target.value)}
           >
             <option value="All Batches">All Batches</option>
-            <option value="NEET-2027 Alpha">NEET-2027 Alpha</option>
-            <option value="JEE-2027 Beta">JEE-2027 Beta</option>
-            <option value="Foundation Class 10">Foundation Class 10</option>
+            {batches.map((batch) => (
+              <option key={batch} value={batch}>{batch}</option>
+            ))}
           </select>
           <input 
             type="text" 

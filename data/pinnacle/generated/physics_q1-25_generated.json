@@ -1,0 +1,2215 @@
+None selected
+
+Skip to content
+Using BIT Webmail Mail with screen readers
+
+Conversations
+ 
+Program Policies
+Powered by Google
+Last account activity: 0 minutes ago
+Open in 1 other location · Details
+[
+  {
+    "sourceQuestionNumber": "Physics Q1",
+    "sourceSubject": "Physics",
+    "sourceQuestionText": "For a projectile fired from level ground at an angle $\\theta$ above the horizontal, the ratio of the maximum height $H$ to the range $R$ is given by\n(a) $\\frac{H}{R}=\\frac{1}{4} \\tan \\theta$\n(b) $\\frac{H}{R}=\\frac{1}{2} \\tan \\theta$\n(c) $\\frac{H}{R}=\\tan \\theta$\n(d) $\\frac{H}{R}=2 \\tan \\theta$",
+    "generatedQuestions": [
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "easy",
+        "questionIntent": "Tests the ability to express the ratio of horizontal range to maximum height of a projectile in terms of the angle of projection.",
+        "questionText": "A ball is projected from level ground at angle $\\alpha$ to the horizontal. What is the ratio $R:H$ of its horizontal range to its maximum height?",
+        "options": [
+          "$4\\cot\\alpha$",
+          "$2\\cot\\alpha$",
+          "$\\cot\\alpha$",
+          "$\\frac{1}{4}\\cot\\alpha$"
+        ],
+        "correctOption": "$4\\cot\\alpha$",
+        "numericalAnswer": null,
+        "solutionText": "$R=\\frac{u^2\\sin2\\alpha}{g}$ and $H=\\frac{u^2\\sin^2\\alpha}{2g}$. So $\\frac{R}{H}=\\frac{2\\sin\\alpha\\cos\\alpha}{\\sin^2\\alpha/2}=\\frac{4\\cos\\alpha}{\\sin\\alpha}=4\\cot\\alpha$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "medium",
+        "questionIntent": "Tests direct numerical computation of the H/R ratio for a specific angle of projection.",
+        "questionText": "A projectile is launched at $60^\\circ$ above the horizontal from level ground. Find the ratio of its maximum height to its range.",
+        "options": [
+          "$\\frac{\\sqrt3}{4}$",
+          "$\\frac{\\sqrt3}{2}$",
+          "$\\frac{1}{4\\sqrt3}$",
+          "$\\frac{3}{4}$"
+        ],
+        "correctOption": "$\\frac{\\sqrt3}{4}$",
+        "numericalAnswer": null,
+        "solutionText": "Using $\\frac{H}{R}=\\frac{1}{4}\\tan\\theta$ with $\\theta=60^\\circ$: $\\frac{H}{R}=\\frac{1}{4}\\tan60^\\circ=\\frac{\\sqrt3}{4}$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "hard",
+        "questionIntent": "Tests the ability to invert the H/R relation to find the angle of projection from a given range-to-height ratio.",
+        "questionText": "For a projectile launched from level ground, the horizontal range is found to be 8 times its maximum height. Find the angle of projection with the horizontal.",
+        "options": [
+          "$\\tan^{-1}\\left(\\frac12\\right)$",
+          "$\\tan^{-1}(2)$",
+          "$\\tan^{-1}\\left(\\frac14\\right)$",
+          "$\\tan^{-1}(4)$"
+        ],
+        "correctOption": "$\\tan^{-1}\\left(\\frac12\\right)$",
+        "numericalAnswer": null,
+        "solutionText": "Given $R=8H$, so $\\frac{H}{R}=\\frac18=\\frac14\\tan\\theta \\Rightarrow \\tan\\theta=\\frac12 \\Rightarrow \\theta=\\tan^{-1}(0.5)$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Physics Q2",
+    "sourceSubject": "Physics",
+    "sourceQuestionText": "At a harbor enemy ship is at a distance $180 \\sqrt{3} m$ from the security cannon having a muzzle velocity of 60 m/s (a) To what angle must the cannon be elevated to hit the ship? (b) What is the time of flight? (c) How far should be ship be moved away from its initial position so that it becomes beyond the range of the cannon? $\\left(g=10 \\mathrm{~m} / \\mathrm{s}^2\\right)$\n(a) 30° or 60°; 10.4 s; 360 m\n(b) 45° or 30°; 10.4 s; 360 m\n(c) 30° or 60°; 10.4 s; 460 m\n(d) 30° or 60°; 2.4 s; 360 m",
+    "generatedQuestions": [
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "medium",
+        "questionIntent": "Tests finding the angle of projection, time of flight, and safe distance for a projectile hitting a fixed-range target.",
+        "questionText": "A cannon has a muzzle speed of $100\\ m/s$ and needs to hit a target on level ground $500\\ m$ away ($g=10\\ m/s^2$). Find (a) the possible angle(s) of elevation, (b) the time of flight for the larger angle, and (c) how much farther the target must be moved to be beyond the cannon's maximum range.",
+        "options": [
+          "15° or 75°; 19.32 s; 500 m",
+          "15° or 75°; 5.18 s; 500 m",
+          "30° or 60°; 19.32 s; 500 m",
+          "15° or 75°; 19.32 s; 1000 m"
+        ],
+        "correctOption": "15° or 75°; 19.32 s; 500 m",
+        "numericalAnswer": null,
+        "solutionText": "$R_{max}=u^2/g=10000/10=1000\\ m$. $\\sin2\\theta=Rg/u^2=500\\times10/10000=0.5\\Rightarrow2\\theta=30^\\circ$ or $150^\\circ\\Rightarrow\\theta=15^\\circ$ or $75^\\circ$. Time of flight for $75^\\circ$: $T=2u\\sin75^\\circ/g=200\\times0.9659/10\\approx19.32\\,s$. Extra distance to be out of range $=R_{max}-R=1000-500=500\\ m$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "medium",
+        "questionIntent": "Tests finding the angle of projection, time of flight, and safe distance for a projectile hitting a fixed-range target with irrational range value.",
+        "questionText": "A gun with muzzle speed $50\\ m/s$ must hit a target $125\\sqrt3\\ m$ away on level ground ($g=10\\ m/s^2$). Find (a) the possible angles of elevation, (b) the time of flight for the larger angle, and (c) how much farther the target must move to escape the gun's range.",
+        "options": [
+          "30° or 60°; 8.66 s; 33.5 m",
+          "30° or 60°; 5 s; 33.5 m",
+          "45° or 30°; 8.66 s; 33.5 m",
+          "30° or 60°; 8.66 s; 216.5 m"
+        ],
+        "correctOption": "30° or 60°; 8.66 s; 33.5 m",
+        "numericalAnswer": null,
+        "solutionText": "$R_{max}=u^2/g=2500/10=250\\ m$. $\\sin2\\theta=Rg/u^2=125\\sqrt3\\times10/2500=\\sqrt3/2\\Rightarrow2\\theta=60^\\circ$ or $120^\\circ\\Rightarrow\\theta=30^\\circ$ or $60^\\circ$. $T(60^\\circ)=2\\times50\\sin60^\\circ/10=5\\sqrt3\\approx8.66\\,s$. Extra safe distance $=250-125\\sqrt3\\approx33.5\\ m$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "hard",
+        "questionIntent": "Tests the insight that the ratio of times of flight for two complementary angles of projection giving the same range equals the cotangent of the smaller angle.",
+        "questionText": "A gun can hit a target on level ground using either of two complementary angles of projection $\\theta_1$ and $\\theta_2$ ($\\theta_1<\\theta_2$, $\\theta_1+\\theta_2=90^\\circ$). If $\\theta_1=20^\\circ$, find the ratio $T_2:T_1$ of the times of flight of the two trajectories.",
+        "options": [
+          "$\\cot20^\\circ\\approx2.75$",
+          "$\\tan20^\\circ\\approx0.36$",
+          "$\\cot70^\\circ\\approx0.36$",
+          "1 : 1"
+        ],
+        "correctOption": "$\\cot20^\\circ\\approx2.75$",
+        "numericalAnswer": null,
+        "solutionText": "$T=2u\\sin\\theta/g$, so $\\frac{T_2}{T_1}=\\frac{\\sin\\theta_2}{\\sin\\theta_1}=\\frac{\\sin70^\\circ}{\\sin20^\\circ}=\\frac{\\cos20^\\circ}{\\sin20^\\circ}=\\cot20^\\circ\\approx2.75$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Physics Q3",
+    "sourceSubject": "Physics",
+    "sourceQuestionText": "The distance between two particles is decreasing at the rate of $6 \\mathrm{~m} / \\mathrm{sec}$ when they are moving in the opposite directions. If these particles travel with the same initial speeds and in the same direction, then the separation increases at the rate of $4 \\mathrm{~m} / \\mathrm{sec}$. It can be concluded that particles speeds could be:\n(a) $5 \\mathrm{~m} / \\mathrm{sec}, 1 \\mathrm{~m} / \\mathrm{sec}$\n(b) 4 m/sec, 1 m/sec\n(c) 4 m/sec, 2 m/sec\n(d) $5 \\mathrm{~m} / \\mathrm{sec}, 2 \\mathrm{~m} / \\mathrm{sec}$",
+    "generatedQuestions": [
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Relative Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "easy",
+        "questionIntent": "Tests setting up and solving simultaneous equations for relative velocity in opposite and same directions.",
+        "questionText": "Two particles move along the same straight line. When moving in opposite directions the distance between them decreases at $10\\ m/s$. When moving in the same direction (with the same individual speeds), the distance increases at $2\\ m/s$. Find their individual speeds.",
+        "options": [
+          "6 m/s, 4 m/s",
+          "5 m/s, 5 m/s",
+          "8 m/s, 2 m/s",
+          "7 m/s, 3 m/s"
+        ],
+        "correctOption": "6 m/s, 4 m/s",
+        "numericalAnswer": null,
+        "solutionText": "$v_1+v_2=10$ (approaching) and $v_1-v_2=2$ (same direction). Adding: $2v_1=12\\Rightarrow v_1=6$, so $v_2=4$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Relative Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "medium",
+        "questionIntent": "Tests setting up and solving simultaneous equations for relative velocity in opposite and same directions with different numbers.",
+        "questionText": "Two particles move along a line. Moving towards each other, the gap closes at $14\\ m/s$. Moving in the same direction at the same individual speeds, the gap widens at $6\\ m/s$. Find their speeds.",
+        "options": [
+          "10 m/s, 4 m/s",
+          "9 m/s, 5 m/s",
+          "8 m/s, 6 m/s",
+          "12 m/s, 2 m/s"
+        ],
+        "correctOption": "10 m/s, 4 m/s",
+        "numericalAnswer": null,
+        "solutionText": "$v_1+v_2=14$ and $v_1-v_2=6$. Adding: $2v_1=20\\Rightarrow v_1=10$, so $v_2=4$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Relative Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "hard",
+        "questionIntent": "Tests applying the relative-velocity sum/difference method to identify the speed of the faster of two particles.",
+        "questionText": "Particles P and Q travel along the same line with different constant speeds. Moving towards each other, the gap closes at $15\\ m/s$. When Q reverses direction (P unchanged) they move the same way and the gap widens at $3\\ m/s$. If P is faster, find the speed of P.",
+        "options": [
+          "9 m/s",
+          "6 m/s",
+          "7.5 m/s",
+          "12 m/s"
+        ],
+        "correctOption": "9 m/s",
+        "numericalAnswer": null,
+        "solutionText": "$v_P+v_Q=15$ and $v_P-v_Q=3$. Adding: $2v_P=18\\Rightarrow v_P=9\\ m/s$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Physics Q4",
+    "sourceSubject": "Physics",
+    "sourceQuestionText": "At what angle to the horizontal should an object be projected so that the maximum height reached is equal to the horizontal range?\n(a) $\\tan \\theta=2$\n(b) $\\tan \\theta=4$\n(c) $\\tan \\theta=2 / 3$\n(d) $\\theta=3$",
+    "generatedQuestions": [
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "easy",
+        "questionIntent": "Tests deriving the angle of projection for which the maximum height equals a stated fraction of the range.",
+        "questionText": "At what angle should a projectile be fired so that its maximum height equals half of its horizontal range?",
+        "options": [
+          "$\\tan\\theta=2$",
+          "$\\tan\\theta=4$",
+          "$\\tan\\theta=1$",
+          "$\\tan\\theta=8$"
+        ],
+        "correctOption": "$\\tan\\theta=2$",
+        "numericalAnswer": null,
+        "solutionText": "$H=\\frac{R}{2}\\Rightarrow\\frac{H}{R}=\\frac12=\\frac14\\tan\\theta\\Rightarrow\\tan\\theta=2$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "medium",
+        "questionIntent": "Tests deriving the angle of projection when the maximum height is a multiple of the range.",
+        "questionText": "A ball is thrown so that its maximum height is three times its horizontal range. Find $\\tan\\theta$.",
+        "options": [
+          "$12$",
+          "$3$",
+          "$4$",
+          "$\\frac{1}{12}$"
+        ],
+        "correctOption": "$12$",
+        "numericalAnswer": null,
+        "solutionText": "$H=3R\\Rightarrow\\frac{H}{R}=3=\\frac14\\tan\\theta\\Rightarrow\\tan\\theta=12$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "hard",
+        "questionIntent": "Tests deriving the angle of projection from a small range-to-height ratio, yielding a steep angle.",
+        "questionText": "A projectile's horizontal range is one-fourth of its maximum height. Determine the angle of projection.",
+        "options": [
+          "$\\tan^{-1}(16)$",
+          "$\\tan^{-1}(4)$",
+          "$\\tan^{-1}(8)$",
+          "$\\tan^{-1}(2)$"
+        ],
+        "correctOption": "$\\tan^{-1}(16)$",
+        "numericalAnswer": null,
+        "solutionText": "$R=\\frac{H}{4}\\Rightarrow H=4R\\Rightarrow\\frac{H}{R}=4=\\frac14\\tan\\theta\\Rightarrow\\tan\\theta=16$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Physics Q5",
+    "sourceSubject": "Physics",
+    "sourceQuestionText": "At the top of the trajectory of a projectile, the directions of its velocity and acceleration are:\n(a) perpendicular to each other.\n(b) parallel to each other.\n(c) inclined to each other at an angle of 45°.\n(d) $v=0$, so not defined",
+    "generatedQuestions": [
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "easy",
+        "questionIntent": "Tests basic recall of the angle between velocity and acceleration vectors at the peak of projectile motion.",
+        "questionText": "At the highest point of a projectile's path, what is the angle between its velocity vector and the acceleration due to gravity?",
+        "options": [
+          "0°",
+          "45°",
+          "90°",
+          "180°"
+        ],
+        "correctOption": "90°",
+        "numericalAnswer": null,
+        "solutionText": "At the highest point the vertical velocity is zero, so velocity is purely horizontal, while acceleration due to gravity is purely vertical (downward); these are perpendicular.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "medium",
+        "questionIntent": "Tests finding the angle between velocity and acceleration at the point of landing for a projectile launched at a given angle.",
+        "questionText": "A projectile is launched at $45^\\circ$ to the horizontal from level ground. What is the angle between its velocity and acceleration vectors exactly when it returns to the launch height?",
+        "options": [
+          "45°",
+          "90°",
+          "0°",
+          "135°"
+        ],
+        "correctOption": "45°",
+        "numericalAnswer": null,
+        "solutionText": "By symmetry, on landing the velocity makes $45^\\circ$ below the horizontal. Since acceleration is vertically downward, the angle between the velocity vector (45° from horizontal) and the vertical is $90^\\circ-45^\\circ=45^\\circ$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "hard",
+        "questionIntent": "Tests deriving a general expression for the angle between velocity and acceleration during the ascending phase of projectile motion.",
+        "questionText": "A particle is projected at angle $\\theta$ with the horizontal. At an instant when its velocity vector makes angle $\\phi$ with the horizontal ($\\phi<\\theta$, particle still ascending), find the angle between its velocity and acceleration vectors in terms of $\\phi$.",
+        "options": [
+          "$90^\\circ+\\phi$",
+          "$90^\\circ-\\phi$",
+          "$\\phi$",
+          "$180^\\circ-\\phi$"
+        ],
+        "correctOption": "$90^\\circ+\\phi$",
+        "numericalAnswer": null,
+        "solutionText": "Acceleration points vertically downward. Velocity is at angle $\\phi$ above the horizontal, i.e. tilted $\\phi$ beyond the perpendicular-to-vertical direction. The angle between velocity and the downward vertical is therefore $90^\\circ+\\phi$ (check: at $\\phi=0$, velocity is horizontal and angle is $90^\\circ$, consistent).",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Physics Q6",
+    "sourceSubject": "Physics",
+    "sourceQuestionText": "A grasshopper finds that he can jump a maximum horizontal distance of 0.8 m . With what speed can he travel along the road if he spends a negligible time on the ground ?\n(a) 2 m/s\n(b) 2.8 m/s\n(c) 104 m/s\n(d) 1 m/s",
+    "generatedQuestions": [
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "easy",
+        "questionIntent": "Tests applying the maximum-range formula (at 45°) to find the launch speed from a given maximum jump distance.",
+        "questionText": "A kangaroo can jump a maximum horizontal distance of $1.25\\ m$ in one leap using an optimal $45^\\circ$ launch angle each time ($g=10\\ m/s^2$). What jump speed does it need?",
+        "options": [
+          "3.54 m/s",
+          "2.5 m/s",
+          "5 m/s",
+          "1.25 m/s"
+        ],
+        "correctOption": "3.54 m/s",
+        "numericalAnswer": null,
+        "solutionText": "At $45^\\circ$, $R_{max}=u^2/g\\Rightarrow u^2=1.25\\times10=12.5\\Rightarrow u=\\sqrt{12.5}\\approx3.54\\ m/s$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "medium",
+        "questionIntent": "Tests applying the maximum-range formula to find the launch speed for a larger given jump distance.",
+        "questionText": "An insect can leap a maximum horizontal distance of $5\\ m$ using a $45^\\circ$ launch angle each time ($g=10\\ m/s^2$). Find the required launch speed.",
+        "options": [
+          "$5\\sqrt2$ m/s",
+          "5 m/s",
+          "10 m/s",
+          "$2.5\\sqrt2$ m/s"
+        ],
+        "correctOption": "$5\\sqrt2$ m/s",
+        "numericalAnswer": null,
+        "solutionText": "$u^2=R_{max}\\,g=5\\times10=50\\Rightarrow u=\\sqrt{50}=5\\sqrt2\\approx7.07\\ m/s$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "hard",
+        "questionIntent": "Tests deriving the average forward speed of a hopping animal from the horizontal-velocity component, requiring recognition that average speed with negligible ground time equals u cos(theta).",
+        "questionText": "A grasshopper hops repeatedly at $45^\\circ$ to the horizontal with negligible time on the ground, achieving an average forward (along-the-road) speed of $4\\sqrt5\\ m/s$. What launch speed does each hop require ($g=10\\ m/s^2$)?",
+        "options": [
+          "$4\\sqrt{10}$ m/s",
+          "$4\\sqrt5$ m/s",
+          "$8\\sqrt5$ m/s",
+          "$2\\sqrt{10}$ m/s"
+        ],
+        "correctOption": "$4\\sqrt{10}$ m/s",
+        "numericalAnswer": null,
+        "solutionText": "With negligible ground time, average forward speed $=R/T=u\\cos\\theta$. At $\\theta=45^\\circ$: $u/\\sqrt2=4\\sqrt5\\Rightarrow u=4\\sqrt5\\times\\sqrt2=4\\sqrt{10}\\approx12.65\\ m/s$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Physics Q7",
+    "sourceSubject": "Physics",
+    "sourceQuestionText": "A stone projected with a velocity $u$ at an angle $\\theta$ with the horizontal reaches maximum height $H_1$. When it is projected with velocity $u$ at an angle $\\frac{\\pi}{2}-\\theta$ with the horizontal, it reaches maximum height $H_2$. The relation between the horizontal range of the projectile $R$ and $H_1 \\& H_2$ is:\n(a) $R=4 \\sqrt{H_1 H_2}$\n(b) $R=4\\left(H_1-H_2\\right)$\n(c) $R=4\\left(H_1+H_2\\right)$\n(d) $R=\\frac{H_1^2}{H_2^2}$",
+    "generatedQuestions": [
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "easy",
+        "questionIntent": "Tests applying the relation R = 4√(H1 H2) for complementary angles of projection to find range from given heights.",
+        "questionText": "A ball thrown at angle $\\theta$ with speed $u$ attains maximum height $5\\ m$; thrown at the same speed at angle $(90^\\circ-\\theta)$ it attains maximum height $20\\ m$. Find the horizontal range $R$ common to both.",
+        "options": [
+          "40 m",
+          "20 m",
+          "25 m",
+          "100 m"
+        ],
+        "correctOption": "40 m",
+        "numericalAnswer": null,
+        "solutionText": "$R=4\\sqrt{H_1H_2}=4\\sqrt{5\\times20}=4\\sqrt{100}=40\\ m$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "medium",
+        "questionIntent": "Tests applying the relation R = 4√(H1 H2) with different given heights.",
+        "questionText": "A projectile fired at angle $\\theta$ reaches maximum height $8\\ m$; at the complementary angle $(90^\\circ-\\theta)$, with the same speed, it reaches maximum height $18\\ m$. Find the range $R$.",
+        "options": [
+          "48 m",
+          "36 m",
+          "26 m",
+          "144 m"
+        ],
+        "correctOption": "48 m",
+        "numericalAnswer": null,
+        "solutionText": "$R=4\\sqrt{H_1H_2}=4\\sqrt{8\\times18}=4\\sqrt{144}=4\\times12=48\\ m$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "hard",
+        "questionIntent": "Tests inverting the R = 4√(H1 H2) relation together with a given ratio of heights to solve for both heights.",
+        "questionText": "For a projectile, the two complementary angles of projection give maximum heights $H_1$ and $H_2$ with $H_1=9H_2$. If the horizontal range is $48\\ m$, find $H_1$ and $H_2$.",
+        "options": [
+          "$H_1=36\\ m,\\ H_2=4\\ m$",
+          "$H_1=32\\ m,\\ H_2=4\\ m$",
+          "$H_1=27\\ m,\\ H_2=3\\ m$",
+          "$H_1=18\\ m,\\ H_2=2\\ m$"
+        ],
+        "correctOption": "$H_1=36\\ m,\\ H_2=4\\ m$",
+        "numericalAnswer": null,
+        "solutionText": "$R=4\\sqrt{H_1H_2}\\Rightarrow48=4\\sqrt{H_1H_2}\\Rightarrow H_1H_2=144$. With $H_1=9H_2$: $9H_2^2=144\\Rightarrow H_2^2=16\\Rightarrow H_2=4,\\ H_1=36$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Physics Q8",
+    "sourceSubject": "Physics",
+    "sourceQuestionText": "A ball is projected at a certain angle with initial velocity $u$. It covers horizontal range $R$. With what initial velocity it should be projected keeping the angle of projection the same so that its horizontal range becomes 2.25R?\n(a) 2.5 u\n(b) 1.5 u\n(c) 2.25 u\n(d) 0.25 u",
+    "generatedQuestions": [
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "easy",
+        "questionIntent": "Tests understanding that range is proportional to the square of launch speed at a fixed angle.",
+        "questionText": "If the range of a projectile becomes 4 times the original range while the angle of projection is kept constant, by what factor must the initial speed be increased?",
+        "options": [
+          "2",
+          "4",
+          "1.5",
+          "16"
+        ],
+        "correctOption": "2",
+        "numericalAnswer": null,
+        "solutionText": "Since $R\\propto u^2$ at fixed angle, the speed factor is $\\sqrt4=2$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "medium",
+        "questionIntent": "Tests understanding that range is proportional to the square of launch speed with a non-integer scaling factor.",
+        "questionText": "A projectile's range becomes 1.44 times its original value at the same angle of projection. By what factor was the initial speed multiplied?",
+        "options": [
+          "1.2",
+          "1.44",
+          "1.1",
+          "2"
+        ],
+        "correctOption": "1.2",
+        "numericalAnswer": null,
+        "solutionText": "$R\\propto u^2\\Rightarrow$ speed factor $=\\sqrt{1.44}=1.2$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "hard",
+        "questionIntent": "Tests computing the percentage change in range resulting from a percentage change in launch speed.",
+        "questionText": "The launch speed of a projectile is increased by 20%, keeping the angle of projection the same. By what percentage does the range increase?",
+        "options": [
+          "44%",
+          "20%",
+          "40%",
+          "22%"
+        ],
+        "correctOption": "44%",
+        "numericalAnswer": null,
+        "solutionText": "$R\\propto u^2$. New speed $=1.2u_0\\Rightarrow$ new range $=1.44R_0$, an increase of $44\\%$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Physics Q9",
+    "sourceSubject": "Physics",
+    "sourceQuestionText": "A projectile is fired horizontally with an initial speed of 20 m/s. Its horizontal speed 3 sec later is :\n(a) 20 m/s\n(b) 6.67 m/s\n(c) 60 m/s\n(d) 29.4 m/s",
+    "generatedQuestions": [
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "easy",
+        "questionIntent": "Tests the concept that the horizontal component of a projectile's velocity remains constant throughout its flight.",
+        "questionText": "A ball is projected horizontally with a speed of 15 m/s from the top of a tower. What is its horizontal velocity component 4 seconds later?",
+        "options": [
+          "15 m/s",
+          "5 m/s",
+          "60 m/s",
+          "45 m/s"
+        ],
+        "correctOption": "15 m/s",
+        "numericalAnswer": null,
+        "solutionText": "There is no horizontal acceleration during projectile motion, so the horizontal velocity component remains 15 m/s at all times.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "medium",
+        "questionIntent": "Tests that the horizontal velocity component of an angled projectile stays constant, requiring computation of the initial horizontal component.",
+        "questionText": "A projectile is launched at $30^\\circ$ above the horizontal with speed $40\\ m/s$. What is its horizontal velocity component 2 seconds after launch?",
+        "options": [
+          "$20\\sqrt3$ m/s",
+          "20 m/s",
+          "17.3 m/s",
+          "depends on time, decreasing from $20\\sqrt3$ m/s"
+        ],
+        "correctOption": "$20\\sqrt3$ m/s",
+        "numericalAnswer": null,
+        "solutionText": "Horizontal component $=u\\cos\\theta=40\\cos30^\\circ=20\\sqrt3\\approx34.64\\ m/s$, and it stays constant since gravity acts only vertically.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "hard",
+        "questionIntent": "Tests combining the constant horizontal velocity with the changing vertical velocity to find when the resultant speed reaches a target value.",
+        "questionText": "A particle is projected horizontally with speed $10\\ m/s$ from a height. After what time will its speed become double the initial speed ($g=10\\ m/s^2$)?",
+        "options": [
+          "$\\sqrt3$ s",
+          "2 s",
+          "1 s",
+          "3 s"
+        ],
+        "correctOption": "$\\sqrt3$ s",
+        "numericalAnswer": null,
+        "solutionText": "$v^2=v_x^2+v_y^2=100+(10t)^2$. Setting $v=20$: $400=100+100t^2\\Rightarrow t^2=3\\Rightarrow t=\\sqrt3\\approx1.73\\ s$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Physics Q10",
+    "sourceSubject": "Physics",
+    "sourceQuestionText": "If $R$ is the range of a projectile on a horizontal plane and $h$ its maximum height, the maximum horizontal range with the same velocity of projection is :\n(a) $2 h$\n(b) $\\frac{R^2}{8 h}$\n(c) $2 R+\\frac{h^2}{8 R}$\n(d) $2 h+\\frac{R^2}{8 h}$",
+    "generatedQuestions": [
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "medium",
+        "questionIntent": "Tests applying the identity R_max = 2h + R^2/(8h) to compute the maximum range given a range and height at some angle.",
+        "questionText": "A projectile has a range of $40\\ m$ and reaches a maximum height of $5\\ m$ for a certain angle of projection. If launched at the same speed but at the angle giving maximum range, what is that maximum range? (Use $R_{max}=2h+\\frac{R^2}{8h}$.)",
+        "options": [
+          "50 m",
+          "45 m",
+          "60 m",
+          "40 m"
+        ],
+        "correctOption": "50 m",
+        "numericalAnswer": null,
+        "solutionText": "$R_{max}=2(5)+\\frac{40^2}{8\\times5}=10+\\frac{1600}{40}=10+40=50\\ m$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "medium",
+        "questionIntent": "Tests applying the identity R_max = 2h + R^2/(8h) with a different range and height combination.",
+        "questionText": "A projectile has range $48\\ m$ and maximum height $9\\ m$ for a certain angle. Using the same launch speed at the angle of maximum range, find that maximum range.",
+        "options": [
+          "50 m",
+          "54 m",
+          "57 m",
+          "48 m"
+        ],
+        "correctOption": "50 m",
+        "numericalAnswer": null,
+        "solutionText": "$R_{max}=2(9)+\\frac{48^2}{8\\times9}=18+\\frac{2304}{72}=18+32=50\\ m$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "hard",
+        "questionIntent": "Tests inverting the R_max = 2h + R^2/(8h) identity to solve for the range R given the maximum range and height.",
+        "questionText": "For a certain launch speed, the maximum possible range is $10\\ m$. For a particular angle of projection (same speed), the maximum height attained is $1.8\\ m$. Find the range $R$ for that angle. (Use $R_{max}=2h+\\frac{R^2}{8h}$.)",
+        "options": [
+          "9.6 m",
+          "8 m",
+          "6.4 m",
+          "9 m"
+        ],
+        "correctOption": "9.6 m",
+        "numericalAnswer": null,
+        "solutionText": "$10=2(1.8)+\\frac{R^2}{8\\times1.8}=3.6+\\frac{R^2}{14.4}\\Rightarrow\\frac{R^2}{14.4}=6.4\\Rightarrow R^2=92.16\\Rightarrow R=9.6\\ m$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Physics Q11",
+    "sourceSubject": "Physics",
+    "sourceQuestionText": "A projectile is thrown in the upward direction making an angle of $60^{\\circ}$ with the horizontal direction with a velocity of $147 \\mathrm{~ms}^{-1}$. Then the time after which its inclination with the horizontal is 45°, is :\n(a) 15 s\n(b) 10.98 s\n(c) 5.49 s\n(d) 2.745 s",
+    "generatedQuestions": [
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "easy",
+        "questionIntent": "Tests applying t = u(sinθ - cosθ)/g to find when the velocity inclination changes to 45° during ascent.",
+        "questionText": "A projectile is thrown at $60^\\circ$ above the horizontal with speed $98\\ m/s$ ($g=9.8\\ m/s^2$). Find the time after which its velocity direction makes $45^\\circ$ with the horizontal.",
+        "options": [
+          "3.66 s",
+          "2 s",
+          "5 s",
+          "7.3 s"
+        ],
+        "correctOption": "3.66 s",
+        "numericalAnswer": null,
+        "solutionText": "At angle $\\phi$: $\\tan\\phi=\\dfrac{u\\sin\\theta-gt}{u\\cos\\theta}$. For $\\phi=45^\\circ$: $t=\\dfrac{u(\\sin\\theta-\\cos\\theta)}{g}=\\dfrac{98(\\sin60^\\circ-\\cos60^\\circ)}{9.8}=10\\times0.366\\approx3.66\\ s$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "medium",
+        "questionIntent": "Tests applying the general inclination-angle formula for a target angle other than 45°.",
+        "questionText": "A ball is projected at $60^\\circ$ to the horizontal with speed $100\\ m/s$ ($g=10\\ m/s^2$). After what time does its velocity make an angle of $30^\\circ$ with the horizontal (while still ascending)?",
+        "options": [
+          "5.77 s",
+          "5.49 s",
+          "8.66 s",
+          "4.33 s"
+        ],
+        "correctOption": "5.77 s",
+        "numericalAnswer": null,
+        "solutionText": "$\\tan30^\\circ=\\dfrac{100\\sin60^\\circ-10t}{100\\cos60^\\circ}\\Rightarrow86.60-10t=50\\times0.577=28.87\\Rightarrow t=\\dfrac{86.60-28.87}{10}\\approx5.77\\ s$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "hard",
+        "questionIntent": "Tests recognizing that the velocity direction becomes symmetric (equal angle below horizontal) exactly at the total time of flight for a projectile launched and landing at the same height.",
+        "questionText": "A projectile is launched at $45^\\circ$ with speed $140\\ m/s$ ($g=9.8\\ m/s^2$) from level ground. Find the time after launch at which its velocity vector makes an angle of $45^\\circ$ below the horizontal (during descent).",
+        "options": [
+          "20.2 s",
+          "10.1 s",
+          "14.3 s",
+          "28.6 s"
+        ],
+        "correctOption": "20.2 s",
+        "numericalAnswer": null,
+        "solutionText": "By symmetry of projectile motion, the velocity returns to the same magnitude of inclination (but below horizontal) exactly at the total time of flight: $T=\\dfrac{2u\\sin\\theta}{g}=\\dfrac{2\\times140\\times\\sin45^\\circ}{9.8}\\approx20.2\\ s$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Physics Q12",
+    "sourceSubject": "Physics",
+    "sourceQuestionText": "For a projectile projected at angles $\\left(45^{\\circ}-\\theta\\right)$ and $\\left(45^{\\circ}+\\theta\\right)$, the horizontal ranges described by the projectile are in the ratio of :\n(a) $1: 1$\n(b) 2 : 3\n(c) 1 : 2\n(d) 2 : 1",
+    "generatedQuestions": [
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "easy",
+        "questionIntent": "Tests recognizing that complementary angles of projection give equal ranges for the same launch speed.",
+        "questionText": "Two projectiles are launched from the same point with the same speed at angles 20° and 70° to the horizontal. What is the ratio of their horizontal ranges?",
+        "options": [
+          "1 : 1",
+          "2 : 1",
+          "1 : 2",
+          "7 : 2"
+        ],
+        "correctOption": "1 : 1",
+        "numericalAnswer": null,
+        "solutionText": "Since $20^\\circ+70^\\circ=90^\\circ$, the two angles are complementary, so $\\sin2\\theta$ is the same for both, giving equal ranges (1:1).",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "medium",
+        "questionIntent": "Tests recognizing complementary-angle range equality when the angles are expressed with a variable offset.",
+        "questionText": "For a projectile launched at angle $(30^\\circ+\\alpha)$ the range is $R_1$, and at angle $(60^\\circ-\\alpha)$ the range is $R_2$, for the same initial speed. Find $R_1:R_2$.",
+        "options": [
+          "1 : 1",
+          "depends on α",
+          "2 : 1",
+          "1 : 2"
+        ],
+        "correctOption": "1 : 1",
+        "numericalAnswer": null,
+        "solutionText": "The two angles sum to $90^\\circ$ regardless of $\\alpha$, so they are complementary and give equal ranges: $R_1:R_2=1:1$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "hard",
+        "questionIntent": "Tests deriving the angle of projection from the condition that two non-obviously-complementary angles give equal range.",
+        "questionText": "A projectile has range $R_1$ when fired at angle $\\theta$, and range $R_2$ when fired at angle $(\\theta+20^\\circ)$, with the same speed. If $R_1=R_2$ (and $\\theta\\ne\\theta+20^\\circ$), find $\\theta$.",
+        "options": [
+          "35°",
+          "45°",
+          "30°",
+          "25°"
+        ],
+        "correctOption": "35°",
+        "numericalAnswer": null,
+        "solutionText": "Equal ranges (other than the trivial equal-angle case) require the angles to be complementary: $\\theta+(\\theta+20^\\circ)=90^\\circ\\Rightarrow2\\theta=70^\\circ\\Rightarrow\\theta=35^\\circ$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Physics Q13",
+    "sourceSubject": "Physics",
+    "sourceQuestionText": "An aeroplane is moving with a velocity $u$. It drops a packet from a height $h$. The time $t$ taken by the packet to reach the ground will be:\n(a) $\\sqrt{\\left(\\frac{2 g}{h}\\right)}$\n(b) $\\sqrt{\\left(\\frac{2 u}{g}\\right)}$\n(c) $\\sqrt{\\left(\\frac{h}{2 g}\\right)}$\n(d) $\\sqrt{\\left(\\frac{2 h}{g}\\right)}$",
+    "generatedQuestions": [
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "easy",
+        "questionIntent": "Tests applying the free-fall time formula for a horizontally-launched projectile's vertical motion.",
+        "questionText": "A parcel is released from an airplane flying horizontally at a height of $500\\ m$. How long does it take to reach the ground ($g=10\\ m/s^2$)?",
+        "options": [
+          "10 s",
+          "5 s",
+          "50 s",
+          "7.07 s"
+        ],
+        "correctOption": "10 s",
+        "numericalAnswer": null,
+        "solutionText": "$t=\\sqrt{2h/g}=\\sqrt{2\\times500/10}=\\sqrt{100}=10\\ s$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "medium",
+        "questionIntent": "Tests applying the free-fall time formula for a different height.",
+        "questionText": "A helicopter moving horizontally at height $720\\ m$ drops a supply package. Neglecting air resistance, find the time taken to hit the ground ($g=10\\ m/s^2$).",
+        "options": [
+          "12 s",
+          "144 s",
+          "8.49 s",
+          "6 s"
+        ],
+        "correctOption": "12 s",
+        "numericalAnswer": null,
+        "solutionText": "$t=\\sqrt{2h/g}=\\sqrt{2\\times720/10}=\\sqrt{144}=12\\ s$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "hard",
+        "questionIntent": "Tests combining the free-fall time with the constant horizontal velocity to find the horizontal landing distance.",
+        "questionText": "An aircraft flying horizontally at $100\\ m/s$ at a height of $320\\ m$ releases a crate. Find the horizontal distance from the release point at which the crate lands ($g=10\\ m/s^2$).",
+        "options": [
+          "800 m",
+          "320 m",
+          "640 m",
+          "1000 m"
+        ],
+        "correctOption": "800 m",
+        "numericalAnswer": null,
+        "solutionText": "$t=\\sqrt{2h/g}=\\sqrt{2\\times320/10}=\\sqrt{64}=8\\ s$. Horizontal distance $=ut=100\\times8=800\\ m$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Physics Q14",
+    "sourceSubject": "Physics",
+    "sourceQuestionText": "The position coordinates of a projectile projected from ground on a certain planet (with no atmosphere) are given by $y=4 \\mathrm{t}-2 \\mathrm{t}^2 m$ and $x=3 \\mathrm{t}$ metre, where $t$ is in seconds and point of projection is taken as the origin. The angle of projection of projectile with vertical is:\n(a) 30°\n(b) 37°\n(c) 45°\n(d) 60°",
+    "generatedQuestions": [
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "easy",
+        "questionIntent": "Tests extracting initial velocity components from position-time equations to find the angle of projection with the horizontal.",
+        "questionText": "The position of a projectile on a planet is given by $x=5t$ and $y=12t-3t^2$ (SI units). Find the angle of projection with the horizontal.",
+        "options": [
+          "$\\tan^{-1}(2.4)$",
+          "$\\tan^{-1}(5/12)$",
+          "45°",
+          "60°"
+        ],
+        "correctOption": "$\\tan^{-1}(2.4)$",
+        "numericalAnswer": null,
+        "solutionText": "$v_x=5$, initial $v_y=12$ (coefficient of $t$). $\\tan\\theta=v_y/v_x=12/5=2.4\\Rightarrow\\theta=\\tan^{-1}(2.4)$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "medium",
+        "questionIntent": "Tests extracting initial velocity components from position-time equations to find the angle of projection with the vertical.",
+        "questionText": "For a projectile, $x=6t$ and $y=8t-5t^2$ (SI units). Find the angle of projection with the vertical.",
+        "options": [
+          "37°",
+          "53°",
+          "45°",
+          "30°"
+        ],
+        "correctOption": "37°",
+        "numericalAnswer": null,
+        "solutionText": "$v_x=6$, initial $v_y=8$. $\\tan(\\text{angle from horizontal})=8/6=4/3\\Rightarrow53.13^\\circ$ from horizontal, so angle from vertical $=90^\\circ-53.13^\\circ\\approx37^\\circ$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "hard",
+        "questionIntent": "Tests extracting velocity components in a case that does not resolve to a standard angle, requiring the answer in inverse-tangent form.",
+        "questionText": "A projectile's coordinates are $x=5t$ and $y=8t-3t^2$ (SI units). Find the angle of projection measured from the vertical.",
+        "options": [
+          "$\\tan^{-1}(5/8)$",
+          "$\\tan^{-1}(8/5)$",
+          "$\\tan^{-1}(3/5)$",
+          "45°"
+        ],
+        "correctOption": "$\\tan^{-1}(5/8)$",
+        "numericalAnswer": null,
+        "solutionText": "$v_x=5$, initial $v_y=8$. Angle from vertical satisfies $\\tan(\\text{angle from vertical})=v_x/v_y=5/8\\Rightarrow\\theta=\\tan^{-1}(5/8)\\approx32.0^\\circ$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Physics Q15",
+    "sourceSubject": "Physics",
+    "sourceQuestionText": "A ship a is moving westwards with a speed of $10 \\mathrm{~km} \\mathrm{~h}^{-1}$ and a ship B, 100 km south of A is moving northwards with a speed of $10 \\mathrm{~km} \\mathrm{~h}^{-1}$. The time after which the distance between them becomes the shortest, is :\n(a) 5 hr\n(b) $5 \\sqrt{2} \\mathrm{hr}$\n(c) $10 \\sqrt{2} \\mathrm{hr}$\n(d) 0 hr",
+    "generatedQuestions": [
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Relative Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "medium",
+        "questionIntent": "Tests using relative velocity and minimizing a quadratic distance function to find time of closest approach.",
+        "questionText": "Ship P is 50 km due north of ship Q. P moves due east at $8\\ km/h$ and Q moves due north at $6\\ km/h$. After how much time is the distance between them minimum?",
+        "options": [
+          "3 h",
+          "5 h",
+          "2.5 h",
+          "6 h"
+        ],
+        "correctOption": "3 h",
+        "numericalAnswer": null,
+        "solutionText": "With Q at origin and P at $(0,50)$: relative velocity of P w.r.t. Q $=(8,-6)$. Position of P relative to Q at time $t$: $(8t,\\,50-6t)$. $d^2=64t^2+(50-6t)^2=100t^2-600t+2500$. Minimizing: $200t-600=0\\Rightarrow t=3\\ h$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Relative Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "medium",
+        "questionIntent": "Tests using relative velocity and minimizing a quadratic distance function with a symmetric equal-speed setup, matching the structure of the source problem.",
+        "questionText": "Ship A moves due west at $15\\ km/h$. Ship B, initially $60\\ km$ south of A, moves due north at $15\\ km/h$. Find the time after which the distance between the ships is minimum.",
+        "options": [
+          "2 h",
+          "4 h",
+          "1 h",
+          "$2\\sqrt2$ h"
+        ],
+        "correctOption": "2 h",
+        "numericalAnswer": null,
+        "solutionText": "With A at origin, B at $(0,-60)$: relative velocity of B w.r.t. A $=(15,15)$. Position of B relative to A: $(15t,\\,-60+15t)$. $d^2=225t^2+(15t-60)^2=450t^2-1800t+3600$. Minimizing: $900t-1800=0\\Rightarrow t=2\\ h$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Relative Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "hard",
+        "questionIntent": "Tests a non-symmetric closest-approach problem requiring full vector decomposition of a diagonal velocity direction.",
+        "questionText": "Car P starts at a point and travels due north at $20\\ km/h$. Car Q starts $50\\ km$ east of P and travels in a direction $45^\\circ$ west of north at $10\\sqrt2\\ km/h$. Find the time after which the distance between the cars is minimum.",
+        "options": [
+          "2.5 h",
+          "5 h",
+          "1.25 h",
+          "10 h"
+        ],
+        "correctOption": "2.5 h",
+        "numericalAnswer": null,
+        "solutionText": "$v_P=(0,20)$. $v_Q=10\\sqrt2(-\\sin45^\\circ,\\cos45^\\circ)=(-10,10)$. Relative velocity of Q w.r.t P $=(-10,-10)$. Position of Q relative to P: $(50-10t,\\,-10t)$. $d^2=(50-10t)^2+100t^2=200t^2-1000t+2500$. Minimizing: $400t-1000=0\\Rightarrow t=2.5\\ h$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Physics Q16",
+    "sourceSubject": "Physics",
+    "sourceQuestionText": "A train moves in north direction with a speed of $54 \\mathrm{~km} / \\mathrm{h}$ A monkey is running on the root of this train, against its motion with a velocity of $90 \\mathrm{~km} / \\mathrm{h}$ with respect to train. The velocity of monkey as observed by a man standing on the ground is :\n(a) 5 m/s due south\n(b) 25 m/s due south\n(c) 10 m/s due south\n(d) 10 m/s due north",
+    "generatedQuestions": [
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Relative Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "easy",
+        "questionIntent": "Tests basic vector addition of velocities for motion along a single line (train and a person moving oppositely on it).",
+        "questionText": "A train travels north at 20 m/s. A person runs along the roof of the train, opposite to the train's motion, at 8 m/s relative to the train. Find the person's velocity relative to the ground.",
+        "options": [
+          "12 m/s north",
+          "28 m/s north",
+          "8 m/s south",
+          "12 m/s south"
+        ],
+        "correctOption": "12 m/s north",
+        "numericalAnswer": null,
+        "solutionText": "Taking north as positive: v(ground) = v(train) + v(person/train) = 20 + (−8) = 12 m/s, i.e. 12 m/s north.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Relative Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "medium",
+        "questionIntent": "Tests vector addition of velocities along a line with unit conversion, matching the style of the source problem.",
+        "questionText": "A train moves eastward at 36 km/h. A cat walks on the train's roof against the train's motion at 54 km/h relative to the train. Find the cat's velocity relative to the ground.",
+        "options": [
+          "5 m/s west",
+          "5 m/s east",
+          "15 m/s west",
+          "25 m/s west"
+        ],
+        "correctOption": "5 m/s west",
+        "numericalAnswer": null,
+        "solutionText": "Convert: $v_{train}=36\\ km/h=10\\ m/s$ east; $v_{cat/train}=54\\ km/h=15\\ m/s$ west $=-15\\ m/s$ (east positive). $v_{ground}=10-15=-5\\Rightarrow5\\ m/s$ west.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Relative Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "hard",
+        "questionIntent": "Tests two-dimensional relative velocity addition where the second object moves at an angle to the vehicle's direction rather than directly opposite.",
+        "questionText": "A train moves due north at $10\\ m/s$. A bird moves along the train's roof, relative to the train, at $20\\ m/s$ in a direction $60^\\circ$ from the train's direction of motion, on the side towards south-east. Find the magnitude of the bird's velocity relative to the ground.",
+        "options": [
+          "17.32 m/s due east",
+          "20 m/s",
+          "10 m/s due east",
+          "23.09 m/s"
+        ],
+        "correctOption": "17.32 m/s due east",
+        "numericalAnswer": null,
+        "solutionText": "Taking the bird's direction as $120^\\circ$ clockwise from north: $v_{bird/train}=(20\\sin120^\\circ,\\,20\\cos120^\\circ)=(17.32,-10)$ (east, north). Adding $v_{train}=(0,10)$: $v_{ground}=(17.32,0)$, i.e. $17.32\\ m/s$ due east.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Physics Q17",
+    "sourceSubject": "Physics",
+    "sourceQuestionText": "Four persons $\\mathrm{P}, \\mathrm{Q}, \\mathrm{R}$ and S of same mass travel with same speed u along a square of side ' $d$ ' such that each one always faces the other. After what time will they meet each other?\n(a) $\\frac{d}{u}$\n(b) $\\frac{2 d}{3 u}$\n(c) $\\frac{2 d}{u}$\n(d) $d \\sqrt{3} u$",
+    "generatedQuestions": [
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Relative Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "easy",
+        "questionIntent": "Tests applying the pursuit-curve closing-speed formula for particles at the corners of a square.",
+        "questionText": "Four particles are located at the corners of a square of side 6 m. Each moves with constant speed 3 m/s, always directed toward the particle immediately ahead. After how long will they meet at the centre?",
+        "options": [
+          "2 s",
+          "4 s",
+          "3 s",
+          "1 s"
+        ],
+        "correctOption": "2 s",
+        "numericalAnswer": null,
+        "solutionText": "For a square, each particle's velocity component along the line joining it to its neighbor (the closing speed) equals $v$ itself (since consecutive directions are perpendicular). Time to meet $=d/v=6/3=2\\ s$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Relative Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "medium",
+        "questionIntent": "Tests applying the pursuit-curve closing-speed formula for particles at the corners of an equilateral triangle, generalizing the square case.",
+        "questionText": "Three particles sit at the vertices of an equilateral triangle of side 9 m. Each moves at constant speed 6 m/s, always directed toward the next particle in a cyclic chase. Find the time after which they meet.",
+        "options": [
+          "1 s",
+          "1.5 s",
+          "3 s",
+          "0.5 s"
+        ],
+        "correctOption": "1 s",
+        "numericalAnswer": null,
+        "solutionText": "For an $n$-sided regular polygon, the closing-speed factor is $v(1-\\cos(2\\pi/n))$. For a triangle ($n=3$): factor $=v(1-\\cos120^\\circ)=1.5v$. Time $=\\dfrac{d}{1.5v}=\\dfrac{2d}{3v}=\\dfrac{2\\times9}{3\\times6}=1\\ s$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Relative Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "hard",
+        "questionIntent": "Tests generalizing the pursuit-curve formula to a hexagonal arrangement of particles.",
+        "questionText": "Six particles are placed at the corners of a regular hexagon of side 10 m. Each moves with constant speed 5 m/s, always directed toward the next particle in the cycle. Find the time taken for all particles to meet.",
+        "options": [
+          "4 s",
+          "2 s",
+          "8 s",
+          "1 s"
+        ],
+        "correctOption": "4 s",
+        "numericalAnswer": null,
+        "solutionText": "For $n=6$: closing factor $=v(1-\\cos60^\\circ)=0.5v$. Time $=\\dfrac{d}{0.5v}=\\dfrac{2d}{v}=\\dfrac{2\\times10}{5}=4\\ s$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Physics Q18",
+    "sourceSubject": "Physics",
+    "sourceQuestionText": "Rain is falling vertically downwards with a speed of $4 \\mathrm{kmh}^{-1}$. A girl moves on a straight road with a velocity of $3 \\mathrm{~km} \\mathrm{~h}^{-1}$. The apparent velocity of rain with respect to the girl is\n(a) $3 \\mathrm{kmh}^{-1}$\n(b) $4 \\mathrm{~km} \\mathrm{~h}^{-1}$\n(c) $5 \\mathrm{~km} \\mathrm{~h}^{-1}$\n(d) $7 \\mathrm{kmh}^{-1}$",
+    "generatedQuestions": [
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Relative Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "easy",
+        "questionIntent": "Tests the basic vector (Pythagorean) combination of vertical rain velocity and horizontal observer velocity.",
+        "questionText": "Rain falls vertically at 6 km/h. A cyclist moves horizontally at 8 km/h. Find the apparent speed of the rain as observed by the cyclist.",
+        "options": [
+          "10 km/h",
+          "14 km/h",
+          "2 km/h",
+          "48 km/h"
+        ],
+        "correctOption": "10 km/h",
+        "numericalAnswer": null,
+        "solutionText": "Apparent speed $=\\sqrt{6^2+8^2}=\\sqrt{100}=10\\ km/h$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Relative Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "medium",
+        "questionIntent": "Tests computing both the umbrella angle and the apparent speed of rain relative to a moving observer.",
+        "questionText": "Rain falls vertically downward at 5 m/s. A man walks horizontally at 12 m/s. At what angle to the vertical should he hold his umbrella, and what is the apparent speed of the rain relative to him?",
+        "options": [
+          "$\\tan^{-1}(12/5)$, 13 m/s",
+          "$\\tan^{-1}(5/12)$, 13 m/s",
+          "$\\tan^{-1}(12/5)$, 17 m/s",
+          "45°, 13 m/s"
+        ],
+        "correctOption": "$\\tan^{-1}(12/5)$, 13 m/s",
+        "numericalAnswer": null,
+        "solutionText": "Angle from vertical $=\\tan^{-1}(v_{man}/v_{rain})=\\tan^{-1}(12/5)$. Apparent speed $=\\sqrt{5^2+12^2}=13\\ m/s$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Relative Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "hard",
+        "questionIntent": "Tests inverting the relative-velocity relation to recover the true rain speed and observer's speed from a given apparent speed and angle.",
+        "questionText": "Rain is falling vertically. A person walking horizontally observes it hitting at 30° from the vertical, with an apparent speed of 10 m/s. Find the true (vertical) rainfall speed and the person's walking speed.",
+        "options": [
+          "rain ≈ 8.66 m/s, walk = 5 m/s",
+          "rain = 5 m/s, walk ≈ 8.66 m/s",
+          "rain = 10 m/s, walk = 5 m/s",
+          "rain ≈ 8.66 m/s, walk = 10 m/s"
+        ],
+        "correctOption": "rain ≈ 8.66 m/s, walk = 5 m/s",
+        "numericalAnswer": null,
+        "solutionText": "Vertical component of apparent velocity $=10\\cos30^\\circ\\approx8.66\\ m/s$ (true rain speed, since rain has no horizontal component). Horizontal component $=10\\sin30^\\circ=5\\ m/s$ (equal to walking speed).",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Physics Q19",
+    "sourceSubject": "Physics",
+    "sourceQuestionText": "Ship A is traveling with a velocity of $5 \\mathrm{~km} \\mathrm{~h}^{-1}$ due easts. A second ship is heading 30° east of north. What should be the speed of second ship if it is to remain always due north with respect to the first ship?\n(a) $10 \\mathrm{~km} \\mathrm{~h}^{-1}$\n(b) $9 \\mathrm{kmh}^{-1}$\n(c) $8 \\mathrm{kmh}^{-1}$\n(d) $7 \\mathrm{kmh}^{-1}$",
+    "generatedQuestions": [
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Relative Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "easy",
+        "questionIntent": "Tests matching the east-west velocity components of two ships so that one stays due north of the other.",
+        "questionText": "Ship A travels due east at 8 km/h. Ship B heads 60° east of north. What speed must ship B have so that it remains always due north of ship A?",
+        "options": [
+          "$16/\\sqrt3\\approx9.24$ km/h",
+          "8 km/h",
+          "$4\\sqrt3$ km/h",
+          "16 km/h"
+        ],
+        "correctOption": "$16/\\sqrt3\\approx9.24$ km/h",
+        "numericalAnswer": null,
+        "solutionText": "For B to remain due north of A, their eastward velocity components must match: $v_B\\sin60^\\circ=8\\Rightarrow v_B=8/\\sin60^\\circ=16/\\sqrt3\\approx9.24\\ km/h$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Relative Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "medium",
+        "questionIntent": "Tests matching eastward velocity components when the reference ship itself moves diagonally, not purely east.",
+        "questionText": "Ship P moves at $6\\ km/h$ in a direction $30^\\circ$ north of east. Ship Q moves at speed $v$ in a direction $60^\\circ$ east of north so that Q always remains due north of P. Find $v$.",
+        "options": [
+          "6 km/h",
+          "5.2 km/h",
+          "8 km/h",
+          "3 km/h"
+        ],
+        "correctOption": "6 km/h",
+        "numericalAnswer": null,
+        "solutionText": "Eastward components must match: $v\\sin60^\\circ=6\\cos30^\\circ\\Rightarrow v(0.866)=6(0.866)\\Rightarrow v=6\\ km/h$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Relative Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "hard",
+        "questionIntent": "Tests finding both the required heading and the resulting north-south closing speed for a ship maintaining a due-north bearing.",
+        "questionText": "Ship X moves due east at $9\\ km/h$. Ship Y moves at speed $18\\ km/h$ in a direction such that it always stays due north of X. Find the direction (angle east of north) Y must travel, and the rate at which the northward separation between them changes.",
+        "options": [
+          "$30^\\circ$; $15.59$ km/h",
+          "$60^\\circ$; $9$ km/h",
+          "$45^\\circ$; $12.7$ km/h",
+          "$30^\\circ$; $9$ km/h"
+        ],
+        "correctOption": "$30^\\circ$; $15.59$ km/h",
+        "numericalAnswer": null,
+        "solutionText": "Eastward component of Y must equal 9: $18\\sin\\theta=9\\Rightarrow\\sin\\theta=0.5\\Rightarrow\\theta=30^\\circ$. Northward component (rate of change of separation, since X has none) $=18\\cos30^\\circ=9\\sqrt3\\approx15.59\\ km/h$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Physics Q20",
+    "sourceSubject": "Physics",
+    "sourceQuestionText": "Rain is falling vertically with a velocity of $25 \\mathrm{~ms}^{-1}$. A women rides a bicycle with a speed of $10 \\mathrm{~ms}^{-1}$ in the north to south direction. What is the direction (angle with vertical) in which she should hold her umbrella to safe herself from rain?\n(a) $\\tan ^{-1}(0.4)$\n(b) $\\tan ^{-1}(1)$\n(c) $\\tan ^{-1}(\\sqrt{3})$\n(d) $\\tan ^{-1}(2.6)$",
+    "generatedQuestions": [
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Relative Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "easy",
+        "questionIntent": "Tests the basic umbrella-angle formula for a cyclist moving through vertically falling rain.",
+        "questionText": "Rain falls vertically at 20 m/s. A cyclist rides at 5 m/s. At what angle to the vertical should she hold her umbrella?",
+        "options": [
+          "$\\tan^{-1}(0.25)$",
+          "$\\tan^{-1}(4)$",
+          "$\\tan^{-1}(0.5)$",
+          "$\\tan^{-1}(1)$"
+        ],
+        "correctOption": "$\\tan^{-1}(0.25)$",
+        "numericalAnswer": null,
+        "solutionText": "$\\tan\\theta=\\dfrac{v_{cyclist}}{v_{rain}}=\\dfrac{5}{20}=0.25\\Rightarrow\\theta=\\tan^{-1}(0.25)$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Relative Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "medium",
+        "questionIntent": "Tests inverting the umbrella-angle formula to find the observer's walking speed given the tilt angle.",
+        "questionText": "Rain falls vertically at 15 m/s. A man holds his umbrella at 37° to the vertical to stay dry while walking at constant speed. Find his walking speed.",
+        "options": [
+          "11.25 m/s",
+          "15 m/s",
+          "20 m/s",
+          "7.5 m/s"
+        ],
+        "correctOption": "11.25 m/s",
+        "numericalAnswer": null,
+        "solutionText": "$\\tan37^\\circ\\approx0.75=\\dfrac{v}{15}\\Rightarrow v\\approx11.25\\ m/s$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Relative Motion"
+        ],
+        "questionType": "multiple_choice",
+        "difficulty": "hard",
+        "questionIntent": "Tests full vector subtraction when the rain itself has a horizontal drift component due to wind, in addition to the observer's motion.",
+        "questionText": "Rain falls at 10 m/s, at 30° from the vertical due to wind (drifting eastward). A cyclist rides due east at 8 m/s. Find the angle the rain appears to make with the vertical, as observed by the cyclist.",
+        "options": [
+          "$\\tan^{-1}\\left(\\frac{3}{5\\sqrt3}\\right)\\approx19.1^\\circ$",
+          "$\\tan^{-1}(0.8)$",
+          "30°",
+          "$\\tan^{-1}\\left(\\frac{13}{5\\sqrt3}\\right)$"
+        ],
+        "correctOption": "$\\tan^{-1}\\left(\\frac{3}{5\\sqrt3}\\right)\\approx19.1^\\circ$",
+        "numericalAnswer": null,
+        "solutionText": "Rain velocity components: vertical $=10\\cos30^\\circ=5\\sqrt3$ (down), horizontal $=10\\sin30^\\circ=5$ (east). Relative to cyclist: horizontal $=5-8=-3$ (i.e. 3 west), vertical $=5\\sqrt3$ (down, unchanged). Angle from vertical $=\\tan^{-1}\\left(\\dfrac{3}{5\\sqrt3}\\right)\\approx19.1^\\circ$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Physics Q21",
+    "sourceSubject": "Physics",
+    "sourceQuestionText": "A stone is thrown with a velocity $V$ making an angle $\\theta$ with the horizontal. The horizontal distance covered by it, before it falls to the ground, is maximum when $\\theta$ (in degrees) is equal to ____.",
+    "generatedQuestions": [
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "numerical",
+        "difficulty": "easy",
+        "questionIntent": "Tests solving for the (smaller) angle of projection that gives half of the maximum possible range.",
+        "questionText": "A projectile is fired from level ground with a fixed speed. At what angle of projection $\\theta$ (in degrees, the smaller of the two possible values) will its range be exactly half of the maximum possible range for that speed?",
+        "options": [],
+        "correctOption": null,
+        "numericalAnswer": 15,
+        "solutionText": "$R=R_{max}\\sin2\\theta$. Setting $R/R_{max}=0.5$: $\\sin2\\theta=0.5\\Rightarrow2\\theta=30^\\circ$ or $150^\\circ\\Rightarrow\\theta=15^\\circ$ or $75^\\circ$. The smaller value is $15^\\circ$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "numerical",
+        "difficulty": "medium",
+        "questionIntent": "Tests finding the angle θ such that launching at θ and at 2θ produces the same range, testing the range-equality condition sin2θ = sin4θ.",
+        "questionText": "For a projectile launched from level ground with a fixed speed, the range at angle $\\theta$ equals the range at angle $2\\theta$ (with $0^\\circ<\\theta<45^\\circ$). Find $\\theta$ (in degrees).",
+        "options": [],
+        "correctOption": null,
+        "numericalAnswer": 30,
+        "solutionText": "Equal ranges require $\\sin2\\theta=\\sin4\\theta$. The non-trivial solution is $4\\theta=180^\\circ-2\\theta\\Rightarrow6\\theta=180^\\circ\\Rightarrow\\theta=30^\\circ$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "numerical",
+        "difficulty": "hard",
+        "questionIntent": "Tests using the complementary-angle range condition together with a given angular difference to find the smaller angle.",
+        "questionText": "A projectile can be fired with a given speed at either of two angles that produce the same range on level ground, and their sum is $90^\\circ$. If the larger angle exceeds the smaller by $40^\\circ$, find the smaller angle (in degrees).",
+        "options": [],
+        "correctOption": null,
+        "numericalAnswer": 25,
+        "solutionText": "$\\theta_1+\\theta_2=90^\\circ$ and $\\theta_2-\\theta_1=40^\\circ$. Adding: $2\\theta_2=130^\\circ\\Rightarrow\\theta_2=65^\\circ$, so $\\theta_1=25^\\circ$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Physics Q22",
+    "sourceSubject": "Physics",
+    "sourceQuestionText": "A man can throw a stone 80 m . The maximum height (in meters) to which it will rise is ____.",
+    "generatedQuestions": [
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "numerical",
+        "difficulty": "easy",
+        "questionIntent": "Tests applying the relation H = R_max/4 between maximum height and maximum range at the optimal 45° launch angle.",
+        "questionText": "A boy can throw a ball to a maximum horizontal distance of 40 m. What is the maximum height (in m) reached when the ball is thrown to achieve this maximum range? (g = 10 m/s²)",
+        "options": [],
+        "correctOption": null,
+        "numericalAnswer": 10,
+        "solutionText": "At $45^\\circ$ (angle of maximum range), $H=\\dfrac{R_{max}}{4}=\\dfrac{40}{4}=10\\ m$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "numerical",
+        "difficulty": "medium",
+        "questionIntent": "Tests inverting the H = R_max/4 relation to find the maximum range given the maximum height.",
+        "questionText": "The maximum height attained by a projectile (launched at the angle giving maximum range) is 12.5 m. Find the maximum horizontal range (in m) achievable at the same launch speed.",
+        "options": [],
+        "correctOption": null,
+        "numericalAnswer": 50,
+        "solutionText": "$R_{max}=4H=4\\times12.5=50\\ m$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "numerical",
+        "difficulty": "hard",
+        "questionIntent": "Tests finding the launch speed from a known maximum range, then applying it to compute the height reached at a different (non-optimal) launch angle.",
+        "questionText": "A javelin thrower can achieve a maximum range of 72 m on level ground (g = 10 m/s²). If she throws instead at 30° to the horizontal with the same speed, find the maximum height (in m) reached.",
+        "options": [],
+        "correctOption": null,
+        "numericalAnswer": 9,
+        "solutionText": "$R_{max}=u^2/g=72\\Rightarrow u^2=720$. At $30^\\circ$: $H=\\dfrac{u^2\\sin^230^\\circ}{2g}=\\dfrac{720\\times0.25}{20}=9\\ m$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Physics Q23",
+    "sourceSubject": "Physics",
+    "sourceQuestionText": "A particle is projected upwards with a velocity of 100 m/sec at an angle of 60° with the vertical. The time (in seconds) after which the particle will move perpendicular to its initial direction of projection is ____ (Take $g=10 \\mathrm{~m} / \\mathrm{s}^2$ )",
+    "generatedQuestions": [
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "numerical",
+        "difficulty": "easy",
+        "questionIntent": "Tests applying t = u/(g sinθ) to find when a projectile's velocity becomes perpendicular to its initial direction, with the angle given from the horizontal.",
+        "questionText": "A particle is projected with speed 40 m/s at an angle of 30° with the horizontal. Find the time (in seconds) after which its velocity becomes perpendicular to its initial velocity (g = 10 m/s²).",
+        "options": [],
+        "correctOption": null,
+        "numericalAnswer": 8,
+        "solutionText": "$t=\\dfrac{u}{g\\sin\\theta}=\\dfrac{40}{10\\times\\sin30^\\circ}=\\dfrac{40}{5}=8\\ s$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "numerical",
+        "difficulty": "medium",
+        "questionIntent": "Tests applying t = u/(g sinθ) with the angle given from the vertical, requiring conversion to the horizontal angle first.",
+        "questionText": "A ball is thrown with speed 60 m/s at 30° with the vertical. Find the time (in seconds, to 2 decimal places) after which its velocity becomes perpendicular to its initial velocity (g = 10 m/s²).",
+        "options": [],
+        "correctOption": null,
+        "numericalAnswer": 6.93,
+        "solutionText": "Angle from horizontal $=90^\\circ-30^\\circ=60^\\circ$. $t=\\dfrac{u}{g\\sin\\theta}=\\dfrac{60}{10\\times\\sin60^\\circ}=\\dfrac{60}{8.66}\\approx6.93\\ s$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "Projectile Motion"
+        ],
+        "questionType": "numerical",
+        "difficulty": "hard",
+        "questionIntent": "Tests applying t = u/(g sinθ) when the angle is specified indirectly via its tangent, requiring extraction of sinθ from a 3-4-5 triangle.",
+        "questionText": "A projectile is launched with speed 50 m/s at angle θ above the horizontal such that tanθ = 3/4. Find the time (in seconds, to 2 decimal places) after which its velocity becomes perpendicular to its initial velocity (g = 10 m/s²).",
+        "options": [],
+        "correctOption": null,
+        "numericalAnswer": 8.33,
+        "solutionText": "$\\tan\\theta=3/4\\Rightarrow\\sin\\theta=3/5=0.6$. $t=\\dfrac{u}{g\\sin\\theta}=\\dfrac{50}{10\\times0.6}=\\dfrac{50}{6}\\approx8.33\\ s$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Physics Q24",
+    "sourceSubject": "Physics",
+    "sourceQuestionText": "A ball is thrown downwards with a speed of 20 m/s from the top of a building 150 m high, and simultaneously another ball is thrown vertically upwards with a speed of $30 \\mathrm{~m} / \\mathrm{s}$ from the foot of the building. The time (in seconds) after which both the balls will meet is ____. (Take $g=10 \\mathrm{~m} / \\mathrm{s}^2$ )",
+    "generatedQuestions": [
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "1D Motion"
+        ],
+        "questionType": "numerical",
+        "difficulty": "easy",
+        "questionIntent": "Tests the relative-motion approach for two balls moving toward each other under identical gravitational acceleration, where the acceleration cancels in the relative frame.",
+        "questionText": "A ball is dropped from the top of a 100 m tower at the same instant another ball is thrown upward from the ground with speed 25 m/s toward the first ball. After how many seconds (g = 10 m/s²) will the two balls meet?",
+        "options": [],
+        "correctOption": null,
+        "numericalAnswer": 4,
+        "solutionText": "Since both balls have the same downward acceleration, their relative velocity is constant, equal to the sum of their initial speeds toward each other: $0+25=25\\ m/s$. Time to meet $=100/25=4\\ s$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "1D Motion"
+        ],
+        "questionType": "numerical",
+        "difficulty": "medium",
+        "questionIntent": "Tests the same relative-motion approach with two nonzero initial speeds.",
+        "questionText": "A ball is thrown downward with speed 15 m/s from the top of a 200 m building, and at the same instant another ball is thrown vertically upward with speed 25 m/s from the ground. After how many seconds (g = 10 m/s²) will they meet?",
+        "options": [],
+        "correctOption": null,
+        "numericalAnswer": 5,
+        "solutionText": "Relative closing speed $=15+25=40\\ m/s$ (constant, since accelerations cancel). Time to meet $=200/40=5\\ s$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "1D Motion"
+        ],
+        "questionType": "numerical",
+        "difficulty": "hard",
+        "questionIntent": "Tests the meeting-time problem with a staggered start time for the second ball, requiring a full kinematic (not purely relative-velocity) setup.",
+        "questionText": "From the top of a 180 m tower, a ball is thrown downward with speed 10 m/s. Two seconds later, another ball is thrown upward from the base of the tower with speed 40 m/s. Find the time (in seconds, measured from when the first ball was thrown) at which the two balls meet. (g = 10 m/s²)",
+        "options": [],
+        "correctOption": null,
+        "numericalAnswer": 4,
+        "solutionText": "Let $t$ be time from the first throw. Distance fallen by ball 1: $x_1=10t+5t^2$. Ball 2 has been moving for $(t-2)$ s once released: $y_2=40(t-2)-5(t-2)^2$ measured from the ground. They meet when $x_1+y_2=180$. Substituting $\\tau=t-2$: $10(\\tau+2)+5(\\tau+2)^2+40\\tau-5\\tau^2=180$, which simplifies to $70\\tau+40=180\\Rightarrow\\tau=2\\Rightarrow t=4\\ s$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  },
+  {
+    "sourceQuestionNumber": "Physics Q25",
+    "sourceSubject": "Physics",
+    "sourceQuestionText": "Two balls are dropped to the ground from different heights. One ball is dropped 2 s after the other but they both strike the ground at the same time. If the first ball takes 5 s to reach the ground, then the difference in initial heights (in metres) is ____. (Take $g=10 \\mathrm{~m} / \\mathrm{s}^2$ )",
+    "generatedQuestions": [
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "1D Motion"
+        ],
+        "questionType": "numerical",
+        "difficulty": "easy",
+        "questionIntent": "Tests computing the difference in drop heights for two balls released at different times but landing simultaneously.",
+        "questionText": "Two stones are dropped from a cliff, the second one 1 second after the first. If the first stone takes 4 s to reach the ground, find the difference (in metres) in their initial heights. (g = 10 m/s²)",
+        "options": [],
+        "correctOption": null,
+        "numericalAnswer": 35,
+        "solutionText": "$h_1=\\frac12(10)(4^2)=80\\ m$. The second stone falls for $(4-1)=3\\ s$: $h_2=\\frac12(10)(3^2)=45\\ m$. Difference $=80-45=35\\ m$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "1D Motion"
+        ],
+        "questionType": "numerical",
+        "difficulty": "medium",
+        "questionIntent": "Tests the same height-difference computation with different timing values.",
+        "questionText": "Two balls are dropped from different heights, the second 3 s after the first. Both hit the ground simultaneously. If the first ball takes 8 s to fall, find the difference (in metres) in their initial heights. (g = 10 m/s²)",
+        "options": [],
+        "correctOption": null,
+        "numericalAnswer": 195,
+        "solutionText": "$h_1=\\frac12(10)(8^2)=320\\ m$. Second ball falls for $(8-3)=5\\ s$: $h_2=\\frac12(10)(5^2)=125\\ m$. Difference $=320-125=195\\ m$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      },
+      {
+        "subject": "Physics",
+        "unit": "Mechanics",
+        "chapter": [
+          "Kinematics"
+        ],
+        "topic": [
+          "1D Motion"
+        ],
+        "questionType": "numerical",
+        "difficulty": "hard",
+        "questionIntent": "Tests inverting the problem: given the height difference, solve for the fall time of the first ball.",
+        "questionText": "Two balls are dropped from the tops of two towers, the second dropped 2.5 s after the first. Both reach the ground at the same instant. If the difference in the heights of the towers is 100 m, and the first ball takes T seconds to fall (T > 2.5 s), find T (to 2 decimal places). (g = 10 m/s²)",
+        "options": [],
+        "correctOption": null,
+        "numericalAnswer": 5.25,
+        "solutionText": "$h_1=5T^2$ and $h_2=5(T-2.5)^2$. Given $h_1-h_2=100$: $5[T^2-(T-2.5)^2]=100\\Rightarrow5(5T-6.25)=100\\Rightarrow25T-31.25=100\\Rightarrow T=5.25\\ s$.",
+        "isEmbedded": false,
+        "imageUrl": null,
+        "diagramSvg": null,
+        "smilesNotation": null,
+        "optionsMedia": null
+      }
+    ]
+  }
+]
+Pinnacle27_Physics_Q1-25_Generated.json
+Displaying Pinnacle27_Physics_Q1-25_Generated.json.

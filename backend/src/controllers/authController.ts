@@ -3,13 +3,12 @@ import bcrypt from 'bcryptjs';
 import * as jsonwebtoken from 'jsonwebtoken';
 import { Student } from '../models/Student';
 import { Institute } from '../models/Institute';
-
-const JWT_SECRET = process.env.JWT_SECRET || 'fallback_secret_key_change_me_in_prod';
+import { JWT_SECRET } from '../utils/jwt';
 
 export const signup = async (req: Request, res: Response) => {
   try {
-    const { name, enrollmentNo, batch, email, password } = req.body;
-    
+    const { name, enrollmentNo, batch, email, password, instituteId } = req.body;
+
     if (!name || !enrollmentNo || !batch || !password) {
       return res.status(400).json({ message: 'Name, enrollmentNo, batch, and password are required' });
     }
@@ -19,10 +18,18 @@ export const signup = async (req: Request, res: Response) => {
       return res.status(400).json({ message: 'Student with this enrollment number already exists' });
     }
 
+    // Explicit instituteId (multi-tenant signup) takes priority; falls back to the
+    // single-tenant env var / only-institute behaviour for existing deployments.
     const adminInstId = process.env.ADMIN_INSTITUTE_ID;
-    const institute = adminInstId ? await Institute.findById(adminInstId) : await Institute.findOne();
+    const institute = instituteId
+      ? await Institute.findById(instituteId)
+      : adminInstId ? await Institute.findById(adminInstId) : await Institute.findOne();
     if (!institute) {
       return res.status(500).json({ message: 'Institute not configured. Cannot create student.' });
+    }
+
+    if (institute.batches && institute.batches.length > 0 && !institute.batches.includes(batch)) {
+      return res.status(400).json({ message: `Invalid batch. Must be one of: ${institute.batches.join(', ')}` });
     }
 
     const salt = await bcrypt.genSalt(10);
@@ -196,4 +203,79 @@ export const adminGetMe = async (req: Request, res: Response) => {
     res.status(401).json({ message: 'Invalid token' });
   }
 };
+
+// ─── Password Change ───────────────────────────────────────────────
+
+export const changeStudentPassword = async (req: Request, res: Response) => {
+  try {
+    const { studentId } = req.params;
+    const { currentPassword, newPassword } = req.body;
+
+    if (!currentPassword || !newPassword) {
+      return res.status(400).json({ message: 'Current password and new password are required' });
+    }
+
+    if (newPassword.length < 6) {
+      return res.status(400).json({ message: 'New password must be at least 6 characters' });
+    }
+
+    const student = await Student.findById(studentId);
+    if (!student || !student.password) {
+      return res.status(404).json({ message: 'Student not found' });
+    }
+
+    const isMatch = await bcrypt.compare(currentPassword, student.password);
+    if (!isMatch) {
+      return res.status(401).json({ message: 'Current password is incorrect' });
+    }
+
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(newPassword, salt);
+
+    student.password = hashedPassword;
+    await student.save();
+
+    return res.status(200).json({ message: 'Password changed successfully' });
+  } catch (error) {
+    console.error('Change student password error:', error);
+    return res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
+export const changeAdminPassword = async (req: Request, res: Response) => {
+  try {
+    const { adminId } = req.params;
+    const { currentPassword, newPassword } = req.body;
+
+    if (!currentPassword || !newPassword) {
+      return res.status(400).json({ message: 'Current password and new password are required' });
+    }
+
+    if (newPassword.length < 6) {
+      return res.status(400).json({ message: 'New password must be at least 6 characters' });
+    }
+
+    const admin = await Admin.findById(adminId);
+    if (!admin || !admin.password) {
+      return res.status(404).json({ message: 'Admin not found' });
+    }
+
+    const isMatch = await bcrypt.compare(currentPassword, admin.password);
+    if (!isMatch) {
+      return res.status(401).json({ message: 'Current password is incorrect' });
+    }
+
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(newPassword, salt);
+
+    admin.password = hashedPassword;
+    await admin.save();
+
+    return res.status(200).json({ message: 'Password changed successfully' });
+  } catch (error) {
+    console.error('Change admin password error:', error);
+    return res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
 
